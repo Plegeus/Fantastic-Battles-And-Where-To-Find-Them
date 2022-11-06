@@ -4,23 +4,27 @@ import React from "react";
 const App = () => {
   return( 
     <div align="center" class="vertical">
-      <div id="top">
-        TOP
+
+      <div class="top">
+        <div class="divable" id="top">TOP</div>
       </div>
+      
       <div class="horizontal">
-        <div id="left">
-          LEFT
+        <div class="left">
+          <div class="divable" id="left">LEFT</div>
         </div>
-        <div id="center">
-          CENTER
+        <div>
+          <div class="divable" id="center">CENTER</div>
         </div>
-        <div id="right">
-          RIGHT
+        <div class="right">
+          <div class="divable" id="right">RIGHT</div>
         </div>
       </div>
-      <div id="bottom">
-        BOTTOM
+      
+      <div class="bottom">
+        <div class="divable" id="bottom">BOTTOM</div>
       </div>
+    
     </div>
   );
 }

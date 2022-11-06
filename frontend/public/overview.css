@@ -1,0 +1,51 @@
+
+/*  
+ * This file is meant to structure to the level elements, 
+ * it is not meant to provide true styling for the elements...
+ */
+
+.vertical {
+  background-color: green;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.bottom {
+  background-color: yellow;
+  position: relative;
+  height: 10%;
+  width: 100%;
+}
+.top {
+  background-color: pink;
+  position: relative;
+  height: 10%;
+  width: 100%;
+}
+
+.horizontal {
+  background-color: red;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  height: 80%;
+  width: 100%;
+}
+
+.left {
+  background-color: purple;
+  position: relative;
+  height: 100%;
+  width: 10%;
+}
+.right {
+  background-color: blue;
+  position: relative;
+  height: 100%;
+  width: 10%;
+}
+
+
+
+
