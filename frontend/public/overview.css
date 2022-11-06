@@ -11,14 +11,14 @@
   width: 100%;
 }
 
-.bottom {
-  background-color: yellow;
+.top {
+  background-color: pink;
   position: relative;
   height: 10%;
   width: 100%;
 }
-.top {
-  background-color: pink;
+.bottom {
+  background-color: yellow;
   position: relative;
   height: 10%;
   width: 100%;
