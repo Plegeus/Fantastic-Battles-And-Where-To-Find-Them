@@ -1,32 +1,45 @@
 
-import React from "react";
+import { useState } from "react";
 
-const App = () => {
+
+
+function App() {
+
+  const [data, setData] = useState({});
+  const [counter, setCounter] = useState(0);
+
+  function get() {
+    fetch("/api")
+      .then(
+        response => response.json() // "unpack" the received data...
+      )
+      .then(
+        data => setData(data) // read the json file...
+      )
+    alert(data.hello);    
+  }
+  function post() {
+    setCounter(counter + 1);
+    fetch(
+      "/api",
+      {
+        "method": "POST",
+        "headers": { "content-type": "application/json" },
+        "body": JSON.stringify({
+          "counter": counter
+        }),
+      }  
+    );
+  }
+
   return( 
-    <div align="center" class="vertical">
-
-      <div class="top">
-        <div class="divable" id="top">TOP</div>
-      </div>
-      
-      <div class="horizontal">
-        <div class="left">
-          <div class="divable" id="left">LEFT</div>
-        </div>
-        <div>
-          <div class="divable" id="center">CENTER</div>
-        </div>
-        <div class="right">
-          <div class="divable" id="right">RIGHT</div>
-        </div>
-      </div>
-      
-      <div class="bottom">
-        <div class="divable" id="bottom">BOTTOM</div>
-      </div>
-    
+    <div>
+      <button onClick={ get }>Click Me!</button>
+      <button onClick={ post }>{counter}</button>
     </div>
-  );
+  )
 }
 
+
 export default App;
+
