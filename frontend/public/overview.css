@@ -1,0 +1,50 @@
+
+body {
+
+  --bar-size: 80px;
+  --column-size: 130px;
+  --default-color: black;
+
+  display: flex;
+  background-color: black;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+
+}
+
+div {
+  background-color: var(--default-color);
+}
+
+.bar {
+  min-height: 5px;
+  max-height: 5px;
+  transition-duration: 1s;
+}
+.bar:hover {
+  min-height: var(--bar-size);
+  max-height: var(--bar-size);
+  background-color: yellowgreen;
+}
+
+.column {
+  min-width: 5px;
+  max-width: 5px;
+  transition-duration: 1s;
+}
+.column:hover {
+  min-width: var(--column-size);
+  max-width: var(--column-size);
+  background-color: antiquewhite;
+}
+
+#mid {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+}
+
+#center {
+  flex-grow: 1;
+}
