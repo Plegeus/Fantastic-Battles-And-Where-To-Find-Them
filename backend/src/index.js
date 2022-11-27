@@ -1,9 +1,12 @@
 
-const express = require("express");
+const express = require('express');
 const PORT = process.env.PORT || 8080;
 const app = express();
 
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
+
+const users = require('./users/database')
+
 
 app.use(bodyParser.json());
 
@@ -19,3 +22,5 @@ app.post("/api", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
+
+
