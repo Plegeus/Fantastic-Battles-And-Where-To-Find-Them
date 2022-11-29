@@ -22,43 +22,52 @@ async function query(q) {
   return result[0];
 }
 
-async function getUser(name) {
-  let result = await query("SELECT * FROM users WHERE username = '" + name + "'");
-  if (result.length === 1) {
-    let user = result[0];
-    result = await query("SELECT * FROM passwords WHERE userid = '" + user.userid + "'");
-    if (result.length === 1) {
-      return users.user(user.userid, user.username, result[0].password);
-    }
-  }
-  return false;
-}
-async function putUser(user) {
-
-  // user already exists, return...
-  if (getUser(user.username)) {
+// PREPARED STATEMENTS... PREVENT SQL INJECTIONS...
+// SELECT * FROM users WHERE username=?, stuff like that...
+async function getUser(username) {
+  let result = await query("SELECT * FROM users WHERE username = '" + username + "'");
+  if (result.length === 0) {
     return false;
   }
-
-  // insert user into tables...
+  return users.user(result[0].username);
+}
+async function putUser(user) {
   await query(
     "INSERT INTO users (username) VALUES('" + user.username + "')"
   );
-  let rget = getUser(user.username);
-  if (rget) {
-    rget.then((v) => {
-      query(
-        "INSERT INTO passwords (userid, password) VALUES(" + v.userid + ", " + user.password + ")"
-      )
-    })
-  }
-
   return true;
 }
 
+async function updatePassword(user, password) {
+
+}
+async function updateUser(user) {
+
+}
+
+async function getPassword(user) {
+  let result = await query(
+    "SELECT * FROM passwords WHERE username = '" + user.username + "'"
+  );
+  return result[0].password;
+}
+
+async function userExists(username) {
+  if (await getUser(username)) {
+    return true;
+  }
+  return false;
+}
+
+
+
+
 module.exports = {
   getUser,
-  putUser
+  putUser,
+  updateUser,
+  updatePassword,
+  getPassword
 };
 
 

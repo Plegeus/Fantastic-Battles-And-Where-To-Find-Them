@@ -1,23 +1,40 @@
 
-const express = require('express');
 const PORT = process.env.PORT || 8080;
-const app = express();
 
+const express = require('express');
+const app = express();
 const bodyParser = require('body-parser');
 
-const users = require('./users/database')
-
+const users = require('./users/database');
 
 app.use(bodyParser.json());
 
-app.get("/api", (req, res) => {
-  console.log("get...");
+
+async function receive(url, callback) {
+  app.post(url, (req, res) => {
+    console.log("Received POST request @ " + url);
+    callback(req);
+  });
+}
+async function send(url, callback) {
+  app.get(url, (req, res) => {
+    console.log("Received GET request @ " + url);
+    callback(res);
+  });
+}
+
+
+send("/api", (res) => {
   res.json({"hello": "world"});
 });
-app.post("/api", (req, res) => {
-  console.log("post...");
-  console.log(req.body.counter);
+receive("/api", (req) => {
+  console.log(req.body);
 });
+
+receive("/api/login", (req) => {
+  console.log(req.body);
+});
+
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);

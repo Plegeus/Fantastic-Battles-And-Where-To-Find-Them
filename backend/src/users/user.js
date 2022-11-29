@@ -1,9 +1,7 @@
 
-function user(id, username, password) {
+function user(username) {
   return {
-    id: id,
     username: username,
-    password: password,
   };
 }
 
