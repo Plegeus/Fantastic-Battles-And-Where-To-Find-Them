@@ -12,13 +12,12 @@ app.use(bodyParser.json());
 
 async function receive(url, callback) {
   app.post(url, (req, res) => {
-    console.log("Received POST request @ " + url);
+    console.log(">>> Received POST request @ " + url + " <<<");
     callback(req);
   });
 }
 async function send(url, callback) {
   app.get(url, (req, res) => {
-    console.log("Received GET request @ " + url);
     callback(res);
   });
 }
@@ -32,7 +31,27 @@ receive("/api", (req) => {
 });
 
 receive("/api/login", (req) => {
-  console.log(req.body);
+  
+  let data = req.body.data;
+
+  users.userExists(data.username).then(exists => {
+    if (exists) {
+      users.getUser(data.username).then(user => {
+        send("/api/login/succes", res => {
+          res.json(user);
+        });
+      })
+    }
+    else {
+        send("/api/login/failure", res => {
+          res.json({
+            username: data.username,
+            password: data.password,
+          });
+        });
+    }
+  })
+
 });
 
 

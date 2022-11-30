@@ -67,7 +67,8 @@ module.exports = {
   putUser,
   updateUser,
   updatePassword,
-  getPassword
+  getPassword,
+  userExists
 };
 
 
