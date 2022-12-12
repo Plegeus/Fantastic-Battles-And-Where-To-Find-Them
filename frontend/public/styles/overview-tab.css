@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Roboto');
+#account-top{
+	width: 100vw;
+	height: 5rem;
+	top: 0;
+	background-color: palevioletred;
+  }
+*{
+	
+ margin:0;
+ padding: 0;
+ outline: 0;
+}
+
+/* colour overlay */
+
+.filter{
+ position:fixed;
+ z-index: 1;
+ left: 0;
+ top: 0;
+ bottom: 0;
+ right: 0;
+ z-index: 1;
+ background: rgb(215,20,20);
+ background: linear-gradient(120deg, rgba(215,20,20,0.8869748583026961) 8%, rgba(245,5,40,0.7665266790309874) 100%, rgba(6,24,236,0) 100%);
+ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e94ca1",endColorstr="#c74ae9",GradientType=1);
+ opacity: .7;
+}
+
+/* table */
+table{
+ position: relative;
+ z-index: 2;
+ top: 50%;
+ width: 60%;
+ border-collapse: collapse;
+ border-spacing: 0;
+ box-shadow: 0 2px 15px rgba(64,64,64,.7);
+ border-radius: 12px 12px 0 0;
+ overflow: hidden;
+
+}
+td , th{
+ padding: 15px 20px;
+ text-align: center;
+ 
+
+}
+th{
+ background-color: #e53935;
+ color: #fafafa;
+ font-family: 'Open Sans',Sans-serif;
+ font-weight: 200;
+ text-transform: uppercase;
+
+}
+tr{
+ width: 100%;
+ background-color: #ffcdd2;
+ font-family: 'Montserrat', sans-serif;
+}
+tr:nth-child(even){
+ background-color: #fafafa;
+}
+/* buttons */
+#button-div{
+	position: absolute;
+	margin-top: 1rem;
+	margin-left: 10%;
+	
+	width: 8rem;
+	height: 2rem;
+}
+button{
+	position: absolute;
+	z-index: 2;
+	border: 1px solid black;
+	height: 100%;
+	width: 45%;
+	text-align: center;
+	
+	float: left;
+	margin: 2%;
+	border-radius: 6px 6px 6px 6px;
+	text-transform: uppercase;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+}
+
+.tile-btn{
+	left: 50%;	
+}
+
+/* list view*/
+#list-view{
+	position:absolute;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 5%;
+}
+/* tile view*/
+.grid-container {
+	width:80%;
+	height: max-content;
+	position: absolute;
+	margin-top: 5%;
+	display: none;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 5%;
+	z-index: 2;
+	
+	column-gap: 2%;
+	row-gap: 5%;
+	grid-template-columns: auto auto auto;
+	padding: 10px;
+}
+  
+.grid-item {
+	width: 80%;
+	background-color: #ffcdd2;;
+	border: 1px solid rgba(0, 0, 0, 0.8);
+	padding: 20px;
+	font-size: 20px;
+	text-align: left;
+	font-family: 'Montserrat', sans-serif;
+}
+.grid-item:nth-child(even){
+	background-color: #fafafa;
+}
+.container{
+	z-index: 3;
+}
+#form-area{
+	z-index: 3;
+}
+

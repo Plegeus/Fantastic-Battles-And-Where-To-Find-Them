@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Fantastic Battles And Where To Find Them</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+		<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="styles/style.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/overview.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/battle-elements.css"/>
+    
+  </head>
+  <body id="root">
+
+    <div id="account-top"></div>
+    <div id="mid">
+      <div id="center">
+        <div id="center_pane"></div>
+        <script src="scripts/map.js"></script>
+        <button id="battleButton" onclick="showAddScreen()">Add a battle</button>
+      </div>
+
+      
+      
+          <div id="add_battle_pane">
+            <form id="addBattle">
+              <div id="coordinate"></div>
+              <label for="name">Name:</label><br>
+              <input type="text" id="name" name="name" value="" required><br>
+              <label for="victor">Victor:</label><br>
+              <input type="text" id="victor" name="victor" value="" required><br>
+              <label for="vanquished">Vanquished:</label><br>
+              <input type="text" id="vanquished" name="vanquished" value="" required><br>
+              <label for="victorious_commander">Victorious Commander:</label><br>
+              <input type="text" id="victorious_commander" name="victorious_commander" value="" required><br>
+              <label for="vanquished_commander">Vanquished Commander:</label><br>
+              <input type="text" id="vanquished_commander" name="vanquished_commander" value="" required><br>
+              <label for="victorious_deaths">Victorious Deaths:</label><br>
+              <input type="any" id="victorious_deaths" name="victorious_deaths" value="" required><br>
+              <label for="vanquished_deaths">Vanquished Deaths:</label><br>
+              <input type="any" id="vanquished_deaths" name="vanquished_deaths" value="" required><br>
+              <br>
+              <script src="scripts/addBattle.js"></script>
+            </form> 
+          </div>
+        
+      
+        
+      
+    </div>
+    
+  </body>
+</html>

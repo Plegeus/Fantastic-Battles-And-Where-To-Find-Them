@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+    <title>Fantastic Battles And Where To Find Them</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/overview-tab.css"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	
+  </head>
+  <body> 
+	<div id="account-top"></div>
+	<div id="button-div">
+		<button class="list-btn" onclick="listInator()"><i class="bi-list"> list</i></button>
+		<button class="tile-btn" onclick="tileInator()"><i class="bi-grid-fill">tiles</i></button>
+		<script>
+			function tileInator() {
+				var list = document.getElementById("list-view");
+				var tile = document.getElementById("tile-view");
+  				list.style.display = "none";
+				tile.style.display = "grid";
+  			} 
+			  function listInator() {
+				var list = document.getElementById("list-view");
+				var tile = document.getElementById("tile-view");
+				list.style.display = "block";
+				tile.style.display = "none";
+  			}
+		</script>
+	</div>
+	<div class="filter"> </div> 
+	<div id="list-view">
+	<table id="battle-table"> 
+		<thead>
+		<tr> 
+			<th>Name</th> 
+			<th>Victor</th> 
+			<th>Vanquished</th> 
+			<th>Victorious Commander</th> 
+			<th>Vanquished Commander</th> 
+			<th>Victorious deaths</th> 
+			<th>Vanquished deaths</th>  
+		</tr> 
+	</thead>
+	</table> 
+	</div>
+
+	<div id="tile-view" class="grid-container">
+		
+	</div>
+		<script src="scripts/overview-tab.js"></script>
+   </body>  
+   
+  </html>
+</html>

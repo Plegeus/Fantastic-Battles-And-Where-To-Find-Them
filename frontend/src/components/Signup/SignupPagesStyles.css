@@ -1,0 +1,128 @@
+
+.loginRow {
+    position: relative;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+
+ .form-input:last-child {
+    margin-bottom: 0rem;
+    
+}
+
+input[type="text"],[type="password"],[type="email"]{
+    font-size:1.5rem;
+}
+
+.form-label {
+    font-size: 1.3rem;
+    opacity: .7;
+}
+
+.form-input {
+    padding: 4.5%;
+    width: 89%;
+    margin-bottom: 0rem;
+    height: 2rem;
+}
+
+.form-input:focus {
+    outline-color: #719ECE;
+}
+
+.loginRow .passwordEye{
+    position: absolute;
+    right: 5%;
+    top: 32%;
+}
+
+
+
+
+.loginBottom {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    padding-top: 0.5rem;
+}
+
+.loginBottom button {
+    color: white;
+
+    padding: 1rem;
+    border: none;
+    width: 90%;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 2rem;
+}
+
+button:hover {
+    opacity: 0.8;
+    transform: scale(1.12);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.loginBottom .NextButton {
+    background-color: rgb(53, 134, 53);
+}
+
+.loginBottom .BackButton {
+    background-color: rgb(134, 53, 53);
+}
+
+
+.socialLogin {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1rem;
+    height: 3rem;
+    border-top: 1px solid black;
+    padding-top: 1rem;
+}
+
+.socialLogin .facebookIcon{
+    position: absolute;
+    left: 35%;
+}
+
+.socialLogin .googleIcon{
+    position: absolute;
+    left: 55%;
+}
+
+
+
+
+
+.login {
+    text-align: center;
+    border-top: 0.1rem solid black;
+    padding-top: 1rem;
+}
+
+
+
+@media (max-width: 400px){
+    .form-label{
+        display: none;
+    }
+
+    .loginRow .passwordEye{
+        top: 13%;
+    }
+}
+
+@media (max-width: 320px){
+    .form-label{
+        display: none;
+    }
+
+    .loginRow .passwordEye{
+        top: 10%;
+    }
+
+}

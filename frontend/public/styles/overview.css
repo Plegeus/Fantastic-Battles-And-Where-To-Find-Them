@@ -1,0 +1,62 @@
+
+body {
+
+  --bar-size: 80px;
+  --column-size: 130px;
+  /* --default-color: black; */
+
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  
+  padding: 0px;
+  margin: 0px;
+
+}
+/* ---------------------------------------------------------- */
+.bar {
+  min-height: 5px;
+  max-height: 5px;
+  transition-duration: 1s;
+  z-index: +1;
+}
+.bar:hover {
+  min-height: var(--bar-size);
+  max-height: var(--bar-size);
+  background-color: yellowgreen;
+}
+
+.column {
+  min-width: 5px;
+  max-width: 5px;
+  transition-duration: 1s;
+  z-index: +1;
+}
+.column:hover {
+  display: block;
+  min-width: var(--column-size);
+  max-width: var(--column-size);
+  background-color: antiquewhite;
+}
+
+#mid {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: row;
+  z-index: +1;
+}
+
+#center {
+  flex-grow: 1;
+}
+/* ---------------------------------------------------------- */
+/* Tijdelijke vervanging navbar */
+#account-top{
+  width: 100vw;
+  height: 5rem;
+  top: 0;
+  background-color: palevioletred;
+}
+
+/* ---------------------------------------------------------- */

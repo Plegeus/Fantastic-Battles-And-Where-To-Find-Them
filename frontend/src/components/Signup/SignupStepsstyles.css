@@ -1,0 +1,21 @@
+    .SignupSteps{
+        display:inline-flex;
+        justify-content: space-around;
+        margin-top: 1rem;
+    
+    }
+
+    #circle1 {
+        background-color: green;
+    }
+    
+    .circle {
+        padding: 0.6rem 0.3rem 0rem 0.3rem;
+        margin: 0.1rem 0.1rem;
+        cursor: auto;
+        background-color: gray;
+        height: 0.3rem;
+        width: 0.3rem;
+        border-radius: 200px;
+    }
+    
