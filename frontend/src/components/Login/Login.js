@@ -78,7 +78,7 @@ const Login = () => {
 
                     <div className="passwordExtra">
                         <label className="rememberCheckbox">
-                            <input type="checkbox" checked="checked"/>
+                            <input type="checkbox"/>
                             <span className="caption">Remember me</span>
                         </label>
 

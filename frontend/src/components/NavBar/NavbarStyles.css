@@ -1,6 +1,5 @@
 .Navigation {
-    padding: 10px;
-    padding-left: 10%;
+    padding-bottom: 10px;
     padding-right: 10%;
     width: 100%;
     
@@ -14,7 +13,6 @@
     font-size: 1.2rem;
     box-shadow: 0 5px 1rem black;
     /*border-radius: 5%;*/
-    position: absolute;
     left: 0;
     z-index: +2;
 }
@@ -48,6 +46,7 @@
 }
 
 .siteName {
+
     align-items: center;
     padding-left: 2%;
 }
@@ -98,6 +97,10 @@
         background-color: rgb(46, 46, 46);
         border-radius: 0.4rem;
         border: 2px solid rgb(75, 74, 74);
+    }
+
+    .Navigation .MobileNavbar .nav-menu {
+        background-color: rgb(46, 46, 46);
     }
     .mid{
         background-color: rgb(46, 46, 46);

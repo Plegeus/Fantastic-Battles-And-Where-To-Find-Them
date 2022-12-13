@@ -16,7 +16,7 @@
     },
     {
         title: "Account",
-        url:"/",
+        url:"/account",
         cName:"nav-links"
     }
 ]
