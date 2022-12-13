@@ -2,6 +2,7 @@ import "./Loginstyles.css";
 import { FiEyeOff,FiEye } from "react-icons/fi";
 import { BsFacebook,BsGoogle } from "react-icons/bs"
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
 
@@ -99,7 +100,7 @@ const Login = () => {
 
 
                     <div className="signup">
-                        <p>Need an account? <a href="#" className="forgotPassword">SIGN UP</a></p>
+                        <p>Need an account? <Link to="/signup" className="forgotPassword">SIGN UP</Link></p>
                     </div>
                 </form>
             </div>

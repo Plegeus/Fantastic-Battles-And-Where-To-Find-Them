@@ -48,9 +48,13 @@
 }
 
 .siteName {
-    color: white;
     align-items: center;
     padding-left: 2%;
+}
+
+.siteName a {
+    color: white;
+    text-decoration: none;
 }
 
 .Navigation .MobileNavbar {

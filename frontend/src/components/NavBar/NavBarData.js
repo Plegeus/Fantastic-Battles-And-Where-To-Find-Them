@@ -15,11 +15,6 @@
         cName:"nav-links"
     },
     {
-        title: "signup",
-        url:"/signup",
-        cName:"nav-links"
-    },
-    {
         title: "Account",
         url:"/",
         cName:"nav-links"
