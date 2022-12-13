@@ -1,5 +1,6 @@
 import "./SignupPagesStyles.css";
 import { BsFacebook,BsGoogle } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const SignupPage1Bottom = () => {
 
@@ -24,7 +25,7 @@ const SignupPage1Bottom = () => {
 
 
             <div className="login">
-                <p>Already an account? <a href="#" className="forgotPassword">LOGIN</a></p>
+                <p>Already an account? <Link to="/login" className="forgotPassword">LOGIN</Link></p>
             </div>
         </div>
     )
