@@ -94,6 +94,10 @@
 
     }
 
+    .nav-menu {
+        margin-top: 1rem;
+    }
+
     .nav-links {
         color: white;
         border-radius: 0.4rem;
