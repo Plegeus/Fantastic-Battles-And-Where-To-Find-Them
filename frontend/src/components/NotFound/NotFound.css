@@ -1,0 +1,14 @@
+.not-found {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2rem;
+    background-color: lightblue;
+}
+
+.not-found a {
+    color: rgb(210, 0, 0);
+}
