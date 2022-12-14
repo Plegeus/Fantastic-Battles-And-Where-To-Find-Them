@@ -2,10 +2,11 @@
     padding-bottom: 10px;
     padding-right: 10%;
     width: 100%;
-    
+
 }
 
-.Navbar, .MobileNavbar{
+.Navbar,
+.MobileNavbar {
     top: 0;
     background-color: rgb(46, 46, 46);
     width: 100%;
@@ -21,14 +22,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+
 }
 
 .nav-menu li {
     list-style-type: none;
     display: inline-block;
     padding: 1.5rem 2rem;
-    
+
 }
 
 .nav-links {
@@ -58,31 +59,31 @@
 
 .Navigation .MobileNavbar {
     display: none;
-    
+
 }
 
 
 
-@media (max-width: 990px){
+@media (max-width: 990px) {
     .Navigation .Navbar {
         display: none;
-        
+
     }
 
-    .Navigation .MobileNavbar{
+    .Navigation .MobileNavbar {
         display: flex;
         align-items: center;
-        
+
     }
 
-    .Navigation .MobileNavbar .Hamburger{
+    .Navigation .MobileNavbar .Hamburger {
         position: absolute;
         right: 5%;
         cursor: pointer;
-        
+
     }
-        
-    .Navigation nav ul{
+
+    .Navigation nav ul {
         display: flex;
         flex-direction: column;
         position: absolute;
@@ -90,19 +91,28 @@
         right: 0;
         width: 100%;
         align-items: center;
-        
+
     }
+
     .nav-links {
         color: white;
-        background-color: rgb(46, 46, 46);
         border-radius: 0.4rem;
-        border: 2px solid rgb(75, 74, 74);
+        text-decoration: none;
+        padding: 0.3rem 0.4rem;
+        background-color: rgb(91, 91, 91);
+    }
+
+    .nav-links:hover {
+        background-color: rgb(91, 91, 91);
+        text-decoration: underline;
     }
 
     .Navigation .MobileNavbar .nav-menu {
-        background-color: rgb(46, 46, 46);
+        background-color: rgb(91, 91, 91);
+        box-shadow: 0rem 0.25rem 0.25rem 0px rgba(0, 0, 0, 0.75);
     }
-    .mid{
+
+    .mid {
         background-color: rgb(46, 46, 46);
     }
 }
