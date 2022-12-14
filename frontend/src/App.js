@@ -12,6 +12,7 @@ const App = () => {
     <Router>
       <div className="App">
         <Navigation />
+        <div className="Content">
         <Routes>
           <Route exact path="/" element={<Map />} />
           <Route path="/overview" element={<Overview />} />
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/signup" element={<SignupWithContext />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </div>
       </div>
     </Router>
   );

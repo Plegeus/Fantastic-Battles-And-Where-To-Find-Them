@@ -10,7 +10,7 @@
         cName:"nav-links"
     },
     {
-        title: "login",
+        title: "Login",
         url:"/login",
         cName:"nav-links"
     },
