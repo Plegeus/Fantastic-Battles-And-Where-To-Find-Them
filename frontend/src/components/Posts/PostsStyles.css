@@ -1,0 +1,8 @@
+.postList {
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
+.postList li {
+    display: inline;
+}

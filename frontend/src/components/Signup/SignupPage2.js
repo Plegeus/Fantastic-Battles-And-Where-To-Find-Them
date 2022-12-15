@@ -5,8 +5,7 @@ import "./SignupPagesStyles.css";
 import { useContext } from "react";
 import SignupContext from "./Signup.context";
 
-const SignupPage2 = () => {
-    
+const SignupPage2 = (props) => {    
     function changeType(visibilityBool) {
         setEyeIcon(visibilityBool)
         let inputType = EyeIcon ? "text" : "password";
@@ -37,21 +36,19 @@ const SignupPage2 = () => {
     <div className='SignupPage2'>
 
         <div className="loginRow">
-            <label for="uname" className="form-label">Username</label>
+            <label className="form-label">Username</label>
             <input type="text" placeholder="Enter Username" className="form-input" 
-            value={Username} onChange={(e) => {setUsername(e.target.value) }} required/>
+            value={Username} onChange={(e) => {setUsername(e.target.value) }} />
+            <p className="ErrorMessage">{props.usernameError}</p>
         </div>
 
         <div className="loginRow">
-            <label for="id" className="form-label">Password</label>
+            <label className="form-label">Password</label>
             <input type="password" placeholder="Enter Password" id="psw" className="form-input" 
-            title="Must contain at least 8 or more characters" minlength="8" 
-            value={Password} onChange={(e) => {setPassword(e.target.value) }} required/>
+            title="Must contain at least 8 or more characters" minLength="8" 
+            value={Password} onChange={(e) => {setPassword(e.target.value) }} />
             <span className="passwordEye">{EyeIcon ? eyeClosedIcon : eyeOpenIcon}</span>
-            <div id="message">
-                <h3>Password must contain the following:</h3>
-                <p id="length">Minimum <b>8 characters</b></p>
-            </div>
+            <p className="ErrorMessage">{props.passwordError}</p>
         </div>
 
         <div className="loginBottom">

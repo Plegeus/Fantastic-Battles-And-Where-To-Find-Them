@@ -1,19 +1,12 @@
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
-import Navigation from './components/NavBar/Navigation'
-import SignupWithContext from "./components/Signup/SignupWithContext"
-import Login from "./components/Login/Login"
 import App from "./App.js";
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App/>
-  </React.StrictMode>
-);
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(<App/>);
 
 
 

@@ -1,8 +1,9 @@
 import "./Loginstyles.css";
 import { FiEyeOff,FiEye } from "react-icons/fi";
 import { BsFacebook,BsGoogle } from "react-icons/bs"
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "../User.context";
 
 const Login = () => {
 
@@ -11,6 +12,12 @@ const Login = () => {
         let inputType = EyeIcon ? "text" : "password";
         document.getElementById('psw').type = inputType;
     }
+
+    const {
+        Accestoken,
+        setAccestoken
+      } = useContext(UserContext);   
+
     function login() {
 
         let request = {
@@ -29,6 +36,7 @@ const Login = () => {
           .then(dat => {
             if (JSON.parse(dat).succes) {
               alert("succes!")
+              setAccestoken("insert accestoken here")
             }
             else {
               alert("Wrong username or password!")
@@ -66,12 +74,12 @@ const Login = () => {
 
                 <form className="loginCover">
                     <div className="loginRow">
-                        <label for="email" className="form-label">Email</label>
+                        <label className="form-label">Email</label>
                         <input id="mailaddress" type="email" placeholder="Enter Email" className="form-input" required/>
                     </div>
 
                     <div className="loginRow">
-                        <label for="id" className="form-label">Password</label>
+                        <label className="form-label">Password</label>
                         <input type="password" placeholder="Enter Password" id="psw" className="form-input" required />
                         <span className="passwordEye">{EyeIcon ? eyeClosedIcon : eyeOpenIcon}</span>
                     </div>

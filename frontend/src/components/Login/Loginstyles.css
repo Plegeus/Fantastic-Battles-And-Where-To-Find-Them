@@ -61,7 +61,7 @@ input[type="text"],[type="password"],[type="email"]{
     outline-color: #719ECE;
 }
 
-.loginRow .passwordEye{
+.loginCover .loginRow .passwordEye{
     position: absolute;
     right: 5%;
     top: 45%;
@@ -199,7 +199,7 @@ button:hover {
         display: none;
     }
 
-    .loginRow .passwordEye{
+    .loginCover .loginRow .passwordEye{
         top: 24%;
     }
     .loginText {
@@ -218,7 +218,7 @@ button:hover {
         display: none;
     }
 
-    .loginRow .passwordEye{
+    .loginCover .loginRow .passwordEye{
         top: 20%;
     }
 

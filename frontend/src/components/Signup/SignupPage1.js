@@ -3,8 +3,8 @@ import { useContext } from "react";
 import SignupContext from "./Signup.context";
 
 
-const SignupPage1 = () => {   
-  
+const SignupPage1 = (props) => {   
+ 
   const {
     Email,
     setEmail
@@ -14,9 +14,10 @@ const SignupPage1 = () => {
   return (
     <div className="SignupPage1"> 
         <div className="loginRow">
-            <label for="email" className="form-label">Email</label>
+            <label className="form-label">Email</label>
             <input type="email" placeholder="Enter Email" className="form-input" 
-            value={Email} onChange={(e) => {setEmail(e.target.value) }} required/>
+            value={Email} onChange={(e) => {setEmail(e.target.value) }} />
+            <p className="ErrorMessage">{props.emailError}</p>
         </div>
     </div>
   )
