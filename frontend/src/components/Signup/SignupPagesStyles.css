@@ -104,6 +104,11 @@ button:hover {
     padding-top: 1rem;
 }
 
+.ErrorMessage {
+    color: red;
+    margin-left: 0.5rem;
+}
+
 
 
 @media (max-width: 400px){
