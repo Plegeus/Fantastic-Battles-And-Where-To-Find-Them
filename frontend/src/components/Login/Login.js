@@ -1,8 +1,9 @@
 import "./Loginstyles.css";
 import { FiEyeOff,FiEye } from "react-icons/fi";
 import { BsFacebook,BsGoogle } from "react-icons/bs"
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "../User.context";
 
 const Login = () => {
 
@@ -11,6 +12,12 @@ const Login = () => {
         let inputType = EyeIcon ? "text" : "password";
         document.getElementById('psw').type = inputType;
     }
+
+    const {
+        Accestoken,
+        setAccestoken
+      } = useContext(UserContext);   
+
     function login() {
 
         let request = {
@@ -29,6 +36,7 @@ const Login = () => {
           .then(dat => {
             if (JSON.parse(dat).succes) {
               alert("succes!")
+              setAccestoken("insert accestoken here")
             }
             else {
               alert("Wrong username or password!")
