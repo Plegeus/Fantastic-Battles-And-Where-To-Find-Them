@@ -6,6 +6,7 @@ import { useState, useContext, useEffect } from "react";
 import SignupContext from "./Signup.context";
 
 import "./SignupStepsstyles.css"
+import UserContext from "../User.context";
 
 
 const Signup = () => {
@@ -21,6 +22,11 @@ const Signup = () => {
         setPassword
     } = useContext(SignupContext);
 
+    const {
+        Accestoken,
+        setAccestoken
+      } = useContext(UserContext);   
+
     const [FormErrors, setFormErrors] = useState({});
 
 
@@ -32,6 +38,8 @@ const Signup = () => {
     useEffect(() => {
         if (Object.keys(FormErrors).length === 0) {
             console.log(Email, Password, Username)
+            setAccestoken("insert accestoken here")
+
         }
         else if (!Email || !regex.test(Email)) {
             setPage(1)
