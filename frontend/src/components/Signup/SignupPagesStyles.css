@@ -32,10 +32,10 @@ input[type="text"],[type="password"],[type="email"]{
     outline-color: #719ECE;
 }
 
-.loginRow .passwordEye{
+.SignupPage2 .loginRow .passwordEye{
     position: absolute;
     right: 5%;
-    top: 32%;
+    top: 43%;
 }
 
 
@@ -116,8 +116,8 @@ button:hover {
         display: none;
     }
 
-    .loginRow .passwordEye{
-        top: 13%;
+    .SignupPage2 .loginRow .passwordEye{
+        top: 23%;
     }
 }
 
@@ -126,8 +126,8 @@ button:hover {
         display: none;
     }
 
-    .loginRow .passwordEye{
-        top: 10%;
+    .SignupPage2 .loginRow .passwordEye{
+        top: 23%;
     }
 
 }
