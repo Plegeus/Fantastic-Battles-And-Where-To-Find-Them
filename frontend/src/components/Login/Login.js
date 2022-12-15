@@ -1,8 +1,8 @@
 import "./Loginstyles.css";
 import { FiEyeOff,FiEye } from "react-icons/fi";
-import { BsFacebook,BsGoogle } from "react-icons/bs"
+import { BsFacebook,BsGoogle } from "react-icons/bs";
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import UserContext from "../User.context";
 
 const Login = () => {
@@ -19,31 +19,27 @@ const Login = () => {
       } = useContext(UserContext);   
 
     function login() {
-
-        let request = {
-          "method": "POST",
-          "headers": { 
-            "content-type": "application/json" 
-          },
-          "body": JSON.stringify({
-            username: document.querySelector('#mailaddress').value,
-            password: document.querySelector('#psw').value,
-          }),
-        }
-        
-        fetch("/api/login", request)
-          .then(res => res.json())
-          .then(dat => {
-            if (JSON.parse(dat).succes) {
-              alert("succes!")
-              setAccestoken("insert accestoken here")
-            }
-            else {
-              alert("Wrong username or password!")
-            }
-          })
-        
-      }
+        fetch("/user/login", {
+                "method": "POST",
+                "headers": { 
+                    "content-type": "application/json" 
+                },
+                "body": JSON.stringify({
+                    mailaddress: document.querySelector('#mailaddress').value,
+                    password: document.querySelector('#psw').value,
+                }),
+            })
+            .then(res => {
+                alert("RES")
+            })
+            .then(dat => {
+                alert("DAT")
+            })
+            .catch(err => {
+                alert("ERR")
+                alert(err)
+            })
+    }
 
     const [EyeIcon,setEyeIcon] = useState(true)
 

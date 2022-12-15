@@ -27,9 +27,6 @@ fetch("/api", REQUEST)
     alert(dat)
   })
 
-fetch("/api/foo", {
-  'method': 'get',
-})
 
 
 
