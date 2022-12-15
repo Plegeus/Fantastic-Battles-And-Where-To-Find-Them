@@ -7,6 +7,7 @@ import Overview from "./components/Overview/Overview";
 import NotFound from "./components/NotFound/NotFound";
 import { UserProvider } from './components/User.context';
 import LoggedOutRoutes from "./components/LoggedOutRoutes";
+import Account from "./components/Account/Account";
 
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignupWithContext />} />
               </Route>
+              <Route path="/account" element={<Account />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
