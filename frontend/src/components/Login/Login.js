@@ -66,12 +66,12 @@ const Login = () => {
 
                 <form className="loginCover">
                     <div className="loginRow">
-                        <label for="email" className="form-label">Email</label>
+                        <label className="form-label">Email</label>
                         <input id="mailaddress" type="email" placeholder="Enter Email" className="form-input" required/>
                     </div>
 
                     <div className="loginRow">
-                        <label for="id" className="form-label">Password</label>
+                        <label className="form-label">Password</label>
                         <input type="password" placeholder="Enter Password" id="psw" className="form-input" required />
                         <span className="passwordEye">{EyeIcon ? eyeClosedIcon : eyeOpenIcon}</span>
                     </div>

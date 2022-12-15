@@ -29,16 +29,20 @@ const Signup = () => {
 
     const [FormErrors, setFormErrors] = useState({});
 
+    const [IsSubmitted,setIsSubmitted] = useState(false)
+
 
     const handleRegister = (e) => {
         e.preventDefault()
+        setIsSubmitted(true)
         setFormErrors(handleErrors)
     }
 
     useEffect(() => {
-        if (Object.keys(FormErrors).length === 0) {
+        if (Object.keys(FormErrors).length === 0 && IsSubmitted) {
             console.log(Email, Password, Username)
             setAccestoken("insert accestoken here")
+            setIsSubmitted(false)
 
         }
         else if (!Email || !regex.test(Email)) {
