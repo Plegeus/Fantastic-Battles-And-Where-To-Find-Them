@@ -127,6 +127,12 @@ async function updateDescription(battlename, description) {
   }
 }
 
+async function getById(start, count) {
+  return await connection.query(
+    "SELECT * FROM battles WHERE id >= ? && id < ?", [start, start + count]
+  )
+}
+
 
 module.exports = {
   getBattle,
@@ -137,5 +143,6 @@ module.exports = {
   addTag, 
   removeTag,
   updateDescription,
-  createBattle
+  createBattle,
+  getById
 }
