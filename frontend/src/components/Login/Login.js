@@ -29,9 +29,12 @@ const Login = () => {
             })
             .then(res => {
                 if (res.ok) {
+                    // login succes, receiving access token...
                     res.text().then(tkn => {
                         setAccestoken(tkn)
                     })
+                } else {
+                    // login failed...
                 }
             })
             .catch(err => {
