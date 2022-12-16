@@ -15,16 +15,14 @@ const Signup = () => {
     const [page, setPage] = useState(1)
     const {
         Email,
-        setEmail,
         Username,
-        setUsername,
-        Password,
-        setPassword
+        Password
     } = useContext(SignupContext);
 
     const {
         Accestoken,
-        setAccestoken
+        setAccestoken,
+        setUsername
       } = useContext(UserContext);   
 
     const [FormErrors, setFormErrors] = useState({});

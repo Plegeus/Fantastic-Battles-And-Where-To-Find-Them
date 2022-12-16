@@ -9,7 +9,6 @@ const NavbarList = (props) => {
 
     const {
         Accestoken,
-        setAccestoken
     } = useContext(UserContext);
 
     const [filteredNavBarData,setfilteredNavBarData] = useState(NavBarData.filter(checkLoginState))
