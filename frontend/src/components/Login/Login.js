@@ -18,7 +18,7 @@ const Login = () => {
         setAccestoken
       } = useContext(UserContext);   
 
-    function login() {/*
+    function login() {
         fetch("/user/login", {
                 "method": "POST",
                 "headers": { 
@@ -38,7 +38,7 @@ const Login = () => {
             .catch(err => {
                 alert("ERR")
                 alert(err)
-            })*/
+            })
     }
 
     const [EyeIcon,setEyeIcon] = useState(true)
