@@ -1,7 +1,7 @@
   export const NavBarData = [
     {
         title: "Home",
-        url:"./battleMap.html",
+        url:"./",
         cName:"nav-links"
     },
     {

@@ -22,7 +22,7 @@ const Login = () => {
         document.getElementById('psw').type = inputType;
     }
 
-    const { Accestoken, setAccestoken } = useContext(UserContext);   
+    const { Accestoken, setAccestoken,setUsername } = useContext(UserContext);   
 
     function login() {
         console.log(Email)
