@@ -72,7 +72,7 @@ tr:nth-child(even){
 	width: 8rem;
 	height: 2rem;
 }
-button{
+#btn{
 	position: absolute;
 	z-index: 2;
 	border: 1px solid black;

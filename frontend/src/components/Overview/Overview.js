@@ -7,8 +7,8 @@ const Overview = () => {
   return (
     <div>
       <div id="button-div">
-		<button class="list-btn" onClick='listInator()'><i class="bi-list"> list</i></button>
-		<button class="tile-btn" onClick='tileInator()'><i class="bi-grid-fill">tiles</i></button>
+		<button id='btn' class="list-btn" onClick='listInator()'><i class="bi-list"> list</i></button>
+		<button id='btn' class="tile-btn" onClick='tileInator()'><i class="bi-grid-fill">tiles</i></button>
     </div>
     <div class="filter"> </div> 
     <div id="list-view">
