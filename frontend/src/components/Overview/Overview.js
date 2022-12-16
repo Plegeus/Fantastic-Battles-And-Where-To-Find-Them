@@ -4,14 +4,38 @@ import "./overview-tab.css"
 
 
 const Overview = () => {
+  var mayAdd = false;
+  function showAddScreen() {
+    var tile = document.getElementById('tileView');
+    var lst = document.getElementById('listView');
+    if (tile.style.display == 'block'){
+      lst.style.display = 'block';
+      tile.style.display = 'none';
+      mayAdd = false;
+    }else {
+      mayAdd = true;
+    }
+  }  
+  function showTileScreen() {
+    var tile = document.getElementById('tileView');
+    var lst = document.getElementById('listView');
+    if (tile.style.display == 'block'){
+      
+      mayAdd = false;
+    }else {
+      lst.style.display = 'none';
+      tile.style.display = 'block';
+      mayAdd = true;
+    }
+  } 
   return (
     <div>
       <div id="button-div">
-		<button id='btn' class="list-btn" onClick='listInator()'><i class="bi-list"> list</i></button>
-		<button id='btn' class="tile-btn" onClick='tileInator()'><i class="bi-grid-fill">tiles</i></button>
+		<button id='btn' class="list-btn" onClick={showAddScreen}>List</button>
+    <button id='btn' class="tile-btn" onClick={showTileScreen}>Tile</button>
     </div>
     <div class="filter"> </div> 
-    <div id="list-view">
+    <div id="listView">
       <table id="battle-table"> 
           <thead>
               <tr> 
@@ -26,7 +50,7 @@ const Overview = () => {
           </thead>
       </table> 
     </div>
-    <div id="tile-view" class="grid-container"></div>
+    <div id="tileView" class="grid-container"></div>
     </div>
   )
 }
