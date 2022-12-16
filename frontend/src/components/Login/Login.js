@@ -37,18 +37,17 @@ const Login = () => {
                     password: Password,
                 }),
             })
-            .then(res => {
-                if (res.ok) {
-                    // login succes, receiving access token...
-                    res.text().then(tkn => {
-                        setAccestoken(tkn)
-                    })
+            .then(res => res.json())
+            .then(dat => {
+                if (dat) {
+                    // login succes...
+                    setUsername(dat.username)
+                    setAccestoken(dat.token)
+
                 } else {
                     // login failed...
+
                 }
-            })
-            .catch(err => {
-                alert(err)
             })
     }
 

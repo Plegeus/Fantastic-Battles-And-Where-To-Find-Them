@@ -20,14 +20,14 @@ const Test = () => {
                 password: document.querySelector('#psw').value,
             }),
         })
-        .then(res => {
-            alert(res.status)
-            res.text().then(tkn => {
-              alert(tkn)
-            })
-        })
-        .catch(err => {
-            alert(err)
+        .then(res => res.json())
+        .then(dat => {
+          if (dat) {
+            alert(dat.token)
+            alert(dat.username)
+          } else {
+
+          }
         })
   }
 

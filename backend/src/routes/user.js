@@ -25,7 +25,10 @@ router.post('/login', async (req, res) => {
     // acces token blah blah...
     if (await user.getPassword(username) === password) {
       let token = await acces.encode(username)
-      res.status(200).json(token)
+      res.status(200).json({
+        token: token,
+        username: username,
+      })
       return
     }
   } 
