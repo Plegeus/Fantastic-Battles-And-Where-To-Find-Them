@@ -4,6 +4,8 @@ const router = express.Router()
 
 const user = require('../database/users/queries')
 
+const acces = require('../tokens/access')
+
 
 router.use((req, res, next) => {
   console.log('received request @ user')
@@ -22,15 +24,17 @@ router.post('/login', async (req, res) => {
   if (await user.userExists(username)) {
     // acces token blah blah...
     if (await user.getPassword(username) === password) {
-      //res.status(200).send("logged in!")
-      res.end()
+      let token = await acces.encode(username)
+      console.log(token)
+      res.status(200).json(token)
+      console.log(acces.decode(token))
       return
     }
   } 
   
-  res.end()
+
   // let frontend know this user does not exist...
-  //res.status(401).send("incorrect username or password!")
+  res.status(401).send("incorrect username or password!")
 
 })
 router.post('/register', (req, res) => {

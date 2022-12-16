@@ -4,6 +4,7 @@ import { BsFacebook,BsGoogle } from "react-icons/bs";
 import { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import UserContext from "../User.context";
+import useFetch from "../../Util/useFetch";
 import LoginContext from "./Login.context";
 
 const Login = () => {
@@ -21,10 +22,7 @@ const Login = () => {
         document.getElementById('psw').type = inputType;
     }
 
-    const {
-        Accestoken,
-        setAccestoken
-      } = useContext(UserContext);   
+    const { Accestoken, setAccestoken } = useContext(UserContext);   
 
     function login() {
         console.log(Email)
@@ -40,13 +38,13 @@ const Login = () => {
                 }),
             })
             .then(res => {
-                alert("RES")
-            })
-            .then(dat => {
-                alert("DAT")
+                if (res.ok) {
+                    res.text().then(tkn => {
+                        setAccestoken(tkn)
+                    })
+                }
             })
             .catch(err => {
-                alert("ERR")
                 alert(err)
             })
     }
