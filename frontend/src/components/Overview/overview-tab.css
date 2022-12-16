@@ -95,13 +95,16 @@ tr:nth-child(even){
 }
 
 /* list view*/
-#list-view{
+#listView{
+	display: block;
 	position:absolute;
 	margin-left: 10%;
 	margin-right: 10%;
 	margin-top: 5%;
 }
-/* tile view*/
+#tileView{
+	display: none;
+}
 .grid-container {
 	width:80%;
 	height: max-content;

@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents} from 'react-leaflet'
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents, Rectangle} from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import markerIconPng from "leaflet/dist/images/marker-icon.png"
 import {Icon} from 'leaflet'
@@ -8,15 +8,31 @@ const outerBounds = [
   [-90, -180],
   [90, 180],
 ]
+const rectangle = [
+  [-90, -180],
+  [90, 180],
+]
 
 
 function Map () {
-  
+  var mayAdd = false;
+  var currentMarker;
+  function showAddScreen() {
+    var pane = document.getElementById('add_battle_pane');
+    if (pane.style.display == 'block'){
+      pane.style.display = 'none';
+      mayAdd = false;
+    }else {
+      pane.style.display = 'block';
+      mayAdd = true;
+    }
+  } 
   return (
     <div>
+      
       <div id="center">
         <div id="center_pane"></div>
-        <button id="battleButton" >Add a battle</button>
+        <button id="battleButton" onClick={showAddScreen}>Add a battle</button>
       </div>
 
       
@@ -42,25 +58,26 @@ function Map () {
             </form> 
           </div>
 
-      <MapContainer center={[50,0]} zoom={3}style={{ height: 'calc(100vh - 5rem)', width: '100vw' }} maxBounds={outerBounds} minZoom={2} >
+      <MapContainer center={[50,0]} zoom={3}style={{ height: 'calc(100vh - 5rem)', width: '100vw' }} maxBounds={outerBounds} minZoom={3} >
+        
         <TileLayer
           url='https://api.maptiler.com/maps/topo-v2/{z}/{x}/{y}.png?key=v21B0xhC8tSTZGn1gUwV'
           style={{ height: '100%', width: '100%' }}
-          eventHandlers={{
-            mousemove: () => {
-              console.log('marker clicked')
-            },
-          }}
+          
         />
-        <Marker position={[51.505, -0.09]}icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})} eventHandlers={{
+        
+        <Rectangle bounds={rectangle} eventHandlers={{
         click: (e) => {
-        console.log('marker clicked', e)
+        console.log(mayAdd, e.latlng)
+        
       },
-  }}>
+  }} color='transparent'>
+    <Marker position={[51.505, -0.09]}icon={new Icon({iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]})} >
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
         </Marker>
+    </Rectangle>
       </MapContainer>
 
     </div>
