@@ -19,9 +19,9 @@ const NavbarList = (props) => {
 
     function checkLoginState(data) {
         if (!Accestoken) {
-            return data.title != "Account"
+            return data.title != "My Account"
         } else {
-            return data.title != "Login"
+            return data.title != "Login" && data.title != "Accounts" 
         }
     }
 

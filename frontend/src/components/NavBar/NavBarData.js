@@ -15,8 +15,13 @@
         cName:"nav-links"
     },
     {
-        title: "Account",
+        title: "My Account",
         url:"/account",
+        cName:"nav-links"
+    },
+    {
+        title: "Accounts",
+        url:"/account/SearchUser",
         cName:"nav-links"
     }
 ]

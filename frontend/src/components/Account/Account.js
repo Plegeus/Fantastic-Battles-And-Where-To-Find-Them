@@ -17,8 +17,6 @@ const { name  } = useParams()
         Username
     } = useContext(UserContext);
 
-
-
     return (
         <div className="AccountContainer">
             <div className="Account">
@@ -32,8 +30,6 @@ const { name  } = useParams()
                 {Accestoken && name === Username ?  
                 <div className="LogoutContainer"><Logout/></div> : 
                 <div className="LogoutContainer"><Logout/></div>}    
-
-
             </div>
         </div>
     )
