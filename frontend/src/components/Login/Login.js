@@ -5,8 +5,16 @@ import { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import UserContext from "../User.context";
 import useFetch from "../../Util/useFetch";
+import LoginContext from "./Login.context";
 
 const Login = () => {
+
+    const {
+        Email,
+        setEmail,
+        Password,
+        setPassword
+    } = useContext(LoginContext);
 
     function changeType(visibilityBool) {
         setEyeIcon(visibilityBool)
@@ -17,14 +25,16 @@ const Login = () => {
     const { Accestoken, setAccestoken } = useContext(UserContext);   
 
     function login() {
+        console.log(Email)
+        console.log(Password)
         fetch("/user/login", {
                 "method": "POST",
                 "headers": { 
                     "content-type": "application/json" 
                 },
                 "body": JSON.stringify({
-                    mailaddress: document.querySelector('#mailaddress').value,
-                    password: document.querySelector('#psw').value,
+                    mailaddress: Email,
+                    password: Password,
                 }),
             })
             .then(res => {
@@ -72,12 +82,14 @@ const Login = () => {
                 <form className="loginCover">
                     <div className="loginRow">
                         <label className="form-label">Email</label>
-                        <input id="mailaddress" type="email" placeholder="Enter Email" className="form-input" required/>
+                        <input id="mailaddress" type="email" placeholder="Enter Email" className="form-input" 
+                        value={Email} onChange={(e) => {setEmail(e.target.value) }} required/>
                     </div>
 
                     <div className="loginRow">
                         <label className="form-label">Password</label>
-                        <input type="password" placeholder="Enter Password" id="psw" className="form-input" required />
+                        <input type="password" placeholder="Enter Password" id="psw" className="form-input" 
+                        value={Password} onChange={(e) => {setPassword(e.target.value) }} required />
                         <span className="passwordEye">{EyeIcon ? eyeClosedIcon : eyeOpenIcon}</span>
                     </div>
 
