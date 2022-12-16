@@ -26,7 +26,7 @@ const App = () => {
                 <Route path="/login" element={<LoginProvider><Login /></LoginProvider>} />
                 <Route path="/signup" element={<SignupWithContext />} />
               </Route>
-              <Route path="/account" element={<Account />} />
+              <Route path="/account/:name" element={<Account />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>

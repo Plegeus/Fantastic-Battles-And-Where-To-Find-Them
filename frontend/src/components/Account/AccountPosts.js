@@ -3,7 +3,9 @@ import useFetch from '../../Util/useFetch';
 import Post from "../Posts/Post"
 import "../Posts/PostsStyles.css"
 
-const AccountPosts = () => {
+
+//fetch all posts => filter by username
+const AccountPosts = (props) => {
 
     const [posts, setPosts] = useState([
         { title: 'first blog', victor: "roman guy", vanquished: "some tribe", vicCommander: "caesar", vanCommander: "varus", vicDeaths: 20000, vanDeath: 46000, id: 1 },
@@ -15,6 +17,7 @@ const AccountPosts = () => {
 
     return (
         <div>
+            {props.username}
             <ul className="AccountPostsList">
                 <ul className="TitleList">
                     <p>Title</p>
