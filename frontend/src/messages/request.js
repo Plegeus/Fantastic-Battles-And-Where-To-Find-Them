@@ -1,5 +1,5 @@
 
-export async function send(url, object) {
+export async function send(url, object) {/*
   fetch(url, {
     "method": "POST",
     "headers": { 
@@ -16,5 +16,5 @@ export async function receive(url, callback) {
       console.log(">>> Message received @ " + url + " <<<");
       callback(data);
     }
-  );
+  );*/
 }

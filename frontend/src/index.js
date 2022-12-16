@@ -20,13 +20,13 @@ const REQUEST = {
     password: "123",
   }),
 }
-
+/*
 fetch("/api", REQUEST)
   .then(res => res.json())
   .then(dat => {
     alert(dat)
   })
-
+*/
 
 
 
