@@ -25,24 +25,35 @@ router.post('/login', async (req, res) => {
     // acces token blah blah...
     if (await user.getPassword(username) === password) {
       let token = await acces.encode(username)
-      console.log(token)
       res.status(200).json(token)
-      console.log(acces.decode(token))
       return
     }
   } 
   
-
-  // let frontend know this user does not exist...
+  // User does not exist...
   res.status(401).send("incorrect username or password!")
 
 })
-router.post('/register', (req, res) => {
+router.post('/register', async (req, res) => {
 
   console.log('received post request @ register')
 
+  let mailaddress = req.body.mailaddress
+  let username = req.body.username
+  let password = req.body.password
 
+  if (!await user.userExists(username)) {
 
+    user.createUser(username, mailaddress, password)
+
+    let token = await acces.encode(username)
+    res.status(200).json(token)
+
+    return
+  }
+
+  // user already exists...
+  res.status(409).send('user already exists!')
 
 })
 router.post('/account', (req, res) => {

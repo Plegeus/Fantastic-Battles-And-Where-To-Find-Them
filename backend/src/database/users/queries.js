@@ -43,10 +43,10 @@ async function updatePassword(username, password=null) {
 
 async function createUser(username, email, password) {
   await connection.query(
-    "INSERT INTO users (username) VALUES(?, ?, ?)", [username, email, uuid.v4()]
+    "INSERT INTO users (username, email, uuid) VALUES(?, ?, ?)", [username, email, uuid.v4()]
   )
   await connection.query(
-    "INSERT INTO passwords (username) VALUES(?, ?)", [username, password]
+    "INSERT INTO passwords (username, password) VALUES(?, ?)", [username, password]
   )
 }
 

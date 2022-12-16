@@ -40,10 +40,27 @@ const Signup = () => {
 
     useEffect(() => {
         if (Object.keys(FormErrors).length === 0 && IsSubmitted) {
-            console.log(Email, Password, Username)
-            setAccestoken("insert accestoken here")
+            fetch("/user/register", {
+                "method": "POST",
+                "headers": { 
+                    "content-type": "application/json" 
+                },
+                "body": JSON.stringify({
+                    mailaddress: Email,
+                    password: Password,
+                    username: Username,
+                }),
+            }).then(res => {
+                if (res.ok) {
+                    // register succes, receiving access token...
+                    res.text().then(tkn => {
+                        setAccestoken(tkn)
+                    })
+                } else {
+                    // register failed...
+                }
+            })
             setIsSubmitted(false)
-
         }
         else if (!Email || !regex.test(Email)) {
             setPage(1)
