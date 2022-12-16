@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 
-const useFetch = (url) => {
+const useFetch = (url, request) => {
     const [FetchedData, setFetchedData] = useState();
     const [IsLoading, setIsLoading] = useState(true);
     const [Error, setError] = useState();
 
     useEffect(() => {
-        fetch(url)
+        fetch(url, request)
             .then(res => {
                 if (!res.ok) {
                     throw Error("Could not fetch the data");
@@ -29,3 +29,5 @@ const useFetch = (url) => {
 }
 
 export default useFetch
+
+

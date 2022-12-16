@@ -1,14 +1,13 @@
 
 const PORT = process.env.PORT || 8080
 
-const dotenv = require('dotenv')
-const jwt = require('jsonwebtoken')
-
 const express = require('express')
 const app = express() 
 app.use(require('body-parser').json())
 
-const user = require('./database/users/queries')
+
+const dotenv = require('dotenv')
+dotenv.config()
 
 
 app.use('/user', require('./routes/user'))

@@ -7,26 +7,37 @@ import App from "./App.js";
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(<App/>);
+const Test = () => {
 
+  function login() {
+    fetch("/user/login", {
+            "method": "POST",
+            "headers": { 
+                "content-type": "application/json" 
+            },
+            "body": JSON.stringify({
+                mailaddress: document.querySelector('#mailaddress').value,
+                password: document.querySelector('#psw').value,
+            }),
+        })
+        .then(res => {
+            alert(res.status)
+            res.text().then(tkn => {
+              alert(tkn)
+            })
+        })
+        .catch(err => {
+            alert(err)
+        })
+  }
 
-
-const REQUEST = {
-  'method': 'POST',
-  'headers': {
-    "content-type": 'application/json'
-  },
-  "body": JSON.stringify({
-    username: "Plegeus",
-    password: "123",
-  }),
+  return <div>
+    <input id='mailaddress' type='email'></input>
+    <input id='psw' type='email'></input>
+    <input type='button' onClick={ login }></input>
+  </div>
 }
-
-fetch("/api", REQUEST)
-  .then(res => res.json())
-  .then(dat => {
-    alert(dat)
-  })
-
+//root.render(<Test/>)
 
 
 

@@ -1,7 +1,8 @@
 
 const database = require('./../database')
-
 const connection = database.makeConnection("fbwftUsers")
+
+const uuid = require('uuid')
 
 
 async function getUserByMail(mailaddress) {
@@ -42,11 +43,20 @@ async function updatePassword(username, password=null) {
 
 async function createUser(username, email, password) {
   await connection.query(
-    "INSERT INTO users (username) VALUES(?)", [username, email]
+    "INSERT INTO users (username) VALUES(?, ?, ?)", [username, email, uuid.v4()]
   )
   await connection.query(
-    "INSERT INTO passwords (username) VALUES(?)", [username, password]
+    "INSERT INTO passwords (username) VALUES(?, ?)", [username, password]
   )
+}
+
+async function getUuid(username) {
+
+  let q = await connection.query(
+    "SELECT uuid FROM users WHERE username = ?", [username]
+  )
+
+  return q[0].uuid
 }
 
 async function userExists(username) {
@@ -69,5 +79,6 @@ module.exports = {
   updateUser,
   updatePassword,
   createUser,
-  userExists
+  userExists,
+  getUuid
 }
