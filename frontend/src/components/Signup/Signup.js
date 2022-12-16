@@ -131,8 +131,6 @@ const Signup = () => {
                         page === 1 ? <SignupPage1Bottom /> : null
                     }
 
-
-
                     <div className="SignupSteps">
                         <span id="circle1" className="circle"></span>
                         <span id="circle2" className="circle"></span>

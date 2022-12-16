@@ -4,17 +4,17 @@ const database = require('./../database')
 const connection = database.makeConnection("fbwftUsers")
 
 
-async function getUser(username) {
+async function getUserByMail(mailaddress) {
   
   let q = await connection.query(
-    "SELECT * FROM users WHERE username = ?", [username]
+    "SELECT * FROM users WHERE email = ?", [mailaddress]
   )
 
   if (q.length === 0) {
     return false
   }
 
-  return q[0]
+  return q[0].username
 }
 async function getPassword(username) {
 
@@ -29,7 +29,7 @@ async function getPassword(username) {
   return q[0].password
 }
 
-async function updateUser(username, email=null) {
+async function updateUser(username, email) {
   await connection.query(
     "UPDATE users SET email = ? WHERE username = ?", [email, username] 
   )
@@ -49,11 +49,25 @@ async function createUser(username, email, password) {
   )
 }
 
+async function userExists(username) {
+
+  let q = await connection.query(
+    "SELECT * FROM users WHERE username = ?", [username]
+  )
+
+  if (q.length === 0) {
+    return false
+  }
+
+  return q[0]
+}
+
 
 module.exports = {
-  getUser,
+  getUserByMail,
   getPassword,
   updateUser,
   updatePassword,
-  createUser
+  createUser,
+  userExists
 }
