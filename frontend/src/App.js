@@ -8,6 +8,7 @@ import NotFound from "./components/NotFound/NotFound";
 import { UserProvider } from './components/User.context';
 import LoggedOutRoutes from "./components/LoggedOutRoutes";
 import Account from "./components/Account/Account";
+import "./app.css"
 
 
 const App = () => {
