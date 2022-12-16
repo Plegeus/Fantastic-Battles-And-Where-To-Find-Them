@@ -25,8 +25,8 @@ const Login = () => {
     const { Accestoken, setAccestoken,setUsername } = useContext(UserContext);   
 
     function login() {
-        console.log(Email)
-        console.log(Password)
+        console.log(Email);
+        console.log(Password);
         fetch("/user/login", {
                 "method": "POST",
                 "headers": { 

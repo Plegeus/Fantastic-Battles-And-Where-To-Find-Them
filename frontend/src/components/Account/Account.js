@@ -10,7 +10,7 @@ import AccountPosts from "./AccountPosts"
 
 //Select all users
 const Account = () => {
-const { name  } = useParams()
+    const { name } = useParams()
 
     const {
         Accestoken,
@@ -22,14 +22,15 @@ const { name  } = useParams()
             <div className="Account">
                 <p> {name} </p>
                 <SearchBar placeholder="Enter an Account Name..." starturl="/account/" data={["test", "test2", "test3", "test4", "test5", "test7", "test8", "test9"]} />
-                {name !== "SearchUser" ? (<div>
-                    <AccountInformation username={name}/>
-                    <AccountPosts username={name}/>
-                </div>) :
-                    null}
-                {Accestoken && name === Username ?  
-                <div className="LogoutContainer"><Logout/></div> : 
-                <div className="LogoutContainer"><Logout/></div>}    
+                {name !== "SearchUser" ?
+                    (<div>
+                        <AccountInformation username={name} />
+                        <AccountPosts username={name} />
+                    </div>) :
+                    test}
+                {Accestoken && name === Username ?
+                    <div className="LogoutContainer"><Logout /></div> :
+                    <div className="LogoutContainer"><Logout /></div>}
             </div>
         </div>
     )

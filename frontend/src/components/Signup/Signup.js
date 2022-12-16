@@ -53,6 +53,7 @@ const Signup = () => {
                     // register succes, receiving access token...
                     res.text().then(tkn => {
                         setAccestoken(tkn)
+                        setUsername(Username)
                     })
                 } else {
                     // register failed...
