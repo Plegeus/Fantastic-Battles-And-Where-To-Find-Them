@@ -1,13 +1,13 @@
-import Post from "../Posts/Post"
 import AccountInformation from "./AccountInformation"
 import "./AccountInformationStyles.css"
+import AccountPosts from "./AccountPosts"
 
 const Account = () => {
     return (
         <div className="AccountContainer">
             <div className="Account">
                 <AccountInformation />
-                <Post/>
+                <AccountPosts/>
             </div>
         </div>
     )

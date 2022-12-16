@@ -1,8 +1,20 @@
-.postList {
+.AccountPostsList {
     display: flex;
-    list-style: none;
-    justify-content: space-around;
+    flex-direction: column;
+    background-color: #7a7d7d;
 }
-.postList li {
+
+.AccountPostsList li {
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.postList, .TitleList {
+    display: flex;
+}
+.postList p, .TitleList p {
     display: inline;
+    margin-right: 5rem;
 }

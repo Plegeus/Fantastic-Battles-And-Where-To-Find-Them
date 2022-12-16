@@ -13,7 +13,7 @@ const AccountInformation = () => {
                 <h2>Username</h2>
                 <h4 className="emailInformation" >example@gmail.com</h4>
                 <div className="Rating">
-                    <p>Rating: 3.75/5</p>
+                    <p>Likes: 1203</p>
                 </div>
                 <div className="AccountDescription">
                     <h4 className="TitleDescription">Account Description</h4>
