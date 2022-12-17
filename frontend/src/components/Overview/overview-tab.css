@@ -30,7 +30,7 @@
 
 /* table */
 table{
- position: relative;
+ position: absolute;
  z-index: 2;
  top: 50%;
  width: 60%;
@@ -68,7 +68,7 @@ tr:nth-child(even){
 	position: absolute;
 	margin-top: 1rem;
 	margin-left: 10%;
-	
+	flex-direction: rows;
 	width: 8rem;
 	height: 2rem;
 }
@@ -124,7 +124,7 @@ tr:nth-child(even){
   
 .grid-item {
 	width: 80%;
-	background-color: #ffcdd2;;
+	background-color: #ffcdd2;
 	border: 1px solid rgba(0, 0, 0, 0.8);
 	padding: 20px;
 	font-size: 20px;
@@ -141,3 +141,69 @@ tr:nth-child(even){
 	z-index: 3;
 }
 
+.grid-item:hover {
+	background-color: #ec3244;
+}
+
+
+a{
+	text-decoration: none;
+	color:black;
+}
+.dropbtn {
+	min-width: 8rem;
+	
+	background-color: #e53935;
+	color: white;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	z-index: 700;
+	display: flex;
+  }
+  
+  .dropdown {
+	margin-top: 1rem;
+	max-width: 8rem;
+	top: 1rem;
+	position: relative;
+	display: inline-block;
+	z-index: 700;
+	flex-direction: column;
+  }
+  
+  .dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 7rem;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 701;
+  }
+  
+  .dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	z-index: 700;
+  }
+  
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  .dropdown:hover .dropbtn {background-color: #e72d2a;}
+
+  #times{
+	z-index: 600;
+	display: none;
+  }
+  #nations{
+	z-index: 600;
+	display: none;
+  }
+  #commanders{
+	z-index: 600;
+	display: none;
+  }
