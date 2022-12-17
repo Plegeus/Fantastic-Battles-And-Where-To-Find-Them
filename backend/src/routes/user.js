@@ -26,8 +26,10 @@ router.post('/login', async (req, res) => {
     // acces token blah blah...
     if (await user.getPassword(username) === password) {
       let token = await acces.encode(username)
+      let refresh = await refresh.encode(username)
       res.status(200).json({
         token: token,
+        refresh: refresh,
         username: username,
       })
       return
@@ -70,8 +72,23 @@ router.get('/names', async (req, res) => {
 
 })
 
-router.post('/refresh', (req, res) => {
+router.post('/refresh', async (req, res) => {
 
+  let r = req.authorization
+  if (!r) {
+    res.status(401).send('Unauthorized...')
+    return
+  }
+
+  let decode = refresh.decode(r)
+  if (decode) {
+    let username = await user.getByUuid(decode)
+    let token = acces.encode(username)
+    res.status(200).json(token)
+    return
+  }
+
+  res.status(401).send('Refresh token expired, login required.')
 
 })
 
