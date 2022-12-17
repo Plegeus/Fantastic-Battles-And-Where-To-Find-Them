@@ -24,7 +24,7 @@ async function getTags(battlename) {
   )
 
   if (q.length === 0) {
-    return null
+    return false
   }
 
   return q
@@ -134,6 +134,46 @@ async function getById(start, count) {
 }
 
 
+async function filter(f) {
+
+  // https://stackoverflow.com/questions/10829812/sql-query-where-value-of-another-table
+
+  stat = "SELECT id FROM battles"
+  props = []
+
+  let b = await getBattle('Battle 1')
+  //console.log(b)
+
+  if (f.tags && f.tags.length > 0) {
+    stat = stat + " INNER JOIN tags ON battles.battlename = tags.battlename WHERE (0 = 1"
+    for (i = 0; i < f.tags.length; i++) {
+      let t = f.tags[i]
+      console.log("tag: " + t)
+      stat = stat + " || tag = ?"
+      props.push(t)
+    }
+    stat = stat + ")"
+  } else {
+    stat = stat + " WHERE 1 = 1"
+  }
+
+  if (f.date) {
+    let date = f.date + "-12-31"
+    stat = stat + " && date = ?"
+    props.push(date)
+  }
+  if (f.deaths) {
+    stat = stat + " && winning_deaths + losing_deaths >= ?"
+    props.push(f.deaths)
+  }
+
+  //console.log(stat)
+  //console.log(props)
+
+  return (await connection.query(stat, props)).map(v => v.id)
+}
+
+
 module.exports = {
   getBattle,
   getTags,
@@ -144,5 +184,6 @@ module.exports = {
   removeTag,
   updateDescription,
   createBattle,
-  getById
+  getById,
+  filter
 }

@@ -59,8 +59,22 @@ router.post('/register', async (req, res) => {
   res.status(409).send('user already exists!')
 
 })
-router.post('/account', (req, res) => {
-  console.log('received post request @ account')
+router.get('/account/:username', (req, res) => {
+
+  console.log('received get request @ account')
+
+  let username = req.body.userame
+
+  res.json({
+    battles: ['Battle 1', 'Battle 2']
+  })
+
+})
+router.get('/names', (req, res) => {
+  
+  console.log('received get request @ names')
+
+  res.json(['Rob', 'Robbe', 'Timo'])
 
 })
 
