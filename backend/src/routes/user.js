@@ -59,22 +59,26 @@ router.post('/register', async (req, res) => {
   res.status(409).send('user already exists!')
 
 })
-router.get('/account/:username', (req, res) => {
+router.get('/account/:username', async (req, res) => {
 
   console.log('received get request @ account')
 
-  let username = req.body.userame
+  let username = req.params.username
 
-  res.json({
-    battles: ['Battle 1', 'Battle 2']
-  })
+  let u = await user.getUser(username)
+  u.battles = await user.getBattles(username)
+  u.uuid = undefined
+
+  res.json(u)
 
 })
-router.get('/names', (req, res) => {
+router.get('/names', async (req, res) => {
   
   console.log('received get request @ names')
 
-  res.json(['Rob', 'Robbe', 'Timo'])
+  res.json((await user.allUsers()).map(
+    u => u.username
+  ))
 
 })
 

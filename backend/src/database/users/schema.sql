@@ -7,6 +7,11 @@ CREATE TABLE passwords (
   password VARCHAR(32) NOT NULL
 );
 
+CREATE TABLE battles (
+  username VARCHAR(32) NOT NULL,
+  battlename VARCHAR(128) NOT NULL
+);
+
 CREATE TABLE users (
   username VARCHAR(32) PRIMARY KEY NOT NULL,
   email VARCHAR(256) NOT NULL,
@@ -21,5 +26,11 @@ INSERT INTO users (username, email, uuid) VALUES('Sauron', 'my.precious@lotr.com
 INSERT INTO passwords (username, password) VALUES('Plegeus', '123');
 INSERT INTO passwords (username, password) VALUES('Bilbo', '456');
 INSERT INTO passwords (username, password) VALUES('Sauron', '789');
+
+INSERT INTO battles (username, battlename) VALUES('Bilbo', 'Battle of Dunkirk');
+INSERT INTO battles (username, battlename) VALUES('Bilbo', 'Battle 1');
+INSERT INTO battles (username, battlename) VALUES('Plegeus', 'Battle 2');
+INSERT INTO battles (username, battlename) VALUES('Sauron', 'Battle 3');
+INSERT INTO battles (username, battlename) VALUES('Sauron', 'Battle 4');
 
 

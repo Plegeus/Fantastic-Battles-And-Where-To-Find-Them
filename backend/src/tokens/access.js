@@ -9,7 +9,7 @@ const EXPIRES = 60 * 60
 async function encode(username) {
   return jwt.sign({
     date: new Date().getTime(),
-    uuid: await user.getUuid(username)
+    uuid: await user.getUser(username).uuid
   }, KEY)
 }
 function decode(token) {

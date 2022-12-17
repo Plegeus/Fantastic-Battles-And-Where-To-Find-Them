@@ -5,18 +5,37 @@ const connection = database.makeConnection("fbwftUsers")
 const uuid = require('uuid')
 
 
+async function allUsers() {
+  return await connection.query(
+    "SELECT * FROM users"
+  )
+}
+
+async function getUser(username) {
+
+  let q = await connection.query(
+    "SELECT * FROM users WHERE username = ?", [username]
+  )
+
+  if (q.length === 1) {
+    return q[0]
+  }
+
+  throw new Error("A username may onlu occur once!")
+}
 async function getUserByMail(mailaddress) {
   
   let q = await connection.query(
     "SELECT * FROM users WHERE email = ?", [mailaddress]
   )
 
-  if (q.length === 0) {
-    return false
+  if (q.length === 1) {
+    return q[0]
   }
 
-  return q[0].username
+  throw new Error("A username may onlu occur once!")
 }
+
 async function getPassword(username) {
 
   let q = await connection.query(
@@ -30,16 +49,6 @@ async function getPassword(username) {
   return q[0].password
 }
 
-async function updateUser(username, email) {
-  await connection.query(
-    "UPDATE users SET email = ? WHERE username = ?", [email, username] 
-  )
-}
-async function updatePassword(username, password=null) {
-  await connection.query(
-    "UPDATE passwords SET password = ? WHERE username = ?", [password, username]
-  )
-}
 
 async function createUser(username, email, password) {
   await connection.query(
@@ -50,13 +59,17 @@ async function createUser(username, email, password) {
   )
 }
 
-async function getUuid(username) {
+async function getByUuid(uuid) {
 
   let q = await connection.query(
-    "SELECT uuid FROM users WHERE username = ?", [username]
+    "SELECT * FROM users WHERE uuid = ?", [uuid]
   )
 
-  return q[0].uuid
+  if (q.length === 1) {
+    return q[0]
+  }
+
+  throw new Error("A username may onlu occur once!")
 }
 
 async function userExists(username) {
@@ -72,13 +85,24 @@ async function userExists(username) {
   return q[0]
 }
 
+async function getBattles(username) {
+
+  let q = await connection.query(
+    "SELECT battlename FROM battles WHERE username = ?", [username]
+  )
+  
+  return q.map(b => b.battlename)
+
+}
+
 
 module.exports = {
   getUserByMail,
   getPassword,
-  updateUser,
-  updatePassword,
   createUser,
   userExists,
-  getUuid
+  getByUuid,
+  allUsers,
+  getUser,
+  getBattles
 }

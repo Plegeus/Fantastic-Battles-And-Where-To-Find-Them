@@ -40,7 +40,7 @@ const Test = () => {
 }
 //root.render(<Test/>)
 
-fetch("/battles/filter", {
+/*fetch("/battles/filter", {
   'method': 'POST',
   'headers': {
     'content-type': 'application/json'
@@ -49,10 +49,16 @@ fetch("/battles/filter", {
     deaths: 10000,
     tags: ['carrot'],
   })
+})*/
+
+fetch("user/account/Bilbo", {
+  'method': "GET"
+}).then(res => res.json()).then(dat => {
+  alert(dat.rating)
 })
 
 //ReactDOM.render(<Navigation />, document.getElementById('top_pane'));
-//ReactDOM.render(<SignupWithContext/>, document.getElementById('mid'));
+//ReactDOM.render(<SignupWithContext/>, document.getElementById('mid'))ß;
 //ReactDOM.render(<Login />, document.getElementById('mid'));
 
 
