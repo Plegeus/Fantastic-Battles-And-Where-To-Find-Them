@@ -40,7 +40,16 @@ const Test = () => {
 }
 //root.render(<Test/>)
 
-
+fetch("/battles/filter", {
+  'method': 'POST',
+  'headers': {
+    'content-type': 'application/json'
+  },
+  'body': JSON.stringify({
+    deaths: 10000,
+    tags: ['carrot'],
+  })
+})
 
 //ReactDOM.render(<Navigation />, document.getElementById('top_pane'));
 //ReactDOM.render(<SignupWithContext/>, document.getElementById('mid'));

@@ -20,6 +20,13 @@ router.get('/count/:start/:count', async (req, res) => {
   res.status(200).json(await battle.getById(start, count))
 
 })
+router.post('/filter', async (req, res) => {
+
+  console.log('received get request @ filter')
+
+  console.log(await battle.filter(req.body))
+
+})
 
 module.exports = router
 
