@@ -71,14 +71,50 @@ const Overview = () => {
     
   } 
   return (
-    <div>
+    <div id="body">
       <div id="button-div">
 		    <button id='btn' class="list-btn" onClick={showListScreen}>List</button>
         <button id='btn' class="tile-btn" onClick={showTileScreen}>Tile</button>
+        
+        <div class="dropdown">
+          <button  class="dropbtn">Type</button>
+          <div  class="dropdown-content">
+            <a href="#" onClick={showCommanderScreen}>Commander</a>
+            <a href="#" onClick={showNationScreen}>Nation</a>
+            <a href="#" onClick={showPeriodScreen}>Period</a>
+          </div>
+        </div>
+        <div id='commanders' class="dropdown">
+          <button  class="dropbtn">Commanders</button>
+          <div class="dropdown-content">
+            <a href="#">Julius Caesar</a>
+            <a href="#">Rambo</a>
+            <a href="#">Connect this with backend</a>
+          </div>
+        </div>
+        <div id='nations' class="dropdown">
+          <button class="dropbtn">Nations</button>
+          <div class="dropdown-content">
+            <a href="#">Rome</a>
+            <a href="#">Gaul</a>
+            <a href="#">backend</a>
+          </div>
+        </div>
+        <div id='times' class="dropdown">
+          <button class="dropbtn">Periods</button>
+          <div class="dropdown-content">
+            <a href="#">Prehistory</a>
+            <a href="#">Antiquity</a>
+            <a href="#">Middle Ages</a>
+            <a href="#">Renaissance</a>
+            <a href="#">New Times</a>
+            <a href="#">Newest Times</a>
+            <a href="#">Own Times</a>
+          </div>
+        </div>
       </div>
       
     
-    <div class="filter"> </div> 
     <div id="listView">
       <table id="battle-table"> 
           <thead>
@@ -95,49 +131,13 @@ const Overview = () => {
       </table> 
     </div>
     <div id="tileView" class="grid-container">
-      <a class="grid-item" href="login">Away down south</a>
-      <a class="grid-item">in the land of traitors</a>
-      <a class="grid-item">rattlesnakes and alligators</a>
-      <a class="grid-item">right away</a>
-      <a class="grid-item">come away</a>
-      <a class="grid-item">right away</a>
-      <a class="grid-item">come away</a>
-    </div>
-    <div class="dropdown">
-        <button  class="dropbtn">Type</button>
-        <div  class="dropdown-content">
-          <a href="#" onClick={showCommanderScreen}>Commander</a>
-          <a href="#" onClick={showNationScreen}>Nation</a>
-          <a href="#" onClick={showPeriodScreen}>Period</a>
-        </div>
-      </div>
-      <div id='commanders' class="dropdown">
-        <button  class="dropbtn">Commanders</button>
-        <div class="dropdown-content">
-          <a href="#">Julius Caesar</a>
-          <a href="#">Rambo</a>
-          <a href="#">Connect this with backend</a>
-        </div>
-        </div>
-      <div id='nations' class="dropdown">
-        <button class="dropbtn">Nations</button>
-        <div class="dropdown-content">
-          <a href="#">Rome</a>
-          <a href="#">Gaul</a>
-          <a href="#">backend</a>
-        </div>
-      </div>
-        <div id='times' class="dropdown">
-        <button class="dropbtn">Periods</button>
-        <div class="dropdown-content">
-          <a href="#">Prehistory</a>
-          <a href="#">Antiquity</a>
-          <a href="#">Middle Ages</a>
-          <a href="#">Renaissance</a>
-          <a href="#">New Times</a>
-          <a href="#">Newest Times</a>
-          <a href="#">Own Times</a>
-        </div>
+          <a class="grid-item" href="login">Away down south</a>
+          <a class="grid-item">in the land of traitors</a>
+          <a class="grid-item">rattlesnakes and alligators</a>
+          <a class="grid-item">right away</a>
+          <a class="grid-item">come away</a>
+          <a class="grid-item">right away</a>
+          <a class="grid-item">come away</a>
         </div>
     </div>
     
