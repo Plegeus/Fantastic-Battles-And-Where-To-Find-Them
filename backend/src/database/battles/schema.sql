@@ -1,4 +1,6 @@
 
+DROP DATABASE fbwftBattles;
+
 CREATE DATABASE fbwftBattles;
 USE fbwftBattles;
 

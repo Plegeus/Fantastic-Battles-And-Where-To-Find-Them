@@ -1,4 +1,6 @@
 
+DROP DATABASE fbwftUsers;
+
 CREATE DATABASE fbwftUsers;
 USE fbwftUsers;
 
