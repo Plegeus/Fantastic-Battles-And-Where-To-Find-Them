@@ -127,13 +127,6 @@ async function updateDescription(battlename, description) {
   }
 }
 
-async function getById(start, count) {
-  return await connection.query(
-    "SELECT * FROM battles WHERE id >= ? && id < ?", [start, start + count]
-  )
-}
-
-
 async function filter(f) {
 
   // https://stackoverflow.com/questions/10829812/sql-query-where-value-of-another-table
@@ -184,6 +177,5 @@ module.exports = {
   removeTag,
   updateDescription,
   createBattle,
-  getById,
   filter
 }

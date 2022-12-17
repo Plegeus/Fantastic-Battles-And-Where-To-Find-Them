@@ -38,8 +38,9 @@ router.use(async (req, res, next) => {
 
 })
 
-router.post('/edit', async (req, res) => {
-  
+router.post('/edit/:username', async (req, res) => {
+  console.log('received post request @ edit')
+  await user.updateUser(req.params.username, req.body)
 })
 
 

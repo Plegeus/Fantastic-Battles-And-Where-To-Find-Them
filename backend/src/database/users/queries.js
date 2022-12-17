@@ -90,19 +90,29 @@ async function userExists(username) {
 
 async function updateUser(username, values) {
   if (values.password) {
-
+    await connection.query(
+      "" 
+    )
   }
   if (values.username) {
-
+    await connection.query(
+      "" 
+    )
   }
   if (values.email) {
-
+    await connection.query(
+      "" 
+    )
   }
   if (values.rating) {
-
+    await connection.query(
+      "" 
+    )
   }
   if (values.bio) {
-
+    await connection.query(
+      "" 
+    )
   }
 }
 
