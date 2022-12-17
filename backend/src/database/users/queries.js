@@ -68,8 +68,11 @@ async function getByUuid(uuid) {
   if (q.length === 1) {
     return q[0]
   }
+  if (q.length === 0) {
+    return null
+  }
 
-  throw new Error("A username may onlu occur once!")
+  throw new Error("A username may only occur once!")
 }
 
 async function userExists(username) {

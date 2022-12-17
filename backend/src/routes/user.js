@@ -5,6 +5,7 @@ const router = express.Router()
 const user = require('../database/users/queries')
 
 const acces = require('../tokens/access')
+const refresh = require('../tokens/refresh')
 
 
 router.use((req, res, next) => {
@@ -59,19 +60,6 @@ router.post('/register', async (req, res) => {
   res.status(409).send('user already exists!')
 
 })
-router.get('/account/:username', async (req, res) => {
-
-  console.log('received get request @ account')
-
-  let username = req.params.username
-
-  let u = await user.getUser(username)
-  u.battles = await user.getBattles(username)
-  u.uuid = undefined
-
-  res.json(u)
-
-})
 router.get('/names', async (req, res) => {
   
   console.log('received get request @ names')
@@ -82,6 +70,10 @@ router.get('/names', async (req, res) => {
 
 })
 
+router.post('/refresh', (req, res) => {
+
+
+})
 
 module.exports = router
 

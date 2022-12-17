@@ -51,10 +51,14 @@ const Test = () => {
   })
 })*/
 
-fetch("user/account/Bilbo", {
+fetch("/user/names", {
   'method': "GET"
 }).then(res => res.json()).then(dat => {
-  alert(dat.rating)
+  alert(dat)
+})
+
+fetch("/account/refresh", {
+  'method': 'POST'
 })
 
 //ReactDOM.render(<Navigation />, document.getElementById('top_pane'));
