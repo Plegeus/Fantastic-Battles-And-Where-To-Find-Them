@@ -32,7 +32,7 @@ const Account = () => {
                 {name !== "SearchUser" ?
                     (<div>
                         <AccountInformation UsernameAccountPage={name} Accestoken={Accestoken} Username={Username}/>
-
+                        <AccountPosts UsernameAccountPage={name} Accestoken={Accestoken} Username={Username}/>
                     </div>) :
                     ""}
                 {Accestoken && name === Username ?
