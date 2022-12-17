@@ -22,10 +22,13 @@ router.get('/count/:start/:count', async (req, res) => {
 })
 router.post('/filter', async (req, res) => {
 
-  console.log('received get request @ filter')
+  console.log('received post request @ filter')
 
   console.log(await battle.filter(req.body))
 
+})
+router.get('/name/:name', async (req, res) => {
+  res.json(await battle.getBattle(req.params.name))
 })
 
 module.exports = router
