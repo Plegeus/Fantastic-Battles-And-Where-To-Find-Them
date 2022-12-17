@@ -9,6 +9,7 @@ const NavbarList = (props) => {
 
     const {
         Accestoken,
+        Username
     } = useContext(UserContext);
 
     const [filteredNavBarData,setfilteredNavBarData] = useState(NavBarData.filter(checkLoginState))
@@ -30,7 +31,11 @@ const NavbarList = (props) => {
             {filteredNavBarData.map((value, index) => {
                 return (
                     <li key={index} onClick={() => { props.isMobile && props.closeMobileMenu() }}>
+                        {Accestoken && value.title === "My Account" ? 
+                        <Link to={value.url + Username} className={value.cName}>{value.title}</Link> : 
                         <Link to={value.url} className={value.cName}>{value.title}</Link>
+                        }
+                        
                     </li>
                 );
             })}

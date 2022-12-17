@@ -27,10 +27,10 @@ const Account = () => {
                         <AccountInformation username={name} />
                         <AccountPosts username={name} />
                     </div>) :
-                    test}
+                    ""}
                 {Accestoken && name === Username ?
                     <div className="LogoutContainer"><Logout /></div> :
-                    <div className="LogoutContainer"><Logout /></div>}
+                    null}
             </div>
         </div>
     )

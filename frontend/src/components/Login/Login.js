@@ -1,6 +1,6 @@
 import "./Loginstyles.css";
-import { FiEyeOff,FiEye } from "react-icons/fi";
-import { BsFacebook,BsGoogle } from "react-icons/bs";
+import { FiEyeOff, FiEye } from "react-icons/fi";
+import { BsFacebook, BsGoogle } from "react-icons/bs";
 import { useContext, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import UserContext from "../User.context";
@@ -22,21 +22,45 @@ const Login = () => {
         document.getElementById('psw').type = inputType;
     }
 
-    const { Accestoken, setAccestoken,setUsername } = useContext(UserContext);   
+    const { Accestoken, setAccestoken, setUsername } = useContext(UserContext);
+
+    const loginv2 = (e) => {
+        e.preventDefault()
+        fetch("/user/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                mailaddress: Email,
+                password: Password
+            })
+        }).then(res => res.json())
+            .then(dat => {
+                console.log(dat);
+                if (dat) {
+                    // login succes...
+                    setUsername(dat.username)
+                    setAccestoken(dat.token)
+
+                } else {
+                    // login failed...
+
+                }
+            })
+    }
 
     function login() {
         console.log(Email);
         console.log(Password);
         fetch("/user/login", {
-                "method": "POST",
-                "headers": { 
-                    "content-type": "application/json" 
-                },
-                "body": JSON.stringify({
-                    mailaddress: Email,
-                    password: Password,
-                }),
-            })
+            "method": "POST",
+            "headers": {
+                "content-type": "application/json"
+            },
+            "body": JSON.stringify({
+                mailaddress: Email,
+                password: Password,
+            }),
+        })
             .then(res => res.json())
             .then(dat => {
                 if (dat) {
@@ -51,24 +75,24 @@ const Login = () => {
             })
     }
 
-    const [EyeIcon,setEyeIcon] = useState(true)
+    const [EyeIcon, setEyeIcon] = useState(true)
 
-    const eyeOpenIcon = <FiEye className="EyeIcon" 
-                            size="2rem" color="gray"
-                            onClick={() => changeType(!EyeIcon)}
-                            />
-    const eyeClosedIcon = <FiEyeOff className="EyeIcon" 
-                            size="2rem" color="gray"
-                            onClick={() => changeType(!EyeIcon)}
-                            />
+    const eyeOpenIcon = <FiEye className="EyeIcon"
+        size="2rem" color="gray"
+        onClick={() => changeType(!EyeIcon)}
+    />
+    const eyeClosedIcon = <FiEyeOff className="EyeIcon"
+        size="2rem" color="gray"
+        onClick={() => changeType(!EyeIcon)}
+    />
 
-    const facebookIcon = <BsFacebook className="EyeIcon" 
-                            size="2.3rem" color="blue"
-                            />                    
-    
-    const googleIcon =  <BsGoogle className="EyeIcon" 
-                        size="2.3rem" color="red"
-                        />                          
+    const facebookIcon = <BsFacebook className="EyeIcon"
+        size="2.3rem" color="blue"
+    />
+
+    const googleIcon = <BsGoogle className="EyeIcon"
+        size="2.3rem" color="red"
+    />
 
 
     return (
@@ -78,31 +102,31 @@ const Login = () => {
                     <h1>Login</h1>
                 </div>
 
-                <form className="loginCover">
+                <form className="loginCover" onSubmit={loginv2}>
                     <div className="loginRow">
                         <label className="form-label">Email</label>
-                        <input id="mailaddress" type="email" placeholder="Enter Email" className="form-input" 
-                        value={Email} onChange={(e) => {setEmail(e.target.value) }} required/>
+                        <input id="mailaddress" type="email" placeholder="Enter Email" className="form-input"
+                            value={Email} onChange={(e) => { setEmail(e.target.value) }} required />
                     </div>
 
                     <div className="loginRow">
                         <label className="form-label">Password</label>
-                        <input type="password" placeholder="Enter Password" id="psw" className="form-input" 
-                        value={Password} onChange={(e) => {setPassword(e.target.value) }} required />
+                        <input type="password" placeholder="Enter Password" id="psw" className="form-input"
+                            value={Password} onChange={(e) => { setPassword(e.target.value) }} required />
                         <span className="passwordEye">{EyeIcon ? eyeClosedIcon : eyeOpenIcon}</span>
                     </div>
 
                     <div className="passwordExtra">
                         <label className="rememberCheckbox">
-                            <input type="checkbox"/>
+                            <input type="checkbox" />
                             <span className="caption">Remember me</span>
                         </label>
 
                         <a href="#" className="forgotPassword">Forgot Password</a>
                     </div>
-                    
+
                     <div className="loginBottom">
-                        <button type="submit" onClick={ login }>Login</button>
+                        <button type="submit">Login</button>
                     </div>
 
                     <div className="socialLogin">
