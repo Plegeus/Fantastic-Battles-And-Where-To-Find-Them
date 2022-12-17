@@ -30,6 +30,8 @@
     overflow: hidden;
     overflow-y: auto;
     justify-content: flex-end;
+    position: fixed;
+    z-index: 701;
   }
 
   .dataResult .dataItem {

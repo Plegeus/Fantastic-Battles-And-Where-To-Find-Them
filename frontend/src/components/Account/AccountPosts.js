@@ -13,7 +13,8 @@ const AccountPosts = (props) => {
         { title: 'third blog', victor: "roman guy", vanquished: "some tribe", vicCommander: "caesar", vanCommander: "varus", vicDeaths: 20000, vanDeath: 46000, id: 3 }
     ]);
 
-    const fetchurl = "/user/account/" + props.username;
+    //const fetchurl = "/user/account/" + props.username;
+    const fetchurl = "/account/user/" + props.username;
     const { FetchedData, IsLoading, Error } = useFetch(fetchurl, {
         "method": "GET"
     });
