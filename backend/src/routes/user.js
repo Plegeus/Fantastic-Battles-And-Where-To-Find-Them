@@ -101,6 +101,29 @@ router.post('/refresh', async (req, res) => {
 
 })
 
+router.get('/:username', async (req, res) => {
+
+  console.log('received get request @ username')
+
+  let username = req.params.username
+
+  let u = await user.getUser(username)
+  //u.battles = await user.getBattles(username)
+  u.uuid = undefined
+
+  res.json(u)
+
+})
+
+router.get('/:username/battles', async (req, res) => {
+
+  console.log('received get request @ battles')
+
+  let username = req.params.username
+  res.json(await user.getBattles(username))
+
+})
+
 module.exports = router
 
 

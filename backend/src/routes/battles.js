@@ -11,7 +11,7 @@ router.use((req, res, next) => {
   console.log('')
 })
 
-router.get('/count/:start/:count', async (req, res) => {
+/*router.get('/count/:start/:count', async (req, res) => {
   
   console.log('received get request @ count')
 
@@ -20,7 +20,7 @@ router.get('/count/:start/:count', async (req, res) => {
 
   res.status(200).json(await battle.getById(start, count))
 
-})
+})*/
 router.post('/filter', async (req, res) => {
 
   console.log('received post request @ filter')
@@ -29,8 +29,18 @@ router.post('/filter', async (req, res) => {
 
 })
 router.get('/name/:name', async (req, res) => {
-  res.json(await battle.getBattle(req.params.name))
+
+  console.log('received post request @ name')
+
+  let name = req.params.name
+
+  let b = await battle.getBattle(name)
+  b.description = await battle.getDesciption(name)
+
+  res.json(b)
+
 })
+
 
 module.exports = router
 

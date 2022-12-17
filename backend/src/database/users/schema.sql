@@ -16,7 +16,8 @@ CREATE TABLE users (
   username VARCHAR(32) PRIMARY KEY NOT NULL,
   email VARCHAR(256) NOT NULL,
   uuid VARCHAR(64) NOT NULL,
-  rating INT DEFAULT 0
+  rating INT DEFAULT 0,
+  bio VARCHAR(1024) DEFAULT NULL
 );
 
 INSERT INTO users (username, email, uuid) VALUES('Plegeus', 'kill.me@vub.be', '0');

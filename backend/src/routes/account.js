@@ -38,18 +38,8 @@ router.use(async (req, res, next) => {
 
 })
 
-router.get('/user/:username', async (req, res) => {
-
-  console.log('received get request @ user')
-
-  let username = req.params.username
-
-  let u = await user.getUser(username)
-  u.battles = await user.getBattles(username)
-  u.uuid = undefined
-
-  res.json(u)
-
+router.post('/edit', async (req, res) => {
+  
 })
 
 
