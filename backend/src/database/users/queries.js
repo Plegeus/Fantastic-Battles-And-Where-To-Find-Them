@@ -33,7 +33,7 @@ async function getUserByMail(mailaddress) {
     return q[0]
   }
 
-  throw new Error("A username may only occur once!")
+  return false
 }
 
 async function getPassword(username) {
