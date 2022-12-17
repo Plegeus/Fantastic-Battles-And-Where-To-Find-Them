@@ -8,6 +8,7 @@ const battle = require('../database/battles/queries')
 router.use((req, res, next) => {
   console.log('received request @ battle')
   next()
+  console.log('')
 })
 
 router.get('/count/:start/:count', async (req, res) => {

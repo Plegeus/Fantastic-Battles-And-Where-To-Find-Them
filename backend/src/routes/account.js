@@ -16,6 +16,7 @@ router.use(async (req, res, next) => {
 
   if (!token) {
     res.status(401).send("Expected bearer token!")
+    console.log(' > no token provided')
     return
   }
 
@@ -23,11 +24,18 @@ router.use(async (req, res, next) => {
   if (decode) {
     let u = await user.getByUuid(decode)
     if (u) {
+      console.log(' > token decoded succesfully')
       next()
     }
+    console.log(' > UNDER ATTACK')
     res.status(500).send("UNDER ATTACK!")
   }
+
+  console.log(' > token expired')
   res.status(401).send("Token expired...")
+
+  console.log('')
+
 })
 
 router.get('/user/:username', async (req, res) => {

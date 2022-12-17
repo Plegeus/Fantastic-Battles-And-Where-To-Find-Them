@@ -15,8 +15,9 @@ app.use('/account', require('./routes/account'))
 
 
 
-app.listen(PORT, async () => {
+app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`)
+  console.log('')
 })
 
 

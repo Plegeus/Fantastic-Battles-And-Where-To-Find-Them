@@ -11,6 +11,7 @@ const refresh = require('../tokens/refresh')
 router.use((req, res, next) => {
   console.log('received request @ user')
   next()
+  console.log('')
 })
 
 router.post('/login', async (req, res) => {
@@ -36,6 +37,8 @@ router.post('/login', async (req, res) => {
     }
   } 
   
+  console.log(' > login failed')
+
   // User does not exist...
   res.status(401).send("incorrect username or password!")
 
@@ -58,6 +61,8 @@ router.post('/register', async (req, res) => {
     return
   }
 
+  console.log(' > register failed')
+
   // user already exists...
   res.status(409).send('user already exists!')
 
@@ -77,6 +82,7 @@ router.post('/refresh', async (req, res) => {
   let r = req.authorization
   if (!r) {
     res.status(401).send('Unauthorized...')
+    console.log(' > no token provided')
     return
   }
 
@@ -85,8 +91,11 @@ router.post('/refresh', async (req, res) => {
     let username = await user.getByUuid(decode)
     let token = acces.encode(username)
     res.status(200).json(token)
+    console.log(' > access token created')
     return
   }
+
+  console.log(' > refresh token expired')
 
   res.status(401).send('Refresh token expired, login required.')
 
