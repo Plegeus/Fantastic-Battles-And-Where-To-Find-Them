@@ -24,7 +24,7 @@ const Login = () => {
 
     const { Accestoken, setAccestoken, setUsername } = useContext(UserContext);
 
-    const loginv2 = (e) => {
+    const login = (e) => {
         e.preventDefault()
         fetch("/user/login", {
             method: "POST",
@@ -33,7 +33,12 @@ const Login = () => {
                 mailaddress: Email,
                 password: Password
             })
-        }).then(res => res.json())
+        }).then(res => {
+            if (!res.ok) {
+                alert("Login failed");
+            }
+            return res.json();
+        })
             .then(dat => {
                 console.log(dat);
                 if (dat) {
@@ -43,33 +48,7 @@ const Login = () => {
 
                 } else {
                     // login failed...
-
-                }
-            })
-    }
-
-    function login() {
-        console.log(Email);
-        console.log(Password);
-        fetch("/user/login", {
-            "method": "POST",
-            "headers": {
-                "content-type": "application/json"
-            },
-            "body": JSON.stringify({
-                mailaddress: Email,
-                password: Password,
-            }),
-        })
-            .then(res => res.json())
-            .then(dat => {
-                if (dat) {
-                    // login succes...
-                    setUsername(dat.username)
-                    setAccestoken(dat.token)
-
-                } else {
-                    // login failed...
+                    
 
                 }
             })
@@ -102,7 +81,7 @@ const Login = () => {
                     <h1>Login</h1>
                 </div>
 
-                <form className="loginCover" onSubmit={loginv2}>
+                <form className="loginCover" onSubmit={login}>
                     <div className="loginRow">
                         <label className="form-label">Email</label>
                         <input id="mailaddress" type="email" placeholder="Enter Email" className="form-input"
