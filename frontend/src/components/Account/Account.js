@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { useParams } from "react-router-dom"
 import useFetch from "../../Util/useFetch"
 import Logout from "../Logout/Logout"
@@ -22,20 +22,23 @@ const Account = () => {
         "method": "GET"
     })
 
+
     return (
         <div className="AccountContainer">
             <div className="Account">
                 {IsLoading && <div>Loading...</div>}
-                {Error && <div>{Error}</div> }
+                {Error && <div>{Error}</div>}
                 {FetchedData && <SearchBar placeholder="Enter Account Name" starturl="/account/" data={FetchedData} />}
                 {name !== "SearchUser" ?
                     (<div>
-                        <AccountInformation username={name} />
-                        
+                        <AccountInformation UsernameAccountPage={name} Accestoken={Accestoken} Username={Username}/>
+
                     </div>) :
                     ""}
                 {Accestoken && name === Username ?
-                    <div className="LogoutContainer"><Logout /></div> :
+                    <div className="LogoutContainer">
+                        <Logout />
+                    </div> :
                     null}
             </div>
         </div>

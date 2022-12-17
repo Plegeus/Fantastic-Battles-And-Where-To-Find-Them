@@ -1,9 +1,30 @@
+import { useState } from "react";
 import useFetch from "../../Util/useFetch";
 import "./AccountInformationStyles.css"
 
 //fetch user information
 
 const AccountInformation = (props) => {
+
+    const [ProfileDescription, setProfileDescription] = useState("")
+    const [IsEditingProfile, setIsEditingProfile] = useState(false)
+
+    const EditProfile = () => {
+        setIsEditingProfile(true)
+    }
+
+    const CancelChanges = () => {
+        setIsEditingProfile(false)
+        console.log("cancel editing profile")
+        setProfileDescription(null)
+    }
+
+    const SaveChanges = (newDescription) => {
+        setIsEditingProfile(false)
+        console.log("post nieuwe description in user")
+        console.log(newDescription)
+    }
+
 
     return (
 
@@ -37,6 +58,14 @@ const AccountInformation = (props) => {
                         Aliquam vehicula a lectus nec vehicula.Donec varius hendrerit velit, et venenatis magna aliquet nec.
                         In vitae libero nisl.
                         Proin a elementum orci, vel tincidunt arcu. Cras non tortor ut erat mattis...</p>
+                </div>
+                <div>
+                    {props.Accestoken && !IsEditingProfile && props.Username === props.UsernameAccountPage && <button type="submit" className="ProfileButton" onClick={EditProfile}>Edit Profile</button>}
+                    {props.Accestoken && IsEditingProfile && props.Username === props.UsernameAccountPage && 
+                        <div>
+                            <button type="submit" className="ProfileButton" onClick={CancelChanges}>Cancel Changes</button>
+                            <button type="submit" className="ProfileButton" onClick={SaveChanges}>Save Changes</button>
+                        </div>}
                 </div>
             </div>
         </div>

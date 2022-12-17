@@ -46,15 +46,24 @@
     justify-content: flex-end;
 }
 
+.ProfileButton {
+    color: white;
+    background-color: rgb(150, 150, 150);
+    border: none;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    margin: 0.5rem;
+}
+
 @media (max-width: 1200px) {
     .AccountDescription {
         width: 100%;
     }
 
-    .AccountDescription p{
-        overflow-y:auto;
+    .AccountDescription p {
+        overflow-y: auto;
         height: 12rem;
-      
+
     }
 }
 
@@ -99,9 +108,9 @@
         flex-direction: column;
     }
 
-    .AccountDescription p{
+    .AccountDescription p {
         height: 5rem;
-      
+
     }
 }
 
