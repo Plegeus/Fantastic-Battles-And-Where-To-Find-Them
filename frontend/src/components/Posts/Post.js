@@ -1,12 +1,24 @@
 import { useState } from 'react';
+import useFetch from '../../Util/useFetch';
 import "./PostsStyles.css"
 
 const Post = (props) => {
 
-  const battle = props.battleInformation
+  const battle = props.Battlename
+
+  const fetchurl = "/battles/name/" + props.Battlename;
+  const { FetchedData, IsLoading, Error } = useFetch(fetchurl, {
+    "method": "GET"
+  });
+
+
 
   return (
     <div className="postPreview" key={battle.id}>
+      {Error && <div>{Error}</div>}
+      {IsLoading && <div>Loading Data...</div>}
+      {!Error && !IsLoading && console.log('should be working')}
+      {FetchedData && console.log(FetchedData)}
       <ul className='postList'>
         <p>{battle.title}</p>
         <p>{battle.victor}</p>

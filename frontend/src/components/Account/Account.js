@@ -18,19 +18,20 @@ const Account = () => {
         Username
     } = useContext(UserContext);
 
-    const { FetchedData, IsLoading, Error } = useFetch("insert juiste url");
+    const { FetchedData, IsLoading, Error } = useFetch("/user/names", {
+        "method": "GET"
+    })
 
     return (
         <div className="AccountContainer">
             <div className="Account">
-                {/*IsLoading && <div>Loading...</div>}
-                {Error && <div>{Error}</div> */}
-                {FetchedData && console.log(FetchedData)}
-                <SearchBar placeholder="Enter Account Name" starturl="/account/" data={["test", "test2", "test3", "test4", "test5", "test7", "test8", "test9"]} />
+                {IsLoading && <div>Loading...</div>}
+                {Error && <div>{Error}</div> }
+                {FetchedData && <SearchBar placeholder="Enter Account Name" starturl="/account/" data={FetchedData} />}
                 {name !== "SearchUser" ?
                     (<div>
                         <AccountInformation username={name} />
-                        <AccountPosts username={name} />
+                        
                     </div>) :
                     ""}
                 {Accestoken && name === Username ?

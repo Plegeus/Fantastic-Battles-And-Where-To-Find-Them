@@ -13,11 +13,13 @@ const AccountPosts = (props) => {
         { title: 'third blog', victor: "roman guy", vanquished: "some tribe", vicCommander: "caesar", vanCommander: "varus", vicDeaths: 20000, vanDeath: 46000, id: 3 }
     ]);
 
-    const { FetchedData, IsLoading, Error } = useFetch("http://localhost:8000/account");
+    const fetchurl = "/user/account/" + props.username;
+    const { FetchedData, IsLoading, Error } = useFetch(fetchurl, {
+        "method": "GET"
+    });
 
     return (
         <div>
-            {props.username}
             <ul className="AccountPostsList">
                 <ul className="TitleList">
                     <p>Title</p>
@@ -31,9 +33,11 @@ const AccountPosts = (props) => {
                 </ul>
                 { Error && <div>{ Error }</div>}
                 { IsLoading && <div>Loading Data...</div>}
-                {FetchedData && FetchedData.map((battlename) => (
-                    <li><Post battleInformation={battlename} /></li>
+                {FetchedData && console.log(FetchedData)}
+                {FetchedData && FetchedData.battles.map((battlename) => (
+                    <li key={battlename}><Post Battlename={battlename} /></li>
                 ))}
+
             </ul>
         </div>
     )

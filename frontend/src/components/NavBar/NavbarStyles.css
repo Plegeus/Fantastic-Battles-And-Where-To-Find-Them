@@ -15,7 +15,7 @@
     box-shadow: 0 5px 1rem black;
     /*border-radius: 5%;*/
     left: 0;
-    z-index: +2;
+    z-index: 999;
 }
 
 .Navigation nav {
@@ -29,6 +29,7 @@
     list-style-type: none;
     display: inline-block;
     padding: 1.5rem 2rem;
+    z-index: 999;
 
 }
 
@@ -96,6 +97,7 @@
 
     .nav-menu {
         margin-top: 1rem;
+        z-index: 999;
     }
 
     .nav-links {

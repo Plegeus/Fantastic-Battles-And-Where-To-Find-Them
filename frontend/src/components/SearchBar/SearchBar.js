@@ -42,7 +42,7 @@ function SearchBar(props) {
                     <div className="dataResult">
                         {filteredData.slice(0, 6).map((value, key) => {
                             return (
-                                <Link className="dataItem" to={props.starturl + value}>
+                                <Link className="dataItem" to={props.starturl + value} key={key}>
                                     <p>{value} </p>
                                 </Link>
                             );
