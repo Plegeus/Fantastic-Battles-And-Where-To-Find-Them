@@ -21,7 +21,7 @@ async function getUser(username) {
     return q[0]
   }
 
-  throw new Error("A username may onlu occur once!")
+  throw new Error("A username may only occur once!")
 }
 async function getUserByMail(mailaddress) {
   
@@ -33,7 +33,7 @@ async function getUserByMail(mailaddress) {
     return q[0]
   }
 
-  throw new Error("A username may onlu occur once!")
+  throw new Error("A username may only occur once!")
 }
 
 async function getPassword(username) {
@@ -88,6 +88,34 @@ async function userExists(username) {
   return q[0]
 }
 
+async function updateUser(username, values) {
+  if (values.password) {
+
+  }
+  if (values.username) {
+
+  }
+  if (values.email) {
+
+  }
+  if (values.rating) {
+
+  }
+  if (values.bio) {
+
+  }
+}
+
+async function addBattle(username, battlename) {
+  await connection.query(
+    "INSERT INTO battles (username, battlename) VALUES (?, ?)", [username, battlename]
+  )
+}
+async function removeBattle(username, battlename) {
+  await connection.query(
+    "DELETE FROM battles WHERE username = ? && battlename = ?", [username, battlename]
+  )
+}
 async function getBattles(username) {
 
   let q = await connection.query(
@@ -95,7 +123,6 @@ async function getBattles(username) {
   )
   
   return q.map(b => b.battlename)
-
 }
 
 
@@ -107,5 +134,8 @@ module.exports = {
   getByUuid,
   allUsers,
   getUser,
-  getBattles
+  getBattles,
+  removeBattle,
+  updateUser,
+  addBattle
 }

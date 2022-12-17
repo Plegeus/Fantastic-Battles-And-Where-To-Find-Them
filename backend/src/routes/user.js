@@ -21,16 +21,16 @@ router.post('/login', async (req, res) => {
   let mailaddress = req.body.mailaddress
   let password = req.body.password
 
-  let username = await user.getUserByMail(mailaddress)
+  let username = (await user.getUserByMail(mailaddress)).username
 
   if (await user.userExists(username)) {
     // acces token blah blah...
-    if (await user.getPassword(username) === password) {
+    if ((await user.getPassword(username)) === password) {
       let token = await acces.encode(username)
-      let refresh = await refresh.encode(username)
+      let ref = await refresh.encode(username)
       res.status(200).json({
         token: token,
-        refresh: refresh,
+        refresh: ref,
         username: username,
       })
       return
