@@ -7,7 +7,7 @@ function makeConnection(database) {
     connection: sql.createConnection({
       host: '127.0.0.1',
       user: 'root',
-      password: '',
+      password: process.env.SQL_ROOT_PASSWORD,
       database: database,
       waitForConnections: true,
       connectionLimit: 10,

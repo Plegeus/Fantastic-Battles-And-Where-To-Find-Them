@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./overview-tab.css"
-
 
 
 const Overview = () => {
   var mayAdd = false;
+
+  useEffect(() => {
+    fetch("/battles/count/0/10", {
+      "method": "GET",
+    })
+    .then(res => res.json())
+    .then(dat => {
+      alert(JSON.stringify(dat[0]))
+      alert(JSON.stringify(dat[1]))
+    })
+  }, [])
+
+
   function showAddScreen() {
     var tile = document.getElementById('tileView');
     var lst = document.getElementById('listView');

@@ -11,7 +11,7 @@ dotenv.config()
 
 
 app.use('/user', require('./routes/user'))
-
+app.use('/battles', require('./routes/battles'))
 
 app.listen(PORT, async () => {
   console.log(`Server listening on ${PORT}`)
