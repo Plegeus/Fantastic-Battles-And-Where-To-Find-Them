@@ -8,11 +8,13 @@
     width: 100%;
     padding: 2rem 2rem 1rem 2rem;
 }
+
 .AccountInformation {
     height: 35%;
     display: flex;
     flex-direction: row;
     padding-bottom: 0.5rem;
+    justify-content: flex-start;
 }
 
 .ProfilePicture {
@@ -22,12 +24,17 @@
 .generalAccountInfo {
     display: flex;
     flex-direction: column;
-   justify-content: start;
+    justify-content: start;
 }
 
-.emailInformation{
+.emailInformation {
     color: #5FB4BF;
 }
+
+.AccountDescription {
+    width: 50rem;
+}
+
 
 .TitleDescription {
     padding-top: 1rem;
@@ -36,5 +43,79 @@
 
 .LogoutContainer {
     display: flex;
-    justify-content: flex-end ;
+    justify-content: flex-end;
+}
+
+@media (max-width: 1200px) {
+    .AccountDescription {
+        width: 100%;
+    }
+
+    .AccountDescription p{
+        overflow-y:auto;
+        height: 12rem;
+      
+    }
+}
+
+@media (max-width: 600px) {
+    .Account .searchInputs {
+        height: 1.5rem;
+    }
+
+    .Account .searchIcon {
+        height: 2.1rem;
+    }
+
+    .Account .search input {
+        background-color: white;
+        border: none;
+        padding: 0.3rem;
+        width: 15rem;
+    }
+
+    .Account .search {
+        margin-bottom: 1rem;
+    }
+
+    .Account .dataResult {
+        margin-top: 0.2rem;
+        width: 16rem;
+        height: 4rem;
+        background-color: white;
+        overflow: hidden;
+        overflow-y: auto;
+        justify-content: flex-end;
+    }
+
+    .Account .dataResultContainer {
+        justify-content: flex-start;
+        margin-top: 0.5rem;
+        width: 15rem;
+    }
+
+    .AccountInformation {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .AccountDescription p{
+        height: 5rem;
+      
+    }
+}
+
+@media (max-width: 480px) {}
+
+@media (max-width: 400px) {
+    .Account .searchInputs {
+        display: flex;
+        justify-content: flex-start;
+        height: 1.5rem;
+    }
+
+    .Account {
+        padding: 1rem 2rem 1rem 0.5rem;
+
+    }
 }

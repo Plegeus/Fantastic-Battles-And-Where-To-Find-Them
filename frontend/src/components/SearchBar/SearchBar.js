@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import "./SearchBarStyles.css";
+import "../Account/AccountInformationStyles.css"
 
 function SearchBar(props) {
 
@@ -39,7 +40,7 @@ function SearchBar(props) {
             <div className="dataResultContainer">
                 {filteredData.length != 0 && (
                     <div className="dataResult">
-                        {filteredData.slice(0, 10).map((value, key) => {
+                        {filteredData.slice(0, 6).map((value, key) => {
                             return (
                                 <Link className="dataItem" to={props.starturl + value}>
                                     <p>{value} </p>

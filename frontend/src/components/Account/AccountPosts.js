@@ -31,8 +31,8 @@ const AccountPosts = (props) => {
                 </ul>
                 { Error && <div>{ Error }</div>}
                 { IsLoading && <div>Loading Data...</div>}
-                {FetchedData && FetchedData.map((battle) => (
-                    <li><Post battleInformation={battle} /></li>
+                {FetchedData && FetchedData.map((battlename) => (
+                    <li><Post battleInformation={battlename} /></li>
                 ))}
             </ul>
         </div>
