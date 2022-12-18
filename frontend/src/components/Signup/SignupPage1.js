@@ -13,7 +13,7 @@ const SignupPage1 = (props) => {
 
   return (
     <div className="SignupPage1"> 
-        <div className="loginRow">
+        <div className="formRow">
             <label className="form-label">Email</label>
             <input type="email" placeholder="Enter Email" className="form-input" 
             value={Email} onChange={(e) => {setEmail(e.target.value) }} />
