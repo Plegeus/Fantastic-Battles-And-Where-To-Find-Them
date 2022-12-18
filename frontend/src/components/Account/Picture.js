@@ -8,9 +8,10 @@ import Image4 from './../../resources/pictures/images-4.jpeg'
 import Image5 from './../../resources/pictures/images-5.jpeg'
 import Image6 from './../../resources/pictures/images-6.jpeg'
 import Image7 from './../../resources/pictures/images-7.jpeg'
+import Image8 from './../../resources/pictures/images-8.jpg'
 
 const Images = [
-  Image1, Image2, Image3, Image4, Image5, Image6, Image7
+  Image1, Image2, Image3, Image4, Image5, Image6, Image7, Image8
 ]
 
 
@@ -18,6 +19,7 @@ const Picture = ({username}) => {
 
   // from stackoverflow:
   // https://stackoverflow.com/questions/7616461/generate-a-hash-from-string-in-javascript
+
   function hash(str) {
     var hash = 0,
     i, chr;
