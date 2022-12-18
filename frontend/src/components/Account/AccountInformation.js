@@ -36,13 +36,13 @@ const AccountInformation = (props) => {
 
         <div className="AccountInformation" >
             <div className="ProfilePicture">
-                <Picture username={"Plegeus"}/>
+                <Picture username={props.UsernameAccountPage}/>
             </div>
             {IsLoading && <div>Loading account information</div>}
             {Error && <div>{Error}</div>}
             {FetchedData &&
             <div className="generalAccountInfo">
-                {FetchedData && console.log(FetchedData)};
+                {FetchedData && console.log(FetchedData)}
                 <h2>{FetchedData.username}</h2>
                 <h4 className="emailInformation" >{FetchedData.email}</h4>
                 <div className="Rating">
