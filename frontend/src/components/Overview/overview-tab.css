@@ -216,7 +216,6 @@ a {
 	top: 5rem;
 	bottom: 0;
 	background-color: #ee5a57;
-	z-index: -2;
 }
 
 @media (max-width: 700px) {

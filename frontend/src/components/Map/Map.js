@@ -33,23 +33,15 @@ function Map() {
   }
   function submitFunction() {
     var pane = document.getElementById("add_battle_pane");
-    const form = document.getElementById('addBattle');
-    var log = ("Name:" + form.elements["name"].value + " - Victor:" + form.elements["victor"].value + " - Vanquished:" + form.elements["vanquished"].value + " - Victorious Commander:" + form.elements["victorious_commander"].value + " - Vanquished Commander:" + form.elements["vanquished_commander"].value + " - Victorious Deaths:" + form.elements["victorious_deaths"].value + " - Vanquished Deaths: " + form.elements["vanquished_deaths"].value + form.elements["lat"].value + form.elements["lng"].value)
-    console.log(log);
-
-    pane.style.display = 'none';
-
-    const inputs = document.querySelectorAll('#name, #victor, #vanquished, #victorious_commander, #vanquished_commander, #victorious_deaths, #vanquished_deaths');
-    inputs.forEach(input => {
-      input.value = '';
-    });
-
-
+      const form = document.getElementById('addBattle');
+      if (form.elements["name"].value != '' && form.elements["lat"].value != ''){
+      var log = ("Name:" + form.elements["name"].value + " - Victor:" + form.elements["victor"].value + " - Vanquished:" + form.elements["vanquished"].value + " - Victorious Commander:" + form.elements["victorious_commander"].value + " - Vanquished Commander:" + form.elements["vanquished_commander"].value + " - Victorious Deaths:" + form.elements["victorious_deaths"].value + " - Vanquished Deaths: " + form.elements["vanquished_deaths"].value + form.elements["lat"].value + form.elements["lng"].value)
+            console.log(log);
+            
+      }
   }
 
   const { Accestoken } = useContext(UserContext);
-
-
   return (
     <div className='mapContainer'>
 

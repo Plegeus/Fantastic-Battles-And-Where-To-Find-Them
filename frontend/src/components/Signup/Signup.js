@@ -155,6 +155,7 @@ const Signup = () => {
 
                 </form>
             </div>
+            <WarVideo/>
         </div>
     )
 }
