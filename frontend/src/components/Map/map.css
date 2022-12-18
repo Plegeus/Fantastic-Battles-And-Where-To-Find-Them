@@ -50,3 +50,7 @@ input{
     width: 100%;
     font-family: 'Open Sans',Sans-serif;
 }
+
+body {
+    overflow-y: hidden;
+}
