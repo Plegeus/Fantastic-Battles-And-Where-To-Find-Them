@@ -1,9 +1,10 @@
 #battlePic{
+    border: 1px solid rgba(0, 0, 0, 0.2);
     position: relative;
     height: 30%;
 }
 #battleInfo{
-    background-color: #e8504e;
+    background-color: #6b6167;
     position: relative;
     top: 2rem;
     left: 10%;
@@ -13,15 +14,13 @@
     text-shadow: 4px 4px 5px darkslategray
 }
 #battleSummary{
-    
+    width: fill;
     display: flex;
     flex-direction: column;
-    padding: 2rem;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding-left: 2rem;
 }
 #battleTitle{
-    background-color: #ee5a57;
+    background-color: #5e565b83;
     position: relative;
     height: 30%;
     box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.2) inset;
@@ -31,7 +30,7 @@
     margin-bottom: 1rem;
 }
 #battleVictors{
-    background-color: #ee5a57;
+    background-color: #5e565b83;
     margin-top: 1rem;
     margin-right: 1rem;
     position: relative;
@@ -43,7 +42,7 @@
     padding: 1rem;
 }
 #battleVanquished{
-    background-color: #ee5a57;
+    background-color: #5e565b83;
     margin-top: 1rem;
     margin-left: 1rem;
     position: relative;
@@ -72,9 +71,12 @@
     margin-top: 0;
 }
 #battleDescription{
-    background-color: #ee5a57;
+    background-color: #5e565b83;
     box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.2) inset;
     padding: 1rem;
     color: white;
 	font-family: 'Montserrat', sans-serif;
+}
+#body{
+    background-color: #5e565b
 }
