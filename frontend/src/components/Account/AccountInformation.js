@@ -35,14 +35,16 @@ const AccountInformation = (props) => {
         console.log(fetchurl);
         //post request to update description
         fetch(fetchurl, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                newBio: ProfileDescription,
-                authorization: "Bearer" //props.Accestoken
-            })
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "body": JSON.stringify({
+                newBio: ProfileDescription
+            }),
+            "authorization": { "Bearer": props.Accestoken }
         })
-            
+
     }
 
 
