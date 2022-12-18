@@ -39,7 +39,7 @@ const AccountInformation = (props) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 newBio: ProfileDescription,
-                authorization: Bearer //props.Accestoken
+                authorization: "Bearer" //props.Accestoken
             })
         })
             
