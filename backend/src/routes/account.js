@@ -55,8 +55,8 @@ router.post('/edit/:username', async (req, res) => {
   console.log('received post request @ edit')
 
   let uuid = req.body.uuid
-  if (req.params.username === await user.getByUuid(uuid)) {
-    await user.updateUser(req.params.username, req.body)
+  if (req.params.username === (await user.getByUuid(uuid)).username) {
+    user.updateUser(req.params.username, req.body)
     res.status(200)
     return
   }
