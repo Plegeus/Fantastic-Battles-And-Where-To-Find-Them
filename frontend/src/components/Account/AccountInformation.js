@@ -44,7 +44,6 @@ const AccountInformation = (props) => {
             {Error && <div>{Error}</div>}
             {FetchedData &&
                 <div className="generalAccountInfo">
-                    {FetchedData && console.log(FetchedData)}
                     <h2>{FetchedData.username}</h2>
                     <h4 className="emailInformation" >{FetchedData.email}</h4>
                     <div className="Rating">
