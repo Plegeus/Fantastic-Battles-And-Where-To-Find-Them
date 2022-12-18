@@ -50,6 +50,7 @@
 	font-size: 16px;
 	border: none;
 	z-index: 700;
+    font-family: 'Montserrat', sans-serif;
 }
 #coordinates{
     z-index: 7000;
