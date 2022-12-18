@@ -31,8 +31,18 @@ const AccountInformation = (props) => {
         setIsEditingProfile(false)
         console.log("post nieuwe description in user")
         console.log(ProfileDescription)
-
+        const fetchurl = "/account/edit/" + props.Username;
+        console.log(fetchurl);
         //post request to update description
+        fetch(fetchurl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                newBio: ProfileDescription,
+                authorization: Bearer //props.Accestoken
+            })
+        })
+            
     }
 
 
@@ -59,8 +69,8 @@ const AccountInformation = (props) => {
                             <p className="ParagraphDescription">{FetchedData.bio}</p>
                         }
                         {IsEditingProfile &&
-                            <input className="InputDescription" type="text" value={ProfileDescription}  maxlength="1000"
-                            onChange={(e) => { setProfileDescription(e.target.value) }}></input>}
+                            <input className="InputDescription" type="text" value={ProfileDescription} maxLength="1000"
+                                onChange={(e) => { setProfileDescription(e.target.value) }}></input>}
                     </div>
                     <div>
                         {props.Accestoken && !IsEditingProfile && props.Username === props.UsernameAccountPage && <button type="submit" className="ProfileButton" onClick={EditProfile}>Edit Profile</button>}
