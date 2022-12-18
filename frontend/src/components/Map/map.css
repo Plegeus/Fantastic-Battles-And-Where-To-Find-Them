@@ -59,7 +59,6 @@
     width: 4rem;
     height: 4rem;
     position: fixed;
-    border: 1px solid black;
 }
 
 input{
@@ -72,8 +71,10 @@ body {
     overflow-y: hidden;
 }
 .textField{
-    background-color: blanchedalmond;
+    background-color: rgb(248, 209, 208);
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     padding: 1%;
+    margin-bottom: 1%;
+    border: none;
 }

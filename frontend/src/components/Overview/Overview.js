@@ -139,13 +139,13 @@ const Overview = () => {
         </table>
       </div>
       <div id="tileView" class="grid-container">
-        <a class="grid-item" href="login">Away down south</a>
-        <a class="grid-item">in the land of traitors</a>
-        <a class="grid-item">rattlesnakes and alligators</a>
-        <a class="grid-item">right away</a>
-        <a class="grid-item">come away</a>
-        <a class="grid-item">right away</a>
-        <a class="grid-item">come away</a>
+        <a class="grid-item" href="BattlePage">Away down south</a>
+        <a class="grid-item" href="BattlePage">in the land of traitors</a>
+        <a class="grid-item" href="BattlePage">rattlesnakes and alligators</a>
+        <a class="grid-item" href="BattlePage">right away</a>
+        <a class="grid-item" href="BattlePage">come away</a>
+        <a class="grid-item" href="BattlePage">right away</a>
+        <a class="grid-item" href="BattlePage">come away</a>
       </div>
     </div>
 
