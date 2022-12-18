@@ -47,7 +47,7 @@ function Map() {
 
       <div id="center">
         <div id="center_pane"></div>
-        {Accestoken && <button id="battleButton" onClick={showAddScreen}>Add a battle</button>}
+         {true && <button id="battleButton" onClick={showAddScreen}>Add a battle</button>} 
       </div>
 
 
@@ -57,25 +57,25 @@ function Map() {
         <form id="addBattle" action='action_page.php'>
 
           <label htmlFor="name">Name:</label><br></br>
-          <input type="any" id="name" name="name" required /><br></br>
+          <input className='textField' type="any" id="name" name="name" /><br></br>
           <label htmlFor="victor">Victor:</label><br></br>
-          <input type="any" id="victor" name="victor" required /><br></br>
+          <input className='textField' type="any" id="victor" name="victor"/><br></br>
           <label htmlFor="vanquished">Vanquished:</label><br></br>
-          <input type="any" id="vanquished" name="vanquished" required /><br></br>
+          <input className='textField' type="any" id="vanquished" name="vanquished"/><br></br>
           <label htmlFor="victorious_commander">Victorious Commander:</label><br></br>
-          <input type="any" id="victorious_commander" name="victorious_commander" required /><br></br>
+          <input className='textField' type="any" id="victorious_commander" name="victorious_commander"/><br></br>
           <label htmlFor="vanquished_commander">Vanquished Commander:</label><br></br>
-          <input type="any" id="vanquished_commander" name="vanquished_commander" required /><br></br>
+          <input className='textField' type="any" id="vanquished_commander" name="vanquished_commander"/><br></br>
           <label htmlFor="victorious_deaths">Victorious Deaths:</label><br></br>
-          <input type="any" id="victorious_deaths" name="victorious_deaths" required /><br></br>
+          <input className='textField' type="number" id="victorious_deaths" name="victorious_deaths"/><br></br>
           <label htmlFor="vanquished_deaths">Vanquished Deaths:</label><br></br>
-          <input type="any" id="vanquished_deaths" name="vanquished_deaths" required /><br></br>
+          <input className='textField' type="number" id="vanquished_deaths" name="vanquished_deaths"/><br></br>
 
           <label htmlFor="lat">Lat:</label><br></br>
-          <input type="any" id="lat" name="lat" required /><br></br>
+          <input className='textField' type="number" id="lat" name="lat"  /><br></br>
           <label htmlFor="lng">Lng:</label><br></br>
-          <input type="any" id="lng" name="lng" required /><br></br>
-          <input type="button" value="Submit" onClick={submitFunction}></input>
+          <input className='textField' type="number" id="lng" name="lng"  /><br></br>
+          <input id="submitButton" type="button" value="Submit" onClick={submitFunction}></input>
         </form>
       </div>
 
