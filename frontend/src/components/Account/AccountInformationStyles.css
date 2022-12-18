@@ -41,6 +41,15 @@
     padding-bottom: 0.5rem;
 }
 
+.InputDescription{
+    padding: 0;
+    margin-bottom: 2rem;
+    padding: 0;
+    height: 25%;
+    width: 90%;
+    
+}
+
 .LogoutContainer {
     display: flex;
     justify-content: flex-end;
@@ -60,7 +69,7 @@
         width: 100%;
     }
 
-    .AccountDescription p {
+    .ParagraphDescription{
         overflow-y: auto;
         height: 12rem;
 
@@ -108,9 +117,13 @@
         flex-direction: column;
     }
 
-    .AccountDescription p {
+    .ParagraphDescription{
         height: 5rem;
 
+    }
+
+    .ProfileButton {
+        margin-top: 0.5rem;
     }
 }
 

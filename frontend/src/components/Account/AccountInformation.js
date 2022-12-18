@@ -15,8 +15,10 @@ const AccountInformation = (props) => {
         "method": "GET"
     });
 
+
     const EditProfile = () => {
         setIsEditingProfile(true)
+        setProfileDescription(FetchedData.bio)
     }
 
     const CancelChanges = () => {
@@ -25,10 +27,12 @@ const AccountInformation = (props) => {
         setProfileDescription(null)
     }
 
-    const SaveChanges = (newDescription) => {
+    const SaveChanges = () => {
         setIsEditingProfile(false)
         console.log("post nieuwe description in user")
-        console.log(newDescription)
+        console.log(ProfileDescription)
+
+        //post request to update description
     }
 
 
@@ -51,7 +55,12 @@ const AccountInformation = (props) => {
                     </div>
                     <div className="AccountDescription">
                         <h4 className="TitleDescription">Account Description</h4>
-                        <p>{FetchedData.bio}</p>
+                        {!IsEditingProfile &&
+                            <p className="ParagraphDescription">{FetchedData.bio}</p>
+                        }
+                        {IsEditingProfile &&
+                            <input className="InputDescription" type="text" value={ProfileDescription}  maxlength="1000"
+                            onChange={(e) => { setProfileDescription(e.target.value) }}></input>}
                     </div>
                     <div>
                         {props.Accestoken && !IsEditingProfile && props.Username === props.UsernameAccountPage && <button type="submit" className="ProfileButton" onClick={EditProfile}>Edit Profile</button>}
