@@ -8,7 +8,7 @@ import useFetch from "../../Util/useFetch";
 import LoginContext from "./Login.context";
 //import YoutTube from 'react-youtube'
 
-import Video from './../../resources/016708093-world-war-ii-color-footage-b24.mp4'
+import Video from './../../resources/videos/016708093-world-war-ii-color-footage-b24.mp4'
 
 
 const Login = () => {

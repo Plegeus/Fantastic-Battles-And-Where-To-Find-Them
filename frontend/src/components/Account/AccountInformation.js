@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useFetch from "../../Util/useFetch";
 import "./AccountInformationStyles.css"
+import Picture from "./Picture";
 
 //fetch user information
 
@@ -35,8 +36,7 @@ const AccountInformation = (props) => {
 
         <div className="AccountInformation" >
             <div className="ProfilePicture">
-                <img src="https://www.w3schools.com/images/w3schools_green.jpg"
-                    width="300" height="300"></img>
+                <Picture username={"Plegeus"}/>
             </div>
             {IsLoading && <div>Loading account information</div>}
             {Error && <div>{Error}</div>}
