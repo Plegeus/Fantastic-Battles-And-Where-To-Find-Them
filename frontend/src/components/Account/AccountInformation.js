@@ -36,31 +36,33 @@ const AccountInformation = (props) => {
 
         <div className="AccountInformation" >
             <div className="ProfilePicture">
-                <Picture username={props.UsernameAccountPage}/>
+                {IsLoading && <div>Loading Profile Picture</div>}
+                {Error && <div>{Error}</div>}
+                {FetchedData && <Picture username={props.UsernameAccountPage} />}
             </div>
             {IsLoading && <div>Loading account information</div>}
             {Error && <div>{Error}</div>}
             {FetchedData &&
-            <div className="generalAccountInfo">
-                {FetchedData && console.log(FetchedData)}
-                <h2>{FetchedData.username}</h2>
-                <h4 className="emailInformation" >{FetchedData.email}</h4>
-                <div className="Rating">
-                    <p>Likes: {FetchedData.rating}</p>
-                </div>
-                <div className="AccountDescription">
-                    <h4 className="TitleDescription">Account Description</h4>
-                    <p>{FetchedData.bio}</p>
-                </div>
-                <div>
-                    {props.Accestoken && !IsEditingProfile && props.Username === props.UsernameAccountPage && <button type="submit" className="ProfileButton" onClick={EditProfile}>Edit Profile</button>}
-                    {props.Accestoken && IsEditingProfile && props.Username === props.UsernameAccountPage && 
-                        <div>
-                            <button type="submit" className="ProfileButton" onClick={CancelChanges}>Cancel Changes</button>
-                            <button type="submit" className="ProfileButton" onClick={SaveChanges}>Save Changes</button>
-                        </div>}
-                </div>
-            </div> }
+                <div className="generalAccountInfo">
+                    {FetchedData && console.log(FetchedData)}
+                    <h2>{FetchedData.username}</h2>
+                    <h4 className="emailInformation" >{FetchedData.email}</h4>
+                    <div className="Rating">
+                        <p>Likes: {FetchedData.rating}</p>
+                    </div>
+                    <div className="AccountDescription">
+                        <h4 className="TitleDescription">Account Description</h4>
+                        <p>{FetchedData.bio}</p>
+                    </div>
+                    <div>
+                        {props.Accestoken && !IsEditingProfile && props.Username === props.UsernameAccountPage && <button type="submit" className="ProfileButton" onClick={EditProfile}>Edit Profile</button>}
+                        {props.Accestoken && IsEditingProfile && props.Username === props.UsernameAccountPage &&
+                            <div>
+                                <button type="submit" className="ProfileButton" onClick={CancelChanges}>Cancel Changes</button>
+                                <button type="submit" className="ProfileButton" onClick={SaveChanges}>Save Changes</button>
+                            </div>}
+                    </div>
+                </div>}
         </div>
 
     )
