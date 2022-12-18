@@ -1,0 +1,12 @@
+
+video {
+  width: 90vw;
+  height: 100vh;
+  object-fit:fill;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 5rem;
+  bottom: 0;
+  z-index: -1;
+}
