@@ -118,7 +118,7 @@ const Signup = () => {
     }
 
     return (
-        <div className="LoginContainer">
+        <div className="SignupContainer">
             <div className="loginForm">
                 <div className="loginText">
                     <h1>Signup</h1>

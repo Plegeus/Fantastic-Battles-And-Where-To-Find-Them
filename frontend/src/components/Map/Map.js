@@ -46,7 +46,7 @@ function Map () {
             
           }
   return (
-    <div>
+    <div className='mapContainer'>
       
       <div id="center">
         <div id="center_pane"></div>
