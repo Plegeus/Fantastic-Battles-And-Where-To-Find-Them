@@ -82,13 +82,7 @@ const Login = () => {
     return (
         <div className="LoginContainer">
         
-            <video autoPlay loop muted style={{
-                zIndex: "0",
-                width: "100%",
-                height: "100%",
-            }}>
-                <source src={Video} type="video/mp4"></source>
-            </video>
+            
 
             <div className="loginForm">
                 <div className="loginText">
@@ -137,6 +131,13 @@ const Login = () => {
                     </div>
                 </form>
             </div>
+            <video autoPlay loop muted style={{
+                zIndex: "0",
+                width: "100%",
+                height: "100%",
+            }}>
+                <source src={Video} type="video/mp4"></source>
+            </video>
         </div>
     )
 }
