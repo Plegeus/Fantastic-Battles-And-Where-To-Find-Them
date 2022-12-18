@@ -29,7 +29,7 @@
     font-size: 2rem;
 }
 
-.loginRow {
+.formRow {
     position: relative;
     text-align: left;
     width: 100%;
@@ -62,7 +62,7 @@ input[type="text"],[type="password"],[type="email"]{
     outline-color: #719ECE;
 }
 
-.loginCover .loginRow .passwordEye{
+.loginCover .formRow .passwordEye{
     position: absolute;
     right: 5%;
     top: 45%;
@@ -201,7 +201,7 @@ button:hover {
         display: none;
     }
 
-    .loginCover .loginRow .passwordEye{
+    .loginCover .formRow .passwordEye{
         top: 24%;
     }
     .loginText {
@@ -220,7 +220,7 @@ button:hover {
         display: none;
     }
 
-    .loginCover .loginRow .passwordEye{
+    .loginCover .formRow .passwordEye{
         top: 20%;
     }
 

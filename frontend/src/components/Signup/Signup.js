@@ -119,8 +119,8 @@ const Signup = () => {
 
     return (
         <div className="SignupContainer">
-            <div className="loginForm">
-                <div className="loginText">
+            <div className="signupForm">
+                <div className="signupText">
                     <h1>Signup</h1>
                 </div>
                 <form onSubmit={handleRegister} className="loginCover">
@@ -130,14 +130,14 @@ const Signup = () => {
                     }
                     {
                         page < 2 && (
-                            <div className="loginBottom">
+                            <div className="signupBottom">
                                 <button type="submit" className="NextButton" onClick={() => { decideIcons(page + 1) }}>Next</button>
                             </div>
                         )
                     }
                     {
                         page > 1 && (
-                            <div className="loginBottom">
+                            <div className="signupBottom">
                                 <button type="submit" className="BackButton" onClick={() => { decideIcons(page - 1) }}>Back</button>
                             </div>
                         )

@@ -96,13 +96,13 @@ const Login = () => {
                 </div>
 
                 <form className="loginCover" onSubmit={login}>
-                    <div className="loginRow">
+                    <div className="formRow">
                         <label className="form-label">Email</label>
                         <input id="mailaddress" type="email" placeholder="Enter Email" className="form-input"
                             value={Email} onChange={(e) => { setEmail(e.target.value) }} required />
                     </div>
 
-                    <div className="loginRow">
+                    <div className="formRow">
                         <label className="form-label">Password</label>
                         <input type="password" placeholder="Enter Password" id="psw" className="form-input"
                             value={Password} onChange={(e) => { setPassword(e.target.value) }} required />

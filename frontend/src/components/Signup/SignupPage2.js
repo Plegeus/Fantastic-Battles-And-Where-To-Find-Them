@@ -35,14 +35,14 @@ const SignupPage2 = (props) => {
   return (
     <div className='SignupPage2'>
 
-        <div className="loginRow">
+        <div className="formRow">
             <label className="form-label">Username</label>
             <input type="text" placeholder="Enter Username" className="form-input" 
             value={Username} onChange={(e) => {setUsername(e.target.value) }} />
             <p className="ErrorMessage">{props.usernameError}</p>
         </div>
 
-        <div className="loginRow">
+        <div className="formRow">
             <label className="form-label">Password</label>
             <input type="password" placeholder="Enter Password" id="psw" className="form-input" 
             title="Must contain at least 8 or more characters" minLength="8" 
@@ -51,7 +51,7 @@ const SignupPage2 = (props) => {
             <p className="ErrorMessage">{props.passwordError}</p>
         </div>
 
-        <div className="loginBottom">
+        <div className="signupBottom">
             <button type="submit" className="NextButton">Sign Up</button>
         </div>
     </div>
