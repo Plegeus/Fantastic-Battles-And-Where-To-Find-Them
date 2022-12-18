@@ -4,6 +4,7 @@ import SignupPage2 from "./SignupPage2";
 import SignupPage1Bottom from "./SignupPage1Bottom";
 import { useState, useContext, useEffect } from "react";
 import SignupContext from "./Signup.context";
+import WarVideo from "../WarVideo/WarVideo";
 
 import "./SignupStepsstyles.css"
 import UserContext from "../User.context";
