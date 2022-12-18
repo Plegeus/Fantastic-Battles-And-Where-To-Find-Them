@@ -91,27 +91,27 @@ async function userExists(username) {
 async function updateUser(username, values) {
   if (values.password) {
     await connection.query(
-      "" 
+      "UPDATE passwords SET password = ? WHERE username = ?", [values.password, username] 
     )
   }
   if (values.username) {
     await connection.query(
-      "" 
+      "UPDATE users SET username = ? WHERE username = ?", [values.username, username]
     )
   }
   if (values.email) {
     await connection.query(
-      "" 
+      "UPDATE users SET email = ? WHERE username = ?", [values.email, username] 
     )
   }
   if (values.rating) {
     await connection.query(
-      "" 
+      "UPDATE users SET rating = ? WHERE username = ?", [values.rating, username] 
     )
   }
   if (values.bio) {
     await connection.query(
-      "" 
+      "UPDATE users SET bio = ? WHERE username = ?", [values.bio, username] 
     )
   }
 }
