@@ -39,7 +39,7 @@ router.post('/login', async (req, res) => {
   
   console.log(' > login failed')
 
-  // User does not exist...
+  // user does not exist...
   res.status(401).send("incorrect username or password!")
 
 })
