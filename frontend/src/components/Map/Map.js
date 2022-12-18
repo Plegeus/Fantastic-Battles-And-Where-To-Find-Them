@@ -16,6 +16,21 @@ const rectangle = [
   [90, 180],
 ]
 
+const Mark = ({x, y, title='no title', description='no description'}) => {
+  return(
+    <Marker position={[x, y]} icon={new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41] })} >
+      <Popup>
+        <a href="BattlePage">{title}<br/>{description}<br/> Click for more info </a>
+      </Popup>
+    </Marker>
+  )
+}
+const MARKERS = [
+  {x: 0, y: 0},
+  {x: 50, y: 0},
+  {x: 50, y: 30}
+]
+
 
 function Map() {
 
@@ -91,18 +106,12 @@ function Map() {
           click: (e) => {
             document.getElementById("lat").value = e.latlng.lat;
             document.getElementById("lng").value = e.latlng.lng;
-
           },
-        }} color='transparent'>
-          
-          <Marker position={[51.505, -0.09]} icon={new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41] })} >
-            
-            <Popup>
-              <a href="BattlePage"> Battle of Britain <br /> British defeating the Germans <br /> Click for more info </a>
-            </Popup>
-            
-          </Marker>
-          
+          }} color='transparent'>
+
+          {MARKERS.length > 0 && MARKERS.map((marker) => (
+            <Mark x={marker.x} y={marker.y}/>
+          ))}
         </Rectangle>
 
       </MapContainer>

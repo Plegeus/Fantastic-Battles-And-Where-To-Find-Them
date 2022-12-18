@@ -37,14 +37,14 @@ const AccountInformation = (props) => {
         fetch(fetchurl, {
             "method": "POST",
             "headers": {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${props.Accestoken}`,
             },
             "body": JSON.stringify({
-                newBio: ProfileDescription
+                newBio: ProfileDescription,
+                token: props.Accestoken
             }),
-            "authorization": { "Bearer": props.Accestoken }
         })
-
     }
 
 

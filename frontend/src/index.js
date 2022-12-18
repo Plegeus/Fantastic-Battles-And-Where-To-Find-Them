@@ -4,11 +4,13 @@ import { createRoot } from 'react-dom/client';
 
 import App from "./App.js";
 
+
 import video from './resources/videos/016708093-world-war-ii-color-footage-b24.mp4'
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(<App/>);
+
 
 
 const Test = () => {
