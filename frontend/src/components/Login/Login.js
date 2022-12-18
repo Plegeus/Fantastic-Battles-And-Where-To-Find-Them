@@ -2,10 +2,14 @@ import "./Loginstyles.css";
 import { FiEyeOff, FiEye } from "react-icons/fi";
 import { BsFacebook, BsGoogle } from "react-icons/bs";
 import { useContext, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useRoutes } from "react-router-dom";
 import UserContext from "../User.context";
 import useFetch from "../../Util/useFetch";
 import LoginContext from "./Login.context";
+//import YoutTube from 'react-youtube'
+
+import Video from './../../resources/016708093-world-war-ii-color-footage-b24.mp4'
+
 
 const Login = () => {
 
@@ -73,9 +77,19 @@ const Login = () => {
         size="2.3rem" color="red"
     />
 
+    //<YoutTube videoId="ifTF3ags0XI"></YoutTube>
 
     return (
         <div className="LoginContainer">
+        
+            <video autoPlay loop muted style={{
+                zIndex: "0",
+                width: "100%",
+                height: "100%",
+            }}>
+                <source src={Video} type="video/mp4"></source>
+            </video>
+
             <div className="loginForm">
                 <div className="loginText">
                     <h1>Login</h1>

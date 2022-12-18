@@ -4,9 +4,12 @@ import { createRoot } from 'react-dom/client';
 
 import App from "./App.js";
 
+import video from './resources/016708093-world-war-ii-color-footage-b24.mp4'
+
 const container = document.getElementById('root');
 const root = createRoot(container);
 root.render(<App/>);
+
 
 const Test = () => {
 
@@ -51,15 +54,15 @@ const Test = () => {
   })
 })*/
 
-fetch("/user/names", {
-  'method': "GET"
-}).then(res => res.json()).then(dat => {
-  alert(dat)
-})
-
-fetch("/account/refresh", {
-  'method': 'POST'
-})
+//fetch("/user/names", {
+//  'method': "GET"
+//}).then(res => res.json()).then(dat => {
+//  alert(dat)
+//})
+//
+//fetch("/account/refresh", {
+//  'method': 'POST'
+//})
 
 //ReactDOM.render(<Navigation />, document.getElementById('top_pane'));
 //ReactDOM.render(<SignupWithContext/>, document.getElementById('mid'))ß;
