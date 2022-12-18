@@ -94,13 +94,15 @@ function Map() {
 
           },
         }} color='transparent'>
-
+          
           <Marker position={[51.505, -0.09]} icon={new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41] })} >
+            
             <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
+              <a href="BattlePage"> Battle of Britain <br /> British defeating the Germans <br /> Click for more info </a>
             </Popup>
+            
           </Marker>
-
+          
         </Rectangle>
 
       </MapContainer>
