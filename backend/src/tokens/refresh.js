@@ -7,8 +7,20 @@ const EXPIRES = 24 * 60 * 60
 
 
 async function encode(username) {
+  return jwt.sign({
+    date: new Date().getTime(),
+    uuid: await user.getUser(username).uuid
+  }, KEY)
 }
 function decode(token) {
+
+  let obj = jwt.decode(token, KEY)
+
+  if (new Date().getTime() > obj.date + 60) {
+    return false
+  }
+
+  return obj.uuid
 }
 
 
