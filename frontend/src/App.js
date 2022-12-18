@@ -10,6 +10,7 @@ import LoggedOutRoutes from "./components/LoggedOutRoutes";
 import Account from "./components/Account/Account";
 import "./app.css"
 import { LoginProvider } from "./components/Login/Login.context";
+import BattlePage from "./components/BattlePage/BattlePage";
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
             <Routes>
               <Route exact path="/" element={<Map />} />
               <Route path="/overview" element={<Overview />} />
+              <Route path="/BattlePage" element={<BattlePage />} />
               <Route element={<LoggedOutRoutes />}>
                 <Route path="/login" element={<LoginProvider><Login /></LoginProvider>} />
                 <Route path="/signup" element={<SignupWithContext />} />
