@@ -45,18 +45,10 @@ const Test = () => {
     <input type='button' onClick={ login }></input>
   </div>
 }
-//root.render(<Test/>)
 
-/*fetch("/battles/filter", {
-  'method': 'POST',
-  'headers': {
-    'content-type': 'application/json'
-  },
-  'body': JSON.stringify({
-    deaths: 10000,
-    tags: ['carrot'],
-  })
-})*/
+fetch("/api/user/refresh", {
+  'method': 'POST'
+})
 
 //fetch("/user/names", {
 //  'method': "GET"

@@ -27,7 +27,7 @@ router.post('/login', async (req, res) => {
     // acces token blah blah...
     if ((await user.getPassword(username)) === password) {
       let token = await acces.encode(username)
-      res.cookie("refresh token", await refresh.encode(username), {
+      res.cookie("refresh", await refresh.encode(username), {
         sameSite: 'strict',
         secure: true,
         httpOnly: true
@@ -85,7 +85,12 @@ router.post('/refresh', async (req, res) => {
   console.log('received post request @ refresh')
 
   let cookies = req.cookies
-  console.log(` > cookies: ${cookies}`)
+  console.log(` > cookies: ${JSON.stringify(cookies)}`)
+
+  console.log(cookies.refresh)
+  
+
+  // res.clearCookie() to delete cookies!
 
   //let r = req.authorization
   //if (!r) {
