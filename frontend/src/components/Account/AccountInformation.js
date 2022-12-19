@@ -54,6 +54,7 @@ const AccountInformation = (props) => {
             <div className="ProfilePicture">
                 {IsLoading && <div>Loading Profile Picture</div>}
                 {Error && <div>{Error}</div>}
+                {FetchedData && console.log(FetchedData)}
                 {FetchedData && <Picture username={props.UsernameAccountPage} />}
             </div>
             {IsLoading && <div>Loading account information</div>}

@@ -59,7 +59,7 @@ input[type="text"],[type="password"],[type="email"]{
     border-radius: 2rem;
 }
 
-button:hover {
+.signupBottom button:hover {
     opacity: 0.8;
     transform: scale(1.12);
     transition: 0.5s;

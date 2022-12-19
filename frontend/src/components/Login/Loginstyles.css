@@ -119,9 +119,10 @@ input[type="checkbox"]{
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
     border-radius: 2rem;
+
 }
 
-button:hover {
+.loginBottom button:hover {
     opacity: 0.8;
     transform: scale(1.12);
     transition: 0.5s;
