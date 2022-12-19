@@ -136,6 +136,42 @@ const Overview = () => {
               <th>Vanquished deaths</th>
             </tr>
           </thead>
+          <tr>
+              <td>Name</td>
+              <td>Victor</td>
+              <td>Vanquished</td>
+              <td>Victorious Commander</td>
+              <td>Vanquished Commander</td>
+              <td>Victorious deaths</td>
+              <td>Vanquished deaths</td>
+          </tr>
+          <tr>
+              <td>Name</td>
+              <td>Victor</td>
+              <td>Vanquished</td>
+              <td>Victorious Commander</td>
+              <td>Vanquished Commander</td>
+              <td>Victorious deaths</td>
+              <td>Vanquished deaths</td>
+          </tr>
+          <tr>
+              <td>Name</td>
+              <td>Victor</td>
+              <td>Vanquished</td>
+              <td>Victorious Commander</td>
+              <td>Vanquished Commander</td>
+              <td>Victorious deaths</td>
+              <td>Vanquished deaths</td>
+          </tr>
+          <tr>
+              <td>Name</td>
+              <td>Victor</td>
+              <td>Vanquished</td>
+              <td>Victorious Commander</td>
+              <td>Vanquished Commander</td>
+              <td>Victorious deaths</td>
+              <td>Vanquished deaths</td>
+          </tr>
         </table>
       </div>
       <div id="tileView" class="grid-container">

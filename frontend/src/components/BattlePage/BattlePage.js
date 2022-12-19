@@ -30,6 +30,10 @@ const BattlePage = () => {
                         </div>
                     </div>
                 </div>
+                <div id='likeDiv'>
+                    <button id="likeButton">
+                    </button>
+                </div>
             </div>
             
             <div id="bottomContainer">

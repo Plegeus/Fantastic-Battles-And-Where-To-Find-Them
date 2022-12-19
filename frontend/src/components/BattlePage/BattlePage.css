@@ -69,14 +69,37 @@
     box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.2) inset;
     margin: 2rem;
     margin-top: 0;
+    margin-right: 8rem;
 }
 #battleDescription{
     background-color: #5e565b83;
-    box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.2) inset;
-    padding: 1rem;
+    box-shadow: 16px 16px 5px 0px rgba(0, 0, 0, 0.2) inset;
+    padding: 2rem;
     color: white;
 	font-family: 'Montserrat', sans-serif;
 }
 #body{
     background-color: #5e565b
+}
+#likeDiv{
+    width: 10rem;
+    height: 100%;
+    display: flex;
+    align-content: center;
+}
+#likeButton{
+    margin: auto;
+    margin-left: 2rem;
+    margin-top:  1rem;
+    background-color: none;
+    height: 4rem;
+    width: 4rem;
+    border: #7e737a solid 1px;
+    background-color: #7e737a;
+    box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.2);
+}
+#likeButton:hover {
+    border: #5d565a solid 1px;
+    background-color: #6b6167; /* Green */
+    color: white;
 }
