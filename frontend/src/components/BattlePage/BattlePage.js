@@ -66,7 +66,7 @@ const BattlePage = () => {
                         <img id="battlePic" src={EpicBattle} alt="An Epic Image of a Battle"></img>
                         <div id="battleSummary">
                             <div id="battleTitle">
-                                <h2>{name}</h2><br></br>
+                                <h2>{FetchedData.battlename}</h2><br></br>
                             </div>
                             <div id="combatants">
                                 <Faction isVictor={true} faction={FetchedData.winning_faction} leader={FetchedData.winning_commander} deaths={FetchedData.winning_deaths} />
