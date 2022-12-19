@@ -93,7 +93,7 @@ const Map = () => {
 
       <div id="center">
         <div id="center_pane"></div>
-         {true && <button id="battleButton" onClick={showAddScreen}>Add a battle</button>} 
+         {Accestoken && <button id="battleButton" onClick={showAddScreen}>Add a battle</button>} 
       </div>
 
       <div id="add_battle_pane">
