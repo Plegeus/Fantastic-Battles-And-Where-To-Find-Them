@@ -106,6 +106,10 @@
     color: white;
     box-shadow: none;
 }
+
+.InvisibleWeatherButton{
+    display: none;
+}
 @media (max-width: 1480px) {
     #body{
         overflow-y: auto;

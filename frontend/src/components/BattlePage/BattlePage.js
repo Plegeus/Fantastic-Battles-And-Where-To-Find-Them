@@ -33,22 +33,28 @@ const BattlePage = () => {
 
 
 
-    function getWeatherData(Latitude, Longitude) {
-        if (!CurrentConditions) {
+    const getWeatherData = (Latitude, Longitude) => {
+        console.log("enter get weather data function")
+        console.log(CurrentConditions);
+        if (!CurrentConditions && FetchedData) {
             const oldkey = "KLKMENPQKWMLJ7GBD3V479YHL";
             const newkey = "DL38D5GUASAXRR8C7DTMWRGSX"
-            const fetchUrl = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" + Latitude.toString() + "," + Longitude.toString() + "?key=" + newkey;
+            const fetchUrl = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" + Latitude.toString() + "," + Longitude.toString() + "?key=" + newkey + "&unitGroup=uk";
             const data = fetch(fetchUrl)
+            console.log(data);
             data.then(res => {
                 if (!res.ok) {
+                    console.log("not ok");
                     // no data
                 }
                 return res.json();
             }).then(data => {
+                console.log(data);
                 setCurrentConditions(data.currentConditions);
                 console.log(CurrentConditions);
             })
                 .catch(err => {
+                    console.log("error");
                     //
                 })
         }
@@ -87,7 +93,8 @@ const BattlePage = () => {
                         <div id="battleDescription">
                             <p>{FetchedData.description}</p>
                         </div>
-                        {true &&
+                        <button className="InvisibleWeatherButton" onClick={getWeatherData(FetchedData.location_y,FetchedData.location_x)}>Click me</button>
+                        {CurrentConditions &&
                             <div id="theWeather">
                                 <p>Current weather on this position: </p>
                                 <p>very hot</p>
