@@ -1,11 +1,13 @@
 .AccountContainer {
     display: flex;
     overflow-y: auto;
+    background-color: #5e565b;
+}
+body{
+    background-color: #5e565b;
 }
 
 .Account {
-    height: 100vh;
-    width: 100%;
     padding: 2rem 2rem 1rem 2rem;
 }
 
@@ -70,6 +72,71 @@
     transition: 0.5s;
     cursor: pointer;
 }
+/* */
+#accountPosts{
+    width: calc(100vw - 4rem);
+    height: 50vh;
+}
+
+#listView {
+	display: flex;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 2rem;
+}
+table {
+	position: absolute;
+	display: block;
+	z-index: 2;
+	width: 60rem;
+	border-collapse: collapse;
+	border-spacing: 0;
+	box-shadow: 0 2px 15px rgba(64, 64, 64, .7);
+	border-radius: 12px 12px 0 0;
+	overflow: hidden;
+
+}
+
+td,
+th {
+	padding: 15px 20px;
+	text-align: center;
+
+
+}
+
+th {
+	background-color: #6b6167;
+	color: #fafafa;
+	font-family: 'Open Sans', Sans-serif;
+	font-weight: 200;
+	text-transform: uppercase;
+	
+
+}
+
+tr {
+	width: 100%;
+	background-color: #b6aeaf;
+	color: darkslategray;
+	font-weight: bold;
+	font-family: 'Montserrat', sans-serif;
+}
+
+tr:nth-child(even) {
+	background-color: #d1cece;
+}
+
+tr:hover {
+	color: white;
+	font-weight: normal;
+	background-color: #b6aeaf93;
+	box-shadow: none;
+}
+tr:nth-child(even):hover{
+	background-color: #d1cece81;
+}
+/* */
 
 @media (max-width: 1200px) {
     .AccountDescription {

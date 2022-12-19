@@ -56,6 +56,16 @@ tr:nth-child(even) {
 	background-color: #d1cece;
 }
 
+tr:hover {
+	color: white;
+	font-weight: normal;
+	background-color: #b6aeaf93;
+	box-shadow: none;
+}
+tr:nth-child(even):hover{
+	background-color: #d1cece81;
+}
+
 /* buttons */
 #button-div {
 	display: flex;
@@ -118,17 +128,21 @@ tr:nth-child(even) {
 }
 
 .grid-item {
+	color: darkslategray;
+	font-weight: bold;
 	width: 80%;
-	background-color: #ffcdd2;
-	border: 1px solid rgba(0, 0, 0, 0.8);
+	background-color: #b6aeaf;
+	border: 1px solid #b6aeaf;
 	padding: 20px;
 	font-size: 20px;
 	text-align: left;
 	font-family: 'Montserrat', sans-serif;
+	box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
 .grid-item:nth-child(even) {
-	background-color: #fafafa;
+	background-color: #d1cece;
+	border: 1px solid #d1cece;
 }
 
 .container {
@@ -140,7 +154,14 @@ tr:nth-child(even) {
 }
 
 .grid-item:hover {
-	background-color: #ec3244;
+	color: white;
+	font-weight: normal;
+	background-color: #b6aeaf93;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: none;
+}
+.grid-item:nth-child(even):hover{
+	background-color: #d1cece81;
 }
 
 

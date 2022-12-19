@@ -14,26 +14,58 @@ const AccountPosts = (props) => {
     });
 
     return (
-        <div>
-            <ul className="AccountPostsList">
-                <ul className="TitleList">
-                    <p>Title</p>
-                    <p>Victor</p>
-                    <p>Vanquished</p>
-                    <p>Victorious Commander</p>
-                    <p>Vanquished Commander</p>
-                    <p>Victorious Deaths</p>
-                    <p>Vanquished Deaths</p>
-                    <p>ID</p>
-                </ul>
-                { Error && <div>{ Error }</div>}
-                { IsLoading && <div>Loading Data...</div>}
-                {FetchedData && console.log(FetchedData) && FetchedData}
-                {/*FetchedData && FetchedData.battles.map((battlename) => (
-                    <li key={battlename}><Post Battlename={battlename} /></li>
-                ))*/}
-
-            </ul>
+        <div id="accountPosts">
+            <div id="listView">
+        <table id="battle-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Victor</th>
+              <th>Vanquished</th>
+              <th>Victorious Commander</th>
+              <th>Vanquished Commander</th>
+              <th>Victorious deaths</th>
+              <th>Vanquished deaths</th>
+            </tr>
+          </thead>
+          <tr>
+              <td>Name</td>
+              <td>Victor</td>
+              <td>Vanquished</td>
+              <td>Victorious Commander</td>
+              <td>Vanquished Commander</td>
+              <td>Victorious deaths</td>
+              <td>Vanquished deaths</td>
+          </tr>
+          <tr>
+              <td>Name</td>
+              <td>Victor</td>
+              <td>Vanquished</td>
+              <td>Victorious Commander</td>
+              <td>Vanquished Commander</td>
+              <td>Victorious deaths</td>
+              <td>Vanquished deaths</td>
+          </tr>
+          <tr>
+              <td>Name</td>
+              <td>Victor</td>
+              <td>Vanquished</td>
+              <td>Victorious Commander</td>
+              <td>Vanquished Commander</td>
+              <td>Victorious deaths</td>
+              <td>Vanquished deaths</td>
+          </tr>
+          <tr>
+              <td>Name</td>
+              <td>Victor</td>
+              <td>Vanquished</td>
+              <td>Victorious Commander</td>
+              <td>Vanquished Commander</td>
+              <td>Victorious deaths</td>
+              <td>Vanquished deaths</td>
+          </tr>
+        </table>
+      </div>
         </div>
     )
 }
