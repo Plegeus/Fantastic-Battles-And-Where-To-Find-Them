@@ -75,28 +75,6 @@ input[type="text"],[type="password"],[type="email"]{
 }
 
 
-.socialLogin {
-    position: relative;
-    width: 100%;
-    margin-bottom: 1rem;
-    height: 3rem;
-    border-top: 1px solid black;
-    padding-top: 1rem;
-}
-
-.socialLogin .facebookIcon{
-    position: absolute;
-    left: 35%;
-}
-
-.socialLogin .googleIcon{
-    position: absolute;
-    left: 55%;
-}
-
-
-
-
 
 .login {
     text-align: center;
