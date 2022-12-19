@@ -35,7 +35,7 @@ th {
 }
 
 th {
-	background-color: #e53935;
+	background-color: #6b6167;
 	color: #fafafa;
 	font-family: 'Open Sans', Sans-serif;
 	font-weight: 200;
@@ -63,19 +63,21 @@ tr:nth-child(even) {
 	flex-wrap: wrap;
 }
 
-#btn {
+.dropbtn, #btn {
 	box-shadow: 0 1px 5px rgba(64, 64, 64, .7);
 	font-family: 'Montserrat', sans-serif;
 	margin-right: 1rem;
 	min-width: 8rem;
 	height: 3rem;
-	background-color: #e53935;
+	background-color: #6b6167;
 	color: white;
 	padding: 16px;
 	font-size: 16px;
 	border: none;
 	z-index: 700;
 }
+
+
 
 .tile-btn {
 	left: 50%;
@@ -144,22 +146,10 @@ a {
 	color: black;
 }
 
-.dropbtn {
-	font-family: 'Montserrat', sans-serif;
-	margin: 1%;
-	height: 3rem;
-	min-width: 8rem;
-	background-color: #e53935;
-	color: white;
-	padding: 16px;
-	font-size: 16px;
-	border: none;
-	z-index: 700;
-}
+
 
 .dropdown {
-	box-shadow: 0 1px 5px rgba(64, 64, 64, .7);
-	margin-right: 1rem;
+	
 	top: 1rem;
 	display: inline-block;
 	z-index: 700;
@@ -191,8 +181,11 @@ a {
 	display: block;
 }
 
-.dropdown:hover .dropbtn {
-	background-color: #e72d2a;
+.dropdown:hover .dropbtn, #btn:hover {
+	background-color: #5e565b; /* Green */
+    color: lightgrey;
+    box-shadow: none;
+    border: #494447 solid 1px;
 }
 
 #times {
@@ -216,7 +209,6 @@ a {
 	right: 0;
 	top: 5rem;
 	bottom: 0;
-	background-color: #ee5a57;
 }
 
 @media (max-width: 700px) {
