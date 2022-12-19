@@ -8,17 +8,22 @@ const BattlePage = () => {
     const [CurrentConditions, setCurrentConditions] = useState(null)
 
 
-    function getWeatherData(Latitude,Longitude) {
-        const fetchUrl = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" + Latitude.toString() + "," + Longitude.toString() + "?key=KLKMENPQKWMLJ7GBD3V479YHL";
+    function getWeatherData(Latitude, Longitude) {
+        const oldkey = "KLKMENPQKWMLJ7GBD3V479YHL";
+        const newkey = "DL38D5GUASAXRR8C7DTMWRGSX"
+        const fetchUrl = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" + Latitude.toString() + "," + Longitude.toString() + "?key=" + newkey;
         const data = fetch(fetchUrl)
-        data.then(res => res.json())
-            .then(dat => {
-                if (dat) {
-                    setCurrentConditions(dat.currentConditions);
-                    console.log(CurrentConditions);
-                } else {
-
-                }
+        data.then(res => {
+            if (!res.ok) {
+                // no data
+            }
+            return res.json();
+        }).then(data => {
+            setCurrentConditions(data.currentConditions);
+            console.log(CurrentConditions);
+        })
+            .catch(err => {
+                //
             })
     }
 
@@ -27,7 +32,6 @@ const BattlePage = () => {
         <div id="body">
             <div id="battleInfo">
                 <div id="topContainer">
-
                     <img id="battlePic" src={EpicBattle} alt="An Epic Image of a Battle"></img>
                     <div id="battleSummary">
                         <div id="battleTitle">
