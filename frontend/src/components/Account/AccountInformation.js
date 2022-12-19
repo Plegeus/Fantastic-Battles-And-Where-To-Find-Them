@@ -23,7 +23,6 @@ const AccountInformation = (props) => {
 
     const CancelChanges = () => {
         setIsEditingProfile(false)
-        console.log("cancel editing profile")
         setProfileDescription("")
     }
 
