@@ -1,7 +1,7 @@
 
 video {
   width: 90vw;
-  height: 100vh;
+  height: calc(100vh - 5rem);
   object-fit:fill;
   position: fixed;
   left: 0;
