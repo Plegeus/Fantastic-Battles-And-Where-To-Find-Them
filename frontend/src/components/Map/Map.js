@@ -2,10 +2,10 @@ import { MapContainer, TileLayer, Marker, Popup, useMapEvents, Rectangle } from 
 import 'leaflet/dist/leaflet.css';
 import markerIconPng from "../../resources/pictures/grey-marker-icon.png"
 import { Icon } from 'leaflet'
-import * as L from "leaflet";
 import './map.css'
 import UserContext from '../User.context';
 import { useContext } from "react";
+import { Link } from 'react-router-dom';
 
 const outerBounds = [
   [-90, -180],
@@ -20,7 +20,7 @@ const Mark = ({x, y, title='no title', description='no description'}) => {
   return(
     <Marker position={[x, y]} icon={new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41] })} >
       <Popup>
-        <a href="BattlePage">{title}<br/>{description}<br/> Click for more info </a>
+        <Link to={`BattlePage/${'Battle of Dunkirk'}`}>{title}<br/>{description}<br/> Click for more info </Link>
       </Popup>
     </Marker>
   )

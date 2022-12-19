@@ -51,44 +51,44 @@ async function updateBattle(battlename, values) {
       "UPDATE battles SET date = ? WHERE battlename = ?", [values.date, battlename]
     )
   }
-  if (values.locationX) {
+  if (values.location_x) {
     await connection.query(
-      "UPDATE battles SET location_x = ? WHERE battlename = ?", [values.locationX, battlename]
+      "UPDATE battles SET location_x = ? WHERE battlename = ?", [values.location_x, battlename]
     )
   }
-  if (values.locationY) {
+  if (values.location_y) {
     await connection.query(
-      "UPDATE battles SET location_y = ? WHERE battlename = ?", [values.locationY, battlename]
+      "UPDATE battles SET location_y = ? WHERE battlename = ?", [values.location_y, battlename]
     )
   }
-  if (values.winningFaction) {
+  if (values.winnin_faction) {
     await connection.query(
-      "UPDATE battles SET winning_faction = ? WHERE battlename = ?", [values.winningFaction, battlename]
+      "UPDATE battles SET winning_faction = ? WHERE battlename = ?", [values.winning_faction, battlename]
     )
   }
-  if (values.losingFaction) {
+  if (values.losing_faction) {
     await connection.query(
-      "UPDATE battles SET losing_faction = ? WHERE battlename = ?", [values.losingFaction, battlename]
+      "UPDATE battles SET losing_faction = ? WHERE battlename = ?", [values.losing_faction, battlename]
     )
   }
-  if (values.winningCommander) {
+  if (values.winning_commander) {
     await connection.query(
-      "UPDATE battles SET winning_commander = ? WHERE battlename = ?", [values.winningCommander, battlename]
+      "UPDATE battles SET winning_commander = ? WHERE battlename = ?", [values.winning_commander, battlename]
     )
   }
-  if (values.losingCommander) {
+  if (values.losing_commander) {
     await connection.query(
-      "UPDATE battles SET losing_commander = ? WHERE battlename = ?", [values.losingCommander, battlename]
+      "UPDATE battles SET losing_commander = ? WHERE battlename = ?", [values.losing_commander, battlename]
     )
   }
-  if (values.winningDeaths) {
+  if (values.winning_deaths) {
     await connection.query(
-      "UPDATE battles SET winning_deaths = ? WHERE battlename = ?", [values.winningDeaths, battlename]
+      "UPDATE battles SET winning_deaths = ? WHERE battlename = ?", [values.winning_deaths, battlename]
     )
   }
-  if (values.losingDeaths) {
+  if (values.losing_deaths) {
     await connection.query(
-      "UPDATE battles SET losing_deaths = ? WHERE battlename = ?", [values.losingDeaths, battlename]
+      "UPDATE battles SET losing_deaths = ? WHERE battlename = ?", [values.losing_deaths, battlename]
     )
   }
 }

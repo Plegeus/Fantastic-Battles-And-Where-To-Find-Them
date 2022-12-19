@@ -89,7 +89,6 @@ async function userExists(username) {
 }
 
 async function updateUser(username, values) {
-  console.log(values)
   if (values.password) {
     connection.query(
       "UPDATE passwords SET password = ? WHERE username = ?", [values.password, username] 

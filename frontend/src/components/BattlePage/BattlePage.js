@@ -1,53 +1,69 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./BattlePage.css"
 import EpicBattle from './../../resources/pictures/epicBattle.png'
+import { useParams } from 'react-router-dom'
+import useFetch from '../../Util/useFetch'
+
+
+const Undefined = ({text}) => {
+    return <p style={{color: "gray"}}>{text}</p>
+}
+const Faction = ({isVictor, faction, leader, deaths}) => {
+    return(
+        <div id={isVictor ? "battleVictors" : "battleVanquished" }>
+            <h3>{isVictor ? "The Victors:" : "The Vanquished:"}</h3>
+            {faction ? <p>{faction}</p> : <Undefined text="faction unknown"/>}
+            {leader ? <p>led by {leader}</p> : <Undefined text="leader unknown"/>}
+            {deaths || deaths === 0 ? <p>taking {deaths} losses</p> : <Undefined text="deaths unknown"/>}
+        </div>
+    )
+}
 
 
 const BattlePage = () => {
   
-  return (
-    <div id="body">
-        <div id="battleInfo">
-            <div id="topContainer">
-            
-                <img id="battlePic" src={EpicBattle} alt="An Epic Image of a Battle"></img>
-                <div id="battleSummary">
-                    <div id="battleTitle">
-                        <h2>The Epic Battle of Britain</h2><br></br>
-                    </div>
-                    <div id="combatants">
-                        <div id="battleVictors">
-                            <h3>The Victors:</h3>
-                            <p>The British Empire</p>
-                            <p>Led by sir Falcon, the Fifty-fourth</p>
-                            <p>taking 12,000 losses</p><br></br>
+    const { name } = useParams()
+
+    const { FetchedData, IsLoading, Error } = useFetch(`/api/battles/name/${name}`, {
+        "method": "GET"
+    })
+
+    console.log("FOOOO")
+    console.log(FetchedData)
+
+    return (
+        <div id="body">
+            <div id="battleInfo">
+                <div id="topContainer">
+
+                    <img id="battlePic" src={EpicBattle} alt="An Epic Image of a Battle"></img>
+                    <div id="battleSummary">
+                        <div id="battleTitle">
+                            <h2>{FetchedData.battlename}</h2><br></br>
                         </div>
-                        <div id="battleVanquished">
-                            <h3>The Vanquished:</h3>
-                            <p>The German Reich</p>
-                            <p>led by Reichsmarshall Erwin Rommel</p>
-                            <p>taking 473,051 losses</p><br></br>
+                        <div id="combatants">
+                            <Faction isVictor={true} faction={FetchedData.winning_faction} leader={FetchedData.winning_commander} deaths={FetchedData.winning_deaths}/>
+                            <Faction isVictor={false} faction={FetchedData.losing_faction} leader={FetchedData.losing_commander} deaths={FetchedData.losing_deaths}/>
                         </div>
                     </div>
+                    <div id='likeDiv'>
+                        <button id="likeButton">
+                        </button>
+                    </div>
                 </div>
-                <div id='likeDiv'>
-                    <button id="likeButton">
-                    </button>
-                </div>
-            </div>
-            
-            <div id="bottomContainer">
-                <div id="battleDescription">
-                    <p>From near and far they arrived, joined the force, ready to serve the allied command. Sent into training, though they already earned their wings. They were ready to fly. They were fit for the fight. Once in the air, the battle begins. They have proven their worth, now they fly for revenge.</p><br></br>
-                </div>
-                <div id="theFuckingWeather">
-                    <p>Current weather on this position: </p>
-                    <p>very hot</p>
+
+                <div id="bottomContainer">
+                    <div id="battleDescription">
+                        { FetchedData.description ? <p>{FetchedData.description}</p> : <Undefined text="description"/> }
+                    </div>
+                    <div id="theFuckingWeather">
+                        <p>Current weather on this position: </p>
+                        <p>very hot</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export default BattlePage

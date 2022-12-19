@@ -25,7 +25,7 @@ router.get('/name/:name', async (req, res) => {
   let name = req.params.name
 
   let b = await battle.getBattle(name)
-  b.description = await battle.getDesciption(name)
+  b.description = (await battle.getDesciption(name)).description
 
   res.json(b)
 
