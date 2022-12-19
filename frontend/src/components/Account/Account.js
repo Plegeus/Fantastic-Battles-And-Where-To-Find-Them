@@ -18,7 +18,7 @@ const Account = () => {
         Username
     } = useContext(UserContext);
 
-    const { FetchedData, IsLoading, Error } = useFetch("/user/names", {
+    const { FetchedData, IsLoading, Error } = useFetch("/api/user/names", {
         "method": "GET"
     })
 

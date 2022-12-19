@@ -1,6 +1,6 @@
 
 const express = require('express')
-const router = express.Router()
+const router = express.Router({mergeParams: true})
 
 const user = require('../database/users/queries')
 
@@ -27,11 +27,11 @@ router.use(async (req, res, next) => {
   if (decode) {
     // check if there is a user with this uuid...
     let u = await user.getByUuid(decode)
-    if (u) {
+    if (u && u.username === req.params.username) {
       // a user was found with this uuid, we may continue,
       // the uuid (decode) is provide to the following routes to avoid
       // decoding twice...
-      req.body.uuid = decode
+      req.body.user = u
       console.log(' > token decoded succesfully')
       next()
       return
@@ -50,21 +50,10 @@ router.use(async (req, res, next) => {
 
 })
 
-router.post('/edit/:username', async (req, res) => {
-  
+router.post('/edit', async (req, res) => {
   console.log('received post request @ edit')
-
-  let uuid = req.body.uuid
-  if (req.params.username === (await user.getByUuid(uuid)).username) {
-    user.updateUser(req.params.username, req.body)
-    res.status(200)
-    return
-  }
-
-  console.log(' > the username and uuid to not correspond')
-
-  res.status(401).send('invalid username for provided token...')  
-
+  user.updateUser(req.body.user.username, req.body)
+  res.status(200)
 })
 
 

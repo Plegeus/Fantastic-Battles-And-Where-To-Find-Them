@@ -39,7 +39,7 @@ const Signup = () => {
 
     useEffect(() => {
         if (Object.keys(FormErrors).length === 0 && IsSubmitted) {
-            fetch("/user/register", {
+            fetch("/api/user/register", {
                 "method": "POST",
                 "headers": { 
                     "content-type": "application/json" 
