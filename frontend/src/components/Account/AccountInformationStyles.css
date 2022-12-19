@@ -198,6 +198,73 @@ tr:nth-child(even):hover{
 	background-color: #d1cece81;
 }
 /* */
+#listView {
+	display: flex;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 2rem;
+}
+
+#tileView {
+	display: none;
+	margin-left: 5%;
+}
+
+
+.grid-container {
+	width: 80%;
+	height: max-content;
+	display: flex;
+	margin-top: 5%;
+	display: none;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 5%;
+	z-index: 2;
+
+
+	column-gap: 2%;
+	row-gap: 5%;
+	grid-template-columns: auto auto auto;
+	padding: 10px;
+}
+
+.grid-item {
+	color: darkslategray;
+	font-weight: bold;
+	width: 80%;
+	background-color: #b6aeaf;
+	border: 1px solid #b6aeaf;
+	padding: 20px;
+	font-size: 20px;
+	text-align: left;
+	font-family: 'Montserrat', sans-serif;
+	box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.grid-item:nth-child(even) {
+	background-color: #d1cece;
+	border: 1px solid #d1cece;
+}
+
+
+.grid-item:hover {
+	color: white;
+	font-weight: normal;
+	background-color: #b6aeaf93;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: none;
+}
+.grid-item:nth-child(even):hover{
+	background-color: #d1cece81;
+}
+
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
 
 @media (max-width: 1200px) {
     .AccountDescription {
@@ -209,6 +276,26 @@ tr:nth-child(even):hover{
         height: 12rem;
 
     }
+}
+
+@media (max-width: 1000px) {
+    #listView{
+        display: none;
+    }
+    #tileView{
+        display: grid;
+    }
+}
+
+@media (max-width: 700px) {
+	.grid-container {
+		width: 80%;
+
+		column-gap: 5%;
+		row-gap: 2%;
+		grid-template-columns: auto auto;
+		padding: 10px;
+	}
 }
 
 @media (max-width: 600px) {
@@ -262,7 +349,17 @@ tr:nth-child(even):hover{
     }
 }
 
-@media (max-width: 480px) {}
+@media (max-width: 490px) {
+	.grid-container {
+		width: 80%;
+
+		column-gap: 5%;
+		row-gap: 2%;
+		grid-template-columns: auto;
+		padding: 10px;
+	}
+
+}
 
 @media (max-width: 400px) {
     .Account .searchInputs {
