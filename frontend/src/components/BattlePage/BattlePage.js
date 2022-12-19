@@ -21,12 +21,24 @@ const Faction = ({ isVictor, faction, leader, deaths }) => {
 
 
 const BattlePage = () => {
-    const { name } = useParams()
-    console.log(`Name: ${name}`)
+    const { id } = useParams()
+    console.log(`Name: ${id}`)
 
     const [CurrentConditions, setCurrentConditions] = useState(null)
+    const [IsEditingBattle, setIsEditingBattle] = useState(false)
+    const EditBattle = () => {
+        setIsEditingBattle(true)
+    }
 
-    const { FetchedData, IsLoading, Error } = useFetch(`/api/battles/name/${name}`, {
+    const CancelChanges = () => {
+        setIsEditingBattle(false)
+    }
+
+    const SaveChanges = () => {
+        setIsEditingBattle(false)
+    }
+
+    const { FetchedData, IsLoading, Error } = useFetch(`/api/battles/id/${id}`, {
         "method": "GET"
     })
 
@@ -80,6 +92,9 @@ const BattlePage = () => {
                             <button id="editButton">
                                 Edit
                             </button>
+                            <button id="cancelButton">
+                                Edit
+                            </button>
                             <button id="saveButton">
                                 Save
                             </button>
@@ -89,7 +104,7 @@ const BattlePage = () => {
 
                     <div id="bottomContainer">
                         <div id="battleDescription">
-                            <p>{FetchedData.description}</p>
+                            <p>{FetchedData.description === null ? "No Description" : FetchedData.description}</p>
                         </div>
                         {CurrentConditions &&
                             <div id="theWeather">

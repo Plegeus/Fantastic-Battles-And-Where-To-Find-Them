@@ -23,7 +23,7 @@ const App = () => {
             <Routes>
               <Route exact path="/" element={<Map/>} />
               <Route path="/overview" element={<Overview />} />
-              <Route path="/BattlePage/:name" element={<BattlePage />} />
+              <Route path="/BattlePage/:id" element={<BattlePage />} />
               <Route element={<LoggedOutRoutes />}>
                 <Route path="/login" element={<LoginProvider><Login /></LoginProvider>} />
                 <Route path="/signup" element={<SignupWithContext />} />
