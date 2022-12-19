@@ -29,7 +29,7 @@ const Login = () => {
 
     const login = (e) => {
         e.preventDefault()
-        fetch("/user/login", {
+        fetch("/api/user/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

@@ -10,7 +10,7 @@ const AccountInformation = (props) => {
     const [ProfileDescription, setProfileDescription] = useState("")
     const [IsEditingProfile, setIsEditingProfile] = useState(false)
 
-    const fetchurl = "/user/" + props.UsernameAccountPage;
+    const fetchurl = "/api/user/" + props.UsernameAccountPage;
     const { FetchedData, IsLoading, Error } = useFetch(fetchurl, {
         "method": "GET"
     });
@@ -31,7 +31,7 @@ const AccountInformation = (props) => {
         setIsEditingProfile(false)
         console.log("post nieuwe description in user")
         console.log(ProfileDescription)
-        const fetchurl = "/account/edit/" + props.Username;
+        const fetchurl = "/api/account/" + props.Username + "/edit";
         console.log(fetchurl);
         //post request to update description
         fetch(fetchurl, {
@@ -41,8 +41,7 @@ const AccountInformation = (props) => {
                 "Authorization": `Bearer ${props.Accestoken}`,
             },
             "body": JSON.stringify({
-                newBio: ProfileDescription,
-                token: props.Accestoken
+                bio: ProfileDescription
             }),
         })
     }
