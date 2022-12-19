@@ -54,17 +54,17 @@ const BattlePage = () => {
 
     return (
         <div id="body">
-            {FetchedData && 
+           
             <div id="battleInfo">
                 <div id="topContainer">
                     <img id="battlePic" src={EpicBattle} alt="An Epic Image of a Battle"></img>
                     <div id="battleSummary">
                         <div id="battleTitle">
-                            <h2>{FetchedData.battlename}</h2><br></br>
+                            <h2>"battlename"</h2><br></br>
                         </div>
                         <div id="combatants">
-                            <Faction isVictor={true} faction={FetchedData.winning_faction} leader={FetchedData.winning_commander} deaths={FetchedData.winning_deaths}/>
-                            <Faction isVictor={false} faction={FetchedData.losing_faction} leader={FetchedData.losing_commander} deaths={FetchedData.losing_deaths}/>
+                            <Faction isVictor={true} faction="{FetchedData.winning_faction}" leader="{FetchedData.winning_commander}" deaths="{FetchedData.winning_deaths}"/>
+                            <Faction isVictor={false} faction="{FetchedData.losing_faction}" leader="{FetchedData.losing_commander}" deaths="{FetchedData.losing_deaths}"/>
                         </div>
                     </div>
                     <div id='likeDiv'>
@@ -75,14 +75,15 @@ const BattlePage = () => {
 
                 <div id="bottomContainer">
                     <div id="battleDescription">
-                        { FetchedData.description ? <p>{FetchedData.description}</p> : <Undefined text="description"/> }
+                        {/* FetchedData.description ? <p>"{FetchedData.description}"</p> : <Undefined text="description"/> */}
+                        <p>"description</p> 
                     </div>
                     <div id="theFuckingWeather">
                         <p>Current weather on this position: </p>
                         <p>very hot</p>
                     </div>
                 </div>
-            </div>}
+            </div>
         </div>
     )
 }
