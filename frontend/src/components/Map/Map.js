@@ -24,11 +24,11 @@ const rectangle = [
   [90, 180],
 ]
 
-const Mark = ({x, y, title, description}) => {
+const Mark = ({x, y, title, description, id}) => {
   return(
     <Marker position={[x, y]} icon={new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41] })} >
       <Popup>
-        <Link to={`BattlePage/${title}`}>
+        <Link to={`BattlePage/${id}`}>
           {title}
           <br/>
             {description ? description : "no description"}
@@ -139,7 +139,7 @@ const Map = () => {
           },
           }} color='transparent'>
           {FetchedData && FetchedData.map((b) => (
-            <Mark key={b.id} x={b.location_x} y={b.location_y} title={b.battlename} description={b.description}/>
+            <Mark key={b.id} x={b.location_x} y={b.location_y} title={b.battlename} description={b.description} id={b.id}/>
           ))}
         </Rectangle>
 
