@@ -6,7 +6,7 @@ const Post = (props) => {
 
   const battle = props.Battlename
 
-  const fetchurl = "/battles/name/" + props.Battlename;
+  const fetchurl = "/api/battles/name/" + props.Battlename;
   const { FetchedData, IsLoading, Error } = useFetch(fetchurl, {
     "method": "GET"
   });

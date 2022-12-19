@@ -8,11 +8,19 @@ app.use(require('body-parser').json())
 const dotenv = require('dotenv')
 dotenv.config()
 
+const router = express.Router()
 
-app.use('/user', require('./routes/user'))
-app.use('/battles', require('./routes/battles'))
-app.use('/account', require('./routes/account'))
+router.use((req, res, next) => {
+  console.log("received request @ api")
+  next()
+})
 
+
+router.use('/user', require('./routes/user'))
+router.use('/battles', require('./routes/battles'))
+router.use('/account/:username', require('./routes/account'))
+
+app.use('/api', router)
 
 
 app.listen(PORT, () => {

@@ -6,7 +6,7 @@ const Overview = () => {
   var mayAdd = false;
 
   useEffect(() => {
-    fetch("/battles/count/0/10", {
+    fetch("/api/battles/count/0/10", {
       "method": "GET",
     })
       .then(res => res.json())

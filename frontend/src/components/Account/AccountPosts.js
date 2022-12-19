@@ -8,7 +8,7 @@ import "../Posts/PostsStyles.css"
 const AccountPosts = (props) => {
 
     //const fetchurl = "/user/account/" + props.username;
-    const fetchurl = "/user/" + props.UsernameAccountPage + "/battles";
+    const fetchurl = "/api/user/" + props.UsernameAccountPage + "/battles";
     const { FetchedData, IsLoading, Error } = useFetch(fetchurl, {
         "method": "GET"
     });
