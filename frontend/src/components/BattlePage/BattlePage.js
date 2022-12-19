@@ -25,9 +25,10 @@ const BattlePage = () => {
     console.log(`Name: ${name}`)
 
     //const [CurrentConditions, setCurrentConditions] = useState(null)
-    const { FetchedData, IsLoading, Error } = useFetch(`/api/battles/name/${name}`, {
-        "method": "GET"
-    })
+
+   // const { FetchedData, IsLoading, Error } = useFetch(`/api/battles/name/${name}`, {
+    //    "method": "GET"
+    //})
 
    
    
@@ -60,7 +61,7 @@ const BattlePage = () => {
                     <img id="battlePic" src={EpicBattle} alt="An Epic Image of a Battle"></img>
                     <div id="battleSummary">
                         <div id="battleTitle">
-                            <h2>"battlename"</h2><br></br>
+                            <h2>battlename</h2><br></br>
                         </div>
                         <div id="combatants">
                             <Faction isVictor={true} faction="{FetchedData.winning_faction}" leader="{FetchedData.winning_commander}" deaths="{FetchedData.winning_deaths}"/>
