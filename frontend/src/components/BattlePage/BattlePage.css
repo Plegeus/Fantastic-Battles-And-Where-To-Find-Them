@@ -142,5 +142,11 @@
     #topContainer, #combatants{
         flex-direction: column;
     }
+    #likeDiv{
+        height: 10rem;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
 }
 
