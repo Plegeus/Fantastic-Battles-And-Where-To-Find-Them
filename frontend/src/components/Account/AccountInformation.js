@@ -47,6 +47,16 @@ const AccountInformation = (props) => {
         })
     }
 
+    
+    const data = fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/50,4?key=KLKMENPQKWMLJ7GBD3V479YHL") 
+    data.then(res => res.json())
+    .then(dat => {
+      if (dat) {
+        console.log(dat)
+      } else {
+
+      }
+    })
 
     return (
 
@@ -54,6 +64,7 @@ const AccountInformation = (props) => {
             <div className="ProfilePicture">
                 {IsLoading && <div>Loading Profile Picture</div>}
                 {Error && <div>{Error}</div>}
+                {FetchedData && console.log(FetchedData)}
                 {FetchedData && <Picture username={props.UsernameAccountPage} />}
             </div>
             {IsLoading && <div>Loading account information</div>}

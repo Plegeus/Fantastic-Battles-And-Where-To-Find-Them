@@ -64,6 +64,13 @@
     margin: 0.5rem;
 }
 
+.ProfileButton:hover {
+    opacity: 0.8;
+    transform: scale(1.12);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
 @media (max-width: 1200px) {
     .AccountDescription {
         width: 100%;

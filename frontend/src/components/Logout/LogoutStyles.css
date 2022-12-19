@@ -6,3 +6,10 @@
     border-radius: 0.5rem;
     margin: 0.5rem;
 }
+
+.LogoutButton:hover {
+    opacity: 0.8;
+    transform: scale(1.12);
+    transition: 0.5s;
+    cursor: pointer;
+}

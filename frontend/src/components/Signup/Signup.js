@@ -132,14 +132,14 @@ const Signup = () => {
                     {
                         page < 2 && (
                             <div className="signupBottom">
-                                <button id='signupButton' type="submit" className="NextButton" onClick={() => { decideIcons(page + 1) }}>Next</button>
+                                <button type="submit" className="NextButton" onClick={() => { decideIcons(page + 1) }}>Next</button>
                             </div>
                         )
                     }
                     {
                         page > 1 && (
                             <div className="signupBottom">
-                                <button id='signupButton' type="submit" className="BackButton" onClick={() => { decideIcons(page - 1) }}>Back</button>
+                                <button  type="submit" className="BackButton" onClick={() => { decideIcons(page - 1) }}>Back</button>
                             </div>
                         )
                     }

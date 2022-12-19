@@ -52,7 +52,7 @@ const SignupPage2 = (props) => {
         </div>
 
         <div className="signupBottom">
-            <button id='signupButton' type="submit" className="NextButton">Sign Up</button>
+            <button type="submit" className="NextButton">Sign Up</button>
         </div>
     </div>
   )
