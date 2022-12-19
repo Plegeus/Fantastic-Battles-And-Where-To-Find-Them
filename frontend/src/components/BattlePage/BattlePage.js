@@ -64,7 +64,7 @@ const BattlePage = () => {
                             <h2>battlename</h2><br></br>
                         </div>
                         <div id="combatants">
-                            <Faction isVictor={true} faction="{FetchedData.winning_faction}" leader="{FetchedData.winning_commander}" deaths="{FetchedData.winning_deaths}"/>
+                            <Faction isVictor={true} faction="{FetchedData.winning_faction}" leader="{FetchedData.winning_commander" deaths="{FetchedData.winning_deaths}"/>
                             <Faction isVictor={false} faction="{FetchedData.losing_faction}" leader="{FetchedData.losing_commander}" deaths="{FetchedData.losing_deaths}"/>
                         </div>
                     </div>

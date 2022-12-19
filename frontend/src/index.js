@@ -4,12 +4,34 @@ import { createRoot } from 'react-dom/client';
 
 import App from "./App.js";
 
-
 import video from './resources/videos/016708093-world-war-ii-color-footage-b24.mp4'
+
+const FULL_SCREEN = {
+  x0: -180,
+  x1: 180,
+  y0: 85,
+  y1: -85,
+}
 
 const container = document.getElementById('root');
 const root = createRoot(container);
+
 root.render(<App/>);
+
+fetch("/api/battles/filter", {
+  'method': 'POST',
+  'headers': {
+    'content-type': 'application/json',
+  },
+  'body': JSON.stringify({
+    coords: FULL_SCREEN
+  }),
+})
+  .then(res => res.json())
+  .then( dat => {
+    root.render(<App battles={dat}/>)
+  })
+
 
 
 

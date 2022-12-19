@@ -1,11 +1,13 @@
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents, Rectangle } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import markerIconPng from "../../resources/pictures/grey-marker-icon.png"
-import { Icon } from 'leaflet'
+import { Icon, marker } from 'leaflet'
 import './map.css'
 import UserContext from '../User.context';
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+import useFetch from '../../Util/useFetch';
+
 
 const outerBounds = [
   [-90, -180],
@@ -16,11 +18,17 @@ const rectangle = [
   [90, 180],
 ]
 
-const Mark = ({x, y, title='no title', description='no description'}) => {
+const Mark = ({x, y, title, description}) => {
   return(
     <Marker position={[x, y]} icon={new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41] })} >
       <Popup>
-        <Link to={`BattlePage/${'Battle of Dunkirk'}`}>{title}<br/>{description}<br/> Click for more info </Link>
+        <Link to={`BattlePage/${title}`}>
+          {title}
+          <br/>
+            {description ? description : "no description"}
+          <br/> 
+          Click for more info 
+        </Link>
       </Popup>
     </Marker>
   )
@@ -32,10 +40,11 @@ const MARKERS = [
 ]
 
 
-function Map() {
+const Map = ({battles=[]}) => {
 
   var mayAdd = false;
   var currentMarker;
+  
   function showAddScreen() {
     var pane = document.getElementById('add_battle_pane');
     if (pane.style.display == 'block') {
@@ -61,6 +70,7 @@ function Map() {
       }
   }
 
+
   const { Accestoken } = useContext(UserContext);
   return (
     <div className='mapContainer'>
@@ -69,8 +79,6 @@ function Map() {
         <div id="center_pane"></div>
          {true && <button id="battleButton" onClick={showAddScreen}>Add a battle</button>} 
       </div>
-
-
 
       <div id="add_battle_pane">
 
@@ -115,8 +123,8 @@ function Map() {
           },
           }} color='transparent'>
 
-          {MARKERS.length > 0 && MARKERS.map((marker) => (
-            <Mark x={marker.x} y={marker.y}/>
+          {battles.length > 0 && battles.map((b) => (
+            <Mark x={b.location_x} y={b.location_y} title={b.battlename} description={b.description}/>
           ))}
         </Rectangle>
 

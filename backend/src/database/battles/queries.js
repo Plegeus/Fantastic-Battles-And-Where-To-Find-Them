@@ -144,11 +144,8 @@ async function filter(f) {
 
   // https://stackoverflow.com/questions/10829812/sql-query-where-value-of-another-table
 
-  stat = "SELECT id FROM battles"
+  stat = "SELECT * FROM battles"
   props = []
-
-  let b = await getBattle('Battle 1')
-  //console.log(b)
 
   if (f.tags && f.tags.length > 0) {
     stat = stat + " INNER JOIN tags ON battles.battlename = tags.battlename WHERE (0 = 1"
@@ -172,11 +169,24 @@ async function filter(f) {
     stat = stat + " && winning_deaths + losing_deaths >= ?"
     props.push(f.deaths)
   }
+  if (f.coords) {
 
-  //console.log(stat)
-  //console.log(props)
+    stat = stat + " && location_x >= ? && location_x <= ? && location_y <= ? && location_y >= ?"
 
-  return (await connection.query(stat, props)).map(v => v.id)
+    props.push(f.coords.x0)
+    props.push(f.coords.x1)
+    props.push(f.coords.y0)
+    props.push(f.coords.y1)
+
+  }
+
+  let bs = await connection.query(stat, props)
+  for (i = 0; i < bs.length; i++) {
+    let d = await getDesciption(bs[i].battlename)
+    bs[i].description = d ? d.description : null
+  }
+
+  return bs
 }
 
 
