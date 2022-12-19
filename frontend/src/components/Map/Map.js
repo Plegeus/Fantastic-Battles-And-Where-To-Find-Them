@@ -139,7 +139,7 @@ const Map = () => {
           },
           }} color='transparent'>
           {FetchedData && FetchedData.map((b) => (
-            <Mark x={b.location_x} y={b.location_y} title={b.battlename} description={b.description}/>
+            <Mark key={b.id} x={b.location_x} y={b.location_y} title={b.battlename} description={b.description}/>
           ))}
         </Rectangle>
 
