@@ -40,6 +40,10 @@ const BattlePage = () => {
                 <div id="battleDescription">
                     <p>From near and far they arrived, joined the force, ready to serve the allied command. Sent into training, though they already earned their wings. They were ready to fly. They were fit for the fight. Once in the air, the battle begins. They have proven their worth, now they fly for revenge.</p><br></br>
                 </div>
+                <div id="theFuckingWeather">
+                    <p>Current weather on this position: </p>
+                    <p>very hot</p>
+                </div>
             </div>
         </div>
     </div>

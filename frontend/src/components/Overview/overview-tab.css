@@ -207,6 +207,7 @@ a {
 }
 
 #body {
+	background-color: #5e565b;
 	position: fixed;
 	left: 0;
 	right: 0;
