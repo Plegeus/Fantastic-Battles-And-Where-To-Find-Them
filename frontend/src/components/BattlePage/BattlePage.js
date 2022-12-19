@@ -23,6 +23,7 @@ const Faction = ({isVictor, faction, leader, deaths}) => {
 const BattlePage = () => {
   
     const { name } = useParams()
+    console.log(`Name: ${name}`)
 
     //const [CurrentConditions, setCurrentConditions] = useState(null)
     const { FetchedData, IsLoading, Error } = useFetch(`/api/battles/name/${name}`, {
