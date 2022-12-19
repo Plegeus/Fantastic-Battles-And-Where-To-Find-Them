@@ -30,6 +30,18 @@ router.get('/name/:name', async (req, res) => {
   res.json(b)
 
 })
+router.get('/id/:id', async (req, res) => {
+
+  console.log('received post request @ id')
+
+  let name = req.params.name
+
+  let b = await battle.getBattleById(name)
+  b.description = (await battle.getDesciption(name)).description
+
+  res.json(b)
+
+})
 
 
 module.exports = router

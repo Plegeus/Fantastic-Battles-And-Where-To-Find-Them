@@ -17,6 +17,19 @@ async function getBattle(battlename) {
 
   return q[0]
 }
+async function getBattleById(id) {
+
+  let q = await connection.query(
+    "SELECT * FROM battles WHERE id = ?", [id]
+  )
+
+  if (q.length === 0) {
+    return false
+  }
+
+  return q[0]
+}
+
 async function getTags(battlename) {
   
   let q = await connection.query(
@@ -177,5 +190,6 @@ module.exports = {
   removeTag,
   updateDescription,
   createBattle,
-  filter
+  filter,
+  getBattleById
 }
