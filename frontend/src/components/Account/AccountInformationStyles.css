@@ -136,6 +136,67 @@ tr:hover {
 tr:nth-child(even):hover{
 	background-color: #d1cece81;
 }
+
+
+#tileView {
+	display: none;
+	margin-left: 5%;
+}
+
+.grid-container {
+	width: 80%;
+	height: max-content;
+	display: flex;
+	margin-top: 5%;
+	display: none;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 5%;
+	z-index: 2;
+
+
+	column-gap: 2%;
+	row-gap: 5%;
+	grid-template-columns: auto auto auto;
+	padding: 10px;
+}
+
+.grid-item {
+	color: darkslategray;
+	font-weight: bold;
+	width: 80%;
+	background-color: #b6aeaf;
+	border: 1px solid #b6aeaf;
+	padding: 20px;
+	font-size: 20px;
+	text-align: left;
+	font-family: 'Montserrat', sans-serif;
+	box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.grid-item:nth-child(even) {
+	background-color: #d1cece;
+	border: 1px solid #d1cece;
+}
+
+.container {
+	z-index: 3;
+}
+
+#form-area {
+	z-index: 3;
+}
+
+.grid-item:hover {
+	color: white;
+	font-weight: normal;
+	background-color: #b6aeaf93;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: none;
+}
+.grid-item:nth-child(even):hover{
+	background-color: #d1cece81;
+}
 /* */
 
 @media (max-width: 1200px) {
