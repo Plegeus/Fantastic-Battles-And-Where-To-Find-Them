@@ -24,15 +24,14 @@ const BattlePage = () => {
   
     const { name } = useParams()
 
+    const [CurrentConditions, setCurrentConditions] = useState(null)
     const { FetchedData, IsLoading, Error } = useFetch(`/api/battles/name/${name}`, {
         "method": "GET"
     })
 
-    console.log("FOOOO")
-    console.log(FetchedData)
-
-    const [CurrentConditions, setCurrentConditions] = useState(null)
-
+    if (!FetchedData) {
+        throw new Error("Lost het zelf maar op")
+    }
 
     function getWeatherData(Latitude,Longitude) {
         const fetchUrl = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" + Latitude.toString() + "," + Longitude.toString() + "?key=KLKMENPQKWMLJ7GBD3V479YHL";
