@@ -28,8 +28,9 @@
 	font-family: 'Montserrat', sans-serif;
     padding: 1rem;
     margin-bottom: 1rem;
+    border: solid #5e565b83 1px;
 }
-#battleVictors{
+#battleVictors, #battleVanquished{
     background-color: #5e565b83;
     margin-top: 1rem;
     margin-right: 1rem;
@@ -40,19 +41,14 @@
     color: white;
 	font-family: 'Montserrat', sans-serif;
     padding: 1rem;
+    border: solid #5e565b83 1px;
 }
-#battleVanquished{
-    background-color: #5e565b83;
-    margin-top: 1rem;
-    margin-left: 1rem;
-    position: relative;
-    width: 50%;
-    height: auto;
-    box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.2) inset;
-    color: white;
-	font-family: 'Montserrat', sans-serif;
-    padding: 1rem;
+#battleVictors:hover, #battleTitle:hover, #battleVanquished:hover{
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 16px 16px 5px 0px rgba(0, 0, 0, 0.2) inset;
+    border: solid #5e565b83 1px;
 }
+
 #combatants{
     position: relative;
     display: flex;
@@ -83,7 +79,7 @@
     width: 10rem;
     height: 100%;
     display: flex;
-    align-content: center;
+    flex-direction: column;
 }
 #likeButton{
     margin: auto;
@@ -95,6 +91,9 @@
     border: #7e737a solid 1px;
     background-color: #7e737a;
     box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.2);
+    color: white;
+	font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
 }
 #likeButton:hover {
     border: #5d565a solid 1px;

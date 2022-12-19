@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import "./BattlePage.css"
 import EpicBattle from './../../resources/pictures/epicBattle.png'
 import { useParams } from 'react-router-dom'
@@ -30,6 +30,24 @@ const BattlePage = () => {
 
     console.log("FOOOO")
     console.log(FetchedData)
+
+    const [CurrentConditions, setCurrentConditions] = useState(null)
+
+
+    function getWeatherData(Latitude,Longitude) {
+        const fetchUrl = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" + Latitude.toString() + "," + Longitude.toString() + "?key=KLKMENPQKWMLJ7GBD3V479YHL";
+        const data = fetch(fetchUrl)
+        data.then(res => res.json())
+            .then(dat => {
+                if (dat) {
+                    setCurrentConditions(dat.currentConditions);
+                    console.log(CurrentConditions);
+                } else {
+
+                }
+            })
+    }
+
 
     return (
         <div id="body">

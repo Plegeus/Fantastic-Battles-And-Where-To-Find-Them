@@ -46,16 +46,6 @@ const AccountInformation = (props) => {
         })
     }
 
-    
-    const data = fetch("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/50,4?key=KLKMENPQKWMLJ7GBD3V479YHL") 
-    data.then(res => res.json())
-    .then(dat => {
-      if (dat) {
-        console.log(dat)
-      } else {
-
-      }
-    })
 
     return (
 
