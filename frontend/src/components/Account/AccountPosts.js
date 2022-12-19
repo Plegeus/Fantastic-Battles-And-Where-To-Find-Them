@@ -15,25 +15,7 @@ const AccountPosts = (props) => {
 
     return (
         <div>
-            <ul className="AccountPostsList">
-                <ul className="TitleList">
-                    <p>Title</p>
-                    <p>Victor</p>
-                    <p>Vanquished</p>
-                    <p>Victorious Commander</p>
-                    <p>Vanquished Commander</p>
-                    <p>Victorious Deaths</p>
-                    <p>Vanquished Deaths</p>
-                    <p>ID</p>
-                </ul>
-                { Error && <div>{ Error }</div>}
-                { IsLoading && <div>Loading Data...</div>}
-                {FetchedData && console.log(FetchedData) && FetchedData}
-                {/*FetchedData && FetchedData.battles.map((battlename) => (
-                    <li key={battlename}><Post Battlename={battlename} /></li>
-                ))*/}
-
-            </ul>
+            account
         </div>
     )
 }
