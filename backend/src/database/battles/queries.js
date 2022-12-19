@@ -37,7 +37,7 @@ async function getTags(battlename) {
   )
 
   if (q.length === 0) {
-    return false
+    return null
   }
 
   return q
@@ -48,67 +48,72 @@ async function getDesciption(battlename) {
     "SELECT * FROM descriptions WHERE battlename = ?", [battlename]
   )
 
-  if (q.length === 0) {
-    return null
-  }
   if (q.length === 1) {
     return q[0]
   }
 
-  throw new Error("A battle can only have one description!")
+  throw new Error("A battle must only have one description!")
 }
 
 async function updateBattle(battlename, values) {
   if (values.date) {
-    await connection.query(
+    connection.query(
       "UPDATE battles SET date = ? WHERE battlename = ?", [values.date, battlename]
     )
   }
   if (values.location_x) {
-    await connection.query(
+    connection.query(
       "UPDATE battles SET location_x = ? WHERE battlename = ?", [values.location_x, battlename]
     )
   }
   if (values.location_y) {
-    await connection.query(
+    connection.query(
       "UPDATE battles SET location_y = ? WHERE battlename = ?", [values.location_y, battlename]
     )
   }
   if (values.winnin_faction) {
-    await connection.query(
+    connection.query(
       "UPDATE battles SET winning_faction = ? WHERE battlename = ?", [values.winning_faction, battlename]
     )
   }
   if (values.losing_faction) {
-    await connection.query(
+    connection.query(
       "UPDATE battles SET losing_faction = ? WHERE battlename = ?", [values.losing_faction, battlename]
     )
   }
   if (values.winning_commander) {
-    await connection.query(
+    connection.query(
       "UPDATE battles SET winning_commander = ? WHERE battlename = ?", [values.winning_commander, battlename]
     )
   }
   if (values.losing_commander) {
-    await connection.query(
+    connection.query(
       "UPDATE battles SET losing_commander = ? WHERE battlename = ?", [values.losing_commander, battlename]
     )
   }
   if (values.winning_deaths) {
-    await connection.query(
+    connection.query(
       "UPDATE battles SET winning_deaths = ? WHERE battlename = ?", [values.winning_deaths, battlename]
     )
   }
   if (values.losing_deaths) {
-    await connection.query(
+    connection.query(
       "UPDATE battles SET losing_deaths = ? WHERE battlename = ?", [values.losing_deaths, battlename]
+    )
+  }
+  if (values.description) {
+    connection.query(
+      "UPDATE descriptions SET description = ? WHERE battlename = ?", [values.description, battlename]
     )
   }
 }
 
 async function createBattle(battlename, locationX, locationY) {
-  await connection.query(
+  connection.query(
     "INSERT INTO battles (battlename, location_x, location_y) VALUES(?, ?, ?)", [battlename, locationX, locationY]
+  )
+  connection.query(
+    "INSERT INTO descriptions (battlename) VALUES(?)", [battlename]
   )
 }
 
@@ -128,17 +133,6 @@ async function removeTag(battlename, tag) {
   )
 }
 
-async function updateDescription(battlename, description) {
-  if (await getDesciption(battlename)) {
-    await connection.query(
-      "UPDATE descriptions SET description = ? WHERE battlename = ?", [description, battlename]
-    )
-  } else {
-    await connection.query(
-      "INSERT INTO descriptions (battlename, description) VALUES(?, ?)", [battlename, description]
-    )
-  }
-}
 
 async function filter(f) {
 
