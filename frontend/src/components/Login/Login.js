@@ -112,7 +112,7 @@ const Login = () => {
                     </div>
 
                     <div className="loginBottom">
-                        <button id='loginButton' type="submit">Login</button>
+                        <button type="submit">Login</button>
                     </div>
 
                     <div className="socialLogin">
