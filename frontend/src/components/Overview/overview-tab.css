@@ -45,12 +45,12 @@ th {
 
 tr {
 	width: 100%;
-	background-color: #ffcdd2;
+	background-color: #b6aeaf;
 	font-family: 'Montserrat', sans-serif;
 }
 
 tr:nth-child(even) {
-	background-color: #fafafa;
+	background-color: #d1cece;
 }
 
 /* buttons */
