@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router({mergeParams: true})
 
 const user = require('../database/users/queries')
+const battle = require('../database/battles/queries')
 
 const acces = require('../tokens/access')
 const refresh = require('../tokens/refresh')
@@ -54,6 +55,18 @@ router.post('/edit', async (req, res) => {
   console.log('received post request @ edit')
   user.updateUser(req.body.user.username, req.body)
   res.status(200)
+})
+
+router.post('/battle/edit', async (req, res) => { 
+  
+  console.log('received post request @ battle edit')
+
+  let body = req.body
+  if (body) {
+    battle.createBattle(body.battlename, body.location_x, body.location_y)
+    battle.updateBattle(body.battlename, body)
+  }
+
 })
 
 

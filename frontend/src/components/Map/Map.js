@@ -50,7 +50,7 @@ const Map = () => {
 
   var mayAdd = false;
   var currentMarker;
-  
+
   function showAddScreen() {
     var pane = document.getElementById('add_battle_pane');
     if (pane.style.display == 'block') {
@@ -64,8 +64,36 @@ const Map = () => {
   function submitFunction() {
     var pane = document.getElementById("add_battle_pane");
       const form = document.getElementById('addBattle');
-      if (form.elements["name"].value != '' && form.elements["lat"].value != ''){
-      var log = ("Name:" + form.elements["name"].value + " - Victor:" + form.elements["victor"].value + " - Vanquished:" + form.elements["vanquished"].value + " - Victorious Commander:" + form.elements["victorious_commander"].value + " - Vanquished Commander:" + form.elements["vanquished_commander"].value + " - Victorious Deaths:" + form.elements["victorious_deaths"].value + " - Vanquished Deaths: " + form.elements["vanquished_deaths"].value + form.elements["lat"].value + form.elements["lng"].value)
+
+      function get(id) {
+        return form.elements[id].value
+      }
+
+      if (form.elements["name"].value != '' && form.elements["lat"].value != '' && form.elements["lng"].value != '') {
+
+        let body = {
+          battlename: get('name'),
+          location_x: get('lng'),
+          location_y: get('lat'),
+          date: get('date'),
+          winning_faction: get('victor'),
+          winning_commander: get('victorious_commander'),
+          winning_deaths: get('victorious_deaths'),
+          losing_faction: get('vanquished'),
+          losing_commander: get('vanquished_commander'),
+          losing_deaths: get('vanquished_deaths'),
+        }
+
+        fetch(`/api/account/${Username}/battle/edit`, {
+          'method': 'POST',
+          'headers': {
+            'content-type': 'application/json',
+            "Authorization": `Bearer ${Accestoken}`,
+          },
+          'body': JSON.stringify(body),
+        })
+
+        var log = ("Name:" + form.elements["name"].value + " - Victor:" + form.elements["victor"].value + " - Vanquished:" + form.elements["vanquished"].value + " - Victorious Commander:" + form.elements["victorious_commander"].value + " - Vanquished Commander:" + form.elements["vanquished_commander"].value + " - Victorious Deaths:" + form.elements["victorious_deaths"].value + " - Vanquished Deaths: " + form.elements["vanquished_deaths"].value + form.elements["lat"].value + form.elements["lng"].value)
             console.log(log);
             pane.style.display = 'none';
             
@@ -87,7 +115,7 @@ const Map = () => {
   })
 
 
-  const { Accestoken } = useContext(UserContext);
+  const { Accestoken, Username } = useContext(UserContext);
   return (
     <div className='mapContainer'>
 
@@ -102,6 +130,8 @@ const Map = () => {
 
           <label htmlFor="name">Name:</label><br></br>
           <input className='textField' type="any" id="name" name="name" /><br></br>
+          <label htmlFor="name">Date:</label><br></br>
+          <input className='textField' type="date" id="date" name="date" /><br></br>
           <label htmlFor="victor">Victor:</label><br></br>
           <input className='textField' type="any" id="victor" name="victor"/><br></br>
           <label htmlFor="vanquished">Vanquished:</label><br></br>

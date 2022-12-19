@@ -48,6 +48,9 @@ async function getDesciption(battlename) {
     "SELECT * FROM descriptions WHERE battlename = ?", [battlename]
   )
 
+  if (q.length === 0) {
+    return null
+  }
   if (q.length === 1) {
     return q[0]
   }
@@ -71,7 +74,7 @@ async function updateBattle(battlename, values) {
       "UPDATE battles SET location_y = ? WHERE battlename = ?", [values.location_y, battlename]
     )
   }
-  if (values.winnin_faction) {
+  if (values.winning_faction) {
     connection.query(
       "UPDATE battles SET winning_faction = ? WHERE battlename = ?", [values.winning_faction, battlename]
     )
@@ -192,7 +195,6 @@ module.exports = {
   updateBattle,
   addTag, 
   removeTag,
-  updateDescription,
   createBattle,
   filter,
   getBattleById
