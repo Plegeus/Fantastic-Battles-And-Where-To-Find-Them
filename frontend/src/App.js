@@ -13,7 +13,7 @@ import { LoginProvider } from "./components/Login/Login.context";
 import BattlePage from "./components/BattlePage/BattlePage";
 
 
-const App = ({battles}) => {
+const App = () => {
   return (
     <UserProvider>
       <Router>
@@ -21,7 +21,7 @@ const App = ({battles}) => {
           <Navigation />
           <div className="Content">
             <Routes>
-              <Route exact path="/" element={<Map battles={battles}/>} />
+              <Route exact path="/" element={<Map/>} />
               <Route path="/overview" element={<Overview />} />
               <Route path="/BattlePage/:name" element={<BattlePage />} />
               <Route element={<LoggedOutRoutes />}>

@@ -27,10 +27,13 @@ router.post('/login', async (req, res) => {
     // acces token blah blah...
     if ((await user.getPassword(username)) === password) {
       let token = await acces.encode(username)
-      let ref = await refresh.encode(username)
+      res.cookie("refresh token", await refresh.encode(username), {
+        sameSite: 'strict',
+        secure: true,
+        httpOnly: true
+      })
       res.status(200).json({
         token: token,
-        refresh: ref,
         username: username,
       })
       return
@@ -79,25 +82,33 @@ router.get('/names', async (req, res) => {
 
 router.post('/refresh', async (req, res) => {
 
-  let r = req.authorization
-  if (!r) {
-    res.status(401).send('Unauthorized...')
-    console.log(' > no token provided')
-    return
-  }
+  console.log('received post request @ refresh')
 
-  let decode = refresh.decode(r)
-  if (decode) {
-    let username = await user.getByUuid(decode)
-    let token = acces.encode(username)
-    res.status(200).json(token)
-    console.log(' > access token created')
-    return
-  }
+  let cookies = req.cookies
+  console.log(` > cookies: ${cookies}`)
 
-  console.log(' > refresh token expired')
+  //let r = req.authorization
+  //if (!r) {
+  //  res.status(401).send('Unauthorized...')
+  //  console.log(' > no token provided')
+  //  return
+  //}
 
-  res.status(401).send('Refresh token expired, login required.')
+  //let decode = refresh.decode(r)
+  //if (true) {
+  //  let username = await user.getByUuid(decode)
+  //  let token = acces.encode(username)
+  //  res.cookie('refresh token', token, {
+
+  //  })
+  //  res.status(200).send("token refreshed")
+  //  console.log(' > access token created')
+  //  return
+  //}
+
+  //console.log(' > refresh token expired')
+
+  //res.status(401).send('Refresh token expired, login required.')
 
 })
 
