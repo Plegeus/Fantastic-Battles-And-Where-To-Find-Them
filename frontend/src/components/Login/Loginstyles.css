@@ -121,7 +121,7 @@ input[type="checkbox"]{
     border-radius: 2rem;
 }
 
-button:hover {
+#loginButton:hover {
     opacity: 0.8;
     transform: scale(1.12);
     transition: 0.5s;

@@ -14,7 +14,8 @@
 }
 
 #add_battle_pane {
-    background-color: #e53935;
+    border-radius: 12px 0px 0px 12px;
+    background-color: #6b6167;
     color: white;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
@@ -30,9 +31,11 @@
     z-index: 700;
     border-collapse: collapse;
 	border-spacing: 0;
-	box-shadow: 0 2px 15px rgba(64, 64, 64, .7);
-	border-radius: 12px 12px 12px 12px;
+	box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.2);
 	overflow: hidden;
+    border: #5d565a;
+    border-style: none solid solid none 
+    
 }
 
 #battleButton{
@@ -44,7 +47,7 @@
     box-shadow: 0 1px 5px rgba(64, 64, 64, .7);
 	margin-right: 1rem;
 	min-width: 8rem;
-	background-color: #e53935;
+	background-color: #857a80;
 	color: white;
 	padding: 16px;
 	font-size: 16px;
@@ -52,6 +55,26 @@
 	z-index: 700;
     font-family: 'Montserrat', sans-serif;
 }
+#battleButton:hover {
+    background-color: #6b6167; /* Green */
+    color: white;
+}
+#submitButton{
+    margin-top: 1rem;
+    transition-duration: 0.4s;
+    background-color: #857a80;
+    color: white;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+    border: #857a80 solid 1px;
+}
+  
+#submitButton:hover {
+    background-color: #6b6167; /* Green */
+    color: lightgrey;
+    box-shadow: none;
+    border: #5d565a solid 1px;
+}
+
 #coordinates{
     z-index: 7000;
     bottom: 6rem;
@@ -71,8 +94,10 @@ body {
     overflow-y: hidden;
 }
 .textField{
-    background-color: rgb(248, 209, 208);
-    font-family: 'Montserrat', sans-serif;
+    background-color: #5e565b83;
+    box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.2) inset;
+    color: white;
+	font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     padding: 1%;
     margin-bottom: 1%;
