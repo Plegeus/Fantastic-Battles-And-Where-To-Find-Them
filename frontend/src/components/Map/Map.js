@@ -8,6 +8,12 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import useFetch from '../../Util/useFetch';
 
+const FULL_SCREEN = {
+  x0: -180,
+  x1: 180,
+  y0: 85,
+  y1: -85,
+}
 
 const outerBounds = [
   [-90, -180],
@@ -40,7 +46,7 @@ const MARKERS = [
 ]
 
 
-const Map = ({battles=[]}) => {
+const Map = () => {
 
   var mayAdd = false;
   var currentMarker;
@@ -69,6 +75,16 @@ const Map = ({battles=[]}) => {
             });
       }
   }
+
+  const {FetchedData, isLoading, Error} = useFetch("/api/battles/filter", {
+    'method': 'POST',
+    'headers': {
+      'content-type': 'application/json',
+    },
+    'body': JSON.stringify({
+      coords: FULL_SCREEN
+    })
+  })
 
 
   const { Accestoken } = useContext(UserContext);
@@ -122,8 +138,7 @@ const Map = ({battles=[]}) => {
             document.getElementById("lng").value = e.latlng.lng;
           },
           }} color='transparent'>
-
-          {battles.length > 0 && battles.map((b) => (
+          {FetchedData && FetchedData.map((b) => (
             <Mark x={b.location_x} y={b.location_y} title={b.battlename} description={b.description}/>
           ))}
         </Rectangle>
