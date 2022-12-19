@@ -70,6 +70,13 @@ const BattlePage = () => {
                     </div>
                     <div id='likeDiv'>
                         <button id="likeButton">
+                            Like
+                        </button>
+                        <button id="editButton">
+                            Edit
+                        </button>
+                        <button id="saveButton">
+                            Save
                         </button>
                     </div>
                 </div>
@@ -79,7 +86,7 @@ const BattlePage = () => {
                         {/* FetchedData.description ? <p>"{FetchedData.description}"</p> : <Undefined text="description"/> */}
                         <p>"description</p> 
                     </div>
-                    <div id="theFuckingWeather">
+                    <div id="theWeather">
                         <p>Current weather on this position: </p>
                         <p>very hot</p>
                     </div>
