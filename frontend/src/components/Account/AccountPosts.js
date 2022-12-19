@@ -7,15 +7,15 @@ import "../Posts/PostsStyles.css"
 //fetch all posts => filter by username
 const AccountPosts = (props) => {
 
-    //const fetchurl = "/user/account/" + props.username;
-    const fetchurl = "/api/user/" + props.UsernameAccountPage + "/battles";
-    const { FetchedData, IsLoading, Error } = useFetch(fetchurl, {
-        "method": "GET"
-    });
+  //const fetchurl = "/user/account/" + props.username;
+  const fetchurl = "/api/user/" + props.UsernameAccountPage + "/battles";
+  const { FetchedData, IsLoading, Error } = useFetch(fetchurl, {
+    "method": "GET"
+  });
 
-    return (
-        <div id="accountPosts">
-            <div id="listView">
+  return (
+    <div id="accountPosts">
+      <div id="listView">
         <table id="battle-table">
           <thead>
             <tr>
@@ -29,40 +29,40 @@ const AccountPosts = (props) => {
             </tr>
           </thead>
           <tr>
-              <td>Name</td>
-              <td>Victor</td>
-              <td>Vanquished</td>
-              <td>Victorious Commander</td>
-              <td>Vanquished Commander</td>
-              <td>Victorious deaths</td>
-              <td>Vanquished deaths</td>
+            <td>Name</td>
+            <td>Victor</td>
+            <td>Vanquished</td>
+            <td>Victorious Commander</td>
+            <td>Vanquished Commander</td>
+            <td>Victorious deaths</td>
+            <td>Vanquished deaths</td>
           </tr>
           <tr>
-              <td>Name</td>
-              <td>Victor</td>
-              <td>Vanquished</td>
-              <td>Victorious Commander</td>
-              <td>Vanquished Commander</td>
-              <td>Victorious deaths</td>
-              <td>Vanquished deaths</td>
+            <td>Name</td>
+            <td>Victor</td>
+            <td>Vanquished</td>
+            <td>Victorious Commander</td>
+            <td>Vanquished Commander</td>
+            <td>Victorious deaths</td>
+            <td>Vanquished deaths</td>
           </tr>
           <tr>
-              <td>Name</td>
-              <td>Victor</td>
-              <td>Vanquished</td>
-              <td>Victorious Commander</td>
-              <td>Vanquished Commander</td>
-              <td>Victorious deaths</td>
-              <td>Vanquished deaths</td>
+            <td>Name</td>
+            <td>Victor</td>
+            <td>Vanquished</td>
+            <td>Victorious Commander</td>
+            <td>Vanquished Commander</td>
+            <td>Victorious deaths</td>
+            <td>Vanquished deaths</td>
           </tr>
           <tr>
-              <td>Name</td>
-              <td>Victor</td>
-              <td>Vanquished</td>
-              <td>Victorious Commander</td>
-              <td>Vanquished Commander</td>
-              <td>Victorious deaths</td>
-              <td>Vanquished deaths</td>
+            <td>Name</td>
+            <td>Victor</td>
+            <td>Vanquished</td>
+            <td>Victorious Commander</td>
+            <td>Vanquished Commander</td>
+            <td>Victorious deaths</td>
+            <td>Vanquished deaths</td>
           </tr>
         </table>
       </div>
@@ -75,8 +75,8 @@ const AccountPosts = (props) => {
         <a class="grid-item" href="BattlePage">right away</a>
         <a class="grid-item" href="BattlePage">come away</a>
       </div>
-        </div>
-    )
+    </div>
+  )
 }
 
 export default AccountPosts

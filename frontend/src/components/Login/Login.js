@@ -1,6 +1,5 @@
 import "./Loginstyles.css";
 import { FiEyeOff, FiEye } from "react-icons/fi";
-import { BsFacebook, BsGoogle } from "react-icons/bs";
 import { useContext, useState } from "react";
 import { Link, Navigate, useRoutes } from "react-router-dom";
 import UserContext from "../User.context";
@@ -67,15 +66,6 @@ const Login = () => {
         size="2rem" color="gray"
         onClick={() => changeType(!EyeIcon)}
     />
-
-    const facebookIcon = <BsFacebook className="EyeIcon"
-        size="2.3rem" color="blue"
-    />
-
-    const googleIcon = <BsGoogle className="EyeIcon"
-        size="2.3rem" color="red"
-    />
-
     //<YoutTube videoId="ifTF3ags0XI"></YoutTube>
 
     return (
@@ -114,17 +104,6 @@ const Login = () => {
                     <div className="loginBottom">
                         <button type="submit">Login</button>
                     </div>
-
-                    <div className="socialLogin">
-                        <a href="#">
-                            <span className="facebookIcon">{facebookIcon}</span>
-                        </a>
-                        <a href="#">
-                            <span className="googleIcon">{googleIcon}</span>
-                        </a>
-                    </div>
-
-
                     <div className="signup">
                         <p>Need an account? <Link to="/signup" className="forgotPassword">SIGN UP</Link></p>
                     </div>

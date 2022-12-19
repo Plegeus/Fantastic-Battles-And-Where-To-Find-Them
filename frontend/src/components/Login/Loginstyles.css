@@ -129,39 +129,6 @@ input[type="checkbox"]{
     cursor: pointer;
 }
 
-.otherPageLink {
-    text-decoration: none;
-    color: black;
-}
-
-.otherPageLink:hover {
-    text-decoration: underline;
-}
-
-
-
-.socialLogin {
-    position: relative;
-    width: 100%;
-    margin-bottom: 1rem;
-    height: 3rem;
-    border-top: 1px solid black;
-    padding-top: 1rem;
-}
-
-.socialLogin .facebookIcon{
-    position: absolute;
-    left: 35%;
-}
-
-.socialLogin .googleIcon{
-    position: absolute;
-    left: 55%;
-}
-
-
-
-
 
 .signup {
     text-align: center;
