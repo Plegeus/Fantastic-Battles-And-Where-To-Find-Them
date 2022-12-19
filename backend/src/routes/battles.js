@@ -15,7 +15,10 @@ router.post('/filter', async (req, res) => {
 
   console.log('received post request @ filter')
 
-  console.log(await battle.filter(req.body))
+  let b = await battle.filter(req.body)
+  console.log(b)
+
+  res.json(b)
 
 })
 router.get('/name/:name', async (req, res) => {
