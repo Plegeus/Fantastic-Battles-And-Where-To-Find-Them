@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import "./BattlePage.css"
 import EpicBattle from './../../resources/pictures/epicBattle.png'
 import { useParams } from 'react-router-dom'
 import useFetch from '../../Util/useFetch'
+import UserContext from '../User.context'
 
 
 const Undefined = ({ text }) => {
@@ -24,6 +25,7 @@ const BattlePage = () => {
     const { id } = useParams()
     console.log(`Name: ${id}`)
 
+    const { Accestoken } = useContext(UserContext);
     const [CurrentConditions, setCurrentConditions] = useState(null)
     const [IsEditingBattle, setIsEditingBattle] = useState(false)
     const EditBattle = () => {
@@ -86,18 +88,26 @@ const BattlePage = () => {
                             </div>
                         </div>
                         <div id='likeDiv'>
-                            <button id="likeButton">
-                                Like
-                            </button>
-                            <button id="editButton">
-                                Edit
-                            </button>
-                            <button id="cancelButton">
-                                Edit
-                            </button>
-                            <button id="saveButton">
-                                Save
-                            </button>
+                            {Accestoken &&
+                                <div>
+                                    <button id="likeButton">
+                                        Like
+                                    </button>
+                                    {!IsEditingBattle &&
+                                        <button id="editButton" onClick={EditBattle}>
+                                            Edit
+                                        </button>}
+                                    {IsEditingBattle &&
+                                        <div>
+                                            <button id="cancelButton" onClick={CancelChanges}>
+                                                Cancel
+                                            </button>
+                                            <button id="saveButton" onClick={SaveChanges}>
+                                                Save
+                                            </button></div>
+                                    }
+                                </div>
+                            }
                             {!CurrentConditions && <button className="WeatherButton" onClick={getWeatherData}>Weather</button>}
                         </div>
                     </div>
