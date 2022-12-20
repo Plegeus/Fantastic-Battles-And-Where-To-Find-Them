@@ -173,6 +173,10 @@ async function filter(f) {
     stat = stat + " && winning_deaths + losing_deaths >= ?"
     props.push(f.deaths)
   }
+  if (f.username) {
+    stat = stat + " && username = ?"
+    props.push(f.username)
+  }
   if (f.coords) {
 
     stat = stat + " && location_x >= ? && location_x <= ? && location_y <= ? && location_y >= ?"

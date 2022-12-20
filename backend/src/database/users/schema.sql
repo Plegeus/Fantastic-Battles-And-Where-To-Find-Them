@@ -24,16 +24,9 @@ CREATE TABLE users (
 
 INSERT INTO users (username, email, uuid) VALUES('Plegeus', 'kill.me@vub.be', '0');
 INSERT INTO users (username, email, uuid) VALUES('Bilbo', 'second.breakfast@lotr.com', '1');
-INSERT INTO users (username, email, uuid) VALUES('Sauron', 'my.precious@lotr.com', '2');
 
 INSERT INTO passwords (username, password) VALUES('Plegeus', '123');
-INSERT INTO passwords (username, password) VALUES('Bilbo', '456');
-INSERT INTO passwords (username, password) VALUES('Sauron', '789');
+INSERT INTO passwords (username, password) VALUES('Bilbo', '123');
 
-INSERT INTO battles (username, battlename) VALUES('Bilbo', 'Battle of Dunkirk');
-INSERT INTO battles (username, battlename) VALUES('Bilbo', 'Battle 1');
-INSERT INTO battles (username, battlename) VALUES('Plegeus', 'Battle 2');
-INSERT INTO battles (username, battlename) VALUES('Sauron', 'Battle 3');
-INSERT INTO battles (username, battlename) VALUES('Sauron', 'Battle 4');
 
 
