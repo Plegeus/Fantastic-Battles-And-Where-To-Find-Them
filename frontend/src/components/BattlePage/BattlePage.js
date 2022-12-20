@@ -4,6 +4,7 @@ import EpicBattle from './../../resources/pictures/epicBattle.png'
 import { useParams } from 'react-router-dom'
 import useFetch from '../../Util/useFetch'
 import UserContext from '../User.context'
+import "./EditBattlePage.css";
 
 
 const Undefined = ({ text }) => {
@@ -23,7 +24,6 @@ const Faction = ({ isVictor, faction, leader, deaths }) => {
 
 const BattlePage = () => {
     const { id } = useParams()
-    console.log(`Name: ${id}`)
 
     const { Accestoken } = useContext(UserContext);
     const [CurrentConditions, setCurrentConditions] = useState(null)
@@ -79,7 +79,59 @@ const BattlePage = () => {
 
 
 
+    if (IsEditingBattle) {
+        return (
+            <div id="Editbody">
+                <form id="battleInfo">
+                    <div id="topContainer">
+                        <div id="battleSummary">
+                            <div id="battleTitle">
+                                <label>BattleName:</label>
+                                <input type="text" id="fname" required/><br></br>
+                            </div>
+                            <div id="combatants">
+                                <div>
+                                    <label>Victor:</label>
+                                    <input type="text" id="fname" /><br></br>
+                                    <label>Victorious Commander:</label>
+                                    <input type="text" id="fname" /><br></br>
+                                    <label>Victorious Deaths:</label>
+                                    <input type="text" id="fname" /><br></br>
+                                </div>
+                                <div>
+                                    <label>Vanquished:</label>
+                                    <input type="text" id="fname" /><br></br>
+                                    <label>Vanquished Commander:</label>
+                                    <input type="text" id="fname" /><br></br>
+                                    <label>Vanquished Deaths:</label>
+                                    <input type="text" id="fname" /><br></br>
+                                </div>
+                            </div>
+                        </div>
+                        <div id='likeDiv'>
+                            {Accestoken &&
+                                <div>
+                                    <button type="button" id="cancelButton" onClick={CancelChanges}>
+                                        Cancel
+                                    </button>
+                                    <button type="button" id="saveButton" onClick={SaveChanges}>
+                                        Save
+                                    </button>
+                                </div>
+                            }
+                        </div>
+                    </div>
 
+                    <div id="bottomContainer">
+                        <div id="battleDescription">
+                            <label>Description:</label>
+                            <input type="text" id="fname" /><br></br>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        )
+    }
     return (
         <div id="body">
             {FetchedData &&
@@ -98,26 +150,16 @@ const BattlePage = () => {
                         <div id='likeDiv'>
                             {Accestoken &&
                                 <div>
-                                    <button id="likeButton" onClick={() => {likePost()}}>
+                                    <button id="likeButton" onClick={() => { likePost() }}>
                                         Like
                                     </button>
                                     {!IsEditingBattle &&
                                         <button id="editButton" onClick={EditBattle}>
                                             Edit
                                         </button>}
-                                    {IsEditingBattle &&
-                                        <div>
-                                            <button id="cancelButton" onClick={CancelChanges}>
-                                                Cancel
-                                            </button>
-                                            <button id="saveButton" onClick={SaveChanges}>
-                                                Save
-                                            </button>
-                                        </div>
-                                    }
                                 </div>
                             }
-                            {!CurrentConditions && <button className="WeatherButton" onClick={() => {getWeatherData()}}>Weather</button>}
+                            {!CurrentConditions && <button className="WeatherButton" onClick={() => { getWeatherData() }}>Weather</button>}
                         </div>
                     </div>
 
