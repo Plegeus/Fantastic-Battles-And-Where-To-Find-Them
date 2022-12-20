@@ -1,6 +1,5 @@
 .AccountContainer {
     display: flex;
-    overflow-y: auto;
     background-color: #5e565b;
 }
 body{
