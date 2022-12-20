@@ -20,7 +20,9 @@ async function likedBattle(username, battlename) {
   return !(q.length === 0)
 }
 async function likeThisBattle(username, battlename) {
-
+  connection.query(
+    "INSERT INTO likes (username, battlename) VALUES(? ,?)", [username, battlename]
+  )
 }
 
 async function getUser(username) {
@@ -134,25 +136,6 @@ async function updateUser(username, values) {
   }
 }
 
-async function addBattle(username, battlename) {
-  await connection.query(
-    "INSERT INTO battles (username, battlename) VALUES (?, ?)", [username, battlename]
-  )
-}
-async function removeBattle(username, battlename) {
-  await connection.query(
-    "DELETE FROM battles WHERE username = ? && battlename = ?", [username, battlename]
-  )
-}
-async function getBattles(username) {
-
-  let q = await connection.query(
-    "SELECT battlename FROM battles WHERE username = ?", [username]
-  )
-  
-  return q.map(b => b.battlename)
-}
-
 
 module.exports = {
   getUserByMail,
@@ -162,10 +145,7 @@ module.exports = {
   getByUuid,
   allUsers,
   getUser,
-  getBattles,
-  removeBattle,
   updateUser,
-  addBattle,
   likedBattle,
   likeThisBattle
 }
