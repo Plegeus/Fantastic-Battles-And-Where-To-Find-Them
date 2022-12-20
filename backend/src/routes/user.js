@@ -27,15 +27,17 @@ router.post('/login', async (req, res) => {
     // acces token blah blah...
     if ((await user.getPassword(username)) === password) {
       let token = await acces.encode(username)
-      res.cookie("refresh", await refresh.encode(username), {
+      let refr = `${await refresh.encode(username)}`
+      res.cookie("refresh", refr, {
         sameSite: 'strict',
-        secure: true,
-        httpOnly: true
+        //secure: true,
+        //httpOnly: true
       })
       res.status(200).json({
         token: token,
         username: username,
       })
+      console.log(" > login succes")
       return
     }
   } 
@@ -80,40 +82,35 @@ router.get('/names', async (req, res) => {
 
 })
 
-router.post('/refresh', async (req, res) => {
+router.post('/refresh/:username', async (req, res) => {
 
   console.log('received post request @ refresh')
 
   let cookies = req.cookies
   console.log(` > cookies: ${JSON.stringify(cookies)}`)
 
-  console.log(cookies.refresh)
-  
+  let refr = cookies.refresh
+  if (!refr) {
+    res.status(401).send("no refresh token provided")
+    console.log(" > no token")
+    return
+  }
 
-  // res.clearCookie() to delete cookies!
+  let decode = refresh.decode(refr)
+  if (decode) {
+    let username = req.params.username
+    let user = user.getByUuid(decode.uuid)
+    if (user && user.username === username) {
+      console.log(" > new token made")
+      res.status(200).json({
+        token: acces.encode(username),
+      })
+      return
+    }
+  } 
 
-  //let r = req.authorization
-  //if (!r) {
-  //  res.status(401).send('Unauthorized...')
-  //  console.log(' > no token provided')
-  //  return
-  //}
-
-  //let decode = refresh.decode(r)
-  //if (true) {
-  //  let username = await user.getByUuid(decode)
-  //  let token = acces.encode(username)
-  //  res.cookie('refresh token', token, {
-
-  //  })
-  //  res.status(200).send("token refreshed")
-  //  console.log(' > access token created')
-  //  return
-  //}
-
-  //console.log(' > refresh token expired')
-
-  //res.status(401).send('Refresh token expired, login required.')
+  console.log(" > token expired")
+  res.status(401).send("token expired")
 
 })
 

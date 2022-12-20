@@ -104,7 +104,8 @@ const BattlePage = () => {
                                             </button>
                                             <button id="saveButton" onClick={SaveChanges}>
                                                 Save
-                                            </button></div>
+                                            </button>
+                                        </div>
                                     }
                                 </div>
                             }
