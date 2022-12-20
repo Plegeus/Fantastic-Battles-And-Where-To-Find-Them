@@ -1,39 +1,61 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom';
+import useFetch from '../../Util/useFetch';
 import "./overview-tab.css"
 
 
 const Overview = () => {
   var mayAdd = false;
 
-  useEffect(() => {
-    fetch("/api/battles/count/0/10", {
-      "method": "GET",
-    })
-      .then(res => res.json())
-      .then(dat => {
-        alert(JSON.stringify(dat[0]))
-        alert(JSON.stringify(dat[1]))
-      })
-  }, [])
+  /* useEffect(() => {
+     fetch("/api/battles/count/0/10", {
+       "method": "GET",
+     })
+       .then(res => res.json())
+       .then(dat => {
+         alert(JSON.stringify(dat[0]))
+         alert(JSON.stringify(dat[1]))
+       })
+   }, [])*/
+
+  const { FetchedData, IsLoading, Error } = useFetch("/api/battles/count/0/10", {
+    "method": "GET"
+  })
+
+  const MakeRow = ({ BattleId,BattleName, Victor, Vanquished, VictCommander, VanqCommander, VictDeaths, VanqDeaths}) => {
+    const url = "/BattlePage/" + BattleId;
+    return (
+      <tr>
+        <td><Link to={url}>{BattleName}</Link></td>
+        <td>{Victor}</td>
+        <td>{Vanquished}</td>
+        <td>{VictCommander}</td>
+        <td>{VanqCommander}</td>
+        <td>{VictDeaths}</td>
+        <td>{VanqDeaths}</td>
+      </tr>
+    )
+  }
+
 
   window.addEventListener("resize", forceTileScreen);
- 
-  function forceTileScreen(){
+
+  function forceTileScreen() {
     if (window.innerWidth < 1000) {
       showTileScreen();
     }
   }
 
   function showListScreen() {
-      var tile = document.getElementById('tileView');
-      var lst = document.getElementById('listView');
-      if (tile.style.display == 'grid') {
-        lst.style.display = 'block';
-        tile.style.display = 'none';
-        mayAdd = false;
-      } else {
-        mayAdd = true;
-      }
+    var tile = document.getElementById('tileView');
+    var lst = document.getElementById('listView');
+    if (tile.style.display == 'grid') {
+      lst.style.display = 'block';
+      tile.style.display = 'none';
+      mayAdd = false;
+    } else {
+      mayAdd = true;
+    }
   }
 
   function showTileScreen() {
@@ -136,52 +158,28 @@ const Overview = () => {
               <th>Vanquished deaths</th>
             </tr>
           </thead>
+          {FetchedData && FetchedData.map((battle) => (
+            console.log(battle),
+            true
+            //<MakeRow key={b.id} BattleId={battle.id} BattleName={battle.battlename}  Victor={battle.winning_faction} Vanquished={battle.losing_faction} 
+            //VictCommander={battle.winning_commander} VanqCommander={battle.losing_commander} VictDeaths={battle.winning_deaths} VanqDeaths={battle.losing_deaths}/>
+          ))}
           <tr>
-              <td>Name</td>
-              <td>Victor</td>
-              <td>Vanquished</td>
-              <td>Victorious Commander</td>
-              <td>Vanquished Commander</td>
-              <td>Victorious deaths</td>
-              <td>Vanquished deaths</td>
-          </tr>
-          <tr>
-              <td>Name</td>
-              <td>Victor</td>
-              <td>Vanquished</td>
-              <td>Victorious Commander</td>
-              <td>Vanquished Commander</td>
-              <td>Victorious deaths</td>
-              <td>Vanquished deaths</td>
-          </tr>
-          <tr>
-              <td>Name</td>
-              <td>Victor</td>
-              <td>Vanquished</td>
-              <td>Victorious Commander</td>
-              <td>Vanquished Commander</td>
-              <td>Victorious deaths</td>
-              <td>Vanquished deaths</td>
-          </tr>
-          <tr>
-              <td>Name</td>
-              <td>Victor</td>
-              <td>Vanquished</td>
-              <td>Victorious Commander</td>
-              <td>Vanquished Commander</td>
-              <td>Victorious deaths</td>
-              <td>Vanquished deaths</td>
+            <td>Name</td>
+            <td>Victor</td>
+            <td>Vanquished</td>
+            <td>Victorious Commander</td>
+            <td>Vanquished Commander</td>
+            <td>Victorious deaths</td>
+            <td>Vanquished deaths</td>
           </tr>
         </table>
       </div>
       <div id="tileView" class="grid-container">
         <a class="grid-item" href="BattlePage">Away down south</a>
-        <a class="grid-item" href="BattlePage">in the land of traitors</a>
-        <a class="grid-item" href="BattlePage">rattlesnakes and alligators</a>
-        <a class="grid-item" href="BattlePage">right away</a>
-        <a class="grid-item" href="BattlePage">come away</a>
-        <a class="grid-item" href="BattlePage">right away</a>
-        <a class="grid-item" href="BattlePage">come away</a>
+        {FetchedData && FetchedData.map((battle) => (
+            <Link key={battle.id} to={`/BattlePage/${battle.id}`} className="grid-item">{battle.battlename}</Link>
+           ))}
       </div>
     </div>
 
