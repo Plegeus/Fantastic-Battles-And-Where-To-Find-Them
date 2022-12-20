@@ -15,9 +15,15 @@ const AccountPosts = (props) => {
     "method": "GET"
   });*/
 
+ 
   const { FetchedData, IsLoading, Error } = useFetch("/api/battles/filter", {
     "method": "POST",
-    "Body": {}
+    "headers": {
+      "Content-Type": "application/json",
+    },
+    "body": JSON.stringify({
+      username: props.UsernameAccountPage
+    })
   })
 
   return (
@@ -51,7 +57,7 @@ const AccountPosts = (props) => {
         </table>
       </div>
       <div id="tileView" class="grid-container">
-      {FetchedData && FetchedData.map((battle) => (
+        {FetchedData && FetchedData.map((battle) => (
           <Link key={battle.id} to={`/BattlePage/${battle.id}`} className="grid-item">{battle.battlename}</Link>
         ))}
       </div>

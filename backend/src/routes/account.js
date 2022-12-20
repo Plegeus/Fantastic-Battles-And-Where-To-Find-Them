@@ -1,6 +1,6 @@
 
 const express = require('express')
-const router = express.Router({mergeParams: true})
+const router = express.Router({ mergeParams: true })
 
 const user = require('../database/users/queries')
 const battle = require('../database/battles/queries')
@@ -57,8 +57,8 @@ router.post('/edit', async (req, res) => {
   res.status(200)
 })
 
-router.post('/battle/edit', async (req, res) => { 
-  
+router.post('/battle/edit', async (req, res) => {
+
   console.log('received post request @ battle edit')
 
   let body = req.body

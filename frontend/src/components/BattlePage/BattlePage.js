@@ -82,17 +82,22 @@ const BattlePage = () => {
     }
 
     const likePost = () => {
-        
+        console.log(Accestoken);
+        console.log(FetchedData.battlename)
         fetch(`/api/account/${Username}/battle/like`, {
             "method": "POST",
+            "headers": {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${Accestoken}`,
+            },
             "body": JSON.stringify({
                 battlename: FetchedData.battlename
+                
             })
         }).then(async res => {
-            const data = await res.json();
-            console.log(data);
+            setLikedBoolean(true)
         });
-        setLikedBoolean(true)
+        
         console.log("Like de post")
     }
 

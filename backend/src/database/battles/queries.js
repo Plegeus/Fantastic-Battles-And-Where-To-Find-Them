@@ -31,7 +31,7 @@ async function getBattleById(id) {
 }
 
 async function getTags(battlename) {
-  
+
   let q = await connection.query(
     "SELECT * FROM tags WHERE battlename = ?", [battlename]
   )
@@ -193,7 +193,8 @@ async function filter(f) {
     let d = await getDesciption(bs[i].battlename)
     bs[i].description = d ? d.description : null
   }
-
+  console.log(f.username)
+  console.log(bs)
   return bs
 }
 
@@ -204,7 +205,7 @@ module.exports = {
   getDesciption,
   createBattle,
   updateBattle,
-  addTag, 
+  addTag,
   removeTag,
   createBattle,
   filter,
