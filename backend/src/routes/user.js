@@ -87,6 +87,7 @@ router.get('/refresh/:username', async (req, res) => {
   console.log('received get request @ refresh')
 
   let cookies = req.cookies
+  console.log(cookies)
   console.log(` > cookies: ${JSON.stringify(cookies)}`)
 
   let refr = cookies.refresh
@@ -98,6 +99,7 @@ router.get('/refresh/:username', async (req, res) => {
 
   let decode = refresh.decode(refr)
   if (decode) {
+    console.log(req.params)
     let username = req.params.username
     let u = await user.getByUuid(decode)
     if (u && u.username === username) {
@@ -109,8 +111,8 @@ router.get('/refresh/:username', async (req, res) => {
     }
   } 
 
-  console.log(" > token expired")
-  res.status(401).send("token expired")
+  console.log(" > refresh expired")
+  res.status(401).send("refreshtoken expired")
 
 })
 

@@ -50,6 +50,9 @@ const Map = () => {
 
   const { Accestoken, Username } = useContext(UserContext);
 
+  console.log("accestoken in map:",Accestoken)
+  console.log("username:in map",Username)
+
   var mayAdd = false;
   var currentMarker;
 

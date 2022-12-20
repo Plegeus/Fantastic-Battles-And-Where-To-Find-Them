@@ -24,7 +24,7 @@ const Login = () => {
         document.getElementById('psw').type = inputType;
     }
 
-    const { Accestoken, setAccestoken, setUsername } = useContext(UserContext);
+    const { Accestoken, setAccestoken, setUsername,Username } = useContext(UserContext);
 
     const login = (e) => {
         e.preventDefault()
@@ -45,6 +45,7 @@ const Login = () => {
                 console.log(dat);
                 if (dat) {
                     // login succes...
+                    console.log("accestoken in data:",dat.token)
                     setUsername(dat.username)
                     setAccestoken(dat.token)
 
