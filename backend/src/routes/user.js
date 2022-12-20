@@ -82,7 +82,7 @@ router.get('/names', async (req, res) => {
 
 })
 
-router.get('/refresh/:username', async (req, res) => {
+router.get('/refresh', async (req, res) => {
 
   console.log('received get request @ refresh')
 
@@ -99,13 +99,11 @@ router.get('/refresh/:username', async (req, res) => {
 
   let decode = refresh.decode(refr)
   if (decode) {
-    console.log(req.params)
-    let username = req.params.username
     let u = await user.getByUuid(decode)
-    if (u && u.username === username) {
+    if (u) {
       console.log(" > new token made")
       res.status(200).json({
-        token: acces.encode(username),
+        token: acces.encode(u.username),
       })
       return
     }

@@ -44,11 +44,6 @@ const Test = () => {
     <input type='button' onClick={ login }></input>
   </div>
 }
-/*
-fetch("/api/user/refresh/Plegeus",  {
-  'method': 'GET'
-})
-*/
 
 
 //fetch("/user/names", {
