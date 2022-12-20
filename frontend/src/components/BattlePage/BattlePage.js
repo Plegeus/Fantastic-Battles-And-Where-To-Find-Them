@@ -70,15 +70,56 @@ const BattlePage = () => {
         )
     }
 
-    const likePost = () => {
+    const [LikedBoolean, setLikedBoolean] = useState(false)
+    const getLikedBoolean = () => {
         /*fetch("url", {
             method: "POST"
         }).then(async res => {
             const data = await res.json();
             console.log(data);
         });*/
+        console.log("Verkrijg boolean of user de post heeft geliked of niet")
+    }
+
+    const likePost = () => {
+        
+        /*fetch("url", {
+            method: "POST"
+        }).then(async res => {
+            const data = await res.json();
+            console.log(data);
+        });*/
+        setLikedBoolean(true)
         console.log("Like de post")
     }
+
+    const unlikePost = () => {
+        /*fetch("url", {
+            method: "POST"
+        }).then(async res => {
+            const data = await res.json();
+            console.log(data);
+        });*/
+        setLikedBoolean(false)
+        console.log("Unlike de post")
+    }
+
+    const MakeLikeButton = ({ Boolean }) => {
+        if (!Boolean) {
+            return (
+                <button id="likeButton" onClick={() => { likePost() }}>
+                    Like
+                </button>)
+        }
+        else {
+            return (
+                <button id="unlikeButton" onClick={() => { unlikePost() }}>
+                    Unlike
+                </button>)
+        }
+
+    }
+
 
 
 
@@ -159,7 +200,7 @@ const BattlePage = () => {
                         <div id="battleDescription">
                             <label>Description:</label>
                             <input type="text" id="fname" value={BattleDescription}
-                            onChange={(e) => { setBattleDescription(e.target.value) }} /><br></br>
+                                onChange={(e) => { setBattleDescription(e.target.value) }} /><br></br>
                         </div>
                     </div>
                 </form>
@@ -184,9 +225,7 @@ const BattlePage = () => {
                         <div id='likeDiv'>
                             {Accestoken &&
                                 <div>
-                                    <button id="likeButton" onClick={() => { likePost() }}>
-                                        Like
-                                    </button>
+                                    <MakeLikeButton Boolean={LikedBoolean}/>
                                     {!IsEditingBattle &&
                                         <button id="editButton" onClick={EditBattle}>
                                             Edit
