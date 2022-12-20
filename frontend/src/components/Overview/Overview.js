@@ -19,7 +19,7 @@ const Overview = () => {
    }, [])*/
 
   const { FetchedData, IsLoading, Error } = useFetch("/api/battles/filter", {
-    "method": "GET",
+    "method": "POST",
     "Body": {}
   })
 

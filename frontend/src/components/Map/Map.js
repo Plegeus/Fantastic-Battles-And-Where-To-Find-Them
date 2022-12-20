@@ -28,7 +28,7 @@ const Mark = ({x, y, title, description, id}) => {
   return(
     <Marker position={[y, x]} icon={new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41] })} >
       <Popup>
-        <Link to={`BattlePage/${id}`}>
+        <Link to={`/BattlePage/${id}`}>
           {title}
           <br/>
             {description ? description : "no description"}
