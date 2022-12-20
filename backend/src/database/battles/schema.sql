@@ -5,18 +5,20 @@ CREATE DATABASE fbwftBattles;
 USE fbwftBattles;
 
 CREATE TABLE tags (
-  battlename VARCHAR(32) NOT NULL,
+  battlename VARCHAR(128) NOT NULL,
   tag VARCHAR(32) DEFAULT NULL
 );
 
 CREATE TABLE descriptions (
-  battlename VARCHAR(32) PRIMARY KEY NOT NULL,
+  battlename VARCHAR(128) PRIMARY KEY NOT NULL,
   description VARCHAR(256) DEFAULT NULL
 );
 
 CREATE TABLE battles (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   battlename VARCHAR(128) NOT NULL,
+  username VARCHAR(32) NOT NULL,
+  rating INT DEFAULT 0,
   date DATE DEFAULT NULL,
   location_x DECIMAL NOT NULL,
   location_y DECIMAL NOT NULL,
