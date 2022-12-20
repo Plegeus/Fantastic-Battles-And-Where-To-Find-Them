@@ -5,7 +5,6 @@
 	margin: 0;
 	padding: 0;
 	outline: 0;
-
 }
 
 /* colour overlay */
@@ -102,6 +101,7 @@ tr:nth-child(even):hover{
 	margin-left: 5%;
 	margin-right: 5%;
 	margin-top: 2rem;
+	min-height: 100vh;
 }
 
 #tileView {
