@@ -11,7 +11,7 @@ router.use((req, res, next) => {
   console.log('')
 })
 
-router.post('/filter', async (req, res) => {
+router.get('/filter', async (req, res) => {
 
   console.log('received post request @ filter')
 

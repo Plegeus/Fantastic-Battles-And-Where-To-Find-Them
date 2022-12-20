@@ -18,24 +18,10 @@ const Overview = () => {
        })
    }, [])*/
 
-  const { FetchedData, IsLoading, Error } = useFetch("/api/battles/count/0/10", {
-    "method": "GET"
+  const { FetchedData, IsLoading, Error } = useFetch("/api/battles/filter", {
+    "method": "GET",
+    "Body": {}
   })
-
-  const MakeRow = ({ BattleId,BattleName, Victor, Vanquished, VictCommander, VanqCommander, VictDeaths, VanqDeaths}) => {
-    const url = "/BattlePage/" + BattleId;
-    return (
-      <tr>
-        <td><Link to={url}>{BattleName}</Link></td>
-        <td>{Victor}</td>
-        <td>{Vanquished}</td>
-        <td>{VictCommander}</td>
-        <td>{VanqCommander}</td>
-        <td>{VictDeaths}</td>
-        <td>{VanqDeaths}</td>
-      </tr>
-    )
-  }
 
 
   window.addEventListener("resize", forceTileScreen);
@@ -103,36 +89,36 @@ const Overview = () => {
   return (
     <div id="body">
       <div id="button-div">
-        <button id='btn' class="list-btn" onClick={showListScreen}>List</button>
-        <button id='btn' class="tile-btn" onClick={showTileScreen}>Tile</button>
+        <button id='btn' className="list-btn" onClick={showListScreen}>List</button>
+        <button id='btn' className="tile-btn" onClick={showTileScreen}>Tile</button>
 
-        <div class="dropdown">
-          <button class="dropbtn">Type</button>
-          <div class="dropdown-content">
+        <div className="dropdown">
+          <button className="dropbtn">Type</button>
+          <div className="dropdown-content">
             <a href="#" onClick={showCommanderScreen}>Commander</a>
             <a href="#" onClick={showNationScreen}>Nation</a>
             <a href="#" onClick={showPeriodScreen}>Period</a>
           </div>
         </div>
-        <div id='commanders' class="dropdown">
-          <button class="dropbtn">Commanders</button>
-          <div class="dropdown-content">
+        <div id='commanders' className="dropdown">
+          <button className="dropbtn">Commanders</button>
+          <div className="dropdown-content">
             <a href="#">Julius Caesar</a>
             <a href="#">Rambo</a>
             <a href="#">Connect this with backend</a>
           </div>
         </div>
-        <div id='nations' class="dropdown">
-          <button class="dropbtn">Nations</button>
-          <div class="dropdown-content">
+        <div id='nations' className="dropdown">
+          <button className="dropbtn">Nations</button>
+          <div className="dropdown-content">
             <a href="#">Rome</a>
             <a href="#">Gaul</a>
             <a href="#">backend</a>
           </div>
         </div>
-        <div id='times' class="dropdown">
-          <button class="dropbtn">Periods</button>
-          <div class="dropdown-content">
+        <div id='times' className="dropdown">
+          <button className="dropbtn">Periods</button>
+          <div className="dropdown-content">
             <a href="#">Prehistory</a>
             <a href="#">Antiquity</a>
             <a href="#">Middle Ages</a>
@@ -158,31 +144,27 @@ const Overview = () => {
               <th>Vanquished deaths</th>
             </tr>
           </thead>
-          {FetchedData && FetchedData.map((battle) => (
-            console.log(battle),
-            true
-            //<MakeRow key={b.id} BattleId={battle.id} BattleName={battle.battlename}  Victor={battle.winning_faction} Vanquished={battle.losing_faction} 
-            //VictCommander={battle.winning_commander} VanqCommander={battle.losing_commander} VictDeaths={battle.winning_deaths} VanqDeaths={battle.losing_deaths}/>
-          ))}
-          <tr>
-            <td>Name</td>
-            <td>Victor</td>
-            <td>Vanquished</td>
-            <td>Victorious Commander</td>
-            <td>Vanquished Commander</td>
-            <td>Victorious deaths</td>
-            <td>Vanquished deaths</td>
-          </tr>
+          <tbody>
+            {FetchedData && FetchedData.map((battle) => (
+              <tr>
+                <td><Link to={`/BattlePage/${battle.id}`}>{battle.battlename}</Link></td>
+                <td>{battle.winning_faction}</td>
+                <td>{battle.losing_faction}</td>
+                <td>{battle.winning_commander}</td>
+                <td>{battle.losing_commander}</td>
+                <td>{battle.winning_deaths}</td>
+                <td>{battle.losing_deaths}</td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
-      <div id="tileView" class="grid-container">
-        <a class="grid-item" href="BattlePage">Away down south</a>
+      <div id="tileView" className="grid-container">
         {FetchedData && FetchedData.map((battle) => (
-            <Link key={battle.id} to={`/BattlePage/${battle.id}`} className="grid-item">{battle.battlename}</Link>
-           ))}
+          <Link key={battle.id} to={`/BattlePage/${battle.id}`} className="grid-item">{battle.battlename}</Link>
+        ))}
       </div>
     </div>
-
   )
 }
 
