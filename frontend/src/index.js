@@ -3,6 +3,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 
 import App from "./App.js";
+import AppRefresh from './AppRefresh.js';
 
 import video from './resources/videos/016708093-world-war-ii-color-footage-b24.mp4'
 
@@ -10,9 +11,7 @@ import video from './resources/videos/016708093-world-war-ii-color-footage-b24.m
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-root.render(<App/>);
-
-
+root.render(<AppRefresh/>);
 
 
 const Test = () => {
@@ -46,7 +45,7 @@ const Test = () => {
   </div>
 }
 
-fetch("/api/user/refresh/Plegeus", {
+fetch("/api/user/refresh/Plegeus",  {
   'method': 'GET'
 })
 

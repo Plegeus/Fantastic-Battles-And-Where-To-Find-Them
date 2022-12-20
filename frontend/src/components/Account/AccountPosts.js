@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import useFetch from '../../Util/useFetch';
 import Post from "../Posts/Post"
 import "../Posts/PostsStyles.css"
@@ -9,10 +10,15 @@ import "./AccountPostsStyles.css"
 const AccountPosts = (props) => {
 
   //const fetchurl = "/user/account/" + props.username;
-  const fetchurl = "/api/user/" + props.UsernameAccountPage + "/battles";
-  const { FetchedData, IsLoading, Error } = useFetch(fetchurl, {
+  const fetchurl = "/api/user/" + props.UlosernameAccountPage + "/battles";
+  /*const { FetchedData, IsLoading, Error } = useFetch(fetchurl, {
     "method": "GET"
-  });
+  });*/
+
+  const { FetchedData, IsLoading, Error } = useFetch("/api/battles/filter", {
+    "method": "POST",
+    "Body": {}
+  })
 
   return (
     <div id="accountPosts">
@@ -29,52 +35,25 @@ const AccountPosts = (props) => {
               <th>Vanquished deaths</th>
             </tr>
           </thead>
-          <tr>
-            <td>Name</td>
-            <td>Victor</td>
-            <td>Vanquished</td>
-            <td>Victorious Commander</td>
-            <td>Vanquished Commander</td>
-            <td>Victorious deaths</td>
-            <td>Vanquished deaths</td>
-          </tr>
-          <tr>
-            <td>Name</td>
-            <td>Victor</td>
-            <td>Vanquished</td>
-            <td>Victorious Commander</td>
-            <td>Vanquished Commander</td>
-            <td>Victorious deaths</td>
-            <td>Vanquished deaths</td>
-          </tr>
-          <tr>
-            <td>Name</td>
-            <td>Victor</td>
-            <td>Vanquished</td>
-            <td>Victorious Commander</td>
-            <td>Vanquished Commander</td>
-            <td>Victorious deaths</td>
-            <td>Vanquished deaths</td>
-          </tr>
-          <tr>
-            <td>Name</td>
-            <td>Victor</td>
-            <td>Vanquished</td>
-            <td>Victorious Commander</td>
-            <td>Vanquished Commander</td>
-            <td>Victorious deaths</td>
-            <td>Vanquished deaths</td>
-          </tr>
+          <tbody>
+            {FetchedData && FetchedData.map((battle) => (
+              <tr>
+                <td><Link to={`/BattlePage/${battle.id}`}>{battle.battlename}</Link></td>
+                <td>{battle.winning_faction}</td>
+                <td>{battle.losing_faction}</td>
+                <td>{battle.winning_commander}</td>
+                <td>{battle.losing_commander}</td>
+                <td>{battle.winning_deaths}</td>
+                <td>{battle.losing_deaths}</td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
       <div id="tileView" class="grid-container">
-        <a class="grid-item" href="BattlePage">Away down south</a>
-        <a class="grid-item" href="BattlePage">in the land of traitors</a>
-        <a class="grid-item" href="BattlePage">rattlesnakes and alligators</a>
-        <a class="grid-item" href="BattlePage">right away</a>
-        <a class="grid-item" href="BattlePage">come away</a>
-        <a class="grid-item" href="BattlePage">right away</a>
-        <a class="grid-item" href="BattlePage">come away</a>
+      {FetchedData && FetchedData.map((battle) => (
+          <Link key={battle.id} to={`/BattlePage/${battle.id}`} className="grid-item">{battle.battlename}</Link>
+        ))}
       </div>
     </div>
   )

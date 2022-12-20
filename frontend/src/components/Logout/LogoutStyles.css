@@ -1,15 +1,18 @@
 .LogoutButton {
-    color: white;
-    background-color: red;
-    border: none;
-    padding: 0.8rem;
-    border-radius: 0.5rem;
-    margin: 0.5rem;
+    box-shadow: 0 1px 5px rgba(64, 64, 64, .7);
+	font-family: 'Montserrat', sans-serif;
+	min-width: 8rem;
+	height: 3rem;
+	background-color: #cc1818;
+	color: white;
+	font-size: 16px;
+	border: none;
+	z-index: 700;
 }
 
 .LogoutButton:hover {
-    opacity: 0.8;
-    transform: scale(1.12);
-    transition: 0.5s;
-    cursor: pointer;
+    background-color: #933c3c; /* Green */
+    color: lightgrey;
+    box-shadow: none;
+    border: #494447 solid 1px;
 }

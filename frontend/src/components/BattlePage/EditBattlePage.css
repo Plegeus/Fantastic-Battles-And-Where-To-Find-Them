@@ -1,0 +1,50 @@
+
+    #Editbody{
+        overflow-y: auto;
+        overflow-x: auto;
+        
+    }
+	#Editbody #battleInfo{
+        min-width: 28rem;
+        height: fit-content;
+        
+	}
+    #Editbody #battlePic{
+        width: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+    }
+    #Editbody #battleTitle, #Editbody #battleVictors, #Editbody #battleVanquished{
+        width: auto;
+        height: auto;
+        min-width: 20rem;
+        margin-left: 1rem;
+        margin-right:1rem;
+        margin-bottom: 1rem;
+    }
+
+    
+    #Editbody, #theWeather{
+        margin-right:1rem;
+        margin-bottom: 1rem;
+    }
+
+    #Editbody #battleSummary,#Editbody #likeButton{
+        padding-left: 0;
+        margin-left: 0;
+    }
+    #Editbody #topContainer,#Editbody #combatants{
+        flex-direction: column;
+    }
+    #Editbody #likeDiv{
+        height: 10rem;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    #Editbody input {
+        background-color: #5e565b83;
+        color: white;
+    }

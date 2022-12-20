@@ -99,10 +99,6 @@ const Map = () => {
             console.log(log);
             pane.style.display = 'none';
             
-            const inputs = document.querySelectorAll('#name, #victor, #vanquished, #victorious_commander, #vanquished_commander, #victorious_deaths, #vanquished_deaths, #lat, #lng');
-            inputs.forEach(input => {
-              input.value = '';
-            });
       }
   }
 
@@ -126,7 +122,7 @@ const Map = () => {
 
       <div id="add_battle_pane">
 
-        <form onSubmit={submitFunction} id="addBattle" action='action_page.php'>
+        <form onSubmit={submitFunction} id="addBattle">
 
           <label htmlFor="name">Name:</label><br></br>
           <input className='textField' type="any" id="name" name="name" required/><br></br>

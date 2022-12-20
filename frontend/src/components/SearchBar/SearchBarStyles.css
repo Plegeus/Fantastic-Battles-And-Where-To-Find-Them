@@ -1,12 +1,15 @@
 .searchInputs {
-    display: flex;
-    justify-content: flex-end ;
-  }
+  position: fixed;
+  right: 10rem;
+  top: 6rem;
+  height: 3rem;
+  display: flex;
+  justify-content: flex-end ;
+}
 
   .search input {
   background-color: white;
   border: none;
-  padding: 0.3rem;
   width: 16rem;
 }
 
@@ -17,9 +20,11 @@
   }
 
   .dataResultContainer {
+    position: fixed;
+    right: 10rem;
+    top: 9rem;
     display: flex;
     justify-content: flex-end ;
-    margin-right: 2.6rem;
   }
 
   .dataResult {

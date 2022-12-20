@@ -28,13 +28,13 @@ const Account = () => {
             <div className="Account">
                 {IsLoading && <div>Loading...</div>}
                 {Error && <div>{Error}</div>}
-                {FetchedData && <SearchBar placeholder="Enter Account Name" starturl="/account/" data={FetchedData} />}
                 {name !== "SearchUser" ?
                     (<div>
                         <AccountInformation UsernameAccountPage={name} Accestoken={Accestoken} Username={Username}/>
                         <AccountPosts UsernameAccountPage={name} Accestoken={Accestoken} Username={Username}/>
                     </div>) :
                     ""}
+                {FetchedData && <SearchBar placeholder="Enter Account Name" starturl="/account/" data={FetchedData} />}
                 {Accestoken && name === Username ?
                     <div className="LogoutContainer">
                         <Logout />
