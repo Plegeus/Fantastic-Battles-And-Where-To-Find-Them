@@ -13,7 +13,7 @@
     z-index: 700;
 }
 
-#add_battle_pane {
+#add_battle_pane, #add_filter_pane {
     border-radius: 12px 0px 0px 12px;
     background-color: #6b6167;
     color: white;
@@ -38,7 +38,11 @@
     
 }
 
-#battleButton{
+#add_filter_pane{
+    bottom: 13rem;
+}
+
+#battleButton, #filterButton{
     z-index: 700;
     bottom: 2rem;
     right: 1rem;
@@ -55,7 +59,11 @@
 	z-index: 700;
     font-family: 'Montserrat', sans-serif;
 }
-#battleButton:hover {
+
+#filterButton{
+    bottom: 8rem;
+}
+#battleButton:hover, #filterButton:hover {
     background-color: #6b6167; /* Green */
     color: white;
 }

@@ -45,7 +45,6 @@ const Login = () => {
                 console.log(dat);
                 if (dat) {
                     // login succes...
-                    console.log("accestoken in data:",dat.token)
                     setUsername(dat.username)
                     setAccestoken(dat.token)
 

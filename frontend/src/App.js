@@ -24,12 +24,8 @@ const App = () => {
 
   /*const [IsLoading, setLoading] = useState(true);
 
-  console.log("accestoken in app:",Accestoken)
-  console.log("username:in app",Username)
-
   useEffect(() => {
-    console.log("Username:",Username);
-    fetch(`"/api/user/refresh/${Username}`, {
+    fetch(`"/api/user/refresh`, {
       method: "GET"
     }).then(res => {
       console.log(res);
@@ -37,13 +33,14 @@ const App = () => {
         return res.json();
       }
       else {
-        alert("refreshtoken expired")
+        alert("res not ok")
       }
     }).then(data => {
       console.log(data);
       setLoading(false);
+      setAccestoken(data.token)
     })
-  }, []);
+  },[]);
 
   if (IsLoading) {
     return <div>Loading...</div>
