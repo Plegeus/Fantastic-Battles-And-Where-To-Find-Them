@@ -48,25 +48,21 @@ const BattlePage = () => {
 
 
     const getWeatherData = () => {
-        console.log("enter get weather data function")
         if (!CurrentConditions && FetchedData) {
             const oldkey = "KLKMENPQKWMLJ7GBD3V479YHL";
             const newkey = "DL38D5GUASAXRR8C7DTMWRGSX"
-            const fetchUrl = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" + FetchedData.location_x.toString() + "," + FetchedData.location_y.toString() + "?key=" + newkey;
+            const fetchUrl = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" + FetchedData.location_y.toString() + "," + FetchedData.location_x.toString() + "?key=" + newkey;
             const data = fetch(fetchUrl)
             data.then(res => {
                 if (!res.ok) {
                     console.log("not ok");
-                    // no data
                 }
                 return res.json();
             }).then(data => {
                 setCurrentConditions(data);
-                console.log(CurrentConditions);
             })
                 .catch(err => {
                     console.log("error");
-
                 })
         }
     }
