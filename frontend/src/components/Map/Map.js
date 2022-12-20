@@ -126,10 +126,10 @@ const Map = () => {
 
       <div id="add_battle_pane">
 
-        <form id="addBattle" action='action_page.php'>
+        <form onSubmit={submitFunction} id="addBattle" action='action_page.php'>
 
           <label htmlFor="name">Name:</label><br></br>
-          <input className='textField' type="any" id="name" name="name" /><br></br>
+          <input className='textField' type="any" id="name" name="name" required/><br></br>
           <label htmlFor="name">Date:</label><br></br>
           <input className='textField' type="date" id="date" name="date" /><br></br>
           <label htmlFor="victor">Victor:</label><br></br>
@@ -146,10 +146,10 @@ const Map = () => {
           <input className='textField' type="number" id="vanquished_deaths" name="vanquished_deaths"/><br></br>
 
           <label htmlFor="lat">Lat:</label><br></br>
-          <input className='textField' type="number" id="lat" name="lat"  /><br></br>
+          <input className='textField' type="number" id="lat" name="lat"  required/><br></br>
           <label htmlFor="lng">Lng:</label><br></br>
-          <input className='textField' type="number" id="lng" name="lng"  /><br></br>
-          <input id="submitButton" type="button" value="Submit" onClick={submitFunction}></input>
+          <input className='textField' type="number" id="lng" name="lng"  required/><br></br>
+          <input id="submitButton" type="submit" value="Submit"></input>
         </form>
       </div>
 
