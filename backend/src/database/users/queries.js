@@ -11,6 +11,18 @@ async function allUsers() {
   )
 }
 
+async function likedBattle(username, battlename) {
+
+  let q = await connection.query(
+    "SELECT * FROM likes WHERE username = ? && battlename = ?", [username, battlename]
+  )
+
+  return !(q.length === 0)
+}
+async function likeThisBattle(username, battlename) {
+
+}
+
 async function getUser(username) {
 
   let q = await connection.query(
@@ -153,5 +165,7 @@ module.exports = {
   getBattles,
   removeBattle,
   updateUser,
-  addBattle
+  addBattle,
+  likedBattle,
+  likeThisBattle
 }

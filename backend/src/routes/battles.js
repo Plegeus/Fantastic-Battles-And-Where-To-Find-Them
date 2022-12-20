@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 const battle = require('../database/battles/queries')
+const user = require('../database/users/queries')
 
 
 router.use((req, res, next) => {
@@ -44,6 +45,8 @@ router.get('/id/:id', async (req, res) => {
   res.json(b)
 
 })
+
+
 
 
 module.exports = router

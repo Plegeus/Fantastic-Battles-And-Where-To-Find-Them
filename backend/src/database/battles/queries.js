@@ -64,6 +64,11 @@ async function updateBattle(battlename, values) {
       "UPDATE battles SET date = ? WHERE battlename = ?", [values.date, battlename]
     )
   }
+  if (values.rating) {
+    connection.query(
+      "UPDATE battles SET rating = ? WHERE battlename = ?", [values.rating, battlename]
+    )
+  }
   if (values.location_x) {
     connection.query(
       "UPDATE battles SET location_x = ? WHERE battlename = ?", [values.location_x, battlename]
@@ -111,13 +116,15 @@ async function updateBattle(battlename, values) {
   }
 }
 
-async function createBattle(battlename, locationX, locationY) {
-  connection.query(
-    "INSERT INTO battles (battlename, location_x, location_y) VALUES(?, ?, ?)", [battlename, locationX, locationY]
-  )
-  connection.query(
-    "INSERT INTO descriptions (battlename) VALUES(?)", [battlename]
-  )
+async function createBattle(battlename, username, locationX, locationY) {
+  if (!await getBattle(battlename)) {
+    connection.query(
+      "INSERT INTO battles (battlename, username, location_x, location_y) VALUES(?, ?, ?)", [battlename, username, locationX, locationY]
+    )
+    connection.query(
+      "INSERT INTO descriptions (battlename) VALUES(?)", [battlename]
+    )
+  }
 }
 
 async function addTag(battlename, tag) {

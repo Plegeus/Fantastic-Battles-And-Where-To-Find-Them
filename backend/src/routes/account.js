@@ -62,10 +62,45 @@ router.post('/battle/edit', async (req, res) => {
   console.log('received post request @ battle edit')
 
   let body = req.body
-  if (body) {
-    battle.createBattle(body.battlename, body.location_x, body.location_y)
-    battle.updateBattle(body.battlename, body)
+  body.rating = undefined
+
+  let username = req.params.username
+  let battlename = body.battlename
+
+  let b = battle.getBattle(battlename)
+
+  let originalUser = user.getUser(b.username)
+  let editingUser = user.getUser(username)
+
+  if (originalUser.rating <= editingUser.rating) {
+    battle.createBattle(battlename, username, body.location_x, body.location_y)
+    battle.updateBattle(battlename, body)
   }
+
+  res.status(200).send()
+
+})
+router.post('/battle/like', async (req, res) => {
+
+  console.log('received post request @ battle like')
+
+  let username = req.params.username
+  let battlename = req.body.battlename
+
+  let b = await battle.getBattle(battlename)
+  let u = await user.getUser(b.username)
+
+  if (!await user.likedBattle(username, battle)) {
+    user.likeThisBattle(username, battlename)
+    battle.updateBattle(battlename, {
+      rating: b.rating + 1
+    })
+    user.updateUser(u.username, {
+      rating: u.rating + 1
+    })
+  }
+
+  res.status(200).send()
 
 })
 
