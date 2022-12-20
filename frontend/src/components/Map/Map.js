@@ -26,7 +26,7 @@ const rectangle = [
 
 const Mark = ({x, y, title, description, id}) => {
   return(
-    <Marker position={[x, y]} icon={new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41] })} >
+    <Marker position={[y, x]} icon={new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41] })} >
       <Popup>
         <Link to={`BattlePage/${id}`}>
           {title}
@@ -47,6 +47,8 @@ const MARKERS = [
 
 
 const Map = () => {
+
+  const { Accestoken, Username } = useContext(UserContext);
 
   var mayAdd = false;
   var currentMarker;
@@ -114,8 +116,6 @@ const Map = () => {
     })
   })
 
-
-  const { Accestoken, Username } = useContext(UserContext);
   return (
     <div className='mapContainer'>
 

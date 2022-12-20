@@ -2,6 +2,7 @@ import { useState } from 'react';
 import useFetch from '../../Util/useFetch';
 import Post from "../Posts/Post"
 import "../Posts/PostsStyles.css"
+import "./AccountPostsStyles.css"
 
 
 //fetch all posts => filter by username
