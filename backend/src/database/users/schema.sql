@@ -9,10 +9,10 @@ CREATE TABLE passwords (
   password VARCHAR(32) NOT NULL
 );
 
-CREATE TABLE likes {
+CREATE TABLE likes (
   username VARCHAR(32) NOT NULL,
   battlename VARCHAR(128) NOT NULL
-}
+);
 
 CREATE TABLE users (
   username VARCHAR(32) PRIMARY KEY NOT NULL,
