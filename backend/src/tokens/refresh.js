@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 const user = require('../database/users/queries')
 
 const KEY = process.env.REFRESH_TOKEN_ENCODE
-const EXPIRES = 24 * 60 * 60 * 1000
+const EXPIRES = 2 * 60 * 1000
 
 
 async function encode(username) {
@@ -16,7 +16,7 @@ function decode(token) {
 
   let obj = jwt.decode(token, KEY)
 
-  if (new Date().getTime() > obj.date + 60 * 1000) {
+  if (new Date().getTime() > obj.date + EXPIRES) {
     return false
   }
 

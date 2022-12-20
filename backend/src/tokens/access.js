@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 const user = require('../database/users/queries')
 
 const KEY = process.env.ACCESS_TOKEN_ENCODE
-const EXPIRES = 60 * 1000
+const EXPIRES = 30 * 1000
 
 
 async function encode(username) {

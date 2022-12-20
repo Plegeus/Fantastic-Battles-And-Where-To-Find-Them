@@ -82,9 +82,9 @@ router.get('/names', async (req, res) => {
 
 })
 
-router.post('/refresh/:username', async (req, res) => {
+router.get('/refresh/:username', async (req, res) => {
 
-  console.log('received post request @ refresh')
+  console.log('received get request @ refresh')
 
   let cookies = req.cookies
   console.log(` > cookies: ${JSON.stringify(cookies)}`)
@@ -99,8 +99,8 @@ router.post('/refresh/:username', async (req, res) => {
   let decode = refresh.decode(refr)
   if (decode) {
     let username = req.params.username
-    let user = user.getByUuid(decode.uuid)
-    if (user && user.username === username) {
+    let u = await user.getByUuid(decode)
+    if (u && u.username === username) {
       console.log(" > new token made")
       res.status(200).json({
         token: acces.encode(username),

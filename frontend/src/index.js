@@ -46,6 +46,9 @@ const Test = () => {
   </div>
 }
 
+fetch("/api/user/refresh/Plegeus", {
+  'method': 'GET'
+})
 
 //fetch("/user/names", {
 //  'method': "GET"
