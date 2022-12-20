@@ -46,9 +46,6 @@ const Test = () => {
   </div>
 }
 
-fetch("/api/user/refresh", {
-  'method': 'POST'
-})
 
 //fetch("/user/names", {
 //  'method': "GET"
