@@ -44,6 +44,16 @@ const BattlePage = () => {
         "method": "GET"
     })
 
+    const likePost = () => {
+        /*fetch("url", {
+            method: "POST"
+        }).then(async res => {
+            const data = await res.json();
+            console.log(data);
+        });*/
+        console.log("Like de post")
+    }
+
 
 
 
@@ -68,6 +78,8 @@ const BattlePage = () => {
     }
 
 
+
+
     return (
         <div id="body">
             {FetchedData &&
@@ -86,7 +98,7 @@ const BattlePage = () => {
                         <div id='likeDiv'>
                             {Accestoken &&
                                 <div>
-                                    <button id="likeButton">
+                                    <button id="likeButton" onClick={() => {likePost()}}>
                                         Like
                                     </button>
                                     {!IsEditingBattle &&
@@ -105,7 +117,7 @@ const BattlePage = () => {
                                     }
                                 </div>
                             }
-                            {!CurrentConditions && <button className="WeatherButton" onClick={getWeatherData}>Weather</button>}
+                            {!CurrentConditions && <button className="WeatherButton" onClick={() => {getWeatherData()}}>Weather</button>}
                         </div>
                     </div>
 

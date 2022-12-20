@@ -18,7 +18,7 @@ const App = () => {
 
   const {
     Accestoken,
-    setAccestoken, 
+    setAccestoken,
     Username
   } = useContext(UserContext);
 
@@ -26,7 +26,8 @@ const App = () => {
 
   useEffect(() => {
     fetch(`"/api/user/refresh/${Username}`, {
-
+      method: "POST",
+            credentials: "include"
     }).then(async res => {
       const data = await res.json();
       console.log(data);
