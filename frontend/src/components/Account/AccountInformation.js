@@ -7,7 +7,7 @@ import Picture from "./Picture";
 
 const AccountInformation = (props) => {
 
-    const [ProfileDescription, setProfileDescription] = useState("")
+    const [ProfileDescription, setProfileDescription] = useState(" ")
     const [IsEditingProfile, setIsEditingProfile] = useState(false)
 
     const fetchurl = "/api/user/" + props.UsernameAccountPage;

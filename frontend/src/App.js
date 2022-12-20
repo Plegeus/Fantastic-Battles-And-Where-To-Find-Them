@@ -5,36 +5,57 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Map from "./components/Map/Map";
 import Overview from "./components/Overview/Overview";
 import NotFound from "./components/NotFound/NotFound";
-import { UserProvider } from './components/User.context';
+import UserContext, { UserProvider } from './components/User.context';
 import LoggedOutRoutes from "./components/LoggedOutRoutes";
 import Account from "./components/Account/Account";
 import "./app.css"
 import { LoginProvider } from "./components/Login/Login.context";
 import BattlePage from "./components/BattlePage/BattlePage";
+import { useContext, useEffect, useState } from "react";
 
 
 const App = () => {
+
+  const {
+    Accestoken,
+    setAccestoken, 
+    Username
+  } = useContext(UserContext);
+
+  /*const [IsLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`"/api/user/refresh/${Username}`, {
+
+    }).then(async res => {
+      const data = await res.json();
+      console.log(data);
+      setLoading(false);
+    });
+  }, []);
+
+  if (IsLoading) {
+    return <div>Loading...</div>
+  } */
   return (
-    <UserProvider>
-      <Router>
-        <div className="App">
-          <Navigation />
-          <div className="Content">
-            <Routes>
-              <Route exact path="/" element={<Map/>} />
-              <Route path="/overview" element={<Overview />} />
-              <Route path="/BattlePage/:id" element={<BattlePage />} />
-              <Route element={<LoggedOutRoutes />}>
-                <Route path="/login" element={<LoginProvider><Login /></LoginProvider>} />
-                <Route path="/signup" element={<SignupWithContext />} />
-              </Route>
-              <Route path="/account/:name" element={<Account />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </div>
+    <Router>
+      <div className="App">
+        <Navigation />
+        <div className="Content">
+          <Routes>
+            <Route exact path="/" element={<Map />} />
+            <Route path="/overview" element={<Overview />} />
+            <Route path="/BattlePage/:id" element={<BattlePage />} />
+            <Route element={<LoggedOutRoutes />}>
+              <Route path="/login" element={<LoginProvider><Login /></LoginProvider>} />
+              <Route path="/signup" element={<SignupWithContext />} />
+            </Route>
+            <Route path="/account/:name" element={<Account />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </div>
-      </Router>
-    </UserProvider>
+      </div>
+    </Router>
   );
 }
 
