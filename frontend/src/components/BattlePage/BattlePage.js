@@ -28,7 +28,7 @@ const BattlePage = () => {
         "method": "GET"
     })
 
-    const { Accestoken } = useContext(UserContext);
+    const { Accestoken,Username } = useContext(UserContext);
     const [CurrentConditions, setCurrentConditions] = useState(null)
     const [IsEditingBattle, setIsEditingBattle] = useState(false)
 
@@ -83,12 +83,15 @@ const BattlePage = () => {
 
     const likePost = () => {
         
-        /*fetch("url", {
-            method: "POST"
+        fetch(`/api/account/${Username}/battle/like`, {
+            "method": "POST",
+            "body": JSON.stringify({
+                battlename: FetchedData.battlename
+            })
         }).then(async res => {
             const data = await res.json();
             console.log(data);
-        });*/
+        });
         setLikedBoolean(true)
         console.log("Like de post")
     }
