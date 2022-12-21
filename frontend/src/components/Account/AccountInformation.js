@@ -7,7 +7,7 @@ import Picture from "./Picture";
 
 const AccountInformation = (props) => {
 
-    const [ProfileDescription, setProfileDescription] = useState(" ")
+    const [ProfileDescription, setProfileDescription] = useState(null)
     const [IsEditingProfile, setIsEditingProfile] = useState(false)
 
     const fetchurl = "/api/user/" + props.UsernameAccountPage;
@@ -18,12 +18,15 @@ const AccountInformation = (props) => {
 
     const EditProfile = () => {
         setIsEditingProfile(true)
-        setProfileDescription(FetchedData.bio)
+        if (!ProfileDescription) {
+            setProfileDescription(FetchedData.bio)
+        }
+
     }
 
     const CancelChanges = () => {
         setIsEditingProfile(false)
-        setProfileDescription("")
+        setProfileDescription(null)
     }
 
     const SaveChanges = () => {
@@ -66,7 +69,10 @@ const AccountInformation = (props) => {
                     </div>
                     <div className="AccountDescription">
                         <h4 className="TitleDescription">Account Description</h4>
-                        {!IsEditingProfile &&
+                        {!IsEditingProfile && ProfileDescription &&
+                            <p className="ParagraphDescription">{ProfileDescription}</p>
+                        }
+                        {!IsEditingProfile && !ProfileDescription &&
                             <p className="ParagraphDescription">{FetchedData.bio}</p>
                         }
                         {IsEditingProfile &&
