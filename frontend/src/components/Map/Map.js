@@ -151,7 +151,7 @@ const Map = (props) => {
         losing_deaths: get('vanquished_deaths'),
       }
 
-      fetch(`/api/account/${Username}/battle/edit`, {
+      fetch(`/api/account/${Username}/battle/add`, {
         'method': 'POST',
         'headers': {
           'content-type': 'application/json',
