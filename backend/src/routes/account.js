@@ -83,7 +83,7 @@ router.post('/battle/:battlename/edit', async (req, res) => {
 })
 router.post('/battle/:battlename/add', async (req, res) => {
 
-  console.log('received post request @ battle edit')
+  console.log('received post request @ battle add')
 
   let body = req.body
   body.rating = undefined
@@ -136,7 +136,7 @@ router.post('/battle/:battlename/unlike', async (req, res) => {
   let b = await battle.getBattle(battlename)
   let u = await user.getUser(b.username)
 
-  if (!await user.likedBattle(username, battlename)) {
+  if (await user.likedBattle(username, battlename)) {
     user.unlikeThisBattle(username, battlename)
     battle.updateBattle(battlename, {
       rating: b.rating - 1

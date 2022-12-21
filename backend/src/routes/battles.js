@@ -24,7 +24,7 @@ router.post('/filter/:username', async (req, res) => {
 
 router.get('/id/:id', async (req, res) => {
 
-  console.log('received post request @ id')
+  console.log('received get request @ id')
 
   let id = req.params.id
 
@@ -39,11 +39,15 @@ router.get('/id/:id', async (req, res) => {
 })
 router.get("/liked/:id/:username", async (req, res) => {
 
+  console.log('received get request @ liked')
+
   let b = await battle.getBattleById(req.params.id)
 
   if (await user.likedBattle(req.params.username, b.battlename)) {
+    console.log(" > likes")
     res.status(200).send()
   } else {
+    console.log(" > not likes")
     res.status(400).send()
   }
 
