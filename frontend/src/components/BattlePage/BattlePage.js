@@ -106,9 +106,10 @@ const BattlePage = () => {
     }
 
     const [LikedBoolean, setLikedBoolean] = useState(false)
+    if(Username){
     const fetchurlLked = "/api/battles/liked/" + id + "/" + Username;
     fetch(fetchurlLked, {
-        method: "GET"
+        "method": "GET"
     }).then(res => {
         if (!res.ok) {
             setLikedBoolean(false)
@@ -118,7 +119,7 @@ const BattlePage = () => {
             setLikedBoolean(true)
             //return true
         }
-    })
+    })}
 
 
     const likePost = () => {
