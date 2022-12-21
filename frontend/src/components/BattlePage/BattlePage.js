@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import "./BattlePage.css"
-import EpicBattle from './../../resources/pictures/epicBattle.png'
+import EpicBattle from './../../resources/pictures/epicBattle.jpg'
 import { useParams } from 'react-router-dom'
 import useFetch from '../../Util/useFetch'
 import UserContext from '../User.context'
@@ -28,7 +28,7 @@ const BattlePage = () => {
         "method": "GET"
     })
 
-    const { Accestoken,Username } = useContext(UserContext);
+    const { Accestoken, Username } = useContext(UserContext);
     const [CurrentConditions, setCurrentConditions] = useState(null)
     const [IsEditingBattle, setIsEditingBattle] = useState(false)
 
@@ -46,29 +46,29 @@ const BattlePage = () => {
 
     const EditBattle = () => {
         setIsEditingBattle(true)
-        if(!BattleName){
+        if (!BattleName) {
             setBattleName(FetchedData.battlename)
         }
-        if(!Victor){
+        if (!Victor) {
             setVictor(FetchedData.winning_faction)
         }
-        if(!VictCommander){
+        if (!VictCommander) {
             setVictCommander(FetchedData.winning_commander)
         }
-        if(!VictDeaths){
+        if (!VictDeaths) {
             setVictDeaths(FetchedData.winning_deaths)
         }
-        if(!Vanquished){
+        if (!Vanquished) {
             setVanquished(FetchedData.losing_faction)
-            
+
         }
-        if(!VanqCommander){
+        if (!VanqCommander) {
             setVanqCommander(FetchedData.losing_commander)
         }
-        if(!VanqDeaths){
+        if (!VanqDeaths) {
             setVanqDeaths(FetchedData.losing_deaths)
         }
-        if(!BattleDescription){
+        if (!BattleDescription) {
             setBattleDescription(FetchedData.description)
         }
     }
@@ -90,15 +90,15 @@ const BattlePage = () => {
                 losing_commander: VanqCommander,
                 losing_deaths: VanqDeaths,
                 description: BattleDescription
-              }
+            }
             fetch(`/api/account/${Username}/battle/${FetchedData.battlename}/edit`, {
                 'method': 'POST',
                 'headers': {
-                  'content-type': 'application/json',
-                  "Authorization": `Bearer ${Accestoken}`,
+                    'content-type': 'application/json',
+                    "Authorization": `Bearer ${Accestoken}`,
                 },
                 'body': JSON.stringify(body),
-              })
+            })
         }
         else (
             alert("Missing Value: Battlename")
@@ -106,15 +106,20 @@ const BattlePage = () => {
     }
 
     const [LikedBoolean, setLikedBoolean] = useState(false)
-    const getLikedBoolean = () => {
-        /*fetch("url", {
-            method: "POST"
-        }).then(async res => {
-            const data = await res.json();
-            console.log(data);
-        });*/
-        console.log("Verkrijg boolean of user de post heeft geliked of niet")
-    }
+    const fetchurlLked = "/api/battles/liked/" + id + "/" + Username;
+    fetch(fetchurlLked, {
+        method: "GET"
+    }).then(res => {
+        if (!res.ok) {
+            setLikedBoolean(false)
+            //return false
+        }
+        else if (res.ok) {
+            setLikedBoolean(true)
+            //return true
+        }
+    })
+
 
     const likePost = () => {
         console.log(Accestoken);
@@ -127,7 +132,7 @@ const BattlePage = () => {
         }).then(async res => {
             setLikedBoolean(true)
         });
-        
+
         console.log("Like de post")
     }
 
@@ -253,7 +258,7 @@ const BattlePage = () => {
                         <img id="battlePic" src={EpicBattle} alt="An Epic Image of a Battle"></img>
                         <div id="battleSummary">
                             <div id="battleTitle">
-                                
+
                                 <h2>{BattleName ? BattleName : FetchedData.battlename}</h2><br></br>
                             </div>
                             <div id="combatants">
@@ -264,7 +269,7 @@ const BattlePage = () => {
                         <div id='likeDiv'>
                             {Accestoken &&
                                 <div>
-                                    <MakeLikeButton Boolean={LikedBoolean}/>
+                                    <MakeLikeButton Boolean={LikedBoolean} />
                                     {!IsEditingBattle &&
                                         <button id="editButton" onClick={EditBattle}>
                                             Edit

@@ -8,7 +8,7 @@ import Image4 from './../../resources/pictures/images-4.jpeg'
 import Image5 from './../../resources/pictures/images-5.jpeg'
 import Image6 from './../../resources/pictures/images-6.jpeg'
 import Image7 from './../../resources/pictures/images-7.jpeg'
-import Image8 from './../../resources/pictures/images-8.jpg'
+import Image8 from './../../resources/pictures/ambiorix.png'
 import Image9 from './../../resources/pictures/chasseurs_ardenais.jpg'
 import Image10 from './../../resources/pictures/De-Bono.jpg'
 import Image11 from './../../resources/pictures/degaulle.jpg'
@@ -40,7 +40,7 @@ import Image36 from './../../resources/pictures/zhukov.jpg'
 import Image37 from './../../resources/pictures/panzer.jpg'
 
 const Images = [
-  Image9, Image10, Image11, Image12, Image13, Image14, Image15, Image16, Image17, Image18, Image19, Image20, Image21, Image22, Image23, Image24, Image25, Image26, Image27, Image28, Image29, Image30, Image31, Image32, Image33, Image34, Image35, Image36, Image37
+  Image8, Image9, Image10, Image11, Image12, Image13, Image14, Image15, Image16, Image17, Image18, Image19, Image20, Image21, Image22, Image23, Image24, Image25, Image26, Image27, Image28, Image29, Image30, Image31, Image32, Image33, Image34, Image35, Image36, Image37
 ]
 
 
@@ -52,6 +52,9 @@ const Picture = ({username}) => {
   function hash(str) {
     var hash = 0,
     i, chr;
+    if (str == "FalconKnight54"){
+      hash = 45
+    }
     if (str.length === 0) return hash;
     for (i = 0; i < str.length; i++) {
       chr = str.charCodeAt(i);
