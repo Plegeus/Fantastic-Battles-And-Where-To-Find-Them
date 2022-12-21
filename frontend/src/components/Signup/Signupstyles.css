@@ -5,27 +5,34 @@
 }
 
 .SignupContainer {
-    min-height: 100vh;
+    padding-top: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-y: auto;
+    overflow-y:hidden;
 }
 
 .signupForm {
+    max-width:18rem;
     z-index: 5;
-    border-radius: 1rem;
-    box-shadow: 0px 0px 8px 7px rgba(0,0,0,0.43);
+    box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.2);
     padding: 2rem 1rem;
     text-align: center;
-    background-color: white;
+    background-color: #6b6167;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .signupText {
+    border: rgba(0, 0, 0, 0.2) solid 1px;
     text-align: center;
     font-size: 2rem;
+    text-transform: uppercase;
     margin-bottom: 2rem;
+    text-shadow: 8px 8px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.2) inset;
 }
+
 
 
 @media (max-width: 600px){

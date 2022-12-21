@@ -6,22 +6,22 @@ const SignupSteps = (props) => {
             if (page === 1) {
                   const collection = document.getElementsByClassName("circle");
                   for (let i = 0; i < collection.length; i++) {
-                        collection[i].style.backgroundColor = "gray";
+                        collection[i].style.backgroundColor = "white";
                   }
 
                   const circle = document.querySelector('#circle1');
-                  circle.style.backgroundColor = 'green';
+                  circle.style.backgroundColor = 'grey';
                   
 
             } else if (page === 2) {
                   const collection = document.getElementsByClassName("circle");
                   for (let i = 0; i < collection.length; i++) {
-                        collection[i].style.backgroundColor = "gray";
+                        collection[i].style.backgroundColor = "white";
                   }
 
                   
                   const circle = document.querySelector('#circle2');
-                  circle.style.backgroundColor = 'green';
+                  circle.style.backgroundColor = 'grey';
                   
 
             } else {
