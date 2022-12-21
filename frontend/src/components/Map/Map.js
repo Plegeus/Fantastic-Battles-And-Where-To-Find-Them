@@ -102,7 +102,8 @@ const Map = (props) => {
   }
   
 
-  const filterData = () => {
+  const filterData = (e) => {
+    e.preventDefault();
     var pane = document.getElementById("add_filter_pane");
     const form = document.getElementById('filterform');
 
@@ -119,12 +120,12 @@ const Map = (props) => {
       filter.deaths = deaths
     }
     if (get("dateFilter")) {
-      const year = get("deathFilter")
+      const year = get("dateFilter")
       //setminYear(year);
       filter.date = year
     }
     //root.render(<AppRefresh />);
-    //props.func(filter)
+    props.func(filter)
   }
 
   function submitFunction() {
@@ -168,7 +169,15 @@ const Map = (props) => {
   }
 
   console.log("filter:", props.filter)
-  const { FetchedData, isLoading, Error } = useFetch("/api/battles/filter/map", {
+  let fetchurl = "/api/battles/filter/" 
+  if(props.filter){
+    fetchurl = fetchurl + "withfilter"
+  }
+  if(Object.keys(props.filter).length === 0){
+    fetchurl = fetchurl + "withoutfilter"
+  }
+  console.log(fetchurl)
+  const { FetchedData, isLoading, Error } = useFetch(fetchurl, {
     'method': 'POST',
     'headers': {
       'content-type': 'application/json',
