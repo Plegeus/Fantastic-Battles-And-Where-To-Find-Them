@@ -42,7 +42,6 @@ const Login = () => {
             return res.json();
         })
             .then(dat => {
-                console.log(dat);
                 if (dat) {
                     // login succes...
                     setUsername(dat.username)

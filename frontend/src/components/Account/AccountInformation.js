@@ -31,11 +31,7 @@ const AccountInformation = (props) => {
 
     const SaveChanges = () => {
         setIsEditingProfile(false)
-        console.log("post nieuwe description in user")
-        console.log(ProfileDescription)
         const fetchurl = "/api/account/" + props.Username + "/edit";
-        console.log(fetchurl);
-        //post request to update description
         fetch(fetchurl, {
             "method": "POST",
             "headers": {

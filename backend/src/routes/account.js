@@ -91,6 +91,9 @@ router.post('/battle/:battlename/add', async (req, res) => {
   let username = req.params.username
   let battlename = req.params.battlename
 
+  console.log(username)
+  console.log(battlename)
+
   if (await battle.getBattle(battlename)) {
     res.status(401).send("battle already exists")
     return
