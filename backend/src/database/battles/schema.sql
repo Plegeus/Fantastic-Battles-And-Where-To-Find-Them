@@ -9,11 +9,6 @@ CREATE TABLE tags (
   tag VARCHAR(32) DEFAULT NULL
 );
 
-CREATE TABLE descriptions (
-  battlename VARCHAR(128) PRIMARY KEY NOT NULL,
-  description VARCHAR(256) DEFAULT NULL
-);
-
 CREATE TABLE battles (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   battlename VARCHAR(128) NOT NULL,
@@ -27,7 +22,8 @@ CREATE TABLE battles (
   winning_commander VARCHAR(64) DEFAULT NULL,
   losing_commander VARCHAR(64) DEFAULT NULL,
   winning_deaths INT DEFAULT NULL,
-  losing_deaths INT DEFAULT NULL
+  losing_deaths INT DEFAULT NULL,
+  description VARCHAR(512) DEFAULT NULL
 );
 
 INSERT INTO battles (
@@ -71,7 +67,4 @@ INSERT INTO tags (battlename, tag) VALUES
   ('Battle of Dunkirk', 'World War II'),
   ('Battle of Dunkirk', 'Germany'),
   ('Battle of Dunkirk', 'The Beach');
-
-INSERT INTO descriptions (battlename, description) VALUES
-  ('Battle of Dunkirk', 'It was a battle at which lasted several ...');
 
