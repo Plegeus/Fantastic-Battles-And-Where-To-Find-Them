@@ -42,21 +42,7 @@ async function getTags(battlename) {
 
   return q
 }
-async function getDesciption(battlename) {
 
-  let q = await connection.query(
-    "SELECT * FROM descriptions WHERE battlename = ?", [battlename]
-  )
-
-  if (q.length === 0) {
-    return null
-  }
-  if (q.length === 1) {
-    return q[0]
-  }
-
-  throw new Error("A battle must only have one description!")
-}
 
 async function updateBattle(battlename, values) {
   if (values.date) {
@@ -119,10 +105,7 @@ async function updateBattle(battlename, values) {
 async function createBattle(battlename, username, locationX, locationY) {
   if (!await getBattle(battlename)) {
     connection.query(
-      "INSERT INTO battles (battlename, username, location_x, location_y) VALUES(?, ?, ?)", [battlename, username, locationX, locationY]
-    )
-    connection.query(
-      "INSERT INTO descriptions (battlename) VALUES(?)", [battlename]
+      "INSERT INTO battles (battlename, username, location_x, location_y) VALUES(?, ?, ?, ?)", [battlename, username, locationX, locationY]
     )
   }
 }
@@ -191,12 +174,7 @@ async function filter(f) {
   }
 
   let bs = await connection.query(stat, props)
-  for (i = 0; i < bs.length; i++) {
-    let d = await getDesciption(bs[i].battlename)
-    bs[i].description = d ? d.description : null
-  }
-  console.log(f.username)
-  console.log(bs)
+
   return bs
 }
 
@@ -204,7 +182,6 @@ async function filter(f) {
 module.exports = {
   getBattle,
   getTags,
-  getDesciption,
   createBattle,
   updateBattle,
   addTag,

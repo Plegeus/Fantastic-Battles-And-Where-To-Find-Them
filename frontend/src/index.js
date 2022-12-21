@@ -22,6 +22,9 @@ function r(filter) {
   root.render(<AppRefresh func={r} filter={filter}/>);
 }
 
+//console.log("Hello");
+//setTimeout(() => { root.render(<p>Foo</p>) }, 3000);
+
 
 const Test = () => {
 

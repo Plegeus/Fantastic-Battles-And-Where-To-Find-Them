@@ -34,13 +34,6 @@ router.get('/id/:id', async (req, res) => {
     return
   }
 
-  let d = await battle.getDesciption(b.battlename)
-  if (d) {
-    b.description = d.description
-  } else {
-    b.description = null
-  }
-
   res.json(b)
 
 })
