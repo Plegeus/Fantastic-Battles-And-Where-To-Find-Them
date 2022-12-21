@@ -95,7 +95,6 @@ router.post('/battle/add', async (req, res) => {
     return
   }
 
-
   await battle.createBattle(battlename, username, body.location_x, body.location_y)
   await battle.updateBattle(battlename, body)
 

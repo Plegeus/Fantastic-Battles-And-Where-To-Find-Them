@@ -45,10 +45,6 @@ async function getTags(battlename) {
 
 
 async function updateBattle(battlename, values) {
-
-  console.log(`battlename: ${battlename}`)
-  //console.log(`${JSON.stringify(values)}`)
-
   if (values.date) {
     await connection.query(
       "UPDATE battles SET date = ? WHERE battlename = ?", [values.date, battlename]
@@ -102,6 +98,14 @@ async function updateBattle(battlename, values) {
   if (values.description) {
     await connection.query(
       "UPDATE battles SET description = ? WHERE battlename = ?", [values.description, battlename]
+    )
+  }
+  if (values.battlename) {
+    await connection.query(
+      "UPDATE battles SET battlename = ? WHERE battlename = ?", [values.battlename, battlename]
+    )
+    await connection.query(
+      "UPDATE tags SET battlename = ? WHERE battlename = ?", [values.battlename, battlename]
     )
   }
 }
