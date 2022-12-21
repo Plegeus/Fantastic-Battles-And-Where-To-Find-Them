@@ -101,7 +101,7 @@ async function updateBattle(battlename, values) {
   }
   if (values.description) {
     await connection.query(
-      "UPDATE descriptions SET description = ? WHERE battlename = ?", [values.description, battlename]
+      "UPDATE battles SET description = ? WHERE battlename = ?", [values.description, battlename]
     )
   }
 }
