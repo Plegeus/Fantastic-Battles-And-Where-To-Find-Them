@@ -10,13 +10,13 @@ import "./AccountPostsStyles.css"
 const AccountPosts = (props) => {
 
   //const fetchurl = "/user/account/" + props.username;
-  const fetchurl = "/api/user/" + props.UlosernameAccountPage + "/battles";
+
   /*const { FetchedData, IsLoading, Error } = useFetch(fetchurl, {
     "method": "GET"
   });*/
 
- 
-  const { FetchedData, IsLoading, Error } = useFetch("/api/battles/filter", {
+  const fetchurl = "/api/battles/filter/" + props.UsernameAccountPage;
+  const { FetchedData, IsLoading, Error } = useFetch(fetchurl, {
     "method": "POST",
     "headers": {
       "Content-Type": "application/json",
