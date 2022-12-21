@@ -10,7 +10,9 @@ const Logout = () => {
     const logout = () => {
         setAccestoken(null);
         setUsername(null);
-        console.log("logged out");
+        fetch( "/api/user/logout", {
+            "method": "POST"
+        })
     }
 
     return (
