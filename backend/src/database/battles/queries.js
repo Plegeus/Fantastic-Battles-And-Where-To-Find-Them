@@ -45,58 +45,62 @@ async function getTags(battlename) {
 
 
 async function updateBattle(battlename, values) {
+
+  console.log(`battlename: ${battlename}`)
+  //console.log(`${JSON.stringify(values)}`)
+
   if (values.date) {
-    connection.query(
+    await connection.query(
       "UPDATE battles SET date = ? WHERE battlename = ?", [values.date, battlename]
     )
   }
   if (values.rating) {
-    connection.query(
+    await connection.query(
       "UPDATE battles SET rating = ? WHERE battlename = ?", [values.rating, battlename]
     )
   }
   if (values.location_x) {
-    connection.query(
+    await connection.query(
       "UPDATE battles SET location_x = ? WHERE battlename = ?", [values.location_x, battlename]
     )
   }
   if (values.location_y) {
-    connection.query(
+    await connection.query(
       "UPDATE battles SET location_y = ? WHERE battlename = ?", [values.location_y, battlename]
     )
   }
   if (values.winning_faction) {
-    connection.query(
+    await connection.query(
       "UPDATE battles SET winning_faction = ? WHERE battlename = ?", [values.winning_faction, battlename]
     )
   }
   if (values.losing_faction) {
-    connection.query(
+    await connection.query(
       "UPDATE battles SET losing_faction = ? WHERE battlename = ?", [values.losing_faction, battlename]
     )
   }
   if (values.winning_commander) {
-    connection.query(
+    await connection.query(
       "UPDATE battles SET winning_commander = ? WHERE battlename = ?", [values.winning_commander, battlename]
     )
   }
   if (values.losing_commander) {
-    connection.query(
+    await connection.query(
       "UPDATE battles SET losing_commander = ? WHERE battlename = ?", [values.losing_commander, battlename]
     )
   }
   if (values.winning_deaths) {
-    connection.query(
+    await connection.query(
       "UPDATE battles SET winning_deaths = ? WHERE battlename = ?", [values.winning_deaths, battlename]
     )
   }
   if (values.losing_deaths) {
-    connection.query(
+    await connection.query(
       "UPDATE battles SET losing_deaths = ? WHERE battlename = ?", [values.losing_deaths, battlename]
     )
   }
   if (values.description) {
-    connection.query(
+    await connection.query(
       "UPDATE descriptions SET description = ? WHERE battlename = ?", [values.description, battlename]
     )
   }
@@ -104,7 +108,7 @@ async function updateBattle(battlename, values) {
 
 async function createBattle(battlename, username, locationX, locationY) {
   if (!await getBattle(battlename)) {
-    connection.query(
+    await connection.query(
       "INSERT INTO battles (battlename, username, location_x, location_y) VALUES(?, ?, ?, ?)", [battlename, username, locationX, locationY]
     )
   }
