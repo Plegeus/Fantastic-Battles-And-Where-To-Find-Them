@@ -79,7 +79,7 @@ const Map = (props) => {
   
 
   const filterData = (e) => {
-    //e.preventDefault();
+    e.preventDefault();
     var pane = document.getElementById("add_filter_pane");
     const form = document.getElementById('filterform');
 
