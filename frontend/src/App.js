@@ -13,6 +13,8 @@ import BattlePage from "./components/BattlePage/BattlePage";
 import { MapFilterProvider } from "./components/Map/MapFilter.context";
 
 
+
+
 const App = (props) => {
   return (
     <Router>

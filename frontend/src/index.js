@@ -11,7 +11,7 @@ import video from './resources/videos/016708093-world-war-ii-color-footage-b24.m
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-root.render(<AppRefresh func={r}/>);
+root.render(<AppRefresh func={r} filter={{}}/>);
 /*const a = () => {
   return <input type="button" onClick={() => root.render(<p>fiyuwfuiwshyfusdifuhysdfihus</p>) }>fsdfdsfsdf</input>
 }

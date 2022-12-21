@@ -124,7 +124,7 @@ const Map = (props) => {
       filter.date = year
     }
     //root.render(<AppRefresh />);
-    props.func(filter)
+    //props.func(filter)
   }
 
   function submitFunction() {
