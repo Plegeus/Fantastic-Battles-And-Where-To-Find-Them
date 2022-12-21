@@ -22,12 +22,11 @@ export const UserProvider = ({ children }) => {
           }).then(dat => {
             setUsername(dat.username)
             setAccestoken(dat.token)
-
-            
+            //window.location.replace('http://localhost:3000/login')
           })
     }, [])
 
-    //window.location.replace('http://localhost:3000/login');
+    //;
 
     return (
         <UserContext.Provider

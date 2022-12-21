@@ -139,8 +139,6 @@ async function filter(f) {
 
   // https://stackoverflow.com/questions/10829812/sql-query-where-value-of-another-table
 
-  console.log(f)
-
   stat = "SELECT * FROM battles"
   props = []
 

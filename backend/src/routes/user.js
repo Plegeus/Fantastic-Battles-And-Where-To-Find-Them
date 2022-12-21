@@ -48,6 +48,12 @@ router.post('/login', async (req, res) => {
   res.status(401).send("incorrect username or password!")
 
 })
+router.post('/logout', (req, res) => {
+  console.log("received post request @ logout")
+  res.clearCookie("refresh")
+  res.status(200).send()
+})
+
 router.post('/register', async (req, res) => {
 
   console.log('received post request @ register')
@@ -87,7 +93,6 @@ router.get('/refresh', async (req, res) => {
   console.log('received get request @ refresh')
 
   let cookies = req.cookies
-  console.log(cookies)
   console.log(` > cookies: ${JSON.stringify(cookies)}`)
 
   let refr = cookies.refresh
