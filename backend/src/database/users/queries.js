@@ -24,6 +24,11 @@ async function likeThisBattle(username, battlename) {
     "INSERT INTO likes (username, battlename) VALUES(? ,?)", [username, battlename]
   )
 }
+async function unlikeThisBattle(username, battlename) {
+  await connection.query(
+    "DELETE FROM likes WHERE username = ? && battlename = ?", [username, battlename]
+  )
+}
 
 async function getUser(username) {
 
@@ -154,5 +159,6 @@ module.exports = {
   updateUser,
   likedBattle,
   likeThisBattle,
-  updateBattle
+  updateBattle,
+  unlikeThisBattle
 }

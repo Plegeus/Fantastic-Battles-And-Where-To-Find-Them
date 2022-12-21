@@ -126,6 +126,29 @@ router.post('/battle/:battlename/like', async (req, res) => {
   res.status(200).send()
 
 })
+router.post('/battle/:battlename/unlike', async (req, res) => {
+
+  console.log('received post request @ battle unlike')
+
+  let username = req.params.username
+  let battlename = req.params.battlename
+
+  let b = await battle.getBattle(battlename)
+  let u = await user.getUser(b.username)
+
+  if (!await user.likedBattle(username, battlename)) {
+    user.unlikeThisBattle(username, battlename)
+    battle.updateBattle(battlename, {
+      rating: b.rating - 1
+    })
+    user.updateUser(u.username, {
+      rating: u.rating - 1
+    })
+  }
+
+  res.status(200).send()
+
+})
 
 
 module.exports = router
