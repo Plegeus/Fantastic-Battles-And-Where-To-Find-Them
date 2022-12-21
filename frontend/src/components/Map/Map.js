@@ -53,30 +53,6 @@ const Map = (props) => {
   const { Accestoken, Username } = useContext(UserContext);
   const { minDeath, minYear, setminDeath, setminYear } = useContext(MapFilterContext);
   const [FilteredFetchedData, setFilteredFetchedData] = useState(false)
-  /*useEffect(() => {
-    fetch("/api/battles/filter", {
-      'method': 'POST',
-      'headers': {
-        'content-type': 'application/json',
-      },
-      'body': JSON.stringify({
-        coords: FULL_SCREEN,
-        deaths: minDeath,
-        date: minYear/*
-        date: get("dateFilter"),
-        date: get("dateFilter")
-      })
-    }).then(res => {
-      if (!res.ok) {
-        alert("Could not fetch the ffsfsdfsdfsdf")
-      }
-      return res.json();
-    })
-      .then(data => {
-        setFilteredFetchedData(data)
-      })
-  }, [minDeath], [minYear])*/
-
 
   var mayAdd = false;
   var currentMarker;
@@ -103,7 +79,7 @@ const Map = (props) => {
   
 
   const filterData = (e) => {
-    e.preventDefault();
+    //e.preventDefault();
     var pane = document.getElementById("add_filter_pane");
     const form = document.getElementById('filterform');
 

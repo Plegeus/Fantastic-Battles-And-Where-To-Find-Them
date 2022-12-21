@@ -30,8 +30,8 @@ router.post('/login', async (req, res) => {
       let refr = `${await refresh.encode(username)}`
       res.cookie("refresh", refr, {
         sameSite: 'strict',
-        secure: true,
-        httpOnly: true
+        //secure: true,
+        //httpOnly: true
       })
       res.status(200).json({
         token: token,
