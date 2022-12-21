@@ -32,28 +32,45 @@ const BattlePage = () => {
     const [CurrentConditions, setCurrentConditions] = useState(null)
     const [IsEditingBattle, setIsEditingBattle] = useState(false)
 
-    const [BattleName, setBattleName] = useState(" ")
+    const [BattleName, setBattleName] = useState(null)
 
-    const [Victor, setVictor] = useState(" ")
-    const [VictCommander, setVictCommander] = useState(" ")
-    const [VictDeaths, setVictDeaths] = useState(" ")
+    const [Victor, setVictor] = useState(null)
+    const [VictCommander, setVictCommander] = useState(null)
+    const [VictDeaths, setVictDeaths] = useState(null)
 
-    const [Vanquished, setVanquished] = useState(" ")
-    const [VanqCommander, setVanqCommander] = useState(" ")
-    const [VanqDeaths, setVanqDeaths] = useState(" ")
+    const [Vanquished, setVanquished] = useState(null)
+    const [VanqCommander, setVanqCommander] = useState(null)
+    const [VanqDeaths, setVanqDeaths] = useState(null)
 
-    const [BattleDescription, setBattleDescription] = useState(" ")
+    const [BattleDescription, setBattleDescription] = useState(null)
 
     const EditBattle = () => {
         setIsEditingBattle(true)
-        setBattleName(FetchedData.battlename)
-        setVictor(FetchedData.winning_faction)
-        setVictCommander(FetchedData.winning_commander)
-        setVictDeaths(FetchedData.winning_deaths)
-        setVanquished(FetchedData.losing_faction)
-        setVanqCommander(FetchedData.losing_commander)
-        setVanqDeaths(FetchedData.losing_deaths)
-        setBattleDescription(FetchedData.description)
+        if(!BattleName){
+            setBattleName(FetchedData.battlename)
+        }
+        if(!Victor){
+            setVictor(FetchedData.winning_faction)
+        }
+        if(!VictCommander){
+            setVictCommander(FetchedData.winning_commander)
+        }
+        if(!VictDeaths){
+            setVictDeaths(FetchedData.winning_deaths)
+        }
+        if(!Vanquished){
+            setVanquished(FetchedData.losing_faction)
+            
+        }
+        if(!VanqCommander){
+            setVanqCommander(FetchedData.losing_commander)
+        }
+        if(!VanqDeaths){
+            setVanqDeaths(FetchedData.losing_deaths)
+        }
+        if(!BattleDescription){
+            setBattleDescription(FetchedData.description)
+        }
     }
 
     const CancelChanges = () => {
@@ -241,7 +258,8 @@ const BattlePage = () => {
                         <img id="battlePic" src={EpicBattle} alt="An Epic Image of a Battle"></img>
                         <div id="battleSummary">
                             <div id="battleTitle">
-                                <h2>{FetchedData.battlename}</h2><br></br>
+                                
+                                <h2>{BattleName ? BattleName : FetchedData.battlename}</h2><br></br>
                             </div>
                             <div id="combatants">
                                 <Faction isVictor={true} faction={FetchedData.winning_faction} leader={FetchedData.winning_commander} deaths={FetchedData.winning_deaths} />
