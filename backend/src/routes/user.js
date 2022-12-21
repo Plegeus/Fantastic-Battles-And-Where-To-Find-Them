@@ -48,6 +48,11 @@ router.post('/login', async (req, res) => {
   res.status(401).send("incorrect username or password!")
 
 })
+router.post('/logout', (req, res) => {
+  res.clearCookie("refresh")
+  res.status(200).send()
+})
+
 router.post('/register', async (req, res) => {
 
   console.log('received post request @ register')
