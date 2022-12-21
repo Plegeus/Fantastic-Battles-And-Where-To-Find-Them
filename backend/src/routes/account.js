@@ -57,7 +57,7 @@ router.post('/edit', async (req, res) => {
   res.status(200)
 })
 
-router.post('/battle/edit', async (req, res) => {
+router.post('/battle/:battlename/edit', async (req, res) => {
 
   console.log('received post request @ battle edit')
 
@@ -65,7 +65,7 @@ router.post('/battle/edit', async (req, res) => {
   body.rating = undefined
 
   let username = req.params.username
-  let battlename = body.battlename
+  let battlename = req.params.battlename
 
   let b = await battle.getBattle(battlename)
 
@@ -80,7 +80,7 @@ router.post('/battle/edit', async (req, res) => {
   res.status(200).send()
 
 })
-router.post('/battle/add', async (req, res) => {
+router.post('/battle/:battlename/add', async (req, res) => {
 
   console.log('received post request @ battle edit')
 
@@ -88,7 +88,7 @@ router.post('/battle/add', async (req, res) => {
   body.rating = undefined
 
   let username = req.params.username
-  let battlename = body.battlename
+  let battlename = req.params.battlename
 
   if (await battle.getBattle(battlename)) {
     res.status(401).send("battle already exists")
@@ -102,17 +102,17 @@ router.post('/battle/add', async (req, res) => {
 
 })
 
-router.post('/battle/like', async (req, res) => {
+router.post('/battle/:battlename/like', async (req, res) => {
 
   console.log('received post request @ battle like')
 
   let username = req.params.username
-  let battlename = req.body.battlename
+  let battlename = req.params.battlename
 
   let b = await battle.getBattle(battlename)
   let u = await user.getUser(b.username)
 
-  if (!await user.likedBattle(username, battle)) {
+  if (!await user.likedBattle(username, battle.battlename)) {
     user.likeThisBattle(username, battlename)
     battle.updateBattle(battlename, {
       rating: b.rating + 1

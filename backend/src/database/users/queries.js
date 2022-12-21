@@ -12,6 +12,8 @@ async function allUsers() {
 }
 
 async function likedBattle(username, battlename) {
+  console.log(` > user: ${username}, battle: ${battlename}`)
+  console.log(` > likes: ${q}`)
 
   let q = await connection.query(
     "SELECT * FROM likes WHERE username = ? && battlename = ?", [username, battlename]

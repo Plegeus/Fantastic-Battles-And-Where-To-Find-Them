@@ -227,9 +227,9 @@ const Map = (props) => {
           <input className='textField' type="number" id="vanquished_deaths" name="vanquished_deaths" /><br></br>
 
           <label htmlFor="lat">Lat:</label><br></br>
-          <input className='textField' type="number" id="lat" name="lat" required /><br></br>
+          <input className='textField' type="number" step="0.0000000000000001" id="lat" name="lat" required /><br></br>
           <label htmlFor="lng">Lng:</label><br></br>
-          <input className='textField' type="number" id="lng" name="lng" required /><br></br>
+          <input className='textField' type="number" step="0.0000000000000001" id="lng" name="lng" required /><br></br>
           <input id="submitButton" type="submit" value="Submit"></input>
         </form>
       </div>

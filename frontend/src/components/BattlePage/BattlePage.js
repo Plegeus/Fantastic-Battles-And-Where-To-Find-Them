@@ -74,7 +74,7 @@ const BattlePage = () => {
                 losing_deaths: VanqDeaths,
                 description: BattleDescription
               }
-            fetch(`/api/account/${Username}/battle/edit`, {
+            fetch(`/api/account/${Username}/battle/${FetchedData.battlename}/edit`, {
                 'method': 'POST',
                 'headers': {
                   'content-type': 'application/json',
@@ -102,16 +102,11 @@ const BattlePage = () => {
     const likePost = () => {
         console.log(Accestoken);
         console.log(FetchedData.battlename)
-        fetch(`/api/account/${Username}/battle/like`, {
+        fetch(`/api/account/${Username}/battle/${FetchedData.battlename}/like`, {
             "method": "POST",
             "headers": {
-                "Content-Type": "application/json",
                 "Authorization": `Bearer ${Accestoken}`,
             },
-            "body": JSON.stringify({
-                battlename: FetchedData.battlename
-                
-            })
         }).then(async res => {
             setLikedBoolean(true)
         });
