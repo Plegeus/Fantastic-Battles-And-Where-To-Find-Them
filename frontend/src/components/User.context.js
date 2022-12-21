@@ -1,4 +1,5 @@
 import { useState, createContext, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 
 const UserContext = createContext();
 
@@ -17,12 +18,13 @@ export const UserProvider = ({ children }) => {
                 return res.json()
             } else {
                 setAccestoken(null)
-                setUsername(null)
+                setUsername(null);
+                //window.location.replace('http://localhost:3000/login')
+                <Navigate to="http://localhost:3000/login"/>
             }
           }).then(dat => {
             setUsername(dat.username)
             setAccestoken(dat.token)
-            //window.location.replace('http://localhost:3000/login')
           })
     }, [])
 

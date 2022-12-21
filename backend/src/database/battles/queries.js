@@ -168,6 +168,10 @@ async function filter(f) {
     stat = stat + " && username = ?"
     props.push(f.username)
   }
+  if (f.rating) {
+    stat = stat + " && rating = ?"
+    props.push(f.rating)
+  }
   if (f.coords) {
 
     stat = stat + " && location_x >= ? && location_x <= ? && location_y <= ? && location_y >= ?"
