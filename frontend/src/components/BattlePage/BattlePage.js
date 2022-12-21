@@ -154,26 +154,6 @@ const BattlePage = () => {
         console.log("Unlike de post")
     }
 
-    const MakeLikeButton = ({ Boolean }) => {
-        if (!Boolean) {
-            return (
-                <button id="likeButton" onClick={() => { likePost() }}>
-                    Like
-                </button>)
-        }
-        else {
-            return (
-                <button id="unlikeButton" onClick={() => { unlikePost() }}>
-                    Unlike
-                </button>)
-        }
-
-    }
-
-
-
-
-
     const getWeatherData = () => {
         if (!CurrentConditions && FetchedData) {
             const oldkey = "KLKMENPQKWMLJ7GBD3V479YHL";
