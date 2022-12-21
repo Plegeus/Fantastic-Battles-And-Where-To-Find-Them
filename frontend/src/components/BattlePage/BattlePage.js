@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import "./BattlePage.css"
-import EpicBattle from './../../resources/pictures/epicBattle.png'
+import EpicBattle from './../../resources/pictures/epicBattle.jpg'
 import { useParams } from 'react-router-dom'
 import useFetch from '../../Util/useFetch'
 import UserContext from '../User.context'
