@@ -20,7 +20,7 @@ async function likedBattle(username, battlename) {
   return !(q.length === 0)
 }
 async function likeThisBattle(username, battlename) {
-  connection.query(
+  await connection.query(
     "INSERT INTO likes (username, battlename) VALUES(? ,?)", [username, battlename]
   )
 }
@@ -104,33 +104,33 @@ async function userExists(username) {
 
 async function updateUser(username, values) {
   if (values.password) {
-    connection.query(
+    await connection.query(
       "UPDATE passwords SET password = ? WHERE username = ?", [values.password, username] 
     )
   }
   if (values.email) {
-    connection.query(
+    await connection.query(
       "UPDATE users SET email = ? WHERE username = ?", [values.email, username] 
     )
   }
   if (values.rating) {
-    connection.query(
+    await connection.query(
       "UPDATE users SET rating = ? WHERE username = ?", [values.rating, username] 
     )
   }
   if (values.bio) {
-    connection.query(
+    await connection.query(
       "UPDATE users SET bio = ? WHERE username = ?", [values.bio, username] 
     )
   }
   if (values.username) {
-    connection.query(
+    await connection.query(
       "UPDATE users SET username = ? WHERE username = ?", [values.username, username]
     )
-    connection.query(
+    await connection.query(
       "UPDATE passwords SET username = ? WHERE username = ?", [values.username, username]
     )
-    connection.query(
+    await connection.query(
       "UPDATE battles SET username = ? WHERE username = ?", [values.username, username]
     )
   }

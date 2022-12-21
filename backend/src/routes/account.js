@@ -77,8 +77,9 @@ router.post('/battle/edit', async (req, res) => {
   let originalUser = b ? await user.getUser(b.username) : editingUser
 
   if (originalUser.rating <= editingUser.rating) {
-    battle.createBattle(battlename, username, body.location_x, body.location_y)
-    battle.updateBattle(battlename, body)
+    console.log('creating battle')
+    await battle.createBattle(battlename, username, body.location_x, body.location_y)
+    await battle.updateBattle(battlename, body)
   }
 
   res.status(200).send()
