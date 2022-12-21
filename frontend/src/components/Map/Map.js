@@ -210,26 +210,26 @@ const Map = (props) => {
         <form onSubmit={submitFunction} id="addBattle">
 
           <label htmlFor="name">Name:</label><br></br>
-          <input className='textField' type="any" id="name" name="name" required /><br></br>
+          <input className='textField' type="any" id="name" name="name" required placeholder="Battle of Belleau Wood"/><br></br>
           <label htmlFor="name">Date:</label><br></br>
           <input className='textField' type="date" id="date" name="date" /><br></br>
           <label htmlFor="victor">Victor:</label><br></br>
-          <input className='textField' type="any" id="victor" name="victor" /><br></br>
+          <input className='textField' type="any" id="victor" name="victor" placeholder="United States"/><br></br>
           <label htmlFor="vanquished">Vanquished:</label><br></br>
-          <input className='textField' type="any" id="vanquished" name="vanquished" /><br></br>
+          <input className='textField' type="any" id="vanquished" name="vanquished" placeholder="German Empire"/><br></br>
           <label htmlFor="victorious_commander">Victorious Commander:</label><br></br>
-          <input className='textField' type="any" id="victorious_commander" name="victorious_commander" /><br></br>
+          <input className='textField' type="any" id="victorious_commander" name="victorious_commander" placeholder="John Pershing"/><br></br>
           <label htmlFor="vanquished_commander">Vanquished Commander:</label><br></br>
-          <input className='textField' type="any" id="vanquished_commander" name="vanquished_commander" /><br></br>
+          <input className='textField' type="any" id="vanquished_commander" name="vanquished_commander" placeholder="Prince Wilhelm"/><br></br>
           <label htmlFor="victorious_deaths">Victorious Deaths:</label><br></br>
-          <input className='textField' type="number" id="victorious_deaths" name="victorious_deaths" /><br></br>
+          <input className='textField' type="number" id="victorious_deaths" name="victorious_deaths" placeholder="9777"/><br></br>
           <label htmlFor="vanquished_deaths">Vanquished Deaths:</label><br></br>
-          <input className='textField' type="number" id="vanquished_deaths" name="vanquished_deaths" /><br></br>
+          <input className='textField' type="number" id="vanquished_deaths" name="vanquished_deaths" placeholder="15450"/><br></br>
 
           <label htmlFor="lat">Lat:</label><br></br>
-          <input className='textField' type="number" step="0.0000000000000001" id="lat" name="lat" required /><br></br>
+          <input className='textField' type="number" step="0.0000000000000001" id="lat" name="lat" required placeholder="49"/><br></br>
           <label htmlFor="lng">Lng:</label><br></br>
-          <input className='textField' type="number" step="0.0000000000000001" id="lng" name="lng" required /><br></br>
+          <input className='textField' type="number" step="0.0000000000000001" id="lng" name="lng" required placeholder="3"/><br></br>
           <input id="submitButton" type="submit" value="Submit"></input>
         </form>
       </div>
