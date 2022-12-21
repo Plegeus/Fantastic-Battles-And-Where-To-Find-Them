@@ -116,20 +116,14 @@ const Map = (props) => {
 
     if (get("deathFilter")) {
       const deaths = get("deathFilter")
-      setminDeath(deaths);
+      //setminDeath(deaths);
       filter.deaths = deaths
     }
     if (get("dateFilter")) {
       const year = get("deathFilter")
-      setminYear(year);
+      //setminYear(year);
       filter.date = year
     }
-
-    console.log(minDeath)
-    console.log(minYear)
-    const container = document.getElementById('Map');
-    const root = createRoot(container);
-
     //root.render(<AppRefresh />);
     props.func(filter)
   }
@@ -173,6 +167,7 @@ const Map = (props) => {
     }
   }
 
+  console.log("filter:", props.filter)
   const { FetchedData, isLoading, Error } = useFetch("/api/battles/filter", {
     'method': 'POST',
     'headers': {

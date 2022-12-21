@@ -12,6 +12,11 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(<AppRefresh func={r}/>);
+/*const a = () => {
+  return <input type="button" onClick={() => root.render(<p>fiyuwfuiwshyfusdifuhysdfihus</p>) }>fsdfdsfsdf</input>
+}
+
+root.render(<a/>) */
 
 function r(filter) {
   root.render(<AppRefresh func={r} filter={filter}/>);

@@ -64,6 +64,24 @@ const BattlePage = () => {
         const BattleName = document.getElementById('BattleNameInput').value;
         if (BattleName) {
             setIsEditingBattle(false)
+            let body = {
+                battlename: BattleName,
+                winning_faction: Victor,
+                winning_commander: VictCommander,
+                winning_deaths: VictDeaths,
+                losing_faction: Vanquished,
+                losing_commander: VanqCommander,
+                losing_deaths: VanqDeaths,
+                description: BattleDescription
+              }
+            fetch(`/api/account/${Username}/battle/edit`, {
+                'method': 'POST',
+                'headers': {
+                  'content-type': 'application/json',
+                  "Authorization": `Bearer ${Accestoken}`,
+                },
+                'body': JSON.stringify(body),
+              })
         }
         else (
             alert("Missing Value: Battlename")
