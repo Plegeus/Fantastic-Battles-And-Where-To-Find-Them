@@ -163,6 +163,9 @@ const Map = (props) => {
       console.log(log);
       pane.style.display = 'none';
 
+      alert("ACCES TOKEN")
+      alert(Accestoken)
+
     }
   }
 
