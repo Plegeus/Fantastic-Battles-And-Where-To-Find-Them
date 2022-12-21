@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./BattlePage.css"
 import EpicBattle from './../../resources/pictures/epicBattle.jpg'
 import { useParams } from 'react-router-dom'
@@ -106,21 +106,23 @@ const BattlePage = () => {
     }
 
     const [LikedBoolean, setLikedBoolean] = useState(false)
-    if(Username){
-    const fetchurlLked = "/api/battles/liked/" + id + "/" + Username;
-    fetch(fetchurlLked, {
-        "method": "GET"
-    }).then(res => {
-        if (!res.ok) {
-            setLikedBoolean(false)
-            //return false
+    useEffect(() => {
+        if (Username) {
+            const fetchurlLked = "/api/battles/liked/" + id + "/" + Username;
+            fetch(fetchurlLked, {
+                "method": "GET"
+            }).then(res => {
+                if (!res.ok) {
+                    setLikedBoolean(false)
+                    //return false
+                }
+                else if (res.ok) {
+                    setLikedBoolean(true)
+                    //return true
+                }
+            })
         }
-        else if (res.ok) {
-            setLikedBoolean(true)
-            //return true
-        }
-    })}
-
+    }, [LikedBoolean])
 
     const likePost = () => {
         console.log(Accestoken);
@@ -138,13 +140,17 @@ const BattlePage = () => {
     }
 
     const unlikePost = () => {
-        /*fetch("url", {
-            method: "POST"
+        console.log(Accestoken);
+        console.log(FetchedData.battlename)
+        fetch(`/api/account/${Username}/battle/${FetchedData.battlename}/unlike`, {
+            "method": "POST",
+            "headers": {
+                "Authorization": `Bearer ${Accestoken}`,
+            },
         }).then(async res => {
-            const data = await res.json();
-            console.log(data);
-        });*/
-        setLikedBoolean(false)
+            setLikedBoolean(false)
+        });
+
         console.log("Unlike de post")
     }
 
@@ -270,7 +276,15 @@ const BattlePage = () => {
                         <div id='likeDiv'>
                             {Accestoken &&
                                 <div>
-                                    <MakeLikeButton Boolean={LikedBoolean} />
+                                    {LikedBoolean ?
+                                        <button id="unlikeButton" onClick={() => { unlikePost() }}>
+                                            Unlike
+                                        </button>
+                                        :
+                                        <button id="likeButton" onClick={() => { likePost() }}>
+                                            Like
+                                        </button>
+                                    }
                                     {!IsEditingBattle &&
                                         <button id="editButton" onClick={EditBattle}>
                                             Edit
