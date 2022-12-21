@@ -60,6 +60,7 @@ router.post('/edit', async (req, res) => {
 router.post('/battle/edit', async (req, res) => {
 
   console.log('received post request @ battle edit')
+  console.log(req.body)
 
   let body = req.body
   body.rating = undefined

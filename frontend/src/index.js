@@ -11,7 +11,11 @@ import video from './resources/videos/016708093-world-war-ii-color-footage-b24.m
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-root.render(<AppRefresh/>);
+root.render(<AppRefresh func={r}/>);
+
+function r(filter) {
+  root.render(<AppRefresh func={r} filter={filter}/>);
+}
 
 
 const Test = () => {

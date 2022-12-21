@@ -12,9 +12,10 @@ import "./app.css"
 import { LoginProvider } from "./components/Login/Login.context";
 import BattlePage from "./components/BattlePage/BattlePage";
 import { useContext, useEffect, useState } from "react";
+import { MapFilterProvider } from "./components/Map/MapFilter.context";
 
 
-const App = () => {
+const App = (props) => {
 
   const {
     Accestoken,
@@ -51,7 +52,10 @@ const App = () => {
         <Navigation />
         <div className="Content">
           <Routes>
-            <Route exact path="/" element={<Map />} />
+            <Route exact path="/" element={<MapFilterProvider>
+              <Map func={props.func} filter={props.filter}/>
+            </MapFilterProvider>
+            } />
             <Route path="/overview" element={<Overview />} />
             <Route path="/BattlePage/:id" element={<BattlePage />} />
             <Route element={<LoggedOutRoutes />}>

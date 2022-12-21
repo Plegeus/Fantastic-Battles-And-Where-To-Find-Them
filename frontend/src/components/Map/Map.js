@@ -7,6 +7,8 @@ import UserContext from '../User.context';
 import { useContext, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import useFetch from '../../Util/useFetch';
+import MapFilterContext from './MapFilter.context';
+import { createRoot } from 'react-dom/client';
 
 const FULL_SCREEN = {
   x0: -180,
@@ -46,9 +48,35 @@ const MARKERS = [
 ]
 
 
-const Map = () => {
+const Map = (props) => {
 
   const { Accestoken, Username } = useContext(UserContext);
+  const { minDeath, minYear, setminDeath, setminYear } = useContext(MapFilterContext);
+  const [FilteredFetchedData, setFilteredFetchedData] = useState(false)
+  /*useEffect(() => {
+    fetch("/api/battles/filter", {
+      'method': 'POST',
+      'headers': {
+        'content-type': 'application/json',
+      },
+      'body': JSON.stringify({
+        coords: FULL_SCREEN,
+        deaths: minDeath,
+        date: minYear/*
+        date: get("dateFilter"),
+        date: get("dateFilter")
+      })
+    }).then(res => {
+      if (!res.ok) {
+        alert("Could not fetch the ffsfsdfsdfsdf")
+      }
+      return res.json();
+    })
+      .then(data => {
+        setFilteredFetchedData(data)
+      })
+  }, [minDeath], [minYear])*/
+
 
   var mayAdd = false;
   var currentMarker;
@@ -72,20 +100,38 @@ const Map = () => {
       pane.style.display = 'block';
     }
   }
+  
 
-  function filterData(){
+  function filterData() {
     var pane = document.getElementById("add_filter_pane");
     const form = document.getElementById('filterform');
 
+    let filter = {
 
-/*fetch(`/api/account/${Username}/battle/edit`, {
-        'method': 'POST',
-        'headers': {
-          'content-type': 'application/json',
-          "Authorization": `Bearer ${Accestoken}`,
-        },
-        'body': JSON.stringify(body),
-      })*/
+    }
+
+    function get(id) {
+      return form.elements[id].value
+    }
+
+    if (get("deathFilter")) {
+      const deaths = get("deathFilter")
+      setminDeath(deaths);
+      filter.deaths = deaths
+    }
+    if (get("dateFilter")) {
+      const year = get("deathFilter")
+      setminYear(year);
+      filter.date = year
+    }
+
+    console.log(minDeath)
+    console.log(minYear)
+    const container = document.getElementById('Map');
+    const root = createRoot(container);
+
+    //root.render(<AppRefresh />);
+    props.func(filter)
   }
 
   function submitFunction() {
@@ -132,18 +178,18 @@ const Map = () => {
     'headers': {
       'content-type': 'application/json',
     },
-    'body': JSON.stringify({
-      coords: FULL_SCREEN
-    })
+    'body': JSON.stringify(
+      props.filter
+    )
   })
 
   return (
-    <div className='mapContainer'>
+    <div className='mapContainer' id="Map">
 
       <div id="center">
         <div id="center_pane"></div>
         {Accestoken && <button id="battleButton" onClick={showAddScreen}>Add a battle</button>}
-        
+
       </div>
       <button id="filterButton" onClick={showFilterScreen}>Filter</button>
 
@@ -152,15 +198,15 @@ const Map = () => {
         <form onSubmit={filterData} id="filterform">
 
           <label htmlFor="name">Min Deaths:</label><br></br>
-          <input className='textField' type="number" id="name" name="name" min="0"/><br></br>
-          <label htmlFor="name">From Year:</label><br></br>
-          <input className='textField' type="number" id="date" name="date" min="0"/><br></br>
+          <input className='textField' type="number" id="deathFilter" name="name" min="0" /><br></br>
+          <label htmlFor="date">From Year:</label><br></br>
+          <input className='textField' type="number" id="dateFilter" name="date" min="0" /><br></br>
           <label htmlFor="victor">Faction:</label><br></br>
-          <input className='textField' type="text" id="victor" name="victor" /><br></br>
+          <input className='textField' type="text" id="factionFilter" name="victor" /><br></br>
           <label htmlFor="vanquished">Rating:</label><br></br>
-          <input className='textField' type="number" id="vanquished" name="vanquished" min="0"/><br></br>
+          <input className='textField' type="number" id="ratingFilter" name="vanquished" min="0" /><br></br>
 
-          <input id="submitButton" type="submit" value="Filter"></input>
+          <input id="submitFilterButton" type="submit" value="Filter"></input>
         </form>
       </div>
 
@@ -208,7 +254,10 @@ const Map = () => {
             document.getElementById("lng").value = e.latlng.lng;
           },
         }} color='transparent'>
-          {FetchedData && FetchedData.map((b) => (
+          {FilteredFetchedData && FilteredFetchedData.map((b) => (
+            <Mark key={b.id} x={b.location_x} y={b.location_y} title={b.battlename} description={b.description} id={b.id} />
+          ))}
+          {FetchedData && !FilteredFetchedData && FetchedData.map((b) => (
             <Mark key={b.id} x={b.location_x} y={b.location_y} title={b.battlename} description={b.description} id={b.id} />
           ))}
         </Rectangle>

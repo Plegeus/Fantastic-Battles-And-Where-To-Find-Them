@@ -67,7 +67,7 @@
     background-color: #6b6167; /* Green */
     color: white;
 }
-#submitButton{
+#submitButton, #submitFilterButton{
     margin-top: 1rem;
     transition-duration: 0.4s;
     background-color: #857a80;
@@ -76,7 +76,7 @@
     border: #857a80 solid 1px;
 }
   
-#submitButton:hover {
+#submitButton:hover , #submitFilterButton:hover{
     background-color: #6b6167; /* Green */
     color: lightgrey;
     box-shadow: none;
