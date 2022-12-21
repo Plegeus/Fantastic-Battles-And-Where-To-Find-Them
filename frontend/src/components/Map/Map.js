@@ -168,7 +168,7 @@ const Map = (props) => {
   }
 
   console.log("filter:", props.filter)
-  const { FetchedData, isLoading, Error } = useFetch("/api/battles/filter", {
+  const { FetchedData, isLoading, Error } = useFetch("/api/battles/filter/map", {
     'method': 'POST',
     'headers': {
       'content-type': 'application/json',
