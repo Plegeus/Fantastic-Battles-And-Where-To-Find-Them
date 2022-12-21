@@ -125,8 +125,6 @@ const BattlePage = () => {
     }, [LikedBoolean])
 
     const likePost = () => {
-        console.log(Accestoken);
-        console.log(FetchedData.battlename)
         fetch(`/api/account/${Username}/battle/${FetchedData.battlename}/like`, {
             "method": "POST",
             "headers": {
@@ -140,8 +138,6 @@ const BattlePage = () => {
     }
 
     const unlikePost = () => {
-        console.log(Accestoken);
-        console.log(FetchedData.battlename)
         fetch(`/api/account/${Username}/battle/${FetchedData.battlename}/unlike`, {
             "method": "POST",
             "headers": {

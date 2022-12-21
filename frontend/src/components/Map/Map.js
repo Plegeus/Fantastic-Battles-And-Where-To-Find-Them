@@ -150,7 +150,7 @@ const Map = (props) => {
         losing_deaths: get('vanquished_deaths'),
       }
 
-      fetch(`/api/account/${Username}/battle/add`, {
+      fetch(`/api/account/${Username}/battle/${body.battlename}/add`, {
         'method': 'POST',
         'headers': {
           'content-type': 'application/json',
@@ -162,6 +162,7 @@ const Map = (props) => {
       var log = ("Name:" + form.elements["name"].value + " - Victor:" + form.elements["victor"].value + " - Vanquished:" + form.elements["vanquished"].value + " - Victorious Commander:" + form.elements["victorious_commander"].value + " - Vanquished Commander:" + form.elements["vanquished_commander"].value + " - Victorious Deaths:" + form.elements["victorious_deaths"].value + " - Vanquished Deaths: " + form.elements["vanquished_deaths"].value + form.elements["lat"].value + form.elements["lng"].value)
       console.log(log);
       pane.style.display = 'none';
+      //e.preventDefault();
 
       alert("ACCES TOKEN")
       alert(Accestoken)

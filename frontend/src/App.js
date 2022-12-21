@@ -5,47 +5,15 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Map from "./components/Map/Map";
 import Overview from "./components/Overview/Overview";
 import NotFound from "./components/NotFound/NotFound";
-import UserContext, { UserProvider } from './components/User.context';
 import LoggedOutRoutes from "./components/LoggedOutRoutes";
 import Account from "./components/Account/Account";
 import "./app.css"
 import { LoginProvider } from "./components/Login/Login.context";
 import BattlePage from "./components/BattlePage/BattlePage";
-import { useContext, useEffect, useState } from "react";
 import { MapFilterProvider } from "./components/Map/MapFilter.context";
 
 
 const App = (props) => {
-
-  const {
-    Accestoken,
-    setAccestoken,
-    Username
-  } = useContext(UserContext);
-
-  /*const [IsLoading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch(`"/api/user/refresh`, {
-      method: "GET"
-    }).then(res => {
-      console.log(res);
-      if(res.ok){
-        return res.json();
-      }
-      else {
-        alert("res not ok")
-      }
-    }).then(data => {
-      console.log(data);
-      setLoading(false);
-      setAccestoken(data.token)
-    })
-  },[]);
-
-  if (IsLoading) {
-    return <div>Loading...</div>
-  } */
   return (
     <Router>
       <div className="App">

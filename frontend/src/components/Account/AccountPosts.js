@@ -43,7 +43,7 @@ const AccountPosts = (props) => {
           </thead>
           <tbody>
             {FetchedData && FetchedData.map((battle) => (
-              <tr>
+              <tr key={battle.id}>
                 <td><Link to={`/BattlePage/${battle.id}`}>{battle.battlename}</Link></td>
                 <td>{battle.winning_faction}</td>
                 <td>{battle.losing_faction}</td>
@@ -56,7 +56,7 @@ const AccountPosts = (props) => {
           </tbody>
         </table>
       </div>
-      <div id="tileView" class="grid-container">
+      <div id="tileView" className="grid-container">
         {FetchedData && FetchedData.map((battle) => (
           <Link key={battle.id} to={`/BattlePage/${battle.id}`} className="grid-item">{battle.battlename}</Link>
         ))}
