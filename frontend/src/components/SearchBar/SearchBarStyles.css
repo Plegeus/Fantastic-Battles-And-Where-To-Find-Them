@@ -11,12 +11,14 @@
   background-color: white;
   border: none;
   width: 16rem;
+  padding-left: 1rem;
 }
 
 .searchIcon {
     background-color: white;
     display: grid;
     place-items: center;
+    border: solid 1px #5e565b
   }
 
   .dataResultContainer {

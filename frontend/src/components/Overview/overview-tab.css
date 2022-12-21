@@ -12,11 +12,11 @@
 
 
 /* table */
-table {
+#battle-table {
 	position: absolute;
 	display: block;
 	z-index: 2;
-	width: 60rem;
+	width: 80%;
 	border-collapse: collapse;
 	border-spacing: 0;
 	box-shadow: 0 2px 15px rgba(64, 64, 64, .7);
@@ -60,6 +60,10 @@ tr:hover {
 	font-weight: normal;
 	background-color: #b6aeaf93;
 	box-shadow: none;
+}
+tr:hover a{
+	color:white;
+	font-weight: bold;
 }
 tr:nth-child(even):hover{
 	background-color: #d1cece81;
@@ -234,6 +238,7 @@ a {
 	top: 5rem;
 	bottom: 0;
 }
+
 
 @media (max-width: 700px) {
 	.grid-container {

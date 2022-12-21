@@ -29,7 +29,7 @@ const AccountPosts = (props) => {
   return (
     <div id="accountPosts">
       <div id="listView">
-        <table id="battle-table">
+        <table id="account-table">
           <thead>
             <tr>
               <th>Name</th>
@@ -37,8 +37,6 @@ const AccountPosts = (props) => {
               <th>Vanquished</th>
               <th>Victorious Commander</th>
               <th>Vanquished Commander</th>
-              <th>Victorious deaths</th>
-              <th>Vanquished deaths</th>
             </tr>
           </thead>
           <tbody>
@@ -49,8 +47,6 @@ const AccountPosts = (props) => {
                 <td>{battle.losing_faction}</td>
                 <td>{battle.winning_commander}</td>
                 <td>{battle.losing_commander}</td>
-                <td>{battle.winning_deaths}</td>
-                <td>{battle.losing_deaths}</td>
               </tr>
             ))}
           </tbody>

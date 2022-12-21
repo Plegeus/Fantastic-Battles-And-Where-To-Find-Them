@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import useFetch from '../../Util/useFetch';
 import "./overview-tab.css"
 
+var allowedToSwap = true;
 
 const Overview = () => {
   var mayAdd = false;
@@ -12,16 +13,20 @@ const Overview = () => {
 
 
   window.addEventListener("resize", forceTileScreen);
+  window.addEventListener("load", forceTileScreen);
+  window.addEventListener('click', forceTileScreen);
 
   function forceTileScreen() {
-    if (window.innerWidth < 1000) {
+    if (window.innerWidth < 1320) {
       showTileScreen();
+      allowedToSwap = false;
     }
   }
 
   function showListScreen() {
     var tile = document.getElementById('tileView');
     var lst = document.getElementById('listView');
+    if (allowedToSwap) {
     if (tile.style.display === 'grid') {
       lst.style.display = 'block';
       tile.style.display = 'none';
@@ -30,10 +35,12 @@ const Overview = () => {
       mayAdd = true;
     }
   }
+  }
 
   function showTileScreen() {
     var tile = document.getElementById('tileView');
     var lst = document.getElementById('listView');
+    if (allowedToSwap) {
     if (tile.style.display === 'block') {
 
       mayAdd = false;
@@ -42,6 +49,7 @@ const Overview = () => {
       tile.style.display = 'grid';
       mayAdd = true;
     }
+  }
   }
   function showCommanderScreen() {
     var cmndrs = document.getElementById('commanders');

@@ -25,16 +25,22 @@ body{
     width: 60rem;
     background-color: #6b6167;
     margin-left: 5%;
-    height: 35%;
     display: flex;
     flex-direction: row;
     padding-bottom: 0.5rem;
     justify-content: flex-start;
+    box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+.AccountInformation h2{
+    padding-bottom: 1rem;
+}
+.AccountInformation h4{
+    padding-bottom: 0.2rem;
 }
 
 .ProfilePicture { /* de profielfoto */
     margin: 1rem;
-    padding-right: 2rem;
 }
 
 .generalAccountInfo { /* volledige container van title tot description */
@@ -50,7 +56,7 @@ body{
 }
 
 .AccountDescription { /* de description */
-    min-height: 9rem;
+    min-height: 7rem;
 }
 
 
@@ -103,6 +109,7 @@ body{
         padding: 5rem 2rem 1rem 2rem;
         
     }
+    
     
 }
 @media (max-width: 1200px) {

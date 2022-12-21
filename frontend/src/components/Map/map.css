@@ -13,7 +13,7 @@
     z-index: 700;
 }
 
-#add_battle_pane, #add_filter_pane {
+#add_battle_pane{
     border-radius: 12px 0px 0px 12px;
     background-color: #6b6167;
     color: white;
@@ -39,10 +39,45 @@
 }
 
 #add_filter_pane{
-    bottom: 13rem;
+    bottom: 7rem;
+    border-radius: 0px 12px 12px 0px;
+    background-color: #6b6167;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    position: fixed;
+    left: 1rem;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    width: fit-content;
+    height: fit-content;
+    z-index: 700;
+    border-collapse: collapse;
+	border-spacing: 0;
+	box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.2);
+	overflow: hidden;
+    border: #5d565a;
+    border-style: none solid solid none 
 }
-
-#battleButton, #filterButton{
+#filterButton{
+    z-index: 700;
+    bottom: 2rem;
+    left: 1rem;
+    height: 4rem;
+    position: fixed;
+    box-shadow: 0 1px 5px rgba(64, 64, 64, .7);
+	min-width: 8rem;
+	background-color: #857a80;
+	color: white;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+	z-index: 700;
+    font-family: 'Montserrat', sans-serif;
+}
+#battleButton{
     z-index: 700;
     bottom: 2rem;
     right: 1rem;
@@ -60,9 +95,7 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-#filterButton{
-    bottom: 8rem;
-}
+
 #battleButton:hover, #filterButton:hover {
     background-color: #6b6167; /* Green */
     color: white;
