@@ -22,9 +22,11 @@ export const UserProvider = ({ children }) => {
           }).then(dat => {
             setUsername(dat.username)
             setAccestoken(dat.token)
-            alert("Session Expired, \n please enter your email and password again.")
+            //window.location.replace('http://localhost:3000/login')
           })
     }, [])
+
+    //;
 
     return (
         <UserContext.Provider

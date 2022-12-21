@@ -30,8 +30,8 @@ router.post('/login', async (req, res) => {
       let refr = `${await refresh.encode(username)}`
       res.cookie("refresh", refr, {
         sameSite: 'strict',
-        //secure: true,
-        //httpOnly: true
+        secure: true,
+        httpOnly: true
       })
       res.status(200).json({
         token: token,
@@ -49,6 +49,7 @@ router.post('/login', async (req, res) => {
 
 })
 router.post('/logout', (req, res) => {
+  console.log("received post request @ logout")
   res.clearCookie("refresh")
   res.status(200).send()
 })
@@ -92,7 +93,6 @@ router.get('/refresh', async (req, res) => {
   console.log('received get request @ refresh')
 
   let cookies = req.cookies
-  console.log(cookies)
   console.log(` > cookies: ${JSON.stringify(cookies)}`)
 
   let refr = cookies.refresh
