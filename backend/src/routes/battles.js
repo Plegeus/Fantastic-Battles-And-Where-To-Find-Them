@@ -37,6 +37,17 @@ router.get('/id/:id', async (req, res) => {
   res.json(b)
 
 })
+router.get("/liked/:id/:username", async (req, res) => {
+
+  let b = await battle.getBattleById(req.params.id)
+
+  if (await user.likedBattle(req.params.username, b.battlename)) {
+    res.status(200).semd()
+  } else {
+    res.status(400).send()
+  }
+
+})
 
 
 

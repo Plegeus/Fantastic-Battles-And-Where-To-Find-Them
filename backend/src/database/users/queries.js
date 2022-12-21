@@ -12,8 +12,6 @@ async function allUsers() {
 }
 
 async function likedBattle(username, battlename) {
-  console.log(` > user: ${username}, battle: ${battlename}`)
-  console.log(` > likes: ${q}`)
 
   let q = await connection.query(
     "SELECT * FROM likes WHERE username = ? && battlename = ?", [username, battlename]
@@ -104,6 +102,12 @@ async function userExists(username) {
   return q[0]
 }
 
+async function updateBattle(battlename, newname) {
+  await connection.query(
+    "UPDATE likes WHERE battlename = ? SET battlename = ?", [battlename, newname]
+  )
+}
+
 async function updateUser(username, values) {
   if (values.password) {
     await connection.query(
@@ -133,7 +137,7 @@ async function updateUser(username, values) {
       "UPDATE passwords SET username = ? WHERE username = ?", [values.username, username]
     )
     await connection.query(
-      "UPDATE battles SET username = ? WHERE username = ?", [values.username, username]
+      "UPDATE likes SET username = ? WHERE username = ?", [values.username, username]
     )
   }
 }
@@ -149,5 +153,6 @@ module.exports = {
   getUser,
   updateUser,
   likedBattle,
-  likeThisBattle
+  likeThisBattle,
+  updateBattle
 }

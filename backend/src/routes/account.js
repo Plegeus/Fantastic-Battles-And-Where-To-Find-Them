@@ -75,6 +75,7 @@ router.post('/battle/:battlename/edit', async (req, res) => {
   if (originalUser.rating <= editingUser.rating) {
     //await battle.createBattle(battlename, username, body.location_x, body.location_y)
     await battle.updateBattle(battlename, body)
+    await user.updateBattle(battlename, body.battlename)
   }
 
   res.status(200).send()
@@ -112,7 +113,7 @@ router.post('/battle/:battlename/like', async (req, res) => {
   let b = await battle.getBattle(battlename)
   let u = await user.getUser(b.username)
 
-  if (!await user.likedBattle(username, battle.battlename)) {
+  if (!await user.likedBattle(username, battlename)) {
     user.likeThisBattle(username, battlename)
     battle.updateBattle(battlename, {
       rating: b.rating + 1
