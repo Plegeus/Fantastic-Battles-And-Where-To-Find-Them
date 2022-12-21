@@ -17,8 +17,7 @@ const Overview = () => {
          alert(JSON.stringify(dat[1]))
        })
    }, [])*/
-
-  const { FetchedData, IsLoading, Error } = useFetch("/api/battles/filter", {
+  const { FetchedData, IsLoading, Error } = useFetch("/api/battles/filter/overview", {
     "method": "POST",
     "Body": {}
   })
