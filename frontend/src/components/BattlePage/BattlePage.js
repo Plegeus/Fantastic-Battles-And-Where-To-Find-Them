@@ -257,8 +257,8 @@ const BattlePage = () => {
                                 <h2>{BattleName ? BattleName : FetchedData.battlename}</h2><br></br>
                             </div>
                             <div id="combatants">
-                                <Faction isVictor={true} faction={FetchedData.winning_faction} leader={FetchedData.winning_commander} deaths={FetchedData.winning_deaths} />
-                                <Faction isVictor={false} faction={FetchedData.losing_faction} leader={FetchedData.losing_commander} deaths={FetchedData.losing_deaths} />
+                                <Faction isVictor={true} faction={Victor ? Victor : FetchedData.winning_faction} leader={VictCommander ? VictCommander : FetchedData.winning_commander} deaths={VictDeaths ? VictDeaths : FetchedData.winning_deaths} />
+                                <Faction isVictor={false} faction={Vanquished ? Vanquished : FetchedData.losing_faction} leader={VanqCommander ? VanqCommander : FetchedData.losing_commander} deaths={VanqDeaths ? VanqDeaths : FetchedData.losing_deaths} />
                             </div>
                         </div>
                         <div id='likeDiv'>
@@ -277,7 +277,7 @@ const BattlePage = () => {
 
                     <div id="bottomContainer">
                         <div id="battleDescription">
-                            <p>{FetchedData.description === null ? "No Description" : FetchedData.description}</p>
+                            <p>{BattleDescription && BattleDescription !== "" ? BattleDescription : FetchedData.description === null ? "No Description" : FetchedData.description}</p>
                         </div>
                         {CurrentConditions &&
                             <div id="theWeather">
