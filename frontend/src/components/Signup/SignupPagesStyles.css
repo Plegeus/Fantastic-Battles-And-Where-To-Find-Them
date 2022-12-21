@@ -4,6 +4,7 @@
     text-align: left;
     width: 100%;
     margin-bottom: 1rem;
+    text-shadow: 8px 8px 5px rgba(0, 0, 0, 0.2) inset;
 }
 
 
@@ -12,9 +13,6 @@
     
 }
 
-input[type="text"],[type="password"],[type="email"]{
-    font-size:1.2rem;
-}
 
 .form-label {
     font-size: 1.3rem;
@@ -50,13 +48,13 @@ input[type="text"],[type="password"],[type="email"]{
 
 .signupBottom button {
     color: white;
-
+    font-family: 'Montserrat', sans-serif;
     padding: 1rem;
     border: none;
     width: 90%;
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    border-radius: 2rem;
+    box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
 .signupBottom button:hover {
@@ -67,11 +65,11 @@ input[type="text"],[type="password"],[type="email"]{
 }
 
 .signupBottom .NextButton {
-    background-color: rgb(53, 134, 53);
+    background-color: #798377;
 }
 
 .signupBottom .BackButton {
-    background-color: rgb(134, 53, 53);
+    background-color: #7e727a;
 }
 
 
@@ -85,6 +83,7 @@ input[type="text"],[type="password"],[type="email"]{
 .ErrorMessage {
     color: red;
     margin-left: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 

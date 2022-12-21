@@ -92,14 +92,7 @@ const Login = () => {
                         <span className="passwordEye">{EyeIcon ? eyeClosedIcon : eyeOpenIcon}</span>
                     </div>
 
-                    <div className="passwordExtra">
-                        <label className="rememberCheckbox">
-                            <input type="checkbox" />
-                            <span className="caption">Remember me</span>
-                        </label>
-
-                        <a href="#" className="forgotPassword">Forgot Password</a>
-                    </div>
+                    
 
                     <div className="loginBottom">
                         <button type="submit">Login</button>

@@ -101,7 +101,6 @@ tr:nth-child(even):hover{
 	margin-left: 5%;
 	margin-right: 5%;
 	margin-top: 2rem;
-	min-height: 100vh;
 }
 
 #tileView {
