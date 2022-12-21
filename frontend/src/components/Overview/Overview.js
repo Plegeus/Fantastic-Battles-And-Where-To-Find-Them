@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import useFetch from '../../Util/useFetch';
 import "./overview-tab.css"
@@ -6,17 +5,6 @@ import "./overview-tab.css"
 
 const Overview = () => {
   var mayAdd = false;
-
-  /* useEffect(() => {
-     fetch("/api/battles/count/0/10", {
-       "method": "GET",
-     })
-       .then(res => res.json())
-       .then(dat => {
-         alert(JSON.stringify(dat[0]))
-         alert(JSON.stringify(dat[1]))
-       })
-   }, [])*/
   const { FetchedData, IsLoading, Error } = useFetch("/api/battles/filter/overview", {
     "method": "POST",
     "Body": {}
@@ -34,7 +22,7 @@ const Overview = () => {
   function showListScreen() {
     var tile = document.getElementById('tileView');
     var lst = document.getElementById('listView');
-    if (tile.style.display == 'grid') {
+    if (tile.style.display === 'grid') {
       lst.style.display = 'block';
       tile.style.display = 'none';
       mayAdd = false;
@@ -46,7 +34,7 @@ const Overview = () => {
   function showTileScreen() {
     var tile = document.getElementById('tileView');
     var lst = document.getElementById('listView');
-    if (tile.style.display == 'block') {
+    if (tile.style.display === 'block') {
 
       mayAdd = false;
     } else {
@@ -65,7 +53,7 @@ const Overview = () => {
     tms.style.display = 'none';
 
   }
-  function showNationScreen() {
+  function showSearchScreen() {
     var cmndrs = document.getElementById('commanders');
     var ntns = document.getElementById('nations');
     var tms = document.getElementById('times');
@@ -95,7 +83,7 @@ const Overview = () => {
           <button className="dropbtn">Type</button>
           <div className="dropdown-content">
             <a href="#" onClick={showCommanderScreen}>Commander</a>
-            <a href="#" onClick={showNationScreen}>Nation</a>
+            <a href="#" onClick={showSearchScreen}>Search</a>
             <a href="#" onClick={showPeriodScreen}>Period</a>
           </div>
         </div>
@@ -110,9 +98,8 @@ const Overview = () => {
         <div id='nations' className="dropdown">
           <button className="dropbtn">Nations</button>
           <div className="dropdown-content">
+            <a href="#">Germany</a>
             <a href="#">Rome</a>
-            <a href="#">Gaul</a>
-            <a href="#">backend</a>
           </div>
         </div>
         <div id='times' className="dropdown">
@@ -145,7 +132,7 @@ const Overview = () => {
           </thead>
           <tbody>
             {FetchedData && FetchedData.map((battle) => (
-              <tr>
+              <tr key={battle.id}>
                 <td><Link to={`/BattlePage/${battle.id}`}>{battle.battlename}</Link></td>
                 <td>{battle.winning_faction}</td>
                 <td>{battle.losing_faction}</td>

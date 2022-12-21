@@ -18,10 +18,10 @@ function SearchBar(props) {
             return value.toLowerCase().includes(searchWord.toLowerCase());
         });
 
-        if (searchWord === "") {
-            setFilteredData([]);
-        } else {
+        if (searchWord) {
             setFilteredData(newFilter);
+        } else {
+            setFilteredData(props.data);
         }
     };
 

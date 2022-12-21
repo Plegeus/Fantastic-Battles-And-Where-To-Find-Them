@@ -102,12 +102,11 @@ const Map = (props) => {
   }
   
 
-  function filterData() {
+  const filterData = () => {
     var pane = document.getElementById("add_filter_pane");
     const form = document.getElementById('filterform');
 
     let filter = {
-
     }
 
     function get(id) {
