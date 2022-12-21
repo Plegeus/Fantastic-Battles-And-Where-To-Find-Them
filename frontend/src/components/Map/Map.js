@@ -126,6 +126,7 @@ const Map = (props) => {
     }
     //root.render(<AppRefresh />);
     props.func(filter)
+
   }
 
   function submitFunction() {
@@ -171,7 +172,15 @@ const Map = (props) => {
   console.log("filter:", props.filter)
   let fetchurl = "/api/battles/filter/" 
   if(props.filter){
-    fetchurl = fetchurl + "withfilter"
+    if(props.filter.deaths && props.filter.date){
+      fetchurl = fetchurl + String(props.filter.deaths) + String(props.filter.date)
+    }
+    else if(props.filter.deaths){
+      fetchurl = fetchurl + String(props.filter.deaths)
+    }
+    else if(props.filter.date){
+      fetchurl = fetchurl + String(props.filter.date)
+    }
   }
   if(Object.keys(props.filter).length === 0){
     fetchurl = fetchurl + "withoutfilter"
