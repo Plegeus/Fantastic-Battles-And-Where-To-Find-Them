@@ -124,6 +124,12 @@ const Map = (props) => {
       //setminYear(year);
       filter.date = year
     }
+
+    if (get("ratingFilter")) {
+      const rating = get("ratingFilter")
+      //setminYear(year);
+      filter.rating = rating
+    }
     //root.render(<AppRefresh />);
     props.func(filter)
 
@@ -170,16 +176,28 @@ const Map = (props) => {
   }
 
   console.log("filter:", props.filter)
-  let fetchurl = "/api/battles/filter/" 
+  let fetchurl = "/api/battles/filter/"
   if(props.filter){
-    if(props.filter.deaths && props.filter.date){
-      fetchurl = fetchurl + String(props.filter.deaths) + String(props.filter.date)
+    if(props.filter.deaths && props.filter.date && props.filter.rating){
+      fetchurl = fetchurl + String(props.filter.deaths) + String(props.filter.date) + String(props.filter.rating)
+    }
+    else if(props.filter.deaths && props.filter.rating){
+      fetchurl = fetchurl + String(props.filter.deaths) + String(props.filter.rating)
+    }
+    else if(props.filter.date && props.filter.rating){
+      fetchurl = fetchurl + String(props.filter.date) + String(props.filter.rating)
+    }
+    else if(props.filter.deaths && props.filter.date){
+      fetchurl = fetchurl + String(props.filter.date) + String(props.filter.deaths)
     }
     else if(props.filter.deaths){
       fetchurl = fetchurl + String(props.filter.deaths)
     }
     else if(props.filter.date){
-      fetchurl = fetchurl + String(props.filter.date)
+      fetchurl = fetchurl + String(props.filter.date) 
+    }
+    else if(props.filter.rating){
+      fetchurl = fetchurl + String(props.filter.rating)
     }
   }
   if(Object.keys(props.filter).length === 0){
@@ -214,10 +232,8 @@ const Map = (props) => {
           <input className='textField' type="number" id="deathFilter" name="name" min="0" /><br></br>
           <label htmlFor="date">From Year:</label><br></br>
           <input className='textField' type="number" id="dateFilter" name="date" min="0" /><br></br>
-          <label htmlFor="victor">Faction:</label><br></br>
-          <input className='textField' type="text" id="factionFilter" name="victor" /><br></br>
           <label htmlFor="vanquished">Rating:</label><br></br>
-          <input className='textField' type="number" id="ratingFilter" name="vanquished" min="0" /><br></br>
+          <input className='textField' type="number" id="ratingFilter" name="rating" min="0" /><br></br>
 
           <input id="submitFilterButton" type="submit" value="Filter"></input>
         </form>
