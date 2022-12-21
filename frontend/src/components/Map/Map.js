@@ -164,9 +164,6 @@ const Map = (props) => {
       pane.style.display = 'none';
       //e.preventDefault();
 
-      alert("ACCES TOKEN")
-      alert(Accestoken)
-
     }
   }
 

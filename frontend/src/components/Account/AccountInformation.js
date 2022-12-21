@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useFetch from "../../Util/useFetch";
 import "./AccountInformationStyles.css"
 import Picture from "./Picture";

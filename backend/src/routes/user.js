@@ -104,6 +104,7 @@ router.get('/refresh', async (req, res) => {
       console.log(" > new token made")
       res.status(200).json({
         token: await acces.encode(u.username),
+        username: u.username,
       })
       return
     }

@@ -9,15 +9,18 @@ export const UserProvider = ({ children }) => {
     const [Id, setId] = useState('');
 
     useEffect(() => {
+        console.log("fetching refresh token")
         fetch("/api/user/refresh", {
             'method': 'GET'
           }).then(res => {
             if (res.ok) {
                 return res.json()
             } else {
-                
+                setAccestoken(null)
+                setUsername(null)
             }
           }).then(dat => {
+            setUsername(dat.username)
             setAccestoken(dat.token)
           })
     }, [])
