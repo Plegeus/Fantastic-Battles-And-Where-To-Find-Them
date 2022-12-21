@@ -12,7 +12,7 @@ router.use((req, res, next) => {
   console.log('')
 })
 
-router.post('/filter', async (req, res) => {
+router.post('/filter/:username', async (req, res) => {
 
   console.log('received post request @ filter')
 

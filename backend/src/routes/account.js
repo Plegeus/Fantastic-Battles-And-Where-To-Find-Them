@@ -60,7 +60,6 @@ router.post('/edit', async (req, res) => {
 router.post('/battle/edit', async (req, res) => {
 
   console.log('received post request @ battle edit')
-  console.log(req.body)
 
   let body = req.body
   body.rating = undefined
@@ -68,23 +67,42 @@ router.post('/battle/edit', async (req, res) => {
   let username = req.params.username
   let battlename = body.battlename
 
-  console.log(`username: ${username}`)
-
   let b = await battle.getBattle(battlename)
-  console.log(`battle: ${b}`)
 
   let editingUser = await user.getUser(username)
   let originalUser = b ? await user.getUser(b.username) : editingUser
 
   if (originalUser.rating <= editingUser.rating) {
-    console.log('creating battle')
-    await battle.createBattle(battlename, username, body.location_x, body.location_y)
+    //await battle.createBattle(battlename, username, body.location_x, body.location_y)
     await battle.updateBattle(battlename, body)
   }
 
   res.status(200).send()
 
 })
+router.post('/battle/add', async (req, res) => {
+
+  console.log('received post request @ battle edit')
+
+  let body = req.body
+  body.rating = undefined
+
+  let username = req.params.username
+  let battlename = body.battlename
+
+  if (await battle.getBattle(battlename)) {
+    res.status(401).send("battle already exists")
+    return
+  }
+
+
+  await battle.createBattle(battlename, username, body.location_x, body.location_y)
+  await battle.updateBattle(battlename, body)
+
+  res.status(200).send()
+
+})
+
 router.post('/battle/like', async (req, res) => {
 
   console.log('received post request @ battle like')
