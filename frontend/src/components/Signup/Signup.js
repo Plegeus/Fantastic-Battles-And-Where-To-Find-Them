@@ -52,7 +52,7 @@ const Signup = () => {
             }).then(res => {
                 if (res.ok) {
                     // register succes, receiving access token...
-                    res.text().then(tkn => {
+                    res.json().then(tkn => {
                         setAccestoken(tkn)
                         setUsername(Username)
                     })
