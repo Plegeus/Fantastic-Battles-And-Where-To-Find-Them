@@ -104,7 +104,7 @@ async function userExists(username) {
 
 async function updateBattle(battlename, newname) {
   await connection.query(
-    "UPDATE likes WHERE battlename = ? SET battlename = ?", [battlename, newname]
+    "UPDATE likes SET battlename = ? WHERE battlename = ?", [newname, battlename]
   )
 }
 
