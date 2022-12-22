@@ -33,6 +33,7 @@ const BattlePage = () => {
     const [IsEditingBattle, setIsEditingBattle] = useState(false)
 
     const [BattleName, setBattleName] = useState(null)
+    const [BattleDate, setBattleDate] = useState(null)
 
     const [Victor, setVictor] = useState(null)
     const [VictCommander, setVictCommander] = useState(null)
@@ -72,6 +73,9 @@ const BattlePage = () => {
         if (!BattleDescription) {
             setBattleDescription(FetchedData.description)
         }
+        if (!BattleDate) {
+            setBattleDate(FetchedData.date)
+        }
     }
 
     const CancelChanges = () => {
@@ -82,6 +86,7 @@ const BattlePage = () => {
         const BattleName = document.getElementById('BattleNameInput').value;
         if (BattleName) {
             setIsEditingBattle(false)
+            console.log(BattleDate)
             let body = {
                 battlename: BattleName,
                 winning_faction: Victor,
@@ -90,7 +95,8 @@ const BattlePage = () => {
                 losing_faction: Vanquished,
                 losing_commander: VanqCommander,
                 losing_deaths: VanqDeaths,
-                description: BattleDescription
+                description: BattleDescription,
+                date: BattleDate
             }
             fetch(`/api/account/${Username}/battle/${FetchedData.battlename}/edit`, {
                 'method': 'POST',
@@ -173,7 +179,7 @@ const BattlePage = () => {
         }
     }
 
-   
+
 
     if (IsEditingBattle) {
         return (
@@ -185,6 +191,9 @@ const BattlePage = () => {
                                 <label>BattleName:</label>
                                 <input type="text" id="BattleNameInput" value={BattleName}
                                     onChange={(e) => { setBattleName(e.target.value) }} required /><br></br>
+                                <label>BattleDate:</label>
+                                <input type="date" id="BattleDateInput" value={BattleDate}
+                                    onChange={(e) => { setBattleDate(e.target.value) }} required /><br></br>
                             </div>
                             <div id="combatants">
                                 <div>
@@ -238,6 +247,7 @@ const BattlePage = () => {
     }
     return (
         <div id="body">
+            {FetchedData && console.log(FetchedData.date)}
             {FetchedData &&
                 <div id="battleInfo">
                     <div id="topContainer">
@@ -246,8 +256,9 @@ const BattlePage = () => {
                             <div id="battleTitle">
 
                                 <h2>{BattleName ? BattleName : FetchedData.battlename}</h2><br></br>
-                        {/*BattleLikes ? <h4>{"rating: " + BattleLikes}</h4> : */<h4>{"rating: " + FetchedData.rating}</h4>}
-                                
+                                <h3>{BattleDate ? BattleDate.substr(5, 3).concat(BattleDate.substr(8, 2).concat("-").concat(BattleDate.substr(0, 4))) : FetchedData.date && FetchedData.date.substr(5, 3).concat(FetchedData.date.substr(8, 2).concat("-").concat(FetchedData.date.substr(0, 4)))}</h3><br></br>
+                                {/*BattleLikes ? <h4>{"rating: " + BattleLikes}</h4> : */<h4>{"rating: " + FetchedData.rating}</h4>}
+
                             </div>
                             <div id="combatants">
                                 <Faction isVictor={true} faction={Victor ? Victor : FetchedData.winning_faction} leader={VictCommander ? VictCommander : FetchedData.winning_commander} deaths={VictDeaths ? VictDeaths : FetchedData.winning_deaths} />
