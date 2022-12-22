@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 const user = require('../database/users/queries')
+const battle = require('../database/battles/queries')
 
 const acces = require('../tokens/access')
 const refresh = require('../tokens/refresh')
@@ -133,14 +134,19 @@ router.get('/:username', async (req, res) => {
 
 })
 
-router.get('/:username/battles', async (req, res) => {
+/*router.get('/:username/battles', async (req, res) => {
 
   console.log('received get request @ battles')
 
   let username = req.params.username
-  res.json(await user.getBattles(username))
 
-})
+  let q = await battle.filter({username: username})
+  console.log(` > q: ${q}`)
+  console.log(` > ${q.map(b => b.battlename)}`)
+
+  res.json()
+
+})*/
 
 module.exports = router
 

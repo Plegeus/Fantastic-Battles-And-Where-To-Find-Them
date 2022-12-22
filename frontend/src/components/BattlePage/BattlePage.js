@@ -43,6 +43,7 @@ const BattlePage = () => {
     const [VanqDeaths, setVanqDeaths] = useState(null)
 
     const [BattleDescription, setBattleDescription] = useState(null)
+    const [BattleLikes, setBattleLikes] = useState(null)
 
     const EditBattle = () => {
         setIsEditingBattle(true)
@@ -132,6 +133,7 @@ const BattlePage = () => {
             },
         }).then(async res => {
             setLikedBoolean(true)
+            setBattleLikes(BattleLikes + 1)
         });
 
         console.log("Like de post")
@@ -145,6 +147,7 @@ const BattlePage = () => {
             },
         }).then(async res => {
             setLikedBoolean(false)
+            setBattleLikes(BattleLikes + 2)
         });
 
         console.log("Unlike de post")
@@ -170,7 +173,7 @@ const BattlePage = () => {
         }
     }
 
-
+   
 
     if (IsEditingBattle) {
         return (
@@ -243,6 +246,8 @@ const BattlePage = () => {
                             <div id="battleTitle">
 
                                 <h2>{BattleName ? BattleName : FetchedData.battlename}</h2><br></br>
+                        {/*BattleLikes ? <h4>{"rating: " + BattleLikes}</h4> : */<h4>{"rating: " + FetchedData.rating}</h4>}
+                                
                             </div>
                             <div id="combatants">
                                 <Faction isVictor={true} faction={Victor ? Victor : FetchedData.winning_faction} leader={VictCommander ? VictCommander : FetchedData.winning_commander} deaths={VictDeaths ? VictDeaths : FetchedData.winning_deaths} />

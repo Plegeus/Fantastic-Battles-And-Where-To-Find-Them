@@ -160,5 +160,5 @@ module.exports = {
   likedBattle,
   likeThisBattle,
   updateBattle,
-  unlikeThisBattle
+  unlikeThisBattle,
 }
