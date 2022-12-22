@@ -42,8 +42,8 @@
 }
 
 .nav-links:hover {
-    background: rgb(75, 74, 74);
-    border-radius: 0.4rem;
+    background: #524a4f;
+    box-shadow: 6px 6px 5px 0px rgba(0, 0, 0, 0.2) inset;
     transition: all 0.2s ease-in-out;
 }
 
@@ -102,7 +102,6 @@
 
     .nav-links {
         color: white;
-        border-radius: 0.4rem;
         text-decoration: none;
         padding: 0.3rem 0.4rem;
         background-color: rgb(91, 91, 91);
