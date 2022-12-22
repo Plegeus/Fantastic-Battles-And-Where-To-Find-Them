@@ -277,7 +277,7 @@ const BattlePage = () => {
                         </div>
                         {CurrentConditions &&
                             <div id="theWeather">
-                                <img id="battlePic" src={"/WeatherIcons/" + String(CurrentConditions.currentConditions.icon) + ".png"} alt="A weather icon" width="50rem"></img>
+                                <img src={"/WeatherIcons/" + String(CurrentConditions.currentConditions.icon) + ".png"} alt="A weather icon" width="50rem"></img>
                                 <p>Current Temperature: {Math.round((CurrentConditions.currentConditions.temp - 32) * 5 / 9)}° Celsius </p>
                                 <p>Current Weather Condition: {CurrentConditions.currentConditions.conditions} </p>
                                 <p>Current Weather Description {CurrentConditions.description} </p>
