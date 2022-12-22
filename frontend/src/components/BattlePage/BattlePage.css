@@ -151,7 +151,7 @@
     color: white;
 }
 
-@media (max-width: 1480px) {
+@media (max-width: 1400px) {
     #body {
         overflow-y: auto;
         overflow-x: auto;
