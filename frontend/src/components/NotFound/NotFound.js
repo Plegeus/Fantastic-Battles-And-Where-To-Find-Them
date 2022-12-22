@@ -1,6 +1,8 @@
 import "./NotFound.css"
 import { Link } from 'react-router-dom'
 
+
+// This will only get rendered if the user entered a non existing url
 const NotFound = () => {
     return (
         <div className='not-found'>

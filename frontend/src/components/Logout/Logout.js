@@ -6,7 +6,7 @@ const Logout = () => {
 
     const { setAccestoken, setUsername } = useContext(UserContext);
 
-
+// We remove the Accestoken and Username when a user presses on the logout button
     const logout = () => {
         setAccestoken(null);
         setUsername(null);

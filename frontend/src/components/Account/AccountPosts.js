@@ -1,8 +1,5 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useFetch from '../../Util/useFetch';
-import Post from "../Posts/Post"
-import "../Posts/PostsStyles.css"
 import "./AccountPostsStyles.css"
 
 

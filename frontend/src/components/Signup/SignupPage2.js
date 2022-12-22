@@ -6,6 +6,8 @@ import { useContext } from "react";
 import SignupContext from "./Signup.context";
 
 const SignupPage2 = (props) => {    
+
+    //Change the input type when the user clicks on the password Icon
     function changeType(visibilityBool) {
         setEyeIcon(visibilityBool)
         let inputType = EyeIcon ? "text" : "password";

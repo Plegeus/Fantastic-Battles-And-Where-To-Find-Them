@@ -11,8 +11,9 @@ import UserContext from "../User.context";
 
 
 const Signup = () => {
-
+    // A regex to check if the filled in text is an email.
     const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    // We hold a const to keep track which signup page we are currently on
     const [page, setPage] = useState(1)
     const {
         Email,
@@ -21,28 +22,29 @@ const Signup = () => {
     } = useContext(SignupContext);
 
     const {
-        Accestoken,
         setAccestoken,
         setUsername
-      } = useContext(UserContext);   
+    } = useContext(UserContext);
 
     const [FormErrors, setFormErrors] = useState({});
 
-    const [IsSubmitted,setIsSubmitted] = useState(false)
+    const [IsSubmitted, setIsSubmitted] = useState(false)
 
-
+// When clicking register we update the isSubmitted state and we also update all the errors we currently have, this will also make sure that we fetch again unless 
+// the user still has the same amount of errors
     const handleRegister = (e) => {
         e.preventDefault()
         setIsSubmitted(true)
         setFormErrors(handleErrors)
     }
 
+    // Each time the Formerrors object changes we will be ready to fetch again and only if we actually clicked submit will the fetch go through
     useEffect(() => {
         if (Object.keys(FormErrors).length === 0 && IsSubmitted) {
             fetch("/api/user/register", {
                 "method": "POST",
-                "headers": { 
-                    "content-type": "application/json" 
+                "headers": {
+                    "content-type": "application/json"
                 },
                 "body": JSON.stringify({
                     mailaddress: Email,
@@ -62,6 +64,7 @@ const Signup = () => {
             })
             setIsSubmitted(false)
         }
+        // Find the first error and redirect to that page
         else if (!Email || !regex.test(Email)) {
             setPage(1)
         }
@@ -90,6 +93,7 @@ const Signup = () => {
         return errors
     }
 
+    // Show the user that how many pages there are and give visual feedback which page u are currently on by changing the colors
     function decideIcons(page) {
         setPage(page)
         if (page === 1) {
@@ -139,7 +143,7 @@ const Signup = () => {
                     {
                         page > 1 && (
                             <div className="signupBottom">
-                                <button  type="submit" className="BackButton" onClick={() => { decideIcons(page - 1) }}>Back</button>
+                                <button type="submit" className="BackButton" onClick={() => { decideIcons(page - 1) }}>Back</button>
                             </div>
                         )
                     }
@@ -155,7 +159,7 @@ const Signup = () => {
 
                 </form>
             </div>
-            <WarVideo/>
+            <WarVideo />
         </div>
     )
 }
