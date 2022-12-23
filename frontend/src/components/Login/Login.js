@@ -1,12 +1,10 @@
 import "./Loginstyles.css";
 import { FiEyeOff, FiEye } from "react-icons/fi";
 import { useContext, useState } from "react";
-import { Link, Navigate, useRoutes } from "react-router-dom";
+import { Link} from "react-router-dom";
 import UserContext from "../User.context";
-import useFetch from "../../Util/useFetch";
 import LoginContext from "./Login.context";
 import WarVideo from "../WarVideo/WarVideo";
-//import YoutTube from 'react-youtube'
 
 
 const Login = () => {
@@ -18,13 +16,14 @@ const Login = () => {
         setPassword
     } = useContext(LoginContext);
 
+    // Change the input type depending on the visibilitybool, so we can either hide or reveal the password
     function changeType(visibilityBool) {
         setEyeIcon(visibilityBool)
         let inputType = EyeIcon ? "text" : "password";
         document.getElementById('psw').type = inputType;
     }
 
-    const { Accestoken, setAccestoken, setUsername,Username } = useContext(UserContext);
+    const {setAccestoken, setUsername } = useContext(UserContext);
 
     const login = (e) => {
         e.preventDefault()
@@ -44,6 +43,7 @@ const Login = () => {
             .then(dat => {
                 if (dat) {
                     // login succes...
+                    // Put the username and Accestoken in the consts, so the site can show stuff that a logged out user wouldn't be able to see/do
                     setUsername(dat.username)
                     setAccestoken(dat.token)
 
@@ -65,8 +65,7 @@ const Login = () => {
         size="2rem" color="gray"
         onClick={() => changeType(!EyeIcon)}
     />
-    //<YoutTube videoId="ifTF3ags0XI"></YoutTube>
-
+// A form for logging in
     return (
         <div className="LoginContainer">
         
@@ -96,6 +95,7 @@ const Login = () => {
                     <div className="loginBottom">
                         <button type="submit">Login</button>
                     </div>
+                    {/* A redirect to the Signup Page */}
                     <div className="signup">
                         <p>Need an account? <Link to="/signup" className="forgotPassword">SIGN UP</Link></p>
                     </div>

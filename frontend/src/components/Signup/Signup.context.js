@@ -3,6 +3,7 @@ import { useState, createContext } from "react";
 const SignupContext = createContext();
 
 export const SignupProvider = ({ children }) => {
+    //These consts are used to have front-end form validation and store the information across 2 different components
     const [Email, setEmail] = useState('');
     const [Username, setUsername] = useState('');
     const [Password, setPassword] = useState('');

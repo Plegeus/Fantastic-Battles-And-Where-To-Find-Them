@@ -1,20 +1,12 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useFetch from '../../Util/useFetch';
-import Post from "../Posts/Post"
-import "../Posts/PostsStyles.css"
 import "./AccountPostsStyles.css"
 
 
-//fetch all posts => filter by username
+
 const AccountPosts = (props) => {
 
-  //const fetchurl = "/user/account/" + props.username;
-
-  /*const { FetchedData, IsLoading, Error } = useFetch(fetchurl, {
-    "method": "GET"
-  });*/
-
+  // Fetch every battle that the user has made
   const fetchurl = "/api/battles/filter/" + props.UsernameAccountPage;
   const { FetchedData, IsLoading, Error } = useFetch(fetchurl, {
     "method": "POST",
@@ -40,6 +32,7 @@ const AccountPosts = (props) => {
             </tr>
           </thead>
           <tbody>
+            {/* Insert every battle that the user made in the table */}
             {FetchedData && FetchedData.map((battle) => (
               <tr key={battle.id}>
                 <td><Link to={`/BattlePage/${battle.id}`}>{battle.battlename}</Link></td>
@@ -53,6 +46,7 @@ const AccountPosts = (props) => {
         </table>
       </div>
       <div id="tileView" className="grid-container">
+        {/* Make an a tag for every battle the user made */}
         {FetchedData && FetchedData.map((battle) => (
           <Link key={battle.id} to={`/BattlePage/${battle.id}`} className="grid-item">{battle.battlename}</Link>
         ))}

@@ -1,3 +1,5 @@
+  // The Data that we use to create the NavBar
+  
   export const NavBarData = [
     {
         title: "Home",

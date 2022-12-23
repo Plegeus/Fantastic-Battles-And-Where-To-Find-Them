@@ -26,6 +26,10 @@ const NavbarList = (props) => {
         }
     }
 
+    // Creation of the dynamic list for the Navbar
+    // If we are in mobile view and we click on 1 of the navbar items then we want to close the Mobile Navbar 
+
+    // If the user is logged in we don't want to have an empty account page url under the navbar item, instead we want the url to point to the account of the user
     return (
         <ul className="nav-menu">
             {filteredNavBarData.map((value, index) => {

@@ -4,13 +4,14 @@ import UserContext from "./User.context";
 
 const LoggedOutRoutes = () => {
 
-    const {
-        Accestoken,
-        setAccestoken
-    } = useContext(UserContext);
+  const {
+    Accestoken
+  } = useContext(UserContext);
 
+
+  //If the user is logged in, then we don't allow them to render certain components ( Such as login or register )
   return (
-    !Accestoken ? <Outlet/> : <Navigate to="/"/>
+    !Accestoken ? <Outlet /> : <Navigate to="/" />
   )
 }
 

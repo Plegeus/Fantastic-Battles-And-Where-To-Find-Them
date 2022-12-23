@@ -6,7 +6,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const MobileNavbar = () => {
-
+// Depending on the state of the MenuIcon we will either render the Hamburger Icon or the Close Icon
+// We also pass the function to the NavBarList so it can add the onClick event to each navbar item
     const [MenuIcon,setMenuIcon] = useState(true)
 
     const hamburgerButton = <VscMenu className="Hamburger" 

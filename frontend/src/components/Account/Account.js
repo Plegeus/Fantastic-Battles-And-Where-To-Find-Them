@@ -18,6 +18,7 @@ const Account = () => {
         Username
     } = useContext(UserContext);
 
+    // Receive every username to be able to search them on the account page
     const { FetchedData, IsLoading, Error } = useFetch("/api/user/names", {
         "method": "GET"
     })
@@ -30,11 +31,14 @@ const Account = () => {
                 {Error && <div>{Error}</div>}
                 {name !== "SearchUser" ?
                     (<div>
+                        {/* All the user information, Username,Email,total likes,..   */}
                         <AccountInformation UsernameAccountPage={name} Accestoken={Accestoken} Username={Username}/>
+                        {/* All the posts made by the user  */}
                         <AccountPosts UsernameAccountPage={name} Accestoken={Accestoken} Username={Username}/>
                     </div>) :
                     ""}
                 {FetchedData && <SearchBar placeholder="Enter Account Name" starturl="/account/" data={FetchedData} />}
+                {/* If the user is Logged in and he is viewing his own profile, he will see the Logout button  */}
                 {Accestoken && name === Username ?
                     <div className="LogoutContainer">
                         <Logout />

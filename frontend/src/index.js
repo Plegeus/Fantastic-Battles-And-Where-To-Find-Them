@@ -1,32 +1,19 @@
 
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-
-import App from "./App.js";
 import AppRefresh from './AppRefresh.js';
-
-import video from './resources/videos/016708093-world-war-ii-color-footage-b24.mp4'
 
 
 const container = document.getElementById('root');
 const root = createRoot(container);
 
-root.render(<AppRefresh func={r} filter={{}}/>);
-/*const a = () => {
-  return <input type="button" onClick={() => root.render(<p>fiyuwfuiwshyfusdifuhysdfihus</p>) }>fsdfdsfsdf</input>
-}
-
-root.render(<a/>) */
+root.render(<AppRefresh func={r} filter={{}} />);
 
 function r(filter) {
-  root.render(<AppRefresh func={r} filter={filter}/>);
+  root.render(<AppRefresh func={r} filter={filter} />);
 }
 
-//console.log("Hello");
-//setTimeout(() => { root.render(<p>Foo</p>) }, 3000);
-
-
-const Test = () => {
+/*const Test = () => {
 
   function login() {
     fetch("/user/login", {
@@ -56,21 +43,6 @@ const Test = () => {
     <input type='button' onClick={ login }></input>
   </div>
 }
-
-
-//fetch("/user/names", {
-//  'method': "GET"
-//}).then(res => res.json()).then(dat => {
-//  alert(dat)
-//})
-//
-//fetch("/account/refresh", {
-//  'method': 'POST'
-//})
-
-//ReactDOM.render(<Navigation />, document.getElementById('top_pane'));
-//ReactDOM.render(<SignupWithContext/>, document.getElementById('mid'))ß;
-//ReactDOM.render(<Login />, document.getElementById('mid'));
-
+*/
 
 

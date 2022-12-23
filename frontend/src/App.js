@@ -10,10 +10,12 @@ import Account from "./components/Account/Account";
 import "./app.css"
 import { LoginProvider } from "./components/Login/Login.context";
 import BattlePage from "./components/BattlePage/BattlePage";
-import { MapFilterProvider } from "./components/Map/MapFilter.context";
 
 
-
+//The Map component will only get rendered if the url starts with nothing or a /
+//BattlePage takes the id of the battle as an argument in the url, the same for Account but with the username, so we can fetch the specific data
+// If the user is already logged in then we will not be able to go to the login or signup page
+// If Router doesn't find an url that fits any of the paths then we display a NotFound component which will show u a 404 error and have a link ready to go back to the home page
 
 const App = (props) => {
   return (
@@ -22,9 +24,8 @@ const App = (props) => {
         <Navigation />
         <div className="Content">
           <Routes>
-            <Route exact path="/" element={<MapFilterProvider>
-              <Map func={props.func} filter={props.filter}/>
-            </MapFilterProvider>
+            <Route exact path="/" element={
+              <Map func={props.func} filter={props.filter} />
             } />
             <Route path="/overview" element={<Overview />} />
             <Route path="/BattlePage/:id" element={<BattlePage />} />
