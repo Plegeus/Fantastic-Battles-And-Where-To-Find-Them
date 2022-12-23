@@ -83,6 +83,7 @@ const Map = (props) => {
       const rating = get("ratingFilter")
       filter.rating = rating
     }
+    // Pass the filter object to higher level so we can receive it back here
     props.func(filter)
 
   }

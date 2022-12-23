@@ -10,6 +10,7 @@ import "./EditBattlePage.css";
 const Undefined = ({ text }) => {
     return <p style={{ color: "gray" }}>{text}</p>
 }
+
 const Faction = ({ isVictor, faction, leader, deaths }) => {
     return (
         <div id={isVictor ? "battleVictors" : "battleVanquished"}>
@@ -23,12 +24,15 @@ const Faction = ({ isVictor, faction, leader, deaths }) => {
 
 
 const BattlePage = () => {
+    // We receive the ID in the url, it get used to identify what battle we are looking at the moment
     const { id } = useParams()
+    // Fetch all the data of a certain battle
     const { FetchedData, IsLoading, Error } = useFetch(`/api/battles/id/${id}`, {
         "method": "GET"
     })
 
     const { Accestoken, Username } = useContext(UserContext);
+    // Consts used for editing the page
     const [CurrentConditions, setCurrentConditions] = useState(null)
     const [IsEditingBattle, setIsEditingBattle] = useState(false)
 
@@ -46,6 +50,7 @@ const BattlePage = () => {
     const [BattleDescription, setBattleDescription] = useState(null)
     const [BattleLikes, setBattleLikes] = useState(null)
 
+    // Make sure when the user enters edit mode, he can already see what was the original information
     const EditBattle = () => {
         setIsEditingBattle(true)
         if (!BattleName) {
@@ -86,7 +91,6 @@ const BattlePage = () => {
         const BattleName = document.getElementById('BattleNameInput').value;
         if (BattleName) {
             setIsEditingBattle(false)
-            console.log(BattleDate)
             let body = {
                 battlename: BattleName,
                 winning_faction: Victor,
@@ -98,6 +102,7 @@ const BattlePage = () => {
                 description: BattleDescription,
                 date: BattleDate
             }
+            // Post request with authorization to make sure that the user is logged in, with the new battle information in its body
             fetch(`/api/account/${Username}/battle/${FetchedData.battlename}/edit`, {
                 'method': 'POST',
                 'headers': {
@@ -108,11 +113,13 @@ const BattlePage = () => {
             })
         }
         else (
+            // You can delete everything from a battle but when saving, there has to be a battlename
             alert("Missing Value: Battlename")
         )
     }
 
     const [LikedBoolean, setLikedBoolean] = useState(false)
+    // Fetch if the user already liked the post or not
     useEffect(() => {
         if (Username) {
             const fetchurlLked = "/api/battles/liked/" + id + "/" + Username;
@@ -121,16 +128,15 @@ const BattlePage = () => {
             }).then(res => {
                 if (!res.ok) {
                     setLikedBoolean(false)
-                    //return false
                 }
                 else if (res.ok) {
                     setLikedBoolean(true)
-                    //return true
                 }
             })
         }
     }, [LikedBoolean])
 
+    // Post request to update the rating of the battle and the total rating of a user
     const likePost = () => {
         fetch(`/api/account/${Username}/battle/${FetchedData.battlename}/like`, {
             "method": "POST",
@@ -141,10 +147,9 @@ const BattlePage = () => {
             setLikedBoolean(true)
             setBattleLikes(BattleLikes + 1)
         });
-
-        console.log("Like de post")
     }
 
+    // Post request to update the rating of the battle and the total rating of a user
     const unlikePost = () => {
         fetch(`/api/account/${Username}/battle/${FetchedData.battlename}/unlike`, {
             "method": "POST",
@@ -155,13 +160,11 @@ const BattlePage = () => {
             setLikedBoolean(false)
             setBattleLikes(BattleLikes + 2)
         });
-
-        console.log("Unlike de post")
     }
 
+    // Only try to get the weather data if we have the battleinformation because that contains the coordinates
     const getWeatherData = () => {
         if (!CurrentConditions && FetchedData) {
-            const oldkey = "KLKMENPQKWMLJ7GBD3V479YHL";
             const newkey = "DL38D5GUASAXRR8C7DTMWRGSX"
             const fetchUrl = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" + FetchedData.location_y.toString() + "," + FetchedData.location_x.toString() + "?key=" + newkey;
             const data = fetch(fetchUrl)
@@ -180,7 +183,7 @@ const BattlePage = () => {
     }
 
 
-
+    // Every "text" "becomes" an input field in edit mode
     if (IsEditingBattle) {
         return (
             <div id="Editbody">
@@ -222,6 +225,7 @@ const BattlePage = () => {
                         </div>
                         <div id='likeDiv'>
                             {Accestoken &&
+                                // If the user is logged in we show a cancel and save button
                                 <div>
                                     <button type="button" id="cancelButton" onClick={CancelChanges}>
                                         Cancel
@@ -247,8 +251,7 @@ const BattlePage = () => {
     }
     return (
         <div id="body">
-            {FetchedData && console.log(FetchedData.date)}
-            {FetchedData &&
+            {FetchedData && // Display all the Battleinformation if there weren't any issues
                 <div id="battleInfo">
                     <div id="topContainer">
                         <img id="battlePic" src={EpicBattle} alt="An Epic Image of a Battle"></img>
@@ -257,7 +260,7 @@ const BattlePage = () => {
 
                                 <h2>{BattleName ? BattleName : FetchedData.battlename}</h2><br></br>
                                 <h3>{BattleDate ? BattleDate.substr(5, 3).concat(BattleDate.substr(8, 2).concat("-").concat(BattleDate.substr(0, 4))) : FetchedData.date && FetchedData.date.substr(5, 3).concat(FetchedData.date.substr(8, 2).concat("-").concat(FetchedData.date.substr(0, 4)))}</h3><br></br>
-                                {/*BattleLikes ? <h4>{"rating: " + BattleLikes}</h4> : */<h4>{"rating: " + FetchedData.rating}</h4>}
+                                <h4>{"rating: " + FetchedData.rating}</h4>
 
                             </div>
                             <div id="combatants">
@@ -266,9 +269,9 @@ const BattlePage = () => {
                             </div>
                         </div>
                         <div id='likeDiv'>
-                            {Accestoken &&
+                            {Accestoken && // If the user is logged in we display a (un)like button and a weather button
                                 <div>
-                                    {LikedBoolean ?
+                                    {LikedBoolean ? // Depending on the state of LikedBoolean we either render a like button or an unlike button
                                         <button id="unlikeButton" onClick={() => { unlikePost() }}>
                                             Unlike
                                         </button>
@@ -293,8 +296,10 @@ const BattlePage = () => {
                         </div>
                         {CurrentConditions &&
                             <div id="theWeather">
+                                {/* The weather also gives an icon as data, we render the corresponding icon with it */}
                                 <img src={"/WeatherIcons/" + String(CurrentConditions.currentConditions.icon) + ".png"} alt="A weather icon" width="50rem"></img>
-                                <p>Current Temperature: {Math.round((CurrentConditions.currentConditions.temp - 32) * 5 / 9)}° Celsius </p>
+                                {/* Convertion of fahrenheit to celsius */}
+                                <p>Current Temperature: {Math.round((CurrentConditions.currentConditions.temp - 32) * 5 / 9)}° Celsius </p> 
                                 <p>Current Weather Condition: {CurrentConditions.currentConditions.conditions} </p>
                                 <p>Current Weather Description {CurrentConditions.description} </p>
                             </div>
