@@ -10,7 +10,6 @@ import Account from "./components/Account/Account";
 import "./app.css"
 import { LoginProvider } from "./components/Login/Login.context";
 import BattlePage from "./components/BattlePage/BattlePage";
-import { MapFilterProvider } from "./components/Map/MapFilter.context";
 
 
 //The Map component will only get rendered if the url starts with nothing or a /
@@ -25,9 +24,8 @@ const App = (props) => {
         <Navigation />
         <div className="Content">
           <Routes>
-            <Route exact path="/" element={<MapFilterProvider>
+            <Route exact path="/" element={
               <Map func={props.func} filter={props.filter} />
-            </MapFilterProvider>
             } />
             <Route path="/overview" element={<Overview />} />
             <Route path="/BattlePage/:id" element={<BattlePage />} />
