@@ -4,6 +4,8 @@ const connection = database.makeConnection("fbwftUsers")
 
 const uuid = require('uuid')
 
+// querries to retrieve and set/update user data...
+
 
 async function allUsers() {
   return await connection.query(

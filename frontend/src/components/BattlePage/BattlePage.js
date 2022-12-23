@@ -101,7 +101,7 @@ const BattlePage = () => {
 
             }
             // Post request with authorization to make sure that the user is logged in, with the new battle information in its body
-            fetch(`/api/account/${Username}/battle/${FetchedData.battlename}/edit`, {
+            fetch(`/account/${Username}/battle/${FetchedData.battlename}/edit`, {
                 'method': 'PUT',
                 'headers': {
                     'content-type': 'application/json',
@@ -136,7 +136,7 @@ const BattlePage = () => {
 
     // Post request to update the rating of the battle and the total rating of a user
     const likePost = () => {
-        fetch(`/api/account/${Username}/battle/${FetchedData.battlename}/like`, {
+        fetch(`/account/${Username}/battle/${FetchedData.battlename}/like`, {
             "method": "POST",
             "headers": {
                 "Authorization": `Bearer ${Accestoken}`,
@@ -149,7 +149,7 @@ const BattlePage = () => {
 
     // Post request to update the rating of the battle and the total rating of a user
     const unlikePost = () => {
-        fetch(`/api/account/${Username}/battle/${FetchedData.battlename}/unlike`, {
+        fetch(`/account/${Username}/battle/${FetchedData.battlename}/unlike`, {
             "method": "POST",
             "headers": {
                 "Authorization": `Bearer ${Accestoken}`,
@@ -254,13 +254,8 @@ const BattlePage = () => {
                             <div id="battleTitle">
 
                                 <h2>{BattleName ? BattleName : FetchedData.battlename}</h2><br></br>
-<<<<<<< HEAD
-<h3>{/*BattleDate ? BattleDate.slice(0, 4) : FetchedData.date*/}</h3>
-                                {/*BattleLikes ? <h4>{"rating: " + BattleLikes}</h4> : */<h4>{"rating: " + FetchedData.rating}</h4>}
-=======
                                 <h3>{BattleDate ? BattleDate.substr(5, 3).concat(BattleDate.substr(8, 2).concat("-").concat(BattleDate.substr(0, 4))) : FetchedData.date && FetchedData.date.substr(5, 3).concat(FetchedData.date.substr(8, 2).concat("-").concat(FetchedData.date.substr(0, 4)))}</h3><br></br>
                                 <h4>{"rating: " + FetchedData.rating}</h4>
->>>>>>> refs/remotes/origin/main
 
                             </div>
                             <div id="combatants">

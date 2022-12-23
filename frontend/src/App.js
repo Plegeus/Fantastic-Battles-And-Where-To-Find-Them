@@ -34,6 +34,7 @@ const App = (props) => {
               <Route path="/signup" element={<SignupWithContext />} />
             </Route>
             <Route path="/account/:name" element={<Account />} />
+            <Route path="/api/*" element={<p>Hello World</p>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

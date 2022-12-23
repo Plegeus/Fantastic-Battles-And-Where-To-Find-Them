@@ -114,7 +114,7 @@ const Map = (props) => {
       }
       // Do a Post Request to add the battle with the body object as its information
       // Also include the Authorization so the post only gets added if the user is logged in
-      fetch(`/api/account/${Username}/battle/${body.battlename}/add`, {
+      fetch(`/account/${Username}/battle/${body.battlename}/add`, {
         'method': 'POST',
         'headers': {
           'content-type': 'application/json',

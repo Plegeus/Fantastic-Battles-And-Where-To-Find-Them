@@ -4,6 +4,8 @@ const database = require('./../database')
 
 const connection = database.makeConnection("fbwftBattles")
 
+// like users there are querries to update/set and get battle data...
+
 
 async function getBattle(battlename) {
 
@@ -141,9 +143,19 @@ async function filter(f) {
 
   // https://stackoverflow.com/questions/10829812/sql-query-where-value-of-another-table
 
+  // the filter function will compile a querry based on the filter parameters...
+  // we keep adding strings to the statement to form the final, filtering querry, this
+  // is done to take advantage of sql's efficient querry system, rather than using 
+  // javascript's maps etc...
+
+  // note that some paths add a 0 = 1 or 1 = 1, this is done so that we do not have to check if
+  // there is going to be one filter or more, hence we do not have to verify if the strings must
+  // or must not add || or && symbols...
+
   stat = "SELECT * FROM battles"
   props = []
 
+  // battles can have arbitrary tags which can be filtered...
   if (f.tags && f.tags.length > 0) {
     stat = stat + " INNER JOIN tags ON battles.battlename = tags.battlename WHERE (0 = 1"
     for (i = 0; i < f.tags.length; i++) {
@@ -175,6 +187,9 @@ async function filter(f) {
     props.push(f.rating)
   }
   if (f.coords) {
+
+    // this filter is used to fetch querries qccording to the viewport of the map,
+    // if the user has zoomed in a lot, we do not have the fetch all battle over the entire map...
 
     stat = stat + " && location_x >= ? && location_x <= ? && location_y <= ? && location_y >= ?"
 

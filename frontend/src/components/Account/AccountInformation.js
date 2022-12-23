@@ -32,7 +32,7 @@ const AccountInformation = (props) => {
     // Post request to update the database with this new userinformation, with the Accestoken to make sure that the user is logged in
     const SaveChanges = () => {
         setIsEditingProfile(false)
-        const fetchurl = "/api/account/" + props.Username + "/edit";
+        const fetchurl = "/account/" + props.Username + "/edit";
         fetch(fetchurl, {
             "method": "PUT",
             "headers": {
