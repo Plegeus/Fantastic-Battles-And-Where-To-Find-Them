@@ -10,22 +10,11 @@ import useFetch from '../../Util/useFetch';
 import MapFilterContext from './MapFilter.context';
 import { createRoot } from 'react-dom/client';
 
-const FULL_SCREEN = {
-  x0: -180,
-  x1: 180,
-  y0: 85,
-  y1: -85,
-}
-
-const outerBounds = [
-  [-90, -180],
-  [90, 180],
-]
 const rectangle = [
   [-90, -180],
   [90, 180],
 ]
-
+// -------------------------------------------------------------------------------------------------------
 const Mark = ({ x, y, title, description, id }) => {
   return (
     <Marker position={[y, x]} icon={new Icon({ iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41] })} >
@@ -41,13 +30,10 @@ const Mark = ({ x, y, title, description, id }) => {
     </Marker>
   )
 }
-const MARKERS = [
-  { x: 0, y: 0 },
-  { x: 50, y: 0 },
-  { x: 50, y: 30 }
-]
 
 
+
+// -------------------------------------------------------------------------------------------------------
 const Map = (props) => {
 
   const { Accestoken, Username } = useContext(UserContext);
@@ -56,7 +42,7 @@ const Map = (props) => {
 
   var mayAdd = false;
   var currentMarker;
-
+// this function is the one that makes it so that the form to add a battle is displayed on screen
   function showAddScreen() {
     var pane = document.getElementById('add_battle_pane');
     if (pane.style.display == 'block') {
@@ -67,7 +53,7 @@ const Map = (props) => {
       mayAdd = true;
     }
   }
-
+// this function shows the filter form on the screen
   function showFilterScreen() {
     var pane = document.getElementById('add_filter_pane');
     if (pane.style.display == 'block') {
@@ -77,7 +63,8 @@ const Map = (props) => {
     }
   }
   
-
+// -------------------------------------------------------------------------------------------------------
+// vul dit aan @Plegeus/@RobbeThielemans
   const filterData = (e) => {
     e.preventDefault();
     var pane = document.getElementById("add_filter_pane");
@@ -110,6 +97,8 @@ const Map = (props) => {
     props.func(filter)
 
   }
+// -------------------------------------------------------------------------------------------------------
+// vul dit aan @Plegeus/@RobbeThielemans
 
   function submitFunction() {
     var pane = document.getElementById("add_battle_pane");
@@ -189,7 +178,8 @@ const Map = (props) => {
       props.filter
     )
   })
-
+// -------------------------------------------------------------------------------------------------------
+// The following code are everything ranging from the map to the add-battle and filter buttons and panes.
   return (
     <div className='mapContainer' id="Map">
 
@@ -244,7 +234,7 @@ const Map = (props) => {
         </form>
       </div>
 
-      <MapContainer center={[50, 0]} zoom={3} style={{ height: 'calc(100vh - 5rem)', width: '100vw' }} maxBounds={outerBounds} minZoom={3} >
+      <MapContainer center={[50, 0]} zoom={3} style={{ height: 'calc(100vh - 5rem)', width: '100vw' }} maxBounds={rectangle} minZoom={3} >
 
         <TileLayer
           url='https://api.maptiler.com/maps/voyager-v2/{z}/{x}/{y}.png?key=v21B0xhC8tSTZGn1gUwV'
@@ -272,5 +262,5 @@ const Map = (props) => {
     </div>
   )
 }
-
+// -------------------------------------------------------------------------------------------------------
 export default Map
