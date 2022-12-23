@@ -19,7 +19,6 @@ export const UserProvider = ({ children }) => {
                 console.log("refreshtoken is expired")
                 setAccestoken(null)
                 setUsername(null);
-                //window.location.replace('http://localhost:3000/login')
                 <Navigate to="http://localhost:3000/login" />
             }
         }).then(dat => {
@@ -27,8 +26,6 @@ export const UserProvider = ({ children }) => {
             setAccestoken(dat.token)
         })
     }, [])
-
-    //;
 
     return (
         <UserContext.Provider

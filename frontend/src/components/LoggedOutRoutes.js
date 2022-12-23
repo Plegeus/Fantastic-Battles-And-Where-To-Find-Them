@@ -5,8 +5,7 @@ import UserContext from "./User.context";
 const LoggedOutRoutes = () => {
 
   const {
-    Accestoken,
-    setAccestoken
+    Accestoken
   } = useContext(UserContext);
 
 
