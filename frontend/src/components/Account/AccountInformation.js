@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useFetch from "../../Util/useFetch";
 import "./AccountInformationStyles.css"
 import Picture from "./Picture";
 
-//fetch user information
+
 
 const AccountInformation = (props) => {
 
@@ -11,6 +11,7 @@ const AccountInformation = (props) => {
     const [IsEditingProfile, setIsEditingProfile] = useState(false)
 
     const fetchurl = "/api/user/" + props.UsernameAccountPage;
+    // Fetch all the data about this user
     const { FetchedData, IsLoading, Error } = useFetch(fetchurl, {
         "method": "GET"
     });
@@ -21,7 +22,6 @@ const AccountInformation = (props) => {
         if (!ProfileDescription) {
             setProfileDescription(FetchedData.bio)
         }
-
     }
 
     const CancelChanges = () => {
@@ -29,6 +29,7 @@ const AccountInformation = (props) => {
         setProfileDescription(null)
     }
 
+    // Post request to update the database with this new userinformation, with the Accestoken to make sure that the user is logged in
     const SaveChanges = () => {
         setIsEditingProfile(false)
         const fetchurl = "/api/account/" + props.Username + "/edit";
@@ -49,11 +50,13 @@ const AccountInformation = (props) => {
 
         <div className="AccountInformation" >
             <div className="ProfilePicture">
+                {/* Load the Profile Picture if there weren't any issues */}
                 {IsLoading && <div>Loading Profile Picture</div>}
                 {Error && <div>{Error}</div>}
                 {FetchedData && console.log(FetchedData)}
                 {FetchedData && <Picture username={props.UsernameAccountPage} />}
             </div>
+             {/* Load the User Information if there weren't any issues */}
             {IsLoading && <div>Loading account information</div>}
             {Error && <div>{Error}</div>}
             {FetchedData &&
@@ -76,7 +79,9 @@ const AccountInformation = (props) => {
                                 onChange={(e) => { setProfileDescription(e.target.value) }}></input>}
                     </div>
                     <div>
+                         {/* If the user is logged in and we aren't in editing mode and we are viewing our own profile, display an edit button */}
                         {props.Accestoken && !IsEditingProfile && props.Username === props.UsernameAccountPage && <button type="submit" className="ProfileButton" onClick={EditProfile}>Edit Profile</button>}
+                        {/* If the user is logged in and we are in editing mode and we are viewing our own profile, display a cancel and save button */}
                         {props.Accestoken && IsEditingProfile && props.Username === props.UsernameAccountPage &&
                             <div>
                                 <button type="submit" className="ProfileButton" onClick={CancelChanges}>Cancel Changes</button>

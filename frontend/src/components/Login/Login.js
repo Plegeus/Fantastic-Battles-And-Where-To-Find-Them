@@ -43,6 +43,7 @@ const Login = () => {
             .then(dat => {
                 if (dat) {
                     // login succes...
+                    // Put the username and Accestoken in the consts, so the site can show stuff that a logged out user wouldn't be able to see/do
                     setUsername(dat.username)
                     setAccestoken(dat.token)
 
@@ -64,7 +65,7 @@ const Login = () => {
         size="2rem" color="gray"
         onClick={() => changeType(!EyeIcon)}
     />
-
+// A form for logging in
     return (
         <div className="LoginContainer">
         
