@@ -73,9 +73,7 @@ const BattlePage = () => {
         if (!BattleDescription) {
             setBattleDescription(FetchedData.description)
         }
-        if (!BattleDate) {
-            setBattleDate(FetchedData.date)
-        }
+
     }
 
     const CancelChanges = () => {
@@ -96,10 +94,10 @@ const BattlePage = () => {
                 losing_commander: VanqCommander,
                 losing_deaths: VanqDeaths,
                 description: BattleDescription,
-                date: BattleDate
+
             }
             fetch(`/api/account/${Username}/battle/${FetchedData.battlename}/edit`, {
-                'method': 'POST',
+                'method': 'PUT',
                 'headers': {
                     'content-type': 'application/json',
                     "Authorization": `Bearer ${Accestoken}`,
@@ -191,9 +189,6 @@ const BattlePage = () => {
                                 <label>BattleName:</label>
                                 <input type="text" id="BattleNameInput" value={BattleName}
                                     onChange={(e) => { setBattleName(e.target.value) }} required /><br></br>
-                                <label>BattleDate:</label>
-                                <input type="date" id="BattleDateInput" value={BattleDate}
-                                    onChange={(e) => { setBattleDate(e.target.value) }} required /><br></br>
                             </div>
                             <div id="combatants">
                                 <div>
@@ -256,7 +251,7 @@ const BattlePage = () => {
                             <div id="battleTitle">
 
                                 <h2>{BattleName ? BattleName : FetchedData.battlename}</h2><br></br>
-                                <h3>{BattleDate ? BattleDate.substr(5, 3).concat(BattleDate.substr(8, 2).concat("-").concat(BattleDate.substr(0, 4))) : FetchedData.date && FetchedData.date.substr(5, 3).concat(FetchedData.date.substr(8, 2).concat("-").concat(FetchedData.date.substr(0, 4)))}</h3><br></br>
+<h3>{/*BattleDate ? BattleDate.slice(0, 4) : FetchedData.date*/}</h3>
                                 {/*BattleLikes ? <h4>{"rating: " + BattleLikes}</h4> : */<h4>{"rating: " + FetchedData.rating}</h4>}
 
                             </div>

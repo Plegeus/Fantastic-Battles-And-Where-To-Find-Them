@@ -11,7 +11,7 @@ export const UserProvider = ({ children }) => {
 
     useEffect(() => {
         console.log("fetching refresh token")
-        fetch("/api/user/refresh", {
+        fetch("/refresh", {
             'method': 'GET'
           }).then(res => {
             if (res.ok) {

@@ -26,7 +26,7 @@ CREATE TABLE battles (
   description VARCHAR(512) DEFAULT NULL
 );
 
-INSERT INTO battles (
+/*INSERT INTO battles (
   battlename, 
   username,
   location_x, 
@@ -61,10 +61,10 @@ INSERT INTO battles (
   'France',
   'Msr. Crepe',
   'George Crepers'
-);
+);*/
 
-INSERT INTO tags (battlename, tag) VALUES
+/*INSERT INTO tags (battlename, tag) VALUES
   ('Battle of Dunkirk', 'World War II'),
   ('Battle of Dunkirk', 'Germany'),
-  ('Battle of Dunkirk', 'The Beach');
+  ('Battle of Dunkirk', 'The Beach');*/
 

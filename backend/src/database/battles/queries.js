@@ -46,6 +46,8 @@ async function getTags(battlename) {
 
 async function updateBattle(battlename, values) {
   if (values.date) {
+
+    console.log(`DATE IS: ${values.date}`)
     await connection.query(
       "UPDATE battles SET date = ? WHERE battlename = ?", [values.date, battlename]
     )

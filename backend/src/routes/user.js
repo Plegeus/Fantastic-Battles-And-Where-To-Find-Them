@@ -3,7 +3,6 @@ const express = require('express')
 const router = express.Router()
 
 const user = require('../database/users/queries')
-const battle = require('../database/battles/queries')
 
 const acces = require('../tokens/access')
 const refresh = require('../tokens/refresh')
@@ -66,7 +65,13 @@ router.post('/register', async (req, res) => {
   if (!await user.userExists(username)) {
 
     user.createUser(username, mailaddress, password)
-
+    
+    let refr = `${await refresh.encode(username)}`
+    res.cookie("refresh", refr, {
+      sameSite: 'strict',
+      //secure: true,
+      //httpOnly: true
+    })
     let token = await acces.encode(username)
     res.status(200).json(token)
 
@@ -89,38 +94,6 @@ router.get('/names', async (req, res) => {
 
 })
 
-router.get('/refresh', async (req, res) => {
-
-  console.log('received get request @ refresh')
-
-  let cookies = req.cookies
-  console.log(` > cookies: ${JSON.stringify(cookies)}`)
-
-  let refr = cookies.refresh
-  if (!refr) {
-    res.status(401).send("no refresh token provided")
-    console.log(" > no token")
-    return
-  }
-
-  let decode = refresh.decode(refr)
-  if (decode) {
-    let u = await user.getByUuid(decode)
-    if (u) {
-      console.log(" > new token made")
-      res.status(200).json({
-        token: await acces.encode(u.username),
-        username: u.username,
-      })
-      return
-    }
-  } 
-
-  console.log(" > refresh expired")
-  res.status(401).send("refreshtoken expired")
-
-})
-
 router.get('/:username', async (req, res) => {
 
   console.log('received get request @ username')
@@ -128,25 +101,15 @@ router.get('/:username', async (req, res) => {
   let username = req.params.username
 
   let u = await user.getUser(username)
+
+  // this information may not be made public...
   u.uuid = undefined
+  u.email = undefined
 
   res.json(u)
 
 })
 
-/*router.get('/:username/battles', async (req, res) => {
-
-  console.log('received get request @ battles')
-
-  let username = req.params.username
-
-  let q = await battle.filter({username: username})
-  console.log(` > q: ${q}`)
-  console.log(` > ${q.map(b => b.battlename)}`)
-
-  res.json()
-
-})*/
 
 module.exports = router
 

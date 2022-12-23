@@ -33,7 +33,7 @@ const AccountInformation = (props) => {
         setIsEditingProfile(false)
         const fetchurl = "/api/account/" + props.Username + "/edit";
         fetch(fetchurl, {
-            "method": "POST",
+            "method": "PUT",
             "headers": {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${props.Accestoken}`,

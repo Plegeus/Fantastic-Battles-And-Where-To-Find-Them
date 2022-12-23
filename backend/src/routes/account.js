@@ -1,12 +1,12 @@
 
 const express = require('express')
 const router = express.Router({ mergeParams: true })
+const battleRouter = express.Router({ mergeParams: true })
 
 const user = require('../database/users/queries')
 const battle = require('../database/battles/queries')
 
 const acces = require('../tokens/access')
-const refresh = require('../tokens/refresh')
 
 
 router.use(async (req, res, next) => {
@@ -51,15 +51,22 @@ router.use(async (req, res, next) => {
 
 })
 
-router.post('/edit', async (req, res) => {
-  console.log('received post request @ edit')
+router.put('/edit', async (req, res) => {
+  console.log('received put request @ edit')
   user.updateUser(req.body.user.username, req.body)
   res.status(200)
 })
 
-router.post('/battle/:battlename/edit', async (req, res) => {
+router.use('/battle', battleRouter)
 
-  console.log('received post request @ battle edit')
+battleRouter.use((req, res, next) => {
+  console.log('received request @ battle')
+  next()
+})
+
+battleRouter.put('/:battlename/edit', async (req, res) => {
+
+  console.log('received put request @ edit')
 
   let body = req.body
   body.rating = undefined
@@ -81,9 +88,9 @@ router.post('/battle/:battlename/edit', async (req, res) => {
   res.status(200).send()
 
 })
-router.post('/battle/:battlename/add', async (req, res) => {
+battleRouter.post('/:battlename/add', async (req, res) => {
 
-  console.log('received post request @ battle add')
+  console.log('received post request @ add')
 
   let body = req.body
   body.rating = undefined
@@ -106,9 +113,9 @@ router.post('/battle/:battlename/add', async (req, res) => {
 
 })
 
-router.post('/battle/:battlename/like', async (req, res) => {
+battleRouter.post('/:battlename/like', async (req, res) => {
 
-  console.log('received post request @ battle like')
+  console.log('received post request @ like')
 
   let username = req.params.username
   let battlename = req.params.battlename
@@ -129,9 +136,9 @@ router.post('/battle/:battlename/like', async (req, res) => {
   res.status(200).send()
 
 })
-router.post('/battle/:battlename/unlike', async (req, res) => {
+battleRouter.post('/:battlename/unlike', async (req, res) => {
 
-  console.log('received post request @ battle unlike')
+  console.log('received post request @ unlike')
 
   let username = req.params.username
   let battlename = req.params.battlename

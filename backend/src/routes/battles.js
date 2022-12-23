@@ -36,6 +36,9 @@ router.get('/id/:id', async (req, res) => {
     return
   }
 
+  //b.date = b.date.getFullYear()
+  console.log(b)
+
   res.json(b)
 
 })
